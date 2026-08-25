@@ -96,7 +96,7 @@ h3 {
 h1 {
   max-width: 12ch;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-  font-size: clamp(3.6rem, 8.4vw, 8.8rem);
+  font-size: clamp(3rem, 6.8vw, 7rem);
 }
 
 h2 {
@@ -834,6 +834,7 @@ figcaption,
 
   .hero-section h1 {
     max-width: 10ch;
+    font-size: clamp(2.9rem, 13vw, 3.6rem);
   }
 
   .hero-actions,
