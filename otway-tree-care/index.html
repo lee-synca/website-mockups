@@ -106,10 +106,12 @@ header{
   max-width:var(--max-wide);margin:0 auto;
   padding:0 var(--pad-x);
   display:flex;align-items:center;gap:28px;
-  height:78px;
+  height:78px;position:relative;
 }
+.header-wordmark{display:none}
 .brand{display:flex;align-items:center;flex:none}
 .brand img{height:58px;width:auto}
+.brand .logo-mark{display:none;height:38px}
 nav{margin-left:auto;margin-right:26px}
 nav ul{display:flex;list-style:none;gap:6px}
 nav a{
@@ -521,6 +523,14 @@ footer ul a:hover{color:var(--cloud)}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:600px){
+  .nav-bar{height:60px}
+  .brand .logo-full{display:none}
+  .brand .logo-mark{display:block}
+  .header-wordmark{
+    display:block;position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    height:19px;width:auto;pointer-events:none;
+  }
   .trust .wrap{grid-template-columns:1fr 1fr;gap:2px 14px}
   .trust-item{padding:6px 0;border-left:none}
   .svc-grid,.work-grid,.review-grid{grid-template-columns:1fr}
@@ -540,8 +550,10 @@ footer ul a:hover{color:var(--cloud)}
 <header id="top">
   <div class="nav-bar">
     <a class="brand" href="#top" aria-label="Otway Tree Care — home">
-      <img src="images/logo-white.png" alt="Otway Tree Care">
+      <img class="logo-full" src="images/logo-white.png" alt="Otway Tree Care">
+      <img class="logo-mark" src="images/mark-white.png" alt="Otway Tree Care" width="715" height="495">
     </a>
+    <img class="header-wordmark" src="images/wordmark-white.png" alt="" aria-hidden="true" width="1722" height="215">
     <nav id="site-nav" aria-label="Main">
       <ul>
         <li><a class="current" href="#top" aria-current="page">Home</a></li>
