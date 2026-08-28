@@ -539,6 +539,9 @@ footer ul a:hover{color:var(--cloud)}
   .stat{border-left:none;padding-left:0}
   .foot-grid{grid-template-columns:1fr}
   .hero-data > div{flex-basis:100%;padding-right:0}
+  /* Stacked action buttons share one width */
+  .hero-actions,.cta-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,.cta-actions .btn{justify-content:center}
 }
 </style>
 </head>
