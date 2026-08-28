@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otway Tree Care — Qualified Tree Care Across Colac, Apollo Bay &amp; the Otways</title>
+<meta name="description" content="Qualified arborists serving Colac, Apollo Bay, Lorne and the Otway Ranges. Tree removal, pruning, stump grinding and 24/7 storm response — fixed quotes, low-impact machinery, spotless finish.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/hero.webp" fetchpriority="high">
+<style>
+/* ============================================================
+   OTWAY TREE CARE — Brand tokens (Brand Guidelines V1.0)
+   Palette proportion guide: Mist/Cloud dominant · Forest ·
+   Canopy/Charcoal · Fern/Bark · Amber marks the action only
+   ============================================================ */
+:root{
+  --canopy:#0B2C1C;
+  --forest:#2B5B38;
+  --fern:#C9D5C0;
+  --mist:#F4F6F1;
+  --cloud:#FFFFFF;
+  --charcoal:#1D211F;
+  --bark:#74604C;
+  --amber:#D98A2B;
+  --ink-2:#5C635E;
+  --ink-3:#89908A;
+  --line:rgba(29,33,31,.14);
+  --line-inv:rgba(255,255,255,.16);
+  --font:"Sora","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --pad-x:clamp(22px,5vw,64px);
+  --max:1320px;
+  --max-wide:1536px;
+  --r:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--charcoal);
+  background:var(--mist);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.skip-link{
+  position:absolute;left:16px;top:-60px;z-index:100;
+  background:var(--amber);color:var(--canopy);
+  font-size:13px;font-weight:600;text-decoration:none;
+  padding:12px 18px;border-radius:var(--r);
+  transition:top .2s ease;
+}
+.skip-link:focus{top:16px}
+
+/* ---------- Type registers ---------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.01em}
+.data{
+  font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;line-height:1.5;
+}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.eyebrow::after{content:"";width:44px;height:1px;background:currentColor;opacity:.5}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x)}
+section{position:relative}
+.sec-head{max-width:660px;margin-bottom:clamp(38px,5vw,56px)}
+.sec-head .eyebrow{color:var(--forest)}
+.sec-head h2{font-size:clamp(28px,3.4vw,42px);line-height:1.15;margin-bottom:14px}
+.sec-head p{color:var(--ink-2);max-width:56ch}
+
+/* ---------- Buttons — Amber is the action ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font);font-size:14.5px;font-weight:600;
+  letter-spacing:.02em;
+  padding:15px 26px;border-radius:var(--r);
+  text-decoration:none;border:1px solid transparent;
+  cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease;
+}
+.btn svg{width:15px;height:15px;flex:none;transition:transform .2s ease}
+.btn:hover svg{transform:translateX(3px)}
+.btn-amber{background:var(--amber);color:var(--canopy)}
+.btn-amber:hover{background:#E29A44}
+.btn-ghost{background:transparent;color:var(--cloud);border-color:var(--line-inv)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.45)}
+.btn-forest{background:var(--forest);color:var(--cloud)}
+.btn-forest:hover{background:#356C44}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  position:sticky;top:0;z-index:50;
+  background:var(--canopy);
+  border-bottom:1px solid var(--line-inv);
+}
+.nav-bar{
+  max-width:var(--max-wide);margin:0 auto;
+  padding:0 var(--pad-x);
+  display:flex;align-items:center;gap:28px;
+  height:78px;
+}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:58px;width:auto}
+nav{margin-left:auto;margin-right:26px}
+nav ul{display:flex;list-style:none;gap:6px}
+nav a{
+  position:relative;display:block;padding:10px 12px;
+  font-size:13px;font-weight:500;text-decoration:none;
+  color:rgba(255,255,255,.82);
+  transition:color .2s ease;
+}
+nav a::after{
+  content:"";position:absolute;left:12px;right:12px;bottom:4px;
+  height:2px;background:var(--fern);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .2s ease;
+}
+nav a:hover{color:var(--cloud)}
+nav a:hover::after{transform:scaleX(1)}
+nav a.current{color:var(--cloud)}
+nav a.current::after{transform:scaleX(1)}
+nav a.nav-em{color:var(--amber);font-weight:600}
+nav a.nav-em:hover{color:#E29A44}
+nav a.nav-em::after{background:var(--amber)}
+.head-phone{
+  display:flex;align-items:center;gap:8px;
+  color:var(--cloud);text-decoration:none;
+  font-size:14px;font-weight:600;white-space:nowrap;
+}
+.head-phone svg{width:15px;height:15px;color:var(--fern)}
+.head-cta{padding:13px 20px}
+.menu-btn{
+  display:none;margin-left:auto;
+  background:none;border:1px solid var(--line-inv);border-radius:var(--r);
+  color:var(--cloud);padding:10px 12px;cursor:pointer;
+}
+.menu-btn svg{width:20px;height:20px;display:block}
+
+/* ============================================================
+   HERO — real work, real place
+   ============================================================ */
+.hero{background:var(--canopy);color:var(--cloud);overflow:hidden}
+.hero .wrap{
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:min(calc(100svh - 78px), 900px);
+}
+.hero-photo{
+  position:absolute;inset:0;
+  background:url("images/hero.webp") center 30%/cover no-repeat;
+}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(11,44,28,.88) 0%,rgba(11,44,28,.62) 42%,rgba(11,44,28,.18) 75%,rgba(11,44,28,.05) 100%),
+    linear-gradient(180deg,rgba(11,44,28,.45) 0%,rgba(11,44,28,0) 30%,rgba(11,44,28,.55) 100%);
+}
+.hero-inner{
+  position:relative;z-index:1;
+  margin-top:auto;margin-bottom:auto;
+  padding-top:clamp(56px,7vw,96px);
+  padding-bottom:clamp(56px,7vw,96px);
+  max-width:720px;
+}
+.hero .eyebrow{color:var(--fern)}
+.hero h1{
+  font-size:clamp(44px,5.6vw,64px);
+  line-height:1.05;
+  margin-bottom:26px;
+  max-width:15ch;
+  text-wrap:balance;
+}
+.hero h1 em{font-style:normal;color:var(--fern)}
+.hero p.lead{
+  font-size:clamp(15px,1.4vw,18px);
+  color:rgba(255,255,255,.88);
+  max-width:50ch;
+  margin-bottom:36px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-data{
+  position:relative;z-index:1;
+  display:flex;flex-wrap:wrap;
+  border-top:1px solid var(--line-inv);
+  padding-bottom:8px;
+}
+.hero-data > div{
+  flex:1 1 200px;
+  padding:18px 24px 20px 0;
+  color:rgba(255,255,255,.72);
+}
+.hero-data b{display:block;color:var(--cloud);font-weight:600;font-size:14px;margin-top:6px;letter-spacing:0;text-transform:none}
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.trust{background:var(--cloud);border-bottom:1px solid var(--line)}
+.trust .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  padding-top:22px;padding-bottom:22px;
+}
+.trust-item{
+  display:flex;align-items:center;gap:12px;
+  padding:8px 24px;border-left:1px solid var(--line);
+}
+.trust-item:first-child{border-left:none;padding-left:0}
+.trust-item svg{width:22px;height:22px;flex:none;color:var(--forest)}
+.trust-item span{font-size:13px;font-weight:500;color:var(--charcoal)}
+
+/* ============================================================
+   SERVICES — photo-led cards
+   ============================================================ */
+.services{background:var(--mist);padding:clamp(72px,9vw,116px) 0}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{
+  background:var(--cloud);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color .2s ease,transform .2s ease;
+}
+.svc:hover{border-color:var(--forest);transform:translateY(-3px)}
+.svc-photo{position:relative;aspect-ratio:16/10;overflow:hidden}
+.svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.svc:hover .svc-photo img{transform:scale(1.04)}
+.svc-photo .tag{
+  position:absolute;top:12px;left:12px;
+  background:rgba(11,44,28,.82);color:var(--fern);
+  padding:6px 10px;border-radius:var(--r);
+}
+.svc-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.svc h3{font-size:18px}
+.svc p{font-size:14px;color:var(--ink-2)}
+.svc a.more{
+  margin-top:auto;padding-top:10px;
+  font-size:13.5px;font-weight:600;
+  color:var(--forest);text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+}
+.svc a.more svg{width:13px;height:13px;transition:transform .2s ease}
+.svc a.more:hover svg{transform:translateX(3px)}
+/* Storm card — the one a stressed visitor is hunting for */
+.svc-emergency{border-top:3px solid var(--amber)}
+.svc-emergency .tag{background:rgba(29,33,31,.88);color:var(--amber)}
+
+/* ============================================================
+   STORM STRIP — calm in emergencies
+   ============================================================ */
+.storm{background:var(--charcoal);color:var(--cloud)}
+.storm .wrap{
+  display:flex;flex-wrap:wrap;align-items:center;gap:24px;
+  padding-top:34px;padding-bottom:34px;
+}
+.storm-mark{flex:none;width:40px;height:40px;color:var(--amber)}
+.storm-mark svg{width:100%;height:100%}
+.storm-copy{flex:1 1 420px}
+.storm-copy .data{color:var(--amber);margin-bottom:6px}
+.storm-copy p{font-size:15px;color:rgba(255,255,255,.85);max-width:64ch}
+.storm .btn{flex:none}
+
+/* ============================================================
+   PROCESS — how every job runs
+   ============================================================ */
+.process{background:var(--mist);padding:clamp(72px,9vw,116px) 0}
+.steps{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border-top:1px solid var(--line);
+  counter-reset:step;
+}
+.step{
+  padding:26px 22px 8px 0;
+  border-left:1px solid var(--line);
+  padding-left:22px;position:relative;
+}
+.step:first-child{border-left:none;padding-left:0}
+.step .no{
+  display:block;font-size:12px;font-weight:500;letter-spacing:.18em;
+  color:var(--bark);margin-bottom:14px;
+}
+.step h3{font-size:16px;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--ink-2)}
+.process-note{
+  margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;
+}
+.process-note p{font-size:14px;color:var(--ink-2);max-width:60ch}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{background:var(--forest);color:var(--cloud);overflow:hidden}
+.about-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(40px,6vw,90px);
+  padding-top:clamp(72px,9vw,116px);
+  padding-bottom:clamp(72px,9vw,116px);
+  align-items:start;
+}
+.about .eyebrow{color:var(--fern)}
+.about h2{font-size:clamp(28px,3.4vw,42px);line-height:1.15;margin-bottom:20px;max-width:17ch}
+.about p.body{color:rgba(255,255,255,.85);max-width:52ch;margin-bottom:30px}
+.evidence{display:grid;border-top:1px solid var(--line-inv)}
+.evidence article{
+  display:grid;grid-template-columns:44px 1fr;gap:8px 18px;
+  padding:18px 0;border-bottom:1px solid var(--line-inv);
+}
+.evidence .no{
+  grid-row:span 2;
+  font-size:13px;font-weight:500;color:var(--fern);
+  border:1px solid var(--line-inv);border-radius:50%;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  margin-top:2px;
+}
+.evidence h3{font-size:15px}
+.evidence p{font-size:14px;color:rgba(255,255,255,.72)}
+.about-cta{margin-top:32px}
+.about-fig{position:sticky;top:110px}
+.about-fig .ph{border-radius:var(--r);overflow:hidden;border:1px solid var(--line-inv)}
+.about-fig img{width:100%;height:auto}
+.fig-caption{
+  display:flex;justify-content:space-between;gap:16px;
+  padding-top:12px;color:rgba(255,255,255,.78);
+}
+
+/* ============================================================
+   STATS BAND
+   ============================================================ */
+.stats{background:var(--mist);border-bottom:1px solid var(--line)}
+.stats .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding-top:clamp(44px,5vw,60px);padding-bottom:clamp(44px,5vw,60px);
+}
+.stat{padding:6px 28px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(28px,3vw,40px);font-weight:600;color:var(--forest);line-height:1.1;margin-bottom:8px}
+.stat span{display:block;color:var(--ink-2)}
+
+/* ============================================================
+   OUR WORK — photo grid with field-record captions
+   ============================================================ */
+.work{background:var(--mist);padding:clamp(72px,9vw,116px) 0}
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.shot{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  aspect-ratio:4/3;background:var(--fern);
+  border:1px solid var(--line);
+}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.shot:hover img{transform:scale(1.04)}
+.shot figcaption{
+  position:absolute;inset:auto 0 0 0;
+  padding:36px 16px 14px;
+  background:linear-gradient(180deg,rgba(11,44,28,0) 0%,rgba(11,44,28,.85) 100%);
+  color:var(--cloud);
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+}
+.shot figcaption .data{color:var(--fern)}
+.shot figcaption b{font-size:13.5px;font-weight:600}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+.reviews{background:var(--mist);padding-bottom:clamp(72px,9vw,116px)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{
+  background:var(--fern);color:var(--canopy);
+  border-radius:var(--r);
+  padding:28px 26px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.review .data{color:var(--canopy)}
+.review blockquote{font-size:15px;font-weight:500;line-height:1.55;flex:1}
+.review cite{font-style:normal}
+.review cite b{display:block;font-size:14px;font-weight:600}
+.review cite span{font-size:12px;color:var(--canopy)}
+
+/* ============================================================
+   SERVICE AREA — the map
+   ============================================================ */
+.area{background:var(--cloud);border-top:1px solid var(--line);padding:clamp(72px,9vw,116px) 0}
+.area-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,5vw,72px);align-items:center}
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 30px}
+.towns span{
+  border:1px solid var(--line);border-radius:999px;
+  padding:8px 14px;font-size:12.5px;font-weight:500;color:var(--forest);
+  background:var(--mist);
+}
+.area-note{font-size:13.5px;color:var(--ink-2)}
+.map-card{
+  background:var(--mist);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;
+}
+.map-card svg{width:100%;height:auto;display:block}
+.map-caption{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:14px 6px 2px;color:var(--ink-2);
+}
+
+/* ============================================================
+   CTA BAND
+   ============================================================ */
+.cta-band{
+  background:var(--mist);
+  padding:clamp(64px,8vw,104px) 0;
+}
+.cta-card{
+  background:var(--forest);
+  color:var(--cloud);
+  border-radius:16px;
+  text-align:center;
+  padding:clamp(52px,7vw,88px) clamp(24px,5vw,64px);
+  box-shadow:0 24px 60px -30px rgba(11,44,28,.55);
+}
+.cta-inner{
+  max-width:640px;margin:0 auto;
+}
+.cta-inner .data{color:var(--fern);margin-bottom:16px;display:block}
+.cta-inner h2{font-size:clamp(30px,3.8vw,46px);line-height:1.1;margin-bottom:16px}
+.cta-inner p{color:rgba(255,255,255,.85);max-width:46ch;margin:0 auto 34px}
+.cta-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--canopy);color:rgba(255,255,255,.75);border-top:1px solid var(--line-inv)}
+footer .wrap{max-width:var(--max-wide)}
+.foot-grid{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;
+  gap:clamp(32px,4vw,56px);
+  padding-top:clamp(56px,6vw,80px);padding-bottom:48px;
+}
+.foot-brand img{height:88px;width:auto;margin-bottom:20px}
+.foot-brand p{font-size:14px;max-width:30ch}
+.foot-brand .data{color:var(--fern);margin-top:18px}
+footer h4{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--fern);margin-bottom:18px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px}
+footer ul a{font-size:14px;text-decoration:none;color:rgba(255,255,255,.75);transition:color .2s ease}
+footer ul a:hover{color:var(--cloud)}
+.foot-contact li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.foot-contact svg{width:14px;height:14px;flex:none;margin-top:4px;color:var(--fern)}
+.foot-contact a{text-decoration:none;color:rgba(255,255,255,.85)}
+.foot-contact a:hover{color:var(--cloud)}
+.foot-cta{margin-top:22px}
+.foot-base{
+  border-top:1px solid var(--line-inv);
+  padding-top:26px;padding-bottom:30px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-size:12.5px;color:rgba(255,255,255,.5);
+}
+
+/* ============================================================
+   MOBILE ACTION BAR — call & quote within thumb reach
+   ============================================================ */
+.action-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--canopy);
+  border-top:1px solid var(--line-inv);
+  padding:10px var(--pad-x) calc(10px + env(safe-area-inset-bottom));
+  gap:10px;
+}
+.action-bar .btn{flex:1;justify-content:center;padding:14px 10px;min-height:48px}
+.action-bar .btn-call{background:transparent;color:var(--cloud);border-color:var(--line-inv)}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn svg,.svc,.svc-photo img,.shot img{transition:none}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1080px){
+  nav ul{gap:0}
+  nav a{padding:10px 9px;font-size:12.5px}
+  .head-phone span{display:none}
+}
+@media (max-width:940px){
+  nav,.head-phone,.head-cta{display:none}
+  .action-bar{display:flex}
+  footer .foot-base{padding-bottom:96px}
+  .menu-btn{display:block}
+  .nav-open nav{
+    display:block;position:absolute;top:78px;left:0;right:0;
+    background:var(--canopy);border-bottom:1px solid var(--line-inv);
+    padding:10px var(--pad-x) 26px;margin:0;
+  }
+  .nav-open nav ul{flex-direction:column;gap:2px}
+  .nav-open nav a{font-size:16px;padding:12px 0}
+  .nav-open nav a::after{left:0;right:auto;width:44px;bottom:8px}
+  .trust .wrap{grid-template-columns:1fr 1fr;gap:6px 0}
+  .trust-item:nth-child(3){border-left:none;padding-left:0}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{border-left:none;padding-left:0;border-top:1px solid var(--line)}
+  .steps{border-top:none}
+  .about-grid,.area-grid{grid-template-columns:1fr}
+  .about-fig{position:static}
+  .stats .wrap{grid-template-columns:repeat(2,1fr);gap:28px 0}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .work-grid,.review-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .trust .wrap{grid-template-columns:1fr 1fr;gap:2px 14px}
+  .trust-item{padding:6px 0;border-left:none}
+  .svc-grid,.work-grid,.review-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:1fr;gap:24px}
+  .stat{border-left:none;padding-left:0}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-data > div{flex-basis:100%;padding-right:0}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ================= HEADER ================= -->
+<header id="top">
+  <div class="nav-bar">
+    <a class="brand" href="#top" aria-label="Otway Tree Care — home">
+      <img src="images/logo-white.png" alt="Otway Tree Care">
+    </a>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        <li><a class="current" href="#top" aria-current="page">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a class="nav-em" href="#storm">24/7 Emergency</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="head-phone" href="tel:0448762058">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+      <span>0448 762 058</span>
+    </a>
+    <a class="btn btn-amber head-cta" href="#contact">Get a free quote</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-photo" role="img" aria-label="View from an Otway Tree Care climber's harness high in a coastal eucalypt, branded truck and chipper on the lawn below and the Southern Ocean beyond"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="data eyebrow">Qualified arborists · Colac · Apollo Bay · Lorne &amp; surrounds</p>
+      <h1>Qualified tree care across the Otways.</h1>
+      <p class="lead">Tree removal, pruning, stump grinding and 24/7 storm response. Every job starts with an assessment and a fixed quote — and ends with a spotless site.</p>
+      <div class="hero-actions">
+        <a class="btn btn-amber" href="#contact">Get a free quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#services">Our services</a>
+      </div>
+    </div>
+    <div class="hero-data">
+      <div class="data">Experience<b>12+ years in the Otways</b></div>
+      <div class="data">Storm response<b>24 / 7 across the Otways</b></div>
+      <div class="data">Every quote<b>Fixed price · In writing</b></div>
+      <div class="data">Handover<b>Site left spotless</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<section class="trust" aria-label="Why clients trust us">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Fully insured</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+      <span>Qualified arborists</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Local Otways business</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+      <span>Free fixed quotes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="data eyebrow">Our services</p>
+      <h2>Clear advice. Controlled work.</h2>
+      <p>From a single backyard canopy to public land, the work is planned, not improvised. Here is what we do — and what happens when you book it.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <img src="images/svc-removal.webp" alt="Crane lifting a trunk section clear while a climbing arborist works the spar below" loading="lazy">
+          <span class="tag data">Removal</span>
+        </div>
+        <div class="svc-body">
+          <h3>Tree Removal</h3>
+          <p>Large or difficult removals are planned, not improvised. You get a fixed quote, a clear work method, and a site left spotless.</p>
+          <a class="more" href="#contact">Request a quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <img src="images/svc-pruning.webp" alt="Climbing arborist pruning limbs high in a eucalypt canopy" loading="lazy">
+          <span class="tag data">Pruning</span>
+        </div>
+        <div class="svc-body">
+          <h3>Tree Pruning</h3>
+          <p>Pruning for health, structure and clearance — cutting what the tree needs and no more, so it grows back stronger.</p>
+          <a class="more" href="#contact">Request a quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <img src="images/svc-stump.webp" alt="Otway Tree Care stump grinder working on a clifftop above the Southern Ocean" loading="lazy">
+          <span class="tag data">Stumps</span>
+        </div>
+        <div class="svc-body">
+          <h3>Stump Grinding</h3>
+          <p>Stumps ground below ground level and the site tidied, so you can replant, mow or build over it straight away.</p>
+          <a class="more" href="#contact">Request a quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc svc-emergency reveal">
+        <div class="svc-photo">
+          <img src="images/svc-storm.webp" alt="Storm-fallen limb resting through a carport roof before clean-up" loading="lazy">
+          <span class="tag data">24 / 7 · Emergency</span>
+        </div>
+        <div class="svc-body">
+          <h3>Storm Damage</h3>
+          <p>24/7 callouts across Colac, Apollo Bay and the Otways. We make the site safe first, then clear and clean up.</p>
+          <a class="more" href="#storm">How to respond
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <img src="images/svc-health.webp" alt="Arborist assessing a mature roadside gum from within the canopy" loading="lazy">
+          <span class="tag data">Health</span>
+        </div>
+        <div class="svc-body">
+          <h3>Tree Health</h3>
+          <p>Before we cut, we assess. Deadwood, decay and canopy weight tell us what the tree needs — sometimes that&rsquo;s less work, not more.</p>
+          <a class="more" href="#contact">Book an assessment
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <img src="images/svc-consult.webp" alt="Healthy, well-maintained trees on a managed Otways property" loading="lazy">
+          <span class="tag data">Advice</span>
+        </div>
+        <div class="svc-body">
+          <h3>Consultation &amp; Reports</h3>
+          <p>Site assessments and plain-language advice for homeowners, landholders and public-sector teams — with what to do next.</p>
+          <a class="more" href="#contact">Arrange a visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORM STRIP ================= -->
+<section class="storm" id="storm">
+  <div class="wrap">
+    <div class="storm-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="26 6 16 26 24 26 20 42 34 20 25 20 30 6"/></svg>
+    </div>
+    <div class="storm-copy">
+      <p class="data">Storm damage · 24 / 7</p>
+      <p>Stay clear of hanging limbs and fallen power lines. Call us — we respond across Colac, Apollo Bay and the Otways, day and night.</p>
+    </div>
+    <a class="btn btn-amber" href="tel:0448762058">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+      0448 762 058
+    </a>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="data eyebrow">How every job runs</p>
+      <h2>No surprises, start to finish.</h2>
+      <p>The same five steps on every job — a backyard prune or a public-land program.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="no data">Step 01</span>
+        <h3>Site visit &amp; assessment</h3>
+        <p>We look at the tree, the ground and the access before anything else. Advice starts with what the tree needs.</p>
+      </div>
+      <div class="step">
+        <span class="no data">Step 02</span>
+        <h3>Fixed quote, in writing</h3>
+        <p>One price for the whole job. What you&rsquo;re quoted is what you pay — no day rates, no extras.</p>
+      </div>
+      <div class="step">
+        <span class="no data">Step 03</span>
+        <h3>Work method &amp; safety plan</h3>
+        <p>How the work will happen, documented — rigging, machinery, exclusion zones and what to expect on the day.</p>
+      </div>
+      <div class="step">
+        <span class="no data">Step 04</span>
+        <h3>The work — controlled</h3>
+        <p>Planned cuts, low-impact machinery, and a crew that treats your property like their own.</p>
+      </div>
+      <div class="step">
+        <span class="no data">Step 05</span>
+        <h3>Spotless handover</h3>
+        <p>Timber and green waste dealt with as agreed, the site raked and left cleaner than we found it.</p>
+      </div>
+    </div>
+    <div class="process-note reveal">
+      <p>If a tree needs less work than you expected, we&rsquo;ll tell you that too — sometimes the right answer is a prune, not a removal.</p>
+      <a class="btn btn-forest" href="#contact">Book a site visit
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <p class="data eyebrow">About us</p>
+      <h2>Local. Experienced. Environmentally conscious.</h2>
+      <p class="body">Otway Tree Care is a local arborist business with deep roots in the Otways. Twelve years of local experience, qualified arborist judgement and specialised low-impact machinery let us work with confidence at every scale — from a single backyard canopy to public land.</p>
+      <div class="evidence">
+        <article>
+          <span class="no" aria-hidden="true">A</span>
+          <h3>Qualified judgement</h3>
+          <p>Advice starts with tree health, risk and the right long-term outcome — not simply with cutting.</p>
+        </article>
+        <article>
+          <span class="no" aria-hidden="true">B</span>
+          <h3>Local knowledge</h3>
+          <p>Built around the conditions, properties and communities of Colac, Apollo Bay and the Otways.</p>
+        </article>
+        <article>
+          <span class="no" aria-hidden="true">C</span>
+          <h3>Low-impact capability</h3>
+          <p>Specialised equipment lets difficult work happen efficiently, with less impact on your site.</p>
+        </article>
+        <article>
+          <span class="no" aria-hidden="true">D</span>
+          <h3>Complete finish</h3>
+          <p>Fixed pricing, documented safety and an intentionally spotless handover remove the usual trade stress.</p>
+        </article>
+      </div>
+      <div class="about-cta">
+        <a class="btn btn-amber" href="#contact">Get a free quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+    <figure class="about-fig reveal">
+      <div class="ph">
+        <img src="images/about-crew.webp" alt="Otway Tree Care crew chipping limbs into the branded truck on site" width="1065" height="1065" loading="lazy">
+      </div>
+      <figcaption class="fig-caption data">
+        <span>Fig. 01 — Chipping, on site</span>
+        <span>The Otways · VIC</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" aria-label="Key facts">
+  <div class="wrap">
+    <div class="stat reveal"><b>12+</b><span class="data">Years in the Otways</span></div>
+    <div class="stat reveal"><b>500+</b><span class="data">Jobs completed</span></div>
+    <div class="stat reveal"><b>24/7</b><span class="data">Storm response</span></div>
+    <div class="stat reveal"><b>Free</b><span class="data">Fixed-price quotes</span></div>
+  </div>
+</section>
+
+<!-- ================= OUR WORK ================= -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head sec-head reveal" style="max-width:none">
+      <div>
+        <p class="data eyebrow">Our work</p>
+        <h2>Proud of the work.<br>Documented like it matters.</h2>
+      </div>
+      <a class="btn btn-forest" href="#contact">Ask about jobs like yours
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="work-grid">
+      <figure class="shot reveal">
+        <img src="images/work-removal-coastal.webp" alt="Climbing arborist dismantling a large cypress, branded truck and chipper staged below" loading="lazy">
+        <figcaption><b>Coastal removal</b><span class="data">Dismantle</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/work-dismantle.webp" alt="Arborist at the top of a spar during a sectional dismantle, chipper below" loading="lazy">
+        <figcaption><b>Sectional dismantle</b><span class="data">Removal</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/work-hedging.webp" alt="Freshly trimmed boundary hedge on a rural Otways property, crew and truck alongside" loading="lazy">
+        <figcaption><b>Hedging &amp; shaping</b><span class="data">Maintenance</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/work-mulching.webp" alt="Otway Tree Care forestry mulcher clearing a bush track" loading="lazy">
+        <figcaption><b>Vegetation mulching</b><span class="data">Land mgmt</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/work-firebreak.webp" alt="Cleared fire access track through eucalypt bushland" loading="lazy">
+        <figcaption><b>Fire-break clearing</b><span class="data">Hazard reduction</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/work-fleet.webp" alt="Otway Tree Care truck, chipper and grapple excavator staged at first light" loading="lazy">
+        <figcaption><b>Low-impact machinery</b><span class="data">Capability</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS =================
+     Placeholder quotes — replace with real Google reviews
+     (names, quotes and locations) before going live. -->
+<section class="reviews" aria-label="Client reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="data eyebrow">What our clients say</p>
+      <h2>Trusted across the Otways.</h2>
+    </div>
+    <div class="review-grid">
+      <article class="review reveal">
+        <span class="data">Google review</span>
+        <blockquote>&ldquo;Excellent service from start to finish. The team were professional, friendly and left the site cleaner than they found it. Highly recommend Otway Tree Care.&rdquo;</blockquote>
+        <cite><b>Sarah T.</b><span class="data">Apollo Bay · Tree removal</span></cite>
+      </article>
+      <article class="review reveal">
+        <span class="data">Google review</span>
+        <blockquote>&ldquo;Turned up when they said they would, explained exactly what the tree needed, and the price didn&rsquo;t move. You can&rsquo;t ask for more than that.&rdquo;</blockquote>
+        <cite><b>Placeholder — swap for a real review</b><span class="data">Colac · Pruning</span></cite>
+      </article>
+      <article class="review reveal">
+        <span class="data">Google review</span>
+        <blockquote>&ldquo;Called after a storm brought a limb down over our drive. They talked us through staying safe on the phone and had it cleared the same day.&rdquo;</blockquote>
+        <cite><b>Placeholder — swap for a real review</b><span class="data">Lorne · Storm response</span></cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA ================= -->
+<section class="area" id="area">
+  <div class="wrap area-grid">
+    <div class="reveal">
+      <p class="data eyebrow" style="color:var(--forest)">Service area</p>
+      <h2 style="font-size:clamp(28px,3.4vw,42px);line-height:1.15;margin-bottom:14px">From backyard to national park.</h2>
+      <p style="color:var(--ink-2);max-width:50ch">We work across the Otway Ranges and the towns around them — the coast, the hinterland and the farmland in between. If you&rsquo;re nearby but don&rsquo;t see your town, call us; we quote a little further afield for larger jobs.</p>
+      <div class="towns" aria-label="Towns we service">
+        <span>Colac</span><span>Apollo Bay</span><span>Lorne</span><span>Birregurra</span><span>Forrest</span><span>Gellibrand</span><span>Beech Forest</span><span>Lavers Hill</span><span>Skenes Creek</span><span>Wye River</span>
+      </div>
+      <p class="area-note data">Survey datum · 38.76° S · 143.67° E</p>
+    </div>
+    <div class="map-card reveal">
+      <!-- Schematic map — not to scale -->
+      <svg viewBox="0 0 720 500" role="img" aria-label="Schematic map of the Otway Ranges service area, from Colac to Apollo Bay and Lorne">
+        <!-- Land -->
+        <path d="M0 0 H720 V180 C660 205 620 240 585 275 C545 315 505 355 455 390 C415 418 380 440 345 462 C320 477 300 488 285 500 L0 500 Z" fill="#EDF1E8"/>
+        <!-- Sea -->
+        <path d="M720 180 C660 205 620 240 585 275 C545 315 505 355 455 390 C415 418 380 440 345 462 C320 477 300 488 285 500 L720 500 Z" fill="#FFFFFF"/>
+        <!-- Wave lines -->
+        <g stroke="#C9D5C0" stroke-width="1.5" fill="none" opacity=".8">
+          <path d="M430 460 C460 450 490 452 515 440"/>
+          <path d="M500 415 C530 405 560 407 585 395"/>
+          <path d="M560 360 C590 350 620 352 645 340"/>
+          <path d="M615 305 C645 295 675 297 700 285"/>
+        </g>
+        <!-- Ranges contours -->
+        <g stroke="#C9D5C0" stroke-width="2" fill="none" opacity=".9">
+          <path d="M160 300 C220 265 300 250 360 265 C420 280 460 310 480 340"/>
+          <path d="M190 340 C245 310 315 296 370 308 C425 320 455 345 472 368"/>
+          <path d="M225 375 C270 352 330 340 378 350 C420 360 445 378 458 395"/>
+        </g>
+        <!-- Great Ocean Road -->
+        <path d="M660 218 C610 245 575 285 540 320 C500 360 455 395 405 425 C375 443 350 456 330 468" stroke="#74604C" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>
+        <!-- Towns -->
+        <g font-family="Sora,Arial,sans-serif" font-size="13" font-weight="500" fill="#1D211F">
+          <g><circle cx="255" cy="82" r="6" fill="#2B5B38"/><circle cx="255" cy="82" r="11" fill="none" stroke="#2B5B38" opacity=".35"/><text x="272" y="87">Colac</text></g>
+          <g><circle cx="420" cy="95" r="5" fill="#2B5B38"/><text x="435" y="100">Birregurra</text></g>
+          <g><circle cx="400" cy="205" r="5" fill="#2B5B38"/><text x="415" y="210">Forrest</text></g>
+          <g><circle cx="255" cy="215" r="5" fill="#2B5B38"/><text x="270" y="220">Gellibrand</text></g>
+          <g><circle cx="270" cy="300" r="5" fill="#2B5B38"/><text x="163" y="290">Beech Forest</text></g>
+          <g><circle cx="205" cy="360" r="5" fill="#2B5B38"/><text x="105" y="352">Lavers Hill</text></g>
+          <g><circle cx="452" cy="388" r="6" fill="#2B5B38"/><circle cx="452" cy="388" r="11" fill="none" stroke="#2B5B38" opacity=".35"/><text x="404" y="415">Apollo Bay</text></g>
+          <g><circle cx="497" cy="352" r="4.5" fill="#2B5B38"/><text x="440" y="345">Skenes Ck</text></g>
+          <g><circle cx="568" cy="290" r="4.5" fill="#2B5B38"/><text x="510" y="281">Wye River</text></g>
+          <g><circle cx="648" cy="222" r="6" fill="#2B5B38"/><circle cx="648" cy="222" r="11" fill="none" stroke="#2B5B38" opacity=".35"/><text x="600" y="209">Lorne</text></g>
+        </g>
+        <!-- Cape Otway marker -->
+        <g font-family="Sora,Arial,sans-serif" font-size="10.5" letter-spacing="1.5" fill="#89908A">
+          <circle cx="300" cy="480" r="4" fill="none" stroke="#74604C" stroke-width="1.5"/>
+          <text x="316" y="484">CAPE OTWAY</text>
+        </g>
+        <!-- Sea label -->
+        <text x="555" y="452" font-family="Sora,Arial,sans-serif" font-size="10.5" letter-spacing="2.5" fill="#89908A">SOUTHERN OCEAN</text>
+        <!-- Compass -->
+        <g transform="translate(672,52)" stroke="#5C635E" fill="none" stroke-width="1.5">
+          <circle r="14"/><path d="M0 -14 V-22"/><path d="M-4 -8 L0 -16 L4 -8" fill="#5C635E" stroke="none"/>
+        </g>
+        <text x="667" y="30" font-family="Sora,Arial,sans-serif" font-size="10" fill="#5C635E">N</text>
+      </svg>
+      <div class="map-caption data">
+        <span>Otway Ranges — service coverage</span>
+        <span>Schematic · not to scale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <div class="cta-inner">
+        <span class="data">Free quotes · Colac · Apollo Bay · Lorne &amp; surrounds</span>
+        <h2>Need expert tree care? We&rsquo;re here to help.</h2>
+        <p>Tell us about the tree and the site. We&rsquo;ll assess it, explain what it needs in plain language, and give you a fixed quote in writing.</p>
+        <div class="cta-actions">
+          <a class="btn btn-amber" href="mailto:info@otwaytreecare.com.au">Get a free quote
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="tel:0448762058">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+            Call 0448 762 058
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Mobile action bar — visible below 940px only -->
+<div class="action-bar">
+  <a class="btn btn-call" href="tel:0448762058">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+    Call now
+  </a>
+  <a class="btn btn-amber" href="#contact">Get a quote</a>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="images/logo-white.png" alt="Otway Tree Care">
+      <p>Qualified tree care across Colac, Apollo Bay, Lorne and the Otway Ranges. From backyard to national park.</p>
+      <p class="data">38.76° S · 143.67° E</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Tree Removal</a></li>
+        <li><a href="#services">Tree Pruning</a></li>
+        <li><a href="#services">Stump Grinding</a></li>
+        <li><a href="#storm">Storm Damage</a></li>
+        <li><a href="#services">Tree Health</a></li>
+        <li><a href="#services">Consultation &amp; Reports</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a class="nav-em" href="#storm">24/7 Emergency</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="foot-contact">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+          <a href="tel:0448762058">0448 762 058</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+          <a href="mailto:info@otwaytreecare.com.au">info@otwaytreecare.com.au</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Colac · Apollo Bay · Lorne<br>&amp; the Otway Ranges, VIC</span>
+        </li>
+      </ul>
+      <a class="btn btn-amber foot-cta" href="#contact">Get a free quote</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-base">
+      <span>© 2026 Otway Tree Care. All rights reserved.</span>
+      <span>Qualified arborists · Fully insured · Otway Ranges, Victoria</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.menu-btn');
+  var body=document.body;
+  btn.addEventListener('click',function(){
+    var open=body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  document.querySelectorAll('#site-nav a').forEach(function(a){
+    a.addEventListener('click',function(){
+      body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.05,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+})();
+</script>
+</body>
+</html>
