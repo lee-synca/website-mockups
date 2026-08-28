@@ -2,7 +2,8 @@
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0B2C1C">
 <title>Otway Tree Care — Qualified Tree Care Across Colac, Apollo Bay &amp; the Otways</title>
 <meta name="description" content="Qualified arborists serving Colac, Apollo Bay, Lorne and the Otway Ranges. Tree removal, pruning, stump grinding and 24/7 storm response — fixed quotes, low-impact machinery, spotless finish.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,6 +100,7 @@ header{
   position:sticky;top:0;z-index:50;
   background:var(--canopy);
   border-bottom:1px solid var(--line-inv);
+  padding-top:env(safe-area-inset-top,0);
 }
 .nav-bar{
   max-width:var(--max-wide);margin:0 auto;
@@ -465,7 +467,10 @@ footer ul a:hover{color:var(--cloud)}
   border-top:1px solid var(--line-inv);
   padding:10px var(--pad-x) calc(10px + env(safe-area-inset-bottom));
   gap:10px;
+  transform:translateY(130%);
+  transition:transform .32s ease;
 }
+.action-bar.show{transform:translateY(0)}
 .action-bar .btn{flex:1;justify-content:center;padding:14px 10px;min-height:48px}
 .action-bar .btn-call{background:transparent;color:var(--cloud);border-color:var(--line-inv)}
 
@@ -478,6 +483,7 @@ footer ul a:hover{color:var(--cloud)}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .btn svg,.svc,.svc-photo img,.shot img{transition:none}
+  .action-bar{transition:none}
 }
 
 /* ============================================================
@@ -1067,6 +1073,18 @@ footer ul a:hover{color:var(--cloud)}
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
   }else{
     document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+
+  // Mobile action bar: reveal once the hero has scrolled out of view
+  var hero=document.querySelector('.hero');
+  var bar=document.querySelector('.action-bar');
+  if(hero && bar && 'IntersectionObserver' in window){
+    var bo=new IntersectionObserver(function(entries){
+      bar.classList.toggle('show', !entries[0].isIntersecting);
+    },{threshold:0});
+    bo.observe(hero);
+  }else if(bar){
+    bar.classList.add('show');
   }
 })();
 </script>
