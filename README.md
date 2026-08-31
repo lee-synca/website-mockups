@@ -5,6 +5,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 
 | Mockup | Live |
 |--------|------|
+| A.R.T (music group) | https://mockups.getsynca.com.au/ART/ |
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
 | Otway Tree Care | https://mockups.getsynca.com.au/otway-tree-care/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
