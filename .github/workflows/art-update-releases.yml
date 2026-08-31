@@ -27,7 +27,7 @@ jobs:
           if ! git diff --quiet; then
             git config user.name "art-site-bot"
             git config user.email "actions@github.com"
-            git add ART/index.html data/art-releases.json
+            git add art/index.html data/art-releases.json
             git commit -m "ART auto-update: new Spotify release(s)"
             git push
           else

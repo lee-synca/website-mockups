@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 
 const ARTIST_ID = "6cJ05UAQ2Yab1UBcf5CrBU";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const INDEX = join(root, "ART", "index.html");
+const INDEX = join(root, "art", "index.html");
 const DATA = join(root, "data", "art-releases.json");
 
 const id = process.env.SPOTIFY_CLIENT_ID;
