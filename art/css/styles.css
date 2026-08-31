@@ -436,3 +436,17 @@ img { max-width: 100%; height: auto; }
   .video-row .video__play { width: 40px; height: 40px; }
   .video__play { width: 54px; height: 54px; }
 }
+
+/* ---------- Hero social row (5 icon buttons) ---------- */
+
+.hero__socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.social-icon {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  transition: transform .15s ease, background .2s ease;
+}
+.social-icon:hover { background: rgba(255, 255, 255, .3); color: #fff; transform: translateY(-2px); }
+
+@media (max-width: 960px) {
+  .social-icon { width: 44px; height: 44px; }
+}
