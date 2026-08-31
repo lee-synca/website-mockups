@@ -1,4 +1,4 @@
-name: "ART: check Spotify for new releases"
+name: "ART: check Spotify + YouTube for new content"
 
 on:
   schedule:
@@ -17,18 +17,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Check for new releases
+      - name: Check Spotify for new releases
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: node scripts/art-update-releases.mjs
+      - name: Check YouTube for new music videos
+        run: node scripts/art-update-videos.mjs
       - name: Commit and push if the site changed
         run: |
           if ! git diff --quiet; then
             git config user.name "art-site-bot"
             git config user.email "actions@github.com"
-            git add art/index.html data/art-releases.json
-            git commit -m "ART auto-update: new Spotify release(s)"
+            git add art/index.html data/art-releases.json data/art-videos.json
+            git commit -m "ART auto-update: new Spotify/YouTube content"
             git push
           else
             echo "No changes."

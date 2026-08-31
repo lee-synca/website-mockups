@@ -386,3 +386,53 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 960px) {
   .hero__img--desktop { display: none; }
 }
+
+/* ---------- Watch (videos) ---------- */
+
+.watch { padding: 80px 0; }
+.video {
+  margin: 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.video__btn {
+  position: relative; display: block; width: 100%; padding: 0; border: 0;
+  background: #000; border-radius: 20px; overflow: hidden; cursor: pointer;
+  aspect-ratio: 16 / 9; line-height: 0;
+}
+.video__thumb {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease, opacity .2s ease; opacity: .92;
+}
+.video__btn:hover .video__thumb { transform: scale(1.04); opacity: 1; }
+.video__play {
+  position: absolute; inset: 0; margin: auto;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--grad);
+  display: grid; place-items: center;
+  box-shadow: 0 12px 30px -8px rgba(232, 54, 125, .7);
+  transition: transform .15s ease;
+}
+.video__btn:hover .video__play { transform: scale(1.08); }
+.video__title { font-weight: 600; font-size: 16px; letter-spacing: -.01em; padding: 0 2px; }
+.video__iframe {
+  width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 20px; display: block; background: #000;
+}
+
+.video--feature { margin-bottom: 28px; }
+.video--feature .video__title { font-size: 22px; }
+.video--feature .video__play { width: 84px; height: 84px; }
+
+.video-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.video-row .video__title { font-size: 14.5px; }
+.video-row .video__play { width: 48px; height: 48px; }
+
+@media (max-width: 960px) {
+  .watch { padding: 52px 0 20px; }
+  .video__btn, .video__iframe { border-radius: 16px; }
+  .video--feature { margin-bottom: 20px; }
+  .video--feature .video__title { font-size: 18px; }
+  .video--feature .video__play { width: 64px; height: 64px; }
+  .video-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .video-row .video__play { width: 40px; height: 40px; }
+  .video__play { width: 54px; height: 54px; }
+}

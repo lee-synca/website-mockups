@@ -1,0 +1,15 @@
+{
+  "_comment": "Curated A.R.T music videos for the Watch section. feature = large hero video; row = 4 smaller ones. The daily job promotes any NEW '(Official Music Video)' upload into the feature slot and shuffles the rest down, skipping lyric videos, vlogs and shorts. 'known' tracks MV IDs already seen so nothing is added twice.",
+  "feature": { "id": "yrYaWdbqR3s", "title": "When He Was Mine" },
+  "row": [
+    { "id": "Tt0a9AZKzbQ", "title": "Over Now" },
+    { "id": "2AcLr3iw5yA", "title": "Pele Moana" },
+    { "id": "GJJrW3xrTl8", "title": "La Vie Dansante" },
+    { "id": "KyBT1yRdTHQ", "title": "Full Attention" }
+  ],
+  "known": [
+    "yrYaWdbqR3s", "Tt0a9AZKzbQ", "2AcLr3iw5yA", "GJJrW3xrTl8", "KyBT1yRdTHQ",
+    "GJJXlSXtgxs", "zdmKp4ivkUg", "slyS2YB6u2o", "hrFTkqyZs2U", "pDH2kFc26DQ",
+    "Wy-5Ibl2QFg", "c-BFZXzBhE0"
+  ]
+}
