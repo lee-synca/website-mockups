@@ -128,6 +128,10 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers: cors(env) });
     const url = new URL(request.url);
     try {
+      // Unauthenticated health/version check — lets us confirm what's deployed.
+      if (url.pathname === "/api/version") {
+        return json(env, 200, { version: "2026-09-02-ai", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
+      }
       if (url.pathname === "/api/login" && request.method === "POST") {
         const { password } = await request.json();
         await new Promise((r) => setTimeout(r, 300));
