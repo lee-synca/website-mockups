@@ -151,6 +151,27 @@ export default {
       if (url.pathname === "/api/version") {
         return json(env, 200, { version: "2026-09-02-dbg", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
       }
+      // TEMP: probe which AI models work on this account.
+      if (url.pathname === "/api/debug-models") {
+        const candidates = [
+          "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          "@cf/meta/llama-3.2-3b-instruct",
+          "@cf/meta/llama-3.2-1b-instruct",
+          "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "@cf/mistralai/mistral-small-3.1-24b-instruct",
+          "@cf/google/gemma-3-12b-it",
+          "@cf/qwen/qwen2.5-14b-instruct",
+          "@cf/meta/llama-3.1-8b-instruct-fp8",
+        ];
+        const out = {};
+        for (const m of candidates) {
+          try {
+            const r = await env.AI.run(m, { prompt: "Say OK.", max_tokens: 10 });
+            out[m] = "OK: " + JSON.stringify(r).slice(0, 80);
+          } catch (e) { out[m] = "ERR: " + String(e && e.message || e).slice(0, 90); }
+        }
+        return json(env, 200, out);
+      }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
         const target = url.searchParams.get("url") || "";
