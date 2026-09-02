@@ -1,0 +1,13 @@
+{
+  "name": "A.R.T Site Editor",
+  "short_name": "A.R.T Editor",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#faf6f2",
+  "theme_color": "#e8367d",
+  "icons": [
+    { "src": "../favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "../apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
