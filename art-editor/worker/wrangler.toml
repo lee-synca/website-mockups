@@ -12,6 +12,10 @@ GH_BRANCH = "main"
 SITE_DIR = "art"
 ALLOWED_ORIGIN = "https://mockups.getsynca.com.au"
 
+# Workers AI binding (for auto-fill). Kept here so CI deploys preserve it.
+[ai]
+binding = "AI"
+
 # Secrets are NOT stored here. Set them with:
 #   wrangler secret put GH_TOKEN
 #   wrangler secret put EDITOR_PASSWORD
