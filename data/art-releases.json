@@ -2,31 +2,167 @@
   "artist": "6cJ05UAQ2Yab1UBcf5CrBU",
   "_comment": "Baseline of every A.R.T release on Spotify as of 2026-09-02. The daily job only adds releases that appear AFTER this — it never backfills. Do not hand-trim this list.",
   "releases": [
-    { "id": "7AKvPOv7Ou7IvRMlpqQIbE", "name": "Heaven", "date": "2026-08-21", "type": "single" },
-    { "id": "0IN97GY20OqDvZyb1UlpKN", "name": "Oh So Good", "date": "2026-08-06", "type": "single" },
-    { "id": "3gkPeY01Raz3C0GhVfF8nz", "name": "Givin' It Up", "date": "2026-07-02", "type": "single" },
-    { "id": "0YpTzvuP6ryRToeRWvVkBL", "name": "Pele Moana", "date": "2026-06-19", "type": "single" },
-    { "id": "50ehF6u1XTKd77h8FYyq1U", "name": "I Wish It Would", "date": "2026-06-04", "type": "single" },
-    { "id": "6VIFKgR9BBHjURFy9VJk1I", "name": "Make Me Believe", "date": "2026-05-07", "type": "single" },
-    { "id": "6QhHWzgC1UsSe270rHK5u3", "name": "Slow Down", "date": "2026-04-02", "type": "single" },
-    { "id": "2TPhTV5Oh2uE0g4RMqcDYm", "name": "Blank Canvas", "date": "2026-03-05", "type": "single" },
-    { "id": "4EJc9nurC3jI6Rx4x60m0d", "name": "Over Now", "date": "2026-02-05", "type": "single" },
-    { "id": "3ZnjvieuL8aQX5xvgDRaA9", "name": "Rain", "date": "2026-01-01", "type": "single" },
-    { "id": "7bvMeDkbdMmvXYmGmAubBT", "name": "Why Don't We", "date": "2025-11-21", "type": "single" },
-    { "id": "2Su75yT4yUlgK3l6hLR4tH", "name": "It's On You", "date": "2025-08-29", "type": "single" },
-    { "id": "636vsXDcJ1Td0N0M2TBOjt", "name": "We Will", "date": "2025-04-11", "type": "single" },
-    { "id": "5t0cViwasKbh1tHKYBSzXS", "name": "Nana's Garage", "date": "2025-02-28", "type": "single" },
-    { "id": "76CwwCCpDX6jqH9gN7JOab", "name": "Carry My Heart / Lo’u Loto E Pulea (Samoan Version)", "date": "2025-01-30", "type": "single" },
-    { "id": "3GkEN83mshE3uqc7iwoOW2", "name": "La Vie Dansante (Remix)", "date": "2025-01-17", "type": "single" },
-    { "id": "1IHssEBiYgfZgSTnfncwaI", "name": "Nothing To Say (Just Do It)", "date": "2024-12-20", "type": "single" },
-    { "id": "5WHjutg4tKAtmwRQARmcGu", "name": "Baby Nofo Mai (Tongan Version)", "date": "2024-11-29", "type": "single" },
-    { "id": "5xuXs0L9Eezf8q8PtEDjVy", "name": "La Vie Dansante", "date": "2024-11-15", "type": "single" },
-    { "id": "476ixmoNYVySxeLEE506G0", "name": "Fia Vaai", "date": "2024-11-01", "type": "single" },
-    { "id": "3ai6HZac9MtHQrOkxQlhWS", "name": "Easy", "date": "2024-08-16", "type": "single" },
-    { "id": "74x3GTGJt3Yy0BLBYECuWV", "name": "When He Was Mine (Pele Fo'i Mai) [Remix]", "date": "2024-05-03", "type": "single" },
-    { "id": "0M1CqAlfmSaJ6HnneFqyEf", "name": "When He Was Mine (Pele Fo'i Mai)", "date": "2024-02-14", "type": "single" },
-    { "id": "3zc7qQHl0KCV21O1XSE3Oi", "name": "WTF Man", "date": "2023-10-06", "type": "single" },
-    { "id": "6ZeSHfGEdAO2RbaTICfQzt", "name": "Runner Up", "date": "2022-05-06", "type": "single" },
-    { "id": "7vGscmSUVgkrGROyIb0783", "name": "Be Ready", "date": "2021-05-28", "type": "single" }
+    {
+      "id": "7AKvPOv7Ou7IvRMlpqQIbE",
+      "name": "Heaven",
+      "date": "2026-08-21",
+      "type": "single"
+    },
+    {
+      "id": "0IN97GY20OqDvZyb1UlpKN",
+      "name": "Oh So Good",
+      "date": "2026-08-06",
+      "type": "single"
+    },
+    {
+      "id": "3gkPeY01Raz3C0GhVfF8nz",
+      "name": "Givin' It Up",
+      "date": "2026-07-02",
+      "type": "single"
+    },
+    {
+      "id": "0YpTzvuP6ryRToeRWvVkBL",
+      "name": "Pele Moana",
+      "date": "2026-06-19",
+      "type": "single"
+    },
+    {
+      "id": "50ehF6u1XTKd77h8FYyq1U",
+      "name": "I Wish It Would",
+      "date": "2026-06-04",
+      "type": "single"
+    },
+    {
+      "id": "6VIFKgR9BBHjURFy9VJk1I",
+      "name": "Make Me Believe",
+      "date": "2026-05-07",
+      "type": "single"
+    },
+    {
+      "id": "6QhHWzgC1UsSe270rHK5u3",
+      "name": "Slow Down",
+      "date": "2026-04-02",
+      "type": "single"
+    },
+    {
+      "id": "2TPhTV5Oh2uE0g4RMqcDYm",
+      "name": "Blank Canvas",
+      "date": "2026-03-05",
+      "type": "single"
+    },
+    {
+      "id": "4EJc9nurC3jI6Rx4x60m0d",
+      "name": "Over Now",
+      "date": "2026-02-05",
+      "type": "single"
+    },
+    {
+      "id": "3ZnjvieuL8aQX5xvgDRaA9",
+      "name": "Rain",
+      "date": "2026-01-01",
+      "type": "single"
+    },
+    {
+      "id": "7bvMeDkbdMmvXYmGmAubBT",
+      "name": "Why Don't We",
+      "date": "2025-11-21",
+      "type": "single"
+    },
+    {
+      "id": "2Su75yT4yUlgK3l6hLR4tH",
+      "name": "It's On You",
+      "date": "2025-08-29",
+      "type": "single"
+    },
+    {
+      "id": "636vsXDcJ1Td0N0M2TBOjt",
+      "name": "We Will",
+      "date": "2025-04-11",
+      "type": "single"
+    },
+    {
+      "id": "5t0cViwasKbh1tHKYBSzXS",
+      "name": "Nana's Garage",
+      "date": "2025-02-28",
+      "type": "single"
+    },
+    {
+      "id": "76CwwCCpDX6jqH9gN7JOab",
+      "name": "Carry My Heart / Lo’u Loto E Pulea (Samoan Version)",
+      "date": "2025-01-30",
+      "type": "single"
+    },
+    {
+      "id": "3GkEN83mshE3uqc7iwoOW2",
+      "name": "La Vie Dansante (Remix)",
+      "date": "2025-01-17",
+      "type": "single"
+    },
+    {
+      "id": "1IHssEBiYgfZgSTnfncwaI",
+      "name": "Nothing To Say (Just Do It)",
+      "date": "2024-12-20",
+      "type": "single"
+    },
+    {
+      "id": "5WHjutg4tKAtmwRQARmcGu",
+      "name": "Baby Nofo Mai (Tongan Version)",
+      "date": "2024-11-29",
+      "type": "single"
+    },
+    {
+      "id": "5xuXs0L9Eezf8q8PtEDjVy",
+      "name": "La Vie Dansante",
+      "date": "2024-11-15",
+      "type": "single"
+    },
+    {
+      "id": "476ixmoNYVySxeLEE506G0",
+      "name": "Fia Vaai",
+      "date": "2024-11-01",
+      "type": "single"
+    },
+    {
+      "id": "3ai6HZac9MtHQrOkxQlhWS",
+      "name": "Easy",
+      "date": "2024-08-16",
+      "type": "single"
+    },
+    {
+      "id": "74x3GTGJt3Yy0BLBYECuWV",
+      "name": "When He Was Mine (Pele Fo'i Mai) [Remix]",
+      "date": "2024-05-03",
+      "type": "single"
+    },
+    {
+      "id": "0M1CqAlfmSaJ6HnneFqyEf",
+      "name": "When He Was Mine (Pele Fo'i Mai)",
+      "date": "2024-02-14",
+      "type": "single"
+    },
+    {
+      "id": "3zc7qQHl0KCV21O1XSE3Oi",
+      "name": "WTF Man",
+      "date": "2023-10-06",
+      "type": "single"
+    },
+    {
+      "id": "6ZeSHfGEdAO2RbaTICfQzt",
+      "name": "Runner Up",
+      "date": "2022-05-06",
+      "type": "single"
+    },
+    {
+      "id": "7vGscmSUVgkrGROyIb0783",
+      "name": "Be Ready",
+      "date": "2021-05-28",
+      "type": "single"
+    },
+    {
+      "id": "0cgyDLKO99hlFK4stdfZ3g",
+      "name": "Look At Me",
+      "date": "2026-09-03",
+      "type": "single"
+    }
   ]
 }
