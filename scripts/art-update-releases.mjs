@@ -69,14 +69,34 @@ const fresh = albums
   .filter((a) => !knownIds.has(a.id))
   .sort((a, b) => (a.release_date < b.release_date ? -1 : 1)); // oldest first so newest ends up on top
 
-if (fresh.length === 0) {
-  console.log("No new releases. Nothing to do.");
-  process.exit(0);
-}
-
 let html = readFileSync(INDEX, "utf8");
 let latest = null;
+let changed = false;
 
+// 3b) Refresh "coming soon" placeholder links. A pre-featured single is linked to the
+//     artist page until it lands on Spotify; once it does, swap in its real direct track
+//     link. Only artist-page links are touched — deliberate YouTube/album links are left.
+const singlesByName = new Map(
+  albums.filter((a) => a.album_type === "single").map((a) => [a.name, a])
+);
+const placeholderRe =
+  /<a class="play([^"]*)" href="https:\/\/open\.spotify\.com\/artist\/[^"]*" aria-label="Play ([^"]+?)( on Spotify| on YouTube)?">/g;
+const toRefresh = [];
+let pm;
+while ((pm = placeholderRe.exec(html)) !== null) {
+  if (singlesByName.has(pm[2]))
+    toRefresh.push({ tag: pm[0], cls: pm[1], name: pm[2], album: singlesByName.get(pm[2]) });
+}
+for (const r of toRefresh) {
+  const detail = await api(`https://api.spotify.com/v1/albums/${r.album.id}?market=NZ`, auth);
+  const t = detail.tracks.items[0];
+  const link = t ? `https://open.spotify.com/track/${t.id}` : `https://open.spotify.com/album/${r.album.id}`;
+  html = html.replace(r.tag, `<a class="play${r.cls}" href="${attr(link)}" aria-label="${attr(`Play ${r.name} on Spotify`)}">`);
+  changed = true;
+  console.log(`Refreshed link: ${r.name} -> ${link}`);
+}
+
+// 4) add a tracklist row for each brand-new release
 for (const a of fresh) {
   const full = await api(`https://api.spotify.com/v1/albums/${a.id}?market=NZ`, auth);
   const year = (full.release_date || "").slice(0, 4);
@@ -115,7 +135,9 @@ for (const a of fresh) {
   if (isSingle) latest = { name: full.name, link, cover640: (full.images[0] || {}).url || cover };
 }
 
-// 4) point the "latest drop" card at the newest single
+if (fresh.length) changed = true;
+
+// 5) point the "latest drop" card at the newest single
 if (latest) {
   html = html
     .replace(/<!-- AUTO:LATEST-NAME -->[\s\S]*?<!-- \/AUTO:LATEST-NAME -->/,
@@ -129,6 +151,10 @@ if (latest) {
   console.log(`Latest drop is now: ${latest.name}`);
 }
 
-writeFileSync(INDEX, html);
-writeFileSync(DATA, JSON.stringify(known, null, 2) + "\n");
-console.log(`Done — ${fresh.length} new release(s) recorded.`);
+if (changed) {
+  writeFileSync(INDEX, html);
+  writeFileSync(DATA, JSON.stringify(known, null, 2) + "\n");
+  console.log(`Done — ${fresh.length} new release(s), ${toRefresh.length} link(s) refreshed.`);
+} else {
+  console.log("No new releases and no placeholder links to refresh. Nothing to do.");
+}
