@@ -115,23 +115,28 @@ function aiExtract(out) {
   if (c) return (c.message && c.message.content) || c.text || "";
   return "";
 }
-// Run a vision prompt (image = byte array) through the first working model.
-async function aiVision(env, bytes, prompt, max_tokens) {
-  const image = [...bytes];
-  const models = [
-    "@cf/meta/llama-4-scout-17b-16e-instruct",
-    "@cf/mistralai/mistral-small-3.1-24b-instruct",
-    "@cf/llava-hf/llava-1.5-7b-hf",
-  ];
+// Read an image with a multimodal model (data-URI messages format) and parse JSON.
+// The data-URI format is what actually delivers the image to these models.
+async function aiVisionJson(env, base64Jpeg, system, user, max_tokens) {
+  const dataUri = "data:image/jpeg;base64," + base64Jpeg;
+  const input = {
+    messages: [
+      { role: "system", content: system },
+      { role: "user", content: [{ type: "text", text: user }, { type: "image_url", image_url: { url: dataUri } }] },
+    ],
+    max_tokens, temperature: 0.1,
+  };
+  const models = ["@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/mistralai/mistral-small-3.1-24b-instruct"];
   let lastErr;
   for (const m of models) {
     try {
-      const t = aiExtract(await env.AI.run(m, { image, prompt, max_tokens }));
-      if (t && t.trim()) return t.trim();
+      const t = aiExtract(await env.AI.run(m, input));
+      const mm = t.match(/\{[\s\S]*\}/);
+      if (mm) return JSON.parse(mm[0]);
     } catch (e) { lastErr = e; }
   }
   if (lastErr) throw lastErr;
-  return "";
+  return {};
 }
 // Run an input (with messages) through the first working (non-deprecated) model.
 async function aiRun(env, input) {
@@ -250,19 +255,12 @@ export default {
       if (url.pathname === "/api/debug-poster") {
         const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/event-kingston-calling.jpg";
         const bytes = new Uint8Array(await (await fetch(imgUrl)).arrayBuffer());
-        const dataUri = "data:image/jpeg;base64," + b64FromBytes(bytes);
-        const prompt = "List the exact text you can read on this poster: the event name, the dates, the venue/city, and the performing acts. Be precise, do not guess.";
-        const msg = (model) => env.AI.run(model, { messages: [{ role: "user", content: [{ type: "text", text: prompt }, { type: "image_url", image_url: { url: dataUri } }] }], max_tokens: 400 });
-        const out = {};
-        const tries = {
-          "llava (bytes)": () => env.AI.run("@cf/llava-hf/llava-1.5-7b-hf", { image: [...bytes], prompt, max_tokens: 400 }),
-          "scout (data-uri)": () => msg("@cf/meta/llama-4-scout-17b-16e-instruct"),
-          "mistral (data-uri)": () => msg("@cf/mistralai/mistral-small-3.1-24b-instruct"),
-        };
-        for (const [k, fn] of Object.entries(tries)) {
-          try { out[k] = aiExtract(await fn()).slice(0, 400); } catch (e) { out[k] = "ERR: " + String(e && e.message || e).slice(0, 100); }
-        }
-        return json(env, 200, { imgBytes: bytes.length, out });
+        const b64 = b64FromBytes(bytes);
+        const system = "You read event and concert posters accurately and reply with ONLY one valid JSON object, no other text. Do not guess or invent details.";
+        const user = 'Extract from this poster: {"name":"","date_display":"","venue":"","lineup":""}. name = the biggest title. date_display = the date(s) as printed. venue = venue and city. lineup = all acts, comma-separated. Use "" for anything not shown.';
+        let parsed = {}, err = "";
+        try { parsed = await aiVisionJson(env, b64, system, user, 600); } catch (e) { err = String(e && e.message || e); }
+        return json(env, 200, { imgBytes: bytes.length, parsed, err });
       }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
@@ -347,16 +345,13 @@ export default {
         let f = {};
         if (env.AI) {
           try {
-            const bytes = Uint8Array.from(atob(clean), (c) => c.charCodeAt(0));
-            const prompt =
-              "This is a concert/event poster. Read all the text on it and reply with ONLY a JSON object, no other text: " +
-              '{"name":"","date_display":"","venue":"","lineup":""}. ' +
-              "name = the main event or festival name (the biggest title). date_display = the date(s) exactly as printed. " +
-              "venue = the venue and city/town. lineup = the performing artists/acts listed, comma-separated. " +
-              "Use an empty string for anything you cannot read.";
-            const t = await aiVision(env, bytes, prompt, 500);
-            const m = t.match(/\{[\s\S]*\}/);
-            if (m) f = JSON.parse(m[0]);
+            const system = "You read event and concert posters accurately and reply with ONLY one valid JSON object, no other text. Do not guess or invent details.";
+            const user =
+              'Extract from this poster: {"name":"","date_display":"","venue":"","lineup":""}. ' +
+              "name = the biggest title (the event or festival name). date_display = the date(s) exactly as printed. " +
+              "venue = the venue and city/town. lineup = all the performing acts, comma-separated. " +
+              'Use "" for anything not shown.';
+            f = await aiVisionJson(env, clean, system, user, 600);
           } catch { /* leave fields blank for manual entry */ }
         }
         return json(env, 200, {
