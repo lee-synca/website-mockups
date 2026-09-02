@@ -101,20 +101,29 @@ function metaTag(html, prop) {
   const b = html.match(new RegExp('<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:property|name)=["\']' + prop + '["\']', "i"));
   return b ? decodeEntities(b[1]) : "";
 }
-// Run a text prompt through the first available (non-deprecated) model.
+// Pull the text out of whatever shape a model returns.
+function aiExtract(out) {
+  if (!out) return "";
+  if (typeof out === "string") return out;
+  if (out.response) return out.response;
+  if (out.result) return typeof out.result === "string" ? out.result : (out.result.response || "");
+  const c = out.choices && out.choices[0];
+  if (c) return (c.message && c.message.content) || c.text || "";
+  return "";
+}
+// Run a text prompt through the first working (non-deprecated) model.
 async function aiText(env, prompt, max_tokens) {
   const models = [
     "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-    "@cf/meta/llama-3.1-8b-instruct-fast",
     "@cf/meta/llama-3.2-3b-instruct",
     "@cf/meta/llama-3.1-8b-instruct-fp8",
+    "@cf/meta/llama-3.2-1b-instruct",
   ];
   let lastErr;
   for (const m of models) {
     try {
-      const out = await env.AI.run(m, { prompt, max_tokens });
-      const t = (out && (out.response || out.result)) || (typeof out === "string" ? out : "");
-      if (t) return t;
+      const t = aiExtract(await env.AI.run(m, { prompt, max_tokens }));
+      if (t && t.trim()) return t.trim();
     } catch (e) { lastErr = e; }
   }
   if (lastErr) throw lastErr;
