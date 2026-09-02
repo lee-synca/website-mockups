@@ -187,17 +187,26 @@ export default {
         const full = /^https?:\/\//i.test(target) ? target : "https://" + target.replace(/^\/+/, "");
         const res = await fetch(full, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" }, redirect: "follow" });
         const html = (await res.text()).slice(0, 600000);
-        let aiRaw = "", aiErr = "";
+        let reframe = {}, aiErr = "";
         if (env.AI) {
           try {
-            aiRaw = (await aiText(env, 'Reply with ONLY this JSON, nothing else: {"ok":true}', 50)).slice(0, 400);
+            const body = textFromHtml(html).slice(0, 6000);
+            const prompt =
+              "A.R.T is a female R&B and Poly-reggae trio from Wellington, New Zealand (members Anastasia, Rosetta and T-R3X). " +
+              "Using the article text below, write a news-card entry for A.R.T's own website. " +
+              'Reply with ONLY a JSON object, no other text: {"headline":"","summary":"","tag":""}. ' +
+              "headline = a short headline focused on A.R.T if they are mentioned, otherwise the article's main point. " +
+              "summary = one sentence, under 22 words, focused on A.R.T if relevant. " +
+              'tag = a short 1-3 word label such as "News", "Awards" or "Interview". Article text: ' + body;
+            const t = await aiText(env, prompt, 300);
+            const m = t.match(/\{[\s\S]*\}/);
+            reframe = m ? JSON.parse(m[0]) : { raw: t.slice(0, 200) };
           } catch (e) { aiErr = String(e && e.message || e); }
         }
         return json(env, 200, {
-          status: res.status, finalUrl: res.url, htmlLen: html.length,
-          ogTitle: metaTag(html, "og:title"), ogDesc: (metaTag(html, "og:description") || "").slice(0, 80),
-          ogImage: metaTag(html, "og:image") || metaTag(html, "twitter:image"), ogSite: metaTag(html, "og:site_name"),
-          textLen: textFromHtml(html).length, aiBound: !!env.AI, aiRaw, aiErr,
+          status: res.status, finalUrl: res.url,
+          ogTitle: metaTag(html, "og:title"), ogImage: metaTag(html, "og:image") || metaTag(html, "twitter:image"),
+          aiBound: !!env.AI, reframe, aiErr,
         });
       }
       if (url.pathname === "/api/login" && request.method === "POST") {
