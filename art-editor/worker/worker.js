@@ -188,17 +188,6 @@ function textFromHtml(html) {
       .replace(/<[^>]+>/g, " ")
   ).replace(/\s+/g, " ").trim();
 }
-async function downloadImage(env, imgUrl) {
-  const r = await fetch(imgUrl, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" } });
-  if (!r.ok) return "";
-  const ct = r.headers.get("content-type") || "";
-  if (!/image\//.test(ct)) return "";
-  const buf = new Uint8Array(await r.arrayBuffer());
-  if (!buf.length || buf.length > 3_000_000) return "";
-  const ext = ct.includes("png") ? "png" : ct.includes("webp") ? "webp" : ct.includes("gif") ? "gif" : "jpg";
-  return commitImage(env, "news-image." + ext, b64FromBytes(buf));
-}
-
 const TYPE_PATHS = { events: "data/art-events.json", news: "data/art-news.json" };
 
 export default {
@@ -206,77 +195,9 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { headers: cors(env) });
     const url = new URL(request.url);
     try {
-      // Unauthenticated health/version check — lets us confirm what's deployed.
+      // Unauthenticated health/version check.
       if (url.pathname === "/api/version") {
-        return json(env, 200, { version: "2026-09-02-dbg", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
-      }
-      // TEMP: probe which AI models work on this account.
-      if (url.pathname === "/api/debug-models") {
-        const candidates = [
-          "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-          "@cf/meta/llama-3.2-3b-instruct",
-          "@cf/meta/llama-3.2-1b-instruct",
-          "@cf/meta/llama-4-scout-17b-16e-instruct",
-          "@cf/mistralai/mistral-small-3.1-24b-instruct",
-          "@cf/google/gemma-3-12b-it",
-          "@cf/qwen/qwen2.5-14b-instruct",
-          "@cf/meta/llama-3.1-8b-instruct-fp8",
-        ];
-        const out = {};
-        for (const m of candidates) {
-          try {
-            const r = await env.AI.run(m, { prompt: "Say OK.", max_tokens: 10 });
-            out[m] = "OK: " + JSON.stringify(r).slice(0, 80);
-          } catch (e) { out[m] = "ERR: " + String(e && e.message || e).slice(0, 90); }
-        }
-        return json(env, 200, out);
-      }
-      // TEMP: probe which VISION models work (byte-array input).
-      if (url.pathname === "/api/debug-vision") {
-        const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/cover-heaven.jpg";
-        const bytes = [...new Uint8Array(await (await fetch(imgUrl)).arrayBuffer())];
-        const prompt = "Describe this image in one short sentence.";
-        const models = [
-          "@cf/meta/llama-3.2-11b-vision-instruct",
-          "@cf/llava-hf/llava-1.5-7b-hf",
-          "@cf/unum/uform-gen2-qwen-500m",
-          "@cf/meta/llama-4-scout-17b-16e-instruct",
-          "@cf/google/gemma-3-12b-it",
-          "@cf/mistralai/mistral-small-3.1-24b-instruct",
-        ];
-        const out = {};
-        for (const m of models) {
-          try { out[m] = "OK: " + JSON.stringify(await env.AI.run(m, { image: bytes, prompt, max_tokens: 120 })).slice(0, 160); }
-          catch (e) { out[m] = "ERR: " + String(e && e.message || e).slice(0, 120); }
-        }
-        return json(env, 200, { imgBytes: bytes.length, out });
-      }
-      // TEMP: compare poster-reading approaches on a real poster.
-      if (url.pathname === "/api/debug-poster") {
-        const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/event-kingston-calling.jpg";
-        const bytes = new Uint8Array(await (await fetch(imgUrl)).arrayBuffer());
-        const b64 = b64FromBytes(bytes);
-        const system = "You read event and concert posters accurately and reply with ONLY one valid JSON object, no other text. Do not guess or invent details.";
-        const user = 'Extract from this poster: {"name":"","date_display":"","venue":"","lineup":""}. name = the biggest title. date_display = the date(s) as printed. venue = venue and city. lineup = all acts, comma-separated. Use "" for anything not shown.';
-        let parsed = {}, err = "";
-        try { parsed = await aiVisionJson(env, b64, system, user, 600); } catch (e) { err = String(e && e.message || e); }
-        return json(env, 200, { imgBytes: bytes.length, parsed, err });
-      }
-      // TEMP unauthenticated diagnostic — remove after debugging.
-      if (url.pathname === "/api/debug-url") {
-        const { res, html } = await fetchHtml(url.searchParams.get("url") || "");
-        let reframe = {}, aiErr = "";
-        if (env.AI) { try { reframe = await reframeNews(env, html); } catch (e) { aiErr = String(e && e.message || e); } }
-        const og = metaTag(html, "og:image") || metaTag(html, "twitter:image");
-        let imgFetch = "";
-        if (og) {
-          try {
-            const abs = new URL(og, res.url).href;
-            const r = await fetch(abs, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" } });
-            imgFetch = `${r.status} ${r.headers.get("content-type") || "?"} len=${(await r.arrayBuffer()).byteLength}`;
-          } catch (e) { imgFetch = "ERR: " + String(e && e.message || e).slice(0, 80); }
-        }
-        return json(env, 200, { status: res.status, finalUrl: res.url, ogImage: og, imgFetch, aiBound: !!env.AI, reframe, aiErr });
+        return json(env, 200, { version: "2026-09-03", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
       }
       if (url.pathname === "/api/login" && request.method === "POST") {
         const { password } = await request.json();
