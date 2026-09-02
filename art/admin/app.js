@@ -184,7 +184,8 @@ function fieldRow(item, f) {
   const wrap = document.createElement("div");
   wrap.className = "field";
   if (f.type === "image") {
-    const cur = item[f.k] ? IMGP + esc(item[f.k]) : "";
+    const v = item[f.k] || "";
+    const cur = v ? (/^https?:\/\//.test(v) ? esc(v) : IMGP + esc(v)) : "";
     wrap.innerHTML = `
       <label>${f.label}</label>
       <div class="imgrow">

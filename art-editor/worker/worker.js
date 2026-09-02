@@ -160,7 +160,11 @@ export default {
         if (summary.length > 170) summary = summary.slice(0, 167).replace(/\s+\S*$/, "") + "…";
         let image = "";
         const og = metaTag(html, "og:image") || metaTag(html, "twitter:image");
-        if (og) { try { image = await downloadImage(env, new URL(og, res.url || full).href); } catch {} }
+        if (og) {
+          const abs = new URL(og, res.url || full).href;
+          try { image = await downloadImage(env, abs); } catch {}
+          if (!image) image = abs; // couldn't copy it into the repo → use the source image directly
+        }
         const source = metaTag(html, "og:site_name") || host;
         return json(env, 200, { label: "", headline, summary, source, link: full, image, image_alt: headline ? headline.slice(0, 80) : "Article image" });
       }
