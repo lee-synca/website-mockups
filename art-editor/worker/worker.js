@@ -101,6 +101,25 @@ function metaTag(html, prop) {
   const b = html.match(new RegExp('<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:property|name)=["\']' + prop + '["\']', "i"));
   return b ? decodeEntities(b[1]) : "";
 }
+// Run a text prompt through the first available (non-deprecated) model.
+async function aiText(env, prompt, max_tokens) {
+  const models = [
+    "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "@cf/meta/llama-3.1-8b-instruct-fast",
+    "@cf/meta/llama-3.2-3b-instruct",
+    "@cf/meta/llama-3.1-8b-instruct-fp8",
+  ];
+  let lastErr;
+  for (const m of models) {
+    try {
+      const out = await env.AI.run(m, { prompt, max_tokens });
+      const t = (out && (out.response || out.result)) || (typeof out === "string" ? out : "");
+      if (t) return t;
+    } catch (e) { lastErr = e; }
+  }
+  if (lastErr) throw lastErr;
+  return "";
+}
 function textFromHtml(html) {
   return String(html || "")
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -141,8 +160,7 @@ export default {
         let aiRaw = "", aiErr = "";
         if (env.AI) {
           try {
-            const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { prompt: 'Reply with ONLY this JSON, nothing else: {"ok":true}', max_tokens: 50 });
-            aiRaw = JSON.stringify(out).slice(0, 400);
+            aiRaw = (await aiText(env, 'Reply with ONLY this JSON, nothing else: {"ok":true}', 50)).slice(0, 400);
           } catch (e) { aiErr = String(e && e.message || e); }
         }
         return json(env, 200, {
@@ -213,8 +231,7 @@ export default {
               "summary = one sentence, under 22 words, focused on A.R.T if relevant. " +
               'tag = a short 1-3 word label such as "' + (source || "News") + '", "Awards" or "Interview". ' +
               "Article text: " + body;
-            const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { prompt, max_tokens: 300 });
-            const t = (out && (out.response || out.result)) || "";
+            const t = await aiText(env, prompt, 300);
             const m = t.match(/\{[\s\S]*\}/);
             if (m) { const j = JSON.parse(m[0]); if (j.headline) headline = j.headline; if (j.summary) summary = j.summary; if (j.tag) tag = j.tag; }
           } catch { /* keep page-metadata values */ }
