@@ -53,6 +53,15 @@
       "link": "https://www.muzic.nz/interviews/mnz-interview-a-r-t",
       "image": "assets/img/news-mnz.jpg",
       "image_alt": "A.R.T press photo"
+    },
+    {
+      "label": "Interview · Muzic.NZ",
+      "headline": "Testing",
+      "summary": "I am testing this",
+      "source": "Test Source Name",
+      "link": "www.getsynca.com.au",
+      "image": "assets/img/uploads/mtk0ua16-whatsapp-image-2026-08-13-at-4.02.02-pm.jpeg",
+      "image_alt": "Test Photo"
     }
   ]
 }
