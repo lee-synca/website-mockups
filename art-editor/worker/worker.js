@@ -246,17 +246,23 @@ export default {
         }
         return json(env, 200, { imgBytes: bytes.length, out });
       }
-      // TEMP: test poster reading on a real poster.
+      // TEMP: compare poster-reading approaches on a real poster.
       if (url.pathname === "/api/debug-poster") {
         const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/event-kingston-calling.jpg";
         const bytes = new Uint8Array(await (await fetch(imgUrl)).arrayBuffer());
-        const prompt =
-          "This is a concert/event poster. Read all the text on it and reply with ONLY a JSON object, no other text: " +
-          '{"name":"","date_display":"","venue":"","lineup":""}. name = the biggest title. date_display = the dates as printed. venue = venue and city. lineup = the acts, comma-separated. Use "" if unreadable.';
-        let parsed = {}, raw = "", err = "";
-        try { const t = await aiVision(env, bytes, prompt, 500); raw = t.slice(0, 500); const m = t.match(/\{[\s\S]*\}/); if (m) parsed = JSON.parse(m[0]); }
-        catch (e) { err = String(e && e.message || e); }
-        return json(env, 200, { imgBytes: bytes.length, parsed, raw, err });
+        const dataUri = "data:image/jpeg;base64," + b64FromBytes(bytes);
+        const prompt = "List the exact text you can read on this poster: the event name, the dates, the venue/city, and the performing acts. Be precise, do not guess.";
+        const msg = (model) => env.AI.run(model, { messages: [{ role: "user", content: [{ type: "text", text: prompt }, { type: "image_url", image_url: { url: dataUri } }] }], max_tokens: 400 });
+        const out = {};
+        const tries = {
+          "llava (bytes)": () => env.AI.run("@cf/llava-hf/llava-1.5-7b-hf", { image: [...bytes], prompt, max_tokens: 400 }),
+          "scout (data-uri)": () => msg("@cf/meta/llama-4-scout-17b-16e-instruct"),
+          "mistral (data-uri)": () => msg("@cf/mistralai/mistral-small-3.1-24b-instruct"),
+        };
+        for (const [k, fn] of Object.entries(tries)) {
+          try { out[k] = aiExtract(await fn()).slice(0, 400); } catch (e) { out[k] = "ERR: " + String(e && e.message || e).slice(0, 100); }
+        }
+        return json(env, 200, { imgBytes: bytes.length, out });
       }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
