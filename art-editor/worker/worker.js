@@ -92,8 +92,11 @@ async function commitImage(env, filename, b64) {
 // ---- helpers for auto-fill ----
 function decodeEntities(s) {
   return String(s || "")
-    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&#x27;/gi, "'").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ");
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => { try { return String.fromCodePoint(parseInt(h, 16)); } catch { return " "; } })
+    .replace(/&#(\d+);/g, (_, n) => { try { return String.fromCodePoint(+n); } catch { return " "; } })
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&#39;/g, "'")
+    .replace(/&(?:mdash|ndash);/g, "-").replace(/&(?:lsquo|rsquo);/g, "'").replace(/&(?:ldquo|rdquo);/g, '"').replace(/&hellip;/g, "…");
 }
 function metaTag(html, prop) {
   const a = html.match(new RegExp('<meta[^>]+(?:property|name)=["\']' + prop + '["\'][^>]*content=["\']([^"\']*)["\']', "i"));
@@ -111,8 +114,8 @@ function aiExtract(out) {
   if (c) return (c.message && c.message.content) || c.text || "";
   return "";
 }
-// Run a text prompt through the first working (non-deprecated) model.
-async function aiText(env, prompt, max_tokens) {
+// Run an input (with messages) through the first working (non-deprecated) model.
+async function aiRun(env, input) {
   const models = [
     "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     "@cf/meta/llama-3.2-3b-instruct",
@@ -122,21 +125,44 @@ async function aiText(env, prompt, max_tokens) {
   let lastErr;
   for (const m of models) {
     try {
-      const t = aiExtract(await env.AI.run(m, { prompt, max_tokens }));
+      const t = aiExtract(await env.AI.run(m, input));
       if (t && t.trim()) return t.trim();
     } catch (e) { lastErr = e; }
   }
   if (lastErr) throw lastErr;
   return "";
 }
+// Ask the model for a JSON object and parse it robustly.
+async function aiJson(env, system, user, max_tokens) {
+  const t = await aiRun(env, {
+    messages: [{ role: "system", content: system }, { role: "user", content: user }],
+    max_tokens, temperature: 0.2,
+  });
+  const m = t.match(/\{[\s\S]*\}/);
+  return m ? JSON.parse(m[0]) : {};
+}
+async function fetchHtml(target) {
+  const full = /^https?:\/\//i.test(target) ? target : "https://" + target.replace(/^\/+/, "");
+  const res = await fetch(full, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" }, redirect: "follow" });
+  const html = new TextDecoder("utf-8").decode(await res.arrayBuffer()).slice(0, 600000);
+  return { res, full, html };
+}
+async function reframeNews(env, html) {
+  const body = textFromHtml(html).slice(0, 6000);
+  const system = "You write short news-card entries for the website of A.R.T, a female R&B and Poly-reggae trio from Wellington, New Zealand (members Anastasia, Rosetta and T-R3X). You reply with ONLY one valid JSON object and no other text.";
+  const user = 'From the article below, return {"headline":"","summary":"","tag":""}. ' +
+    "headline: a short news headline, focused on A.R.T if they are mentioned, otherwise the article's main point. " +
+    "summary: one sentence under 22 words, focused on A.R.T if relevant. " +
+    'tag: a 1-3 word label like "Awards", "Interview" or "News". Article:\n' + body;
+  return aiJson(env, system, user, 300);
+}
 function textFromHtml(html) {
-  return String(html || "")
-    .replace(/<script[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&[a-z#0-9]+;/gi, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  return decodeEntities(
+    String(html || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+  ).replace(/\s+/g, " ").trim();
 }
 async function downloadImage(env, imgUrl) {
   const r = await fetch(imgUrl, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" } });
@@ -183,26 +209,9 @@ export default {
       }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
-        const target = url.searchParams.get("url") || "";
-        const full = /^https?:\/\//i.test(target) ? target : "https://" + target.replace(/^\/+/, "");
-        const res = await fetch(full, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" }, redirect: "follow" });
-        const html = (await res.text()).slice(0, 600000);
+        const { res, html } = await fetchHtml(url.searchParams.get("url") || "");
         let reframe = {}, aiErr = "";
-        if (env.AI) {
-          try {
-            const body = textFromHtml(html).slice(0, 6000);
-            const prompt =
-              "A.R.T is a female R&B and Poly-reggae trio from Wellington, New Zealand (members Anastasia, Rosetta and T-R3X). " +
-              "Using the article text below, write a news-card entry for A.R.T's own website. " +
-              'Reply with ONLY a JSON object, no other text: {"headline":"","summary":"","tag":""}. ' +
-              "headline = a short headline focused on A.R.T if they are mentioned, otherwise the article's main point. " +
-              "summary = one sentence, under 22 words, focused on A.R.T if relevant. " +
-              'tag = a short 1-3 word label such as "News", "Awards" or "Interview". Article text: ' + body;
-            const t = await aiText(env, prompt, 300);
-            const m = t.match(/\{[\s\S]*\}/);
-            reframe = m ? JSON.parse(m[0]) : { raw: t.slice(0, 200) };
-          } catch (e) { aiErr = String(e && e.message || e); }
-        }
+        if (env.AI) { try { reframe = await reframeNews(env, html); } catch (e) { aiErr = String(e && e.message || e); } }
         return json(env, 200, {
           status: res.status, finalUrl: res.url,
           ogTitle: metaTag(html, "og:title"), ogImage: metaTag(html, "og:image") || metaTag(html, "twitter:image"),
@@ -239,10 +248,8 @@ export default {
       if (url.pathname === "/api/parse-url" && request.method === "POST") {
         const raw = String((await request.json()).url || "").trim();
         if (!raw) return json(env, 400, { error: "Paste a link first" });
-        const full = /^https?:\/\//i.test(raw) ? raw : "https://" + raw.replace(/^\/+/, "");
-        const res = await fetch(full, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" }, redirect: "follow" });
+        const { res, full, html } = await fetchHtml(raw);
         if (!res.ok) return json(env, 502, { error: `Couldn't open that link (${res.status})` });
-        const html = (await res.text()).slice(0, 600000);
         const host = new URL(res.url || full).hostname.replace(/^www\./, "");
         let headline = metaTag(html, "og:title") || decodeEntities((html.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1] || "").trim();
         headline = headline.replace(/\s*[|–—-]\s*[^|–—-]{1,40}$/, "").trim(); // drop " | Site" suffix
@@ -261,18 +268,10 @@ export default {
         let tag = "";
         if (env.AI) {
           try {
-            const body = textFromHtml(html).slice(0, 6000);
-            const prompt =
-              "A.R.T is a female R&B and Poly-reggae trio from Wellington, New Zealand (members Anastasia, Rosetta and T-R3X). " +
-              "Using the article text below, write a news-card entry for A.R.T's own website. " +
-              "Reply with ONLY a JSON object, no other text: {\"headline\":\"\",\"summary\":\"\",\"tag\":\"\"}. " +
-              "headline = a short headline focused on A.R.T if they are mentioned, otherwise the article's main point. " +
-              "summary = one sentence, under 22 words, focused on A.R.T if relevant. " +
-              'tag = a short 1-3 word label such as "' + (source || "News") + '", "Awards" or "Interview". ' +
-              "Article text: " + body;
-            const t = await aiText(env, prompt, 300);
-            const m = t.match(/\{[\s\S]*\}/);
-            if (m) { const j = JSON.parse(m[0]); if (j.headline) headline = j.headline; if (j.summary) summary = j.summary; if (j.tag) tag = j.tag; }
+            const j = await reframeNews(env, html);
+            if (j.headline) headline = j.headline;
+            if (j.summary) summary = j.summary;
+            if (j.tag) tag = j.tag;
           } catch { /* keep page-metadata values */ }
         }
         return json(env, 200, { label: tag, headline, summary, source, link: full, image, image_alt: headline ? headline.slice(0, 80) : "Article image" });
