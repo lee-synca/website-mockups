@@ -1,0 +1,19 @@
+# Config for the A.R.T site-editor Worker.
+# When the site moves to its own repo/domain later, only the [vars] below change.
+
+name = "art-site-editor"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+GH_OWNER = "lee-synca"
+GH_REPO = "website-mockups"
+GH_BRANCH = "main"
+SITE_DIR = "art"
+ALLOWED_ORIGIN = "https://mockups.getsynca.com.au"
+
+# Secrets are NOT stored here. Set them with:
+#   wrangler secret put GH_TOKEN
+#   wrangler secret put EDITOR_PASSWORD
+#   wrangler secret put SESSION_SECRET
+# ...or in the Cloudflare dashboard (Settings → Variables & Secrets → encrypted).
