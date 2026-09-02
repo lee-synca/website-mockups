@@ -207,6 +207,26 @@ export default {
         }
         return json(env, 200, out);
       }
+      // TEMP: probe which VISION models work (byte-array input).
+      if (url.pathname === "/api/debug-vision") {
+        const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/cover-heaven.jpg";
+        const bytes = [...new Uint8Array(await (await fetch(imgUrl)).arrayBuffer())];
+        const prompt = "Describe this image in one short sentence.";
+        const models = [
+          "@cf/meta/llama-3.2-11b-vision-instruct",
+          "@cf/llava-hf/llava-1.5-7b-hf",
+          "@cf/unum/uform-gen2-qwen-500m",
+          "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "@cf/google/gemma-3-12b-it",
+          "@cf/mistralai/mistral-small-3.1-24b-instruct",
+        ];
+        const out = {};
+        for (const m of models) {
+          try { out[m] = "OK: " + JSON.stringify(await env.AI.run(m, { image: bytes, prompt, max_tokens: 120 })).slice(0, 160); }
+          catch (e) { out[m] = "ERR: " + String(e && e.message || e).slice(0, 120); }
+        }
+        return json(env, 200, { imgBytes: bytes.length, out });
+      }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
         const { res, html } = await fetchHtml(url.searchParams.get("url") || "");
