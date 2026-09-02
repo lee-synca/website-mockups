@@ -68,6 +68,14 @@
     .addbtn{width:100%;height:48px;border-radius:14px;border:1.5px dashed var(--line2);background:transparent;color:var(--ink2);font-weight:600;font-size:15px}
     .addbtn:hover{border-color:var(--magenta);color:var(--magenta)}
     .hide{display:none!important}
+    /* auto-fill assist */
+    .assist{background:linear-gradient(100deg,rgba(232,54,125,.06),rgba(255,122,69,.06));border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px}
+    .assist__t{font-weight:600;font-size:14.5px;margin-bottom:10px}
+    .assist__row{display:flex;gap:8px;flex-wrap:wrap}
+    .assist__row input{flex:1;min-width:180px}
+    .assist__file{display:inline-flex;align-items:center;gap:10px;cursor:pointer}
+    .assist__file input{position:absolute;width:1px;height:1px;padding:0;opacity:0;overflow:hidden}
+    .assist__hint{font-size:12.5px;color:var(--ink2);margin-top:8px}
   </style>
 </head>
 <body>
@@ -100,8 +108,9 @@
     </header>
 
     <div class="wrap">
+      <div id="assist"></div>
       <div id="list"></div>
-      <button id="add" class="addbtn">+ Add new</button>
+      <button id="add" class="addbtn">+ Add blank entry</button>
     </div>
 
     <div class="savebar">

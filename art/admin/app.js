@@ -35,6 +35,31 @@ let tab = "events";
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+function setStatus(msg, kind) {
+  const st = $("#status");
+  st.className = "status " + (kind === "ok" ? "status--ok" : kind === "err" ? "status--err" : kind === "busy" ? "status--busy" : "muted");
+  st.textContent = msg;
+}
+
+// Shrink + re-encode an image in the browser so uploads stay small and fast.
+function downscale(file, max = 1400) {
+  return new Promise((resolve, reject) => {
+    const rd = new FileReader();
+    rd.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const s = Math.min(1, max / Math.max(img.width, img.height));
+        const c = document.createElement("canvas");
+        c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        resolve(c.toDataURL("image/jpeg", 0.85));
+      };
+      img.onerror = reject; img.src = rd.result;
+    };
+    rd.onerror = reject; rd.readAsDataURL(file);
+  });
+}
+
 async function api(path, body) {
   const r = await fetch(API + path, {
     method: "POST",
@@ -77,10 +102,59 @@ async function loadData() {
 // ---------- rendering ----------
 function render() {
   document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("tab--on", t.dataset.tab === tab));
+  renderAssist();
   const list = $("#list"); list.innerHTML = "";
   const items = data[tab];
-  if (!items.length) list.innerHTML = `<p class="muted" style="text-align:center;padding:20px 0">No ${tab} yet. Add one below.</p>`;
+  if (!items.length) list.innerHTML = `<p class="muted" style="text-align:center;padding:20px 0">No ${tab} yet. Use the box above, or add a blank entry below.</p>`;
   items.forEach((item, i) => list.appendChild(entryCard(item, i)));
+}
+
+// ✨ Auto-fill: pre-fills a new draft entry the editor then reviews before saving.
+function renderAssist() {
+  const a = $("#assist");
+  if (tab === "events") {
+    a.innerHTML = `
+      <div class="assist">
+        <div class="assist__t">✨ Add an event from its poster</div>
+        <label class="assist__file"><input type="file" accept="image/*"><span class="btn btn--ink btn--sm">Choose poster…</span></label>
+        <div class="assist__hint">Uploads the poster and fills in the details automatically. You can edit everything before saving.</div>
+      </div>`;
+    const f = $("input", a);
+    f.onchange = async () => {
+      const fl = f.files[0]; if (!fl) return;
+      setStatus("Reading poster…", "busy");
+      try {
+        const dataBase64 = await downscale(fl, 1400);
+        const j = await api("/api/parse-poster", { filename: fl.name, dataBase64 });
+        const ai = j._ai; delete j._ai;
+        data.events.unshift(j); render(); window.scrollTo({ top: 0, behavior: "smooth" });
+        setStatus(ai ? "Poster added — check the details, then Save." : "Poster added — AI is off, fill the fields, then Save.", ai ? "ok" : "busy");
+      } catch (ex) { setStatus(ex.message, "err"); }
+    };
+  } else {
+    a.innerHTML = `
+      <div class="assist">
+        <div class="assist__t">✨ Add news from a link</div>
+        <div class="assist__row">
+          <input type="url" placeholder="Paste the article URL…">
+          <button class="btn btn--ink btn--sm">Auto-fill</button>
+        </div>
+        <div class="assist__hint">Grabs the headline, summary, source and image from the page. You can edit everything before saving.</div>
+      </div>`;
+    const inp = $("input", a), btn = $("button", a);
+    const go = async () => {
+      if (!inp.value.trim()) return;
+      setStatus("Reading link…", "busy"); btn.disabled = true;
+      try {
+        const j = await api("/api/parse-url", { url: inp.value });
+        data.news.unshift({ label: j.label || "", headline: j.headline || "", summary: j.summary || "", source: j.source || "", link: j.link || "", image: j.image || "", image_alt: j.image_alt || "" });
+        render(); window.scrollTo({ top: 0, behavior: "smooth" });
+        setStatus("News added — check the details, then Save.", "ok");
+      } catch (ex) { setStatus(ex.message, "err"); } finally { btn.disabled = false; }
+    };
+    btn.onclick = go;
+    inp.onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); go(); } };
+  }
 }
 
 function entryCard(item, i) {
@@ -125,8 +199,8 @@ function fieldRow(item, f) {
       const fl = file.files[0]; if (!fl) return;
       st.textContent = "Uploading…";
       try {
-        const dataBase64 = await new Promise((res, rej) => { const rd = new FileReader(); rd.onload = () => res(rd.result); rd.onerror = rej; rd.readAsDataURL(fl); });
-        const j = await api("/api/upload", { filename: fl.name, dataBase64 });
+        const dataBase64 = await downscale(fl, 1400);
+        const j = await api("/api/upload", { filename: (fl.name.replace(/\.[^.]+$/, "") || "image") + ".jpg", dataBase64 });
         item[f.k] = j.path;
         img.src = IMGP + j.path; img.style.opacity = "1";
         st.textContent = "Uploaded ✓";
