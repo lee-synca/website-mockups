@@ -2,9 +2,10 @@ name: "ART: check Spotify + YouTube for new content"
 
 on:
   schedule:
-    # Every 2 hours. GitHub's scheduler is best-effort (often 30-90 min late),
-    # so frequent checks keep a new First Thursdays drop appearing within a few hours.
-    - cron: "0 */2 * * *"
+    # Once daily at 15:00 UTC = 3am NZST (4am during NZ daylight saving). Off-peak, and
+    # A.R.T release only once a month, so a daily check is plenty. GitHub's scheduler is
+    # best-effort (often 30-90 min late), which is fine at 3am.
+    - cron: "0 15 * * *"
   workflow_dispatch:
 
 permissions:
