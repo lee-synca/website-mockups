@@ -31,7 +31,11 @@ const attr = (t) => t.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</
 
 async function api(url, opts) {
   const r = await fetch(url, opts);
-  if (!r.ok) throw new Error(`${r.status} ${r.statusText} for ${url}`);
+  if (!r.ok) {
+    let body = "";
+    try { body = (await r.text()).slice(0, 200); } catch {}
+    throw new Error(`${r.status} ${r.statusText} for ${url}${body ? " — " + body : ""}`);
+  }
   return r.json();
 }
 
