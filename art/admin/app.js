@@ -144,7 +144,7 @@ function fieldRow(item, f) {
 
 // ---------- tabs / add / save ----------
 document.querySelectorAll(".tab").forEach((t) => (t.onclick = () => { tab = t.dataset.tab; render(); }));
-$("#add").onclick = () => { data[tab].push({}); render(); };
+$("#add").onclick = () => { data[tab].unshift({}); render(); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
 $("#save").onclick = async () => {
   const st = $("#status"), btn = $("#save");
