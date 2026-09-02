@@ -212,11 +212,16 @@ export default {
         const { res, html } = await fetchHtml(url.searchParams.get("url") || "");
         let reframe = {}, aiErr = "";
         if (env.AI) { try { reframe = await reframeNews(env, html); } catch (e) { aiErr = String(e && e.message || e); } }
-        return json(env, 200, {
-          status: res.status, finalUrl: res.url,
-          ogTitle: metaTag(html, "og:title"), ogImage: metaTag(html, "og:image") || metaTag(html, "twitter:image"),
-          aiBound: !!env.AI, reframe, aiErr,
-        });
+        const og = metaTag(html, "og:image") || metaTag(html, "twitter:image");
+        let imgFetch = "";
+        if (og) {
+          try {
+            const abs = new URL(og, res.url).href;
+            const r = await fetch(abs, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" } });
+            imgFetch = `${r.status} ${r.headers.get("content-type") || "?"} len=${(await r.arrayBuffer()).byteLength}`;
+          } catch (e) { imgFetch = "ERR: " + String(e && e.message || e).slice(0, 80); }
+        }
+        return json(env, 200, { status: res.status, finalUrl: res.url, ogImage: og, imgFetch, aiBound: !!env.AI, reframe, aiErr });
       }
       if (url.pathname === "/api/login" && request.method === "POST") {
         const { password } = await request.json();
