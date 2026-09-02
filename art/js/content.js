@@ -7,10 +7,16 @@
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   };
   var attr = function (s) { return esc(s).replace(/"/g, "&quot;"); };
+  // Non-technical editors forget the https:// — add it so links never break.
+  var url = function (s) {
+    s = String(s == null ? "" : s).trim();
+    if (!s || s.charAt(0) === "#" || /^(https?:|mailto:|tel:)/i.test(s)) return s;
+    return "https://" + s.replace(/^\/+/, "");
+  };
 
   function eventCard(ev) {
     var ticket = ev.tickets_url && ev.tickets_url.trim()
-      ? '<a class="btn btn--ink" href="' + attr(ev.tickets_url) + '" target="_blank" rel="noopener">Tickets</a>'
+      ? '<a class="btn btn--ink" href="' + attr(url(ev.tickets_url)) + '" target="_blank" rel="noopener">Tickets</a>'
       : '<span class="btn btn--ink event__soon" aria-disabled="true">Tickets on sale soon</span>';
     return '' +
       '<div class="card event">' +
@@ -38,7 +44,7 @@
           '<div class="label label--coral">' + esc(n.label) + '</div>' +
           '<h3>' + esc(n.headline) + '</h3>' +
           (n.summary ? '<p>' + esc(n.summary) + '</p>' : '') +
-          '<a class="news-card__link" href="' + attr(n.link) + '">Read on ' + esc(n.source) + ' &rarr;</a>' +
+          '<a class="news-card__link" href="' + attr(url(n.link)) + '" target="_blank" rel="noopener">Read on ' + esc(n.source) + ' &rarr;</a>' +
         '</div>' +
       '</article>';
   }
