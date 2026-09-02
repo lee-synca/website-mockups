@@ -130,7 +130,27 @@ export default {
     try {
       // Unauthenticated health/version check — lets us confirm what's deployed.
       if (url.pathname === "/api/version") {
-        return json(env, 200, { version: "2026-09-02-ai", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
+        return json(env, 200, { version: "2026-09-02-dbg", aiBound: !!env.AI, endpoints: ["login", "save", "upload", "parse-url", "parse-poster"] });
+      }
+      // TEMP unauthenticated diagnostic — remove after debugging.
+      if (url.pathname === "/api/debug-url") {
+        const target = url.searchParams.get("url") || "";
+        const full = /^https?:\/\//i.test(target) ? target : "https://" + target.replace(/^\/+/, "");
+        const res = await fetch(full, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" }, redirect: "follow" });
+        const html = (await res.text()).slice(0, 600000);
+        let aiRaw = "", aiErr = "";
+        if (env.AI) {
+          try {
+            const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { prompt: 'Reply with ONLY this JSON, nothing else: {"ok":true}', max_tokens: 50 });
+            aiRaw = JSON.stringify(out).slice(0, 400);
+          } catch (e) { aiErr = String(e && e.message || e); }
+        }
+        return json(env, 200, {
+          status: res.status, finalUrl: res.url, htmlLen: html.length,
+          ogTitle: metaTag(html, "og:title"), ogDesc: (metaTag(html, "og:description") || "").slice(0, 80),
+          ogImage: metaTag(html, "og:image") || metaTag(html, "twitter:image"), ogSite: metaTag(html, "og:site_name"),
+          textLen: textFromHtml(html).length, aiBound: !!env.AI, aiRaw, aiErr,
+        });
       }
       if (url.pathname === "/api/login" && request.method === "POST") {
         const { password } = await request.json();
