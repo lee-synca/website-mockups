@@ -54,7 +54,7 @@ const auth = { headers: { Authorization: `Bearer ${tok}` } };
 
 // 2) current discography
 const albums = [];
-let url = `https://api.spotify.com/v1/artists/${ARTIST_ID}/albums?include_groups=single,album&market=NZ&limit=20`;
+let url = `https://api.spotify.com/v1/artists/${ARTIST_ID}/albums?include_groups=single,album&market=NZ&limit=10`;
 while (url) {
   const page = await api(url, auth);
   albums.push(...page.items);
