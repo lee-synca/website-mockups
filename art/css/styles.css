@@ -477,3 +477,6 @@ img { max-width: 100%; height: auto; }
   .event__actions { flex-direction: column; }
   .event__actions .btn { width: 100%; }
 }
+
+/* events container (stacks multiple events) */
+.event-list { display: flex; flex-direction: column; gap: 24px; }

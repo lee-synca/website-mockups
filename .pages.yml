@@ -1,0 +1,47 @@
+# Pages CMS configuration (pagescms.org) — powers the A.R.T admin panel.
+# The team edits Events and News here; saving commits to this repo and the
+# site rebuilds automatically. Images uploaded here land in art/assets/img/uploads.
+
+media:
+  input: art/assets/img/uploads
+  output: /art/assets/img/uploads
+
+content:
+  - name: news
+    label: "A.R.T — News"
+    type: file
+    path: data/art-news.json
+    format: json
+    fields:
+      - name: news
+        label: Articles
+        type: object
+        list: true
+        fields:
+          - { name: label, label: "Tag (e.g. 2026 · Awards)", type: string }
+          - { name: headline, label: Headline, type: string }
+          - { name: summary, label: One-line summary, type: text }
+          - { name: source, label: "Source name (e.g. RNZ, Rolling Stone, Muzic.NZ)", type: string }
+          - { name: link, label: Link to the article, type: string }
+          - { name: image, label: Image, type: image }
+          - { name: image_alt, label: "Image description (for screen readers)", type: string }
+
+  - name: events
+    label: "A.R.T — Events / shows"
+    type: file
+    path: data/art-events.json
+    format: json
+    fields:
+      - name: events
+        label: Events
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Event name, type: string }
+          - { name: eyebrow, label: "Small tag above the name (e.g. Upcoming · Friday)", type: string, default: "Upcoming" }
+          - { name: date_display, label: "Date, exactly as it should show (e.g. 19–20 February 2027)", type: string }
+          - { name: venue, label: "Venue & city (e.g. Bay Oval, Mount Maunganui)", type: string }
+          - { name: lineup, label: "Lineup / description", type: text }
+          - { name: poster, label: Poster image, type: image }
+          - { name: poster_alt, label: "Poster description (for screen readers)", type: string }
+          - { name: tickets_url, label: "Ticket link (leave blank to show 'Tickets on sale soon')", type: string }

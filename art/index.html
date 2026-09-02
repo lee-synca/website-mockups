@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/content.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -390,62 +391,8 @@
           <h2>In the news</h2>
           <p>Award nights, interviews and every First Thursdays drop.</p>
         </div>
-        <div class="news__grid">
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/news-pma26.jpg" alt="A.R.T press portrait" width="800" height="450">
-            <div class="news-card__body">
-              <div class="label label--coral">2026 · Awards</div>
-              <h3>Back-to-back: Best Pacific Group at the 2026 PMAs</h3>
-              <p>A.R.T win Best Pacific Group and Best Pacific Music Video for &lsquo;Over Now&rsquo;.</p>
-              <a class="news-card__link" href="https://www.rnz.co.nz/life/music/all-the-winners-at-the-2026-pacific-music-awards">Read on RNZ &rarr;</a>
-            </div>
-          </article>
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/news-rs-tour.jpg" alt="A.R.T in red studio light" width="800" height="450">
-            <div class="news-card__body">
-              <div class="label label--coral">Aug 2026 · Rolling Stone</div>
-              <h3>&lsquo;It&rsquo;s a Huge Honour for Us&rsquo;: A.R.T on the PMAs and manifesting a tour</h3>
-              <p>Rolling Stone sits down with the trio ahead of their five-nomination awards night.</p>
-              <a class="news-card__link" href="https://au.rollingstone.com/music/music-features/art-interview-pacific-music-awards-tour-more-99680">Read on Rolling Stone &rarr;</a>
-            </div>
-          </article>
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/news-rs-meet.jpg" alt="A.R.T in white studio outfits" width="800" height="450">
-            <div class="news-card__body">
-              <div class="label label--coral">Jun 2026 · Rolling Stone</div>
-              <h3>Meet A.R.T, the female vocal group you need to know about</h3>
-              <p>The R&amp;B-reggae fusion, First Thursdays, and where the trio go next.</p>
-              <a class="news-card__link" href="https://au.rollingstone.com/music/music-features/art-interview-up-and-coming-aotearoa-artists-97207">Read on Rolling Stone &rarr;</a>
-            </div>
-          </article>
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/ep-blankcanvas.jpg" alt="Blank Canvas EP cover art" width="640" height="640">
-            <div class="news-card__body">
-              <div class="label label--coral">2026 · Muzic.NZ</div>
-              <h3>A.R.T release new EP &lsquo;Blank Canvas&rsquo;</h3>
-              <p>A reset built from the ground up — featuring &lsquo;Over Now&rsquo; and focus track &lsquo;Full Attention&rsquo;.</p>
-              <a class="news-card__link" href="https://www.muzic.nz/news/a-r-t-release-new-ep-blank-canvas/">Read on Muzic.NZ &rarr;</a>
-            </div>
-          </article>
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/news-trophy.jpg" alt="A.R.T holding their award" width="800" height="450">
-            <div class="news-card__body">
-              <div class="label label--coral">2025 · Awards</div>
-              <h3>Best Group at the Pacific Music Awards</h3>
-              <p>A.R.T take home Best Pacific Group and the 2025 Radio Airplay Award.</p>
-              <a class="news-card__link" href="https://tpplus.co.nz/arts-music/a-r-t-2025-pacific-music-awards/">Read on TP+ &rarr;</a>
-            </div>
-          </article>
-          <article class="card news-card">
-            <img class="news-card__img" src="assets/img/news-mnz.jpg" alt="A.R.T press photo" width="800" height="450">
-            <div class="news-card__body">
-              <div class="label label--coral">Interview · Muzic.NZ</div>
-              <h3>MNZ Interview: A.R.T</h3>
-              <p>The trio sit down with Muzic.NZ to talk about the journey so far.</p>
-              <a class="news-card__link" href="https://www.muzic.nz/interviews/mnz-interview-a-r-t">Read on Muzic.NZ &rarr;</a>
-            </div>
-          </article>
-        </div>
+        <!-- Cards render from data/art-news.json (edited via the admin panel) -->
+        <div class="news__grid" id="news-grid"></div>
       </div>
     </section>
 
@@ -456,23 +403,8 @@
           <h2>On stage</h2>
           <a class="btn btn--soft" href="#connect" style="height:46px">Get show alerts</a>
         </div>
-        <!-- Featured event. Swap the "Tickets on sale soon" span for a real ticket link when available. -->
-        <div class="card event">
-          <a class="event__poster" href="assets/img/event-kingston-calling.jpg" target="_blank" rel="noopener" aria-label="View the Kingston Calling poster">
-            <img src="assets/img/event-kingston-calling.jpg" alt="Kingston Calling festival poster — 19-20 February 2027, Bay Oval, Mount Maunganui" width="614" height="820">
-          </a>
-          <div class="event__body">
-            <div class="label label--coral">Upcoming · Friday</div>
-            <h3 class="event__name">Kingston Calling</h3>
-            <div class="event__date">19–20 February 2027</div>
-            <div class="event__venue">Bay Oval, Mount Maunganui</div>
-            <p class="event__lineup">A.R.T join the Friday lineup alongside Maoli, Stan Walker, SOJA, Arrested Development, Katchafire &amp; Hori Shaw — with SIX60 and Fat Freddy&rsquo;s Drop closing out Saturday.</p>
-            <div class="event__actions">
-              <span class="btn btn--ink event__soon" aria-disabled="true">Tickets on sale soon</span>
-              <a class="btn btn--soft" href="#connect">Get show alerts</a>
-            </div>
-          </div>
-        </div>
+        <!-- Event cards render from data/art-events.json (edited via the admin panel) -->
+        <div class="event-list" id="events-list"></div>
         <p class="live__booking">More shows announced soon. Booking &amp; management — <a href="mailto:ikonmusicnz@gmail.com">ikonmusicnz@gmail.com</a></p>
       </div>
     </section>

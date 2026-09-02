@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A.R.T — Site Editor</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --ink:#17121a; --ink2:#77697b; --coral:#ff4a63; --magenta:#e8367d; --coral2:#ff7a45; --bg:#faf6f2; --line:rgba(23,18,26,.1); }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh;display:grid;place-items:center;padding:32px}
+    .panel{max-width:560px;width:100%;background:#fff;border:1px solid var(--line);border-radius:28px;padding:44px;box-shadow:0 30px 70px -40px rgba(23,18,26,.3)}
+    .logo{font-weight:700;letter-spacing:-.02em;font-size:22px;color:var(--magenta)}
+    h1{font-size:32px;letter-spacing:-.03em;margin:18px 0 10px}
+    p{margin:0 0 16px;color:var(--ink2);font-size:15.5px}
+    .btn{display:inline-flex;align-items:center;gap:9px;height:54px;padding:0 30px;border-radius:100px;font-weight:600;font-size:16px;color:#fff;text-decoration:none;background:linear-gradient(100deg,var(--magenta),var(--coral) 55%,var(--coral2));box-shadow:0 12px 30px -10px rgba(232,54,125,.55)}
+    ol{margin:22px 0 0;padding-left:20px;color:var(--ink2);font-size:14.5px}
+    ol li{margin-bottom:8px}
+    ol b{color:var(--ink)}
+    .note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
+    a{color:var(--coral);font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="logo">A·R·T</div>
+    <h1>Site editor</h1>
+    <p>Add or update <b>events</b> and <b>news</b> on the A.R.T website. Changes go live automatically about a minute after you save — no code needed.</p>
+    <p><a class="btn" href="https://app.pagescms.org/" target="_blank" rel="noopener">Open the editor →</a></p>
+    <ol>
+      <li><b>Sign in with GitHub</b> (use the shared A.R.T login).</li>
+      <li>Choose the <b>website-mockups</b> project.</li>
+      <li>Pick <b>A.R.T — Events / shows</b> or <b>A.R.T — News</b>.</li>
+      <li>Add or edit an entry — upload a poster/image, fill the fields.</li>
+      <li>Hit <b>Save</b>. The site updates itself shortly after.</li>
+    </ol>
+    <div class="note">First time only: the shared account needs to be given access to the repository, and Pages CMS authorised. Ask whoever set up the site if you can’t get in.</div>
+  </div>
+</body>
+</html>

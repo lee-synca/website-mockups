@@ -1,0 +1,58 @@
+{
+  "news": [
+    {
+      "label": "2026 · Awards",
+      "headline": "Back-to-back: Best Pacific Group at the 2026 PMAs",
+      "summary": "A.R.T win Best Pacific Group and Best Pacific Music Video for ‘Over Now’.",
+      "source": "RNZ",
+      "link": "https://www.rnz.co.nz/life/music/all-the-winners-at-the-2026-pacific-music-awards",
+      "image": "assets/img/news-pma26.jpg",
+      "image_alt": "A.R.T press portrait"
+    },
+    {
+      "label": "Aug 2026 · Rolling Stone",
+      "headline": "‘It’s a Huge Honour for Us’: A.R.T on the PMAs and manifesting a tour",
+      "summary": "Rolling Stone sits down with the trio ahead of their five-nomination awards night.",
+      "source": "Rolling Stone",
+      "link": "https://au.rollingstone.com/music/music-features/art-interview-pacific-music-awards-tour-more-99680",
+      "image": "assets/img/news-rs-tour.jpg",
+      "image_alt": "A.R.T in red studio light"
+    },
+    {
+      "label": "Jun 2026 · Rolling Stone",
+      "headline": "Meet A.R.T, the female vocal group you need to know about",
+      "summary": "The R&B-reggae fusion, First Thursdays, and where the trio go next.",
+      "source": "Rolling Stone",
+      "link": "https://au.rollingstone.com/music/music-features/art-interview-up-and-coming-aotearoa-artists-97207",
+      "image": "assets/img/news-rs-meet.jpg",
+      "image_alt": "A.R.T in white studio outfits"
+    },
+    {
+      "label": "2026 · Muzic.NZ",
+      "headline": "A.R.T release new EP ‘Blank Canvas’",
+      "summary": "A reset built from the ground up — featuring ‘Over Now’ and focus track ‘Full Attention’.",
+      "source": "Muzic.NZ",
+      "link": "https://www.muzic.nz/news/a-r-t-release-new-ep-blank-canvas/",
+      "image": "assets/img/ep-blankcanvas.jpg",
+      "image_alt": "Blank Canvas EP cover art"
+    },
+    {
+      "label": "2025 · Awards",
+      "headline": "Best Group at the Pacific Music Awards",
+      "summary": "A.R.T take home Best Pacific Group and the 2025 Radio Airplay Award.",
+      "source": "TP+",
+      "link": "https://tpplus.co.nz/arts-music/a-r-t-2025-pacific-music-awards/",
+      "image": "assets/img/news-trophy.jpg",
+      "image_alt": "A.R.T holding their award"
+    },
+    {
+      "label": "Interview · Muzic.NZ",
+      "headline": "MNZ Interview: A.R.T",
+      "summary": "The trio sit down with Muzic.NZ to talk about the journey so far.",
+      "source": "Muzic.NZ",
+      "link": "https://www.muzic.nz/interviews/mnz-interview-a-r-t",
+      "image": "assets/img/news-mnz.jpg",
+      "image_alt": "A.R.T press photo"
+    }
+  ]
+}
