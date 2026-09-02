@@ -101,6 +101,15 @@ function metaTag(html, prop) {
   const b = html.match(new RegExp('<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:property|name)=["\']' + prop + '["\']', "i"));
   return b ? decodeEntities(b[1]) : "";
 }
+function textFromHtml(html) {
+  return String(html || "")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[a-z#0-9]+;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 async function downloadImage(env, imgUrl) {
   const r = await fetch(imgUrl, { headers: { "User-Agent": "Mozilla/5.0 (art-site-editor)" } });
   if (!r.ok) return "";
@@ -166,7 +175,27 @@ export default {
           if (!image) image = abs; // couldn't copy it into the repo → use the source image directly
         }
         const source = metaTag(html, "og:site_name") || host;
-        return json(env, 200, { label: "", headline, summary, source, link: full, image, image_alt: headline ? headline.slice(0, 80) : "Article image" });
+
+        // Read the article with AI and reframe it around A.R.T (falls back to page metadata).
+        let tag = "";
+        if (env.AI) {
+          try {
+            const body = textFromHtml(html).slice(0, 6000);
+            const prompt =
+              "A.R.T is a female R&B and Poly-reggae trio from Wellington, New Zealand (members Anastasia, Rosetta and T-R3X). " +
+              "Using the article text below, write a news-card entry for A.R.T's own website. " +
+              "Reply with ONLY a JSON object, no other text: {\"headline\":\"\",\"summary\":\"\",\"tag\":\"\"}. " +
+              "headline = a short headline focused on A.R.T if they are mentioned, otherwise the article's main point. " +
+              "summary = one sentence, under 22 words, focused on A.R.T if relevant. " +
+              'tag = a short 1-3 word label such as "' + (source || "News") + '", "Awards" or "Interview". ' +
+              "Article text: " + body;
+            const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { prompt, max_tokens: 300 });
+            const t = (out && (out.response || out.result)) || "";
+            const m = t.match(/\{[\s\S]*\}/);
+            if (m) { const j = JSON.parse(m[0]); if (j.headline) headline = j.headline; if (j.summary) summary = j.summary; if (j.tag) tag = j.tag; }
+          } catch { /* keep page-metadata values */ }
+        }
+        return json(env, 200, { label: tag, headline, summary, source, link: full, image, image_alt: headline ? headline.slice(0, 80) : "Article image" });
       }
 
       // ---- auto-fill: event from a poster (Workers AI vision; graceful) ----
