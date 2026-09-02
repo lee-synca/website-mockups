@@ -260,13 +260,11 @@ export default {
         headline = headline.replace(/\s*[|–—-]\s*[^|–—-]{1,40}$/, "").trim(); // drop " | Site" suffix
         let summary = metaTag(html, "og:description") || metaTag(html, "description") || "";
         if (summary.length > 170) summary = summary.slice(0, 167).replace(/\s+\S*$/, "") + "…";
+        // Use the article's own share image directly (og:images are made to be embedded,
+        // so this shows instantly with no site rebuild). The editor can replace it.
         let image = "";
         const og = metaTag(html, "og:image") || metaTag(html, "twitter:image");
-        if (og) {
-          const abs = new URL(og, res.url || full).href;
-          try { image = await downloadImage(env, abs); } catch {}
-          if (!image) image = abs; // couldn't copy it into the repo → use the source image directly
-        }
+        if (og) image = new URL(og, res.url || full).href;
         const source = metaTag(html, "og:site_name") || host;
 
         // Read the article with AI and reframe it around A.R.T (falls back to page metadata).
