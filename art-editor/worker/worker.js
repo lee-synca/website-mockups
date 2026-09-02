@@ -109,9 +109,28 @@ function aiExtract(out) {
   if (!out) return "";
   if (typeof out === "string") return out;
   if (out.response) return out.response;
+  if (out.description) return out.description;
   if (out.result) return typeof out.result === "string" ? out.result : (out.result.response || "");
   const c = out.choices && out.choices[0];
   if (c) return (c.message && c.message.content) || c.text || "";
+  return "";
+}
+// Run a vision prompt (image = byte array) through the first working model.
+async function aiVision(env, bytes, prompt, max_tokens) {
+  const image = [...bytes];
+  const models = [
+    "@cf/meta/llama-4-scout-17b-16e-instruct",
+    "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "@cf/llava-hf/llava-1.5-7b-hf",
+  ];
+  let lastErr;
+  for (const m of models) {
+    try {
+      const t = aiExtract(await env.AI.run(m, { image, prompt, max_tokens }));
+      if (t && t.trim()) return t.trim();
+    } catch (e) { lastErr = e; }
+  }
+  if (lastErr) throw lastErr;
   return "";
 }
 // Run an input (with messages) through the first working (non-deprecated) model.
@@ -227,6 +246,18 @@ export default {
         }
         return json(env, 200, { imgBytes: bytes.length, out });
       }
+      // TEMP: test poster reading on a real poster.
+      if (url.pathname === "/api/debug-poster") {
+        const imgUrl = url.searchParams.get("img") || "https://mockups.getsynca.com.au/art/assets/img/event-kingston-calling.jpg";
+        const bytes = new Uint8Array(await (await fetch(imgUrl)).arrayBuffer());
+        const prompt =
+          "This is a concert/event poster. Read all the text on it and reply with ONLY a JSON object, no other text: " +
+          '{"name":"","date_display":"","venue":"","lineup":""}. name = the biggest title. date_display = the dates as printed. venue = venue and city. lineup = the acts, comma-separated. Use "" if unreadable.';
+        let parsed = {}, raw = "", err = "";
+        try { const t = await aiVision(env, bytes, prompt, 500); raw = t.slice(0, 500); const m = t.match(/\{[\s\S]*\}/); if (m) parsed = JSON.parse(m[0]); }
+        catch (e) { err = String(e && e.message || e); }
+        return json(env, 200, { imgBytes: bytes.length, parsed, raw, err });
+      }
       // TEMP unauthenticated diagnostic — remove after debugging.
       if (url.pathname === "/api/debug-url") {
         const { res, html } = await fetchHtml(url.searchParams.get("url") || "");
@@ -309,22 +340,18 @@ export default {
 
         let f = {};
         if (env.AI) {
-          const bytes = Uint8Array.from(atob(clean), (c) => c.charCodeAt(0));
-          const prompt =
-            "This is a concert/event poster. Read it and reply with ONLY a JSON object, no other text: " +
-            '{"name":"","date_display":"","venue":"","lineup":""}. ' +
-            "name = the main event or festival name. date_display = the date(s) exactly as printed. " +
-            "venue = venue and city. lineup = the artists/acts listed, comma-separated. " +
-            "Use an empty string for anything you cannot read.";
-          const models = ["@cf/meta/llama-3.2-11b-vision-instruct", "@cf/llava-hf/llava-1.5-7b-hf"];
-          for (const model of models) {
-            try {
-              const out = await env.AI.run(model, { image: [...bytes], prompt, max_tokens: 512 });
-              const text = out.response || out.description || (typeof out === "string" ? out : "");
-              const m = text.match(/\{[\s\S]*\}/);
-              if (m) { f = JSON.parse(m[0]); break; }
-            } catch (e) { /* try next model, then fall through to manual */ }
-          }
+          try {
+            const bytes = Uint8Array.from(atob(clean), (c) => c.charCodeAt(0));
+            const prompt =
+              "This is a concert/event poster. Read all the text on it and reply with ONLY a JSON object, no other text: " +
+              '{"name":"","date_display":"","venue":"","lineup":""}. ' +
+              "name = the main event or festival name (the biggest title). date_display = the date(s) exactly as printed. " +
+              "venue = the venue and city/town. lineup = the performing artists/acts listed, comma-separated. " +
+              "Use an empty string for anything you cannot read.";
+            const t = await aiVision(env, bytes, prompt, 500);
+            const m = t.match(/\{[\s\S]*\}/);
+            if (m) f = JSON.parse(m[0]);
+          } catch { /* leave fields blank for manual entry */ }
         }
         return json(env, 200, {
           poster,
