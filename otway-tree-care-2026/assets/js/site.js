@@ -123,6 +123,12 @@
     track(kind === 'tel' ? 'click_call' : kind === 'sms' ? 'click_sms' : 'click_email', { link_location: where, page_path: location.pathname });
   });
 
+  /* ---------- Review buttons (leave-a-review page) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-review]');
+    if (a) track('review_click', { platform: a.getAttribute('data-review') });
+  });
+
   /* ---------- Enquiry form ---------- */
   var form = document.querySelector('[data-enquiry]');
   if (!form) return;
