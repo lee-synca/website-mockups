@@ -1,0 +1,26 @@
+{
+  "name": "Otway Tree Care",
+  "short_name": "Otway Tree Care",
+  "start_url": "/otway-tree-care-2026/",
+  "display": "browser",
+  "background_color": "#f4f6f1",
+  "theme_color": "#2b5b38",
+  "icons": [
+    {
+      "src": "/otway-tree-care-2026/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/otway-tree-care-2026/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/otway-tree-care-2026/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
