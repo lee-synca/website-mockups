@@ -405,6 +405,7 @@ body.menu-open { overflow: hidden; }
 .quote-list { display: grid; gap: 14px; margin-top: 18px; }
 .quote-list blockquote { margin: 0; padding: 20px 22px; background: var(--cloud); border-left: 3px solid var(--forest); }
 .quote-list cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.85rem; color: var(--ink-2); }
+.review-ask { margin: 16px 0 0; font-size: 0.92rem; color: var(--ink-2); }
 
 /* ---------- Area ---------- */
 .area-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
