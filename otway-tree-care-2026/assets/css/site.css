@@ -578,6 +578,9 @@ fieldset.field, .field fieldset { border: 0; margin: 0; padding: 0; min-width: 0
 .related a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 20px; background: var(--cloud); border: 1px solid var(--line); color: var(--charcoal); font-weight: 600; text-decoration: none; }
 .related a:hover { border-color: var(--forest); color: var(--forest); }
 .related .icon { width: 18px; height: 18px; color: var(--forest); }
+.keep-reading { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px 16px; margin-top: 32px; }
+.keep-reading .data { margin-bottom: 14px; }
+.related.is-stack { grid-template-columns: 1fr; }
 
 .meta-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 1px solid var(--line-strong); margin-top: 28px; }
 .meta-table div { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); }
