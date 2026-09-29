@@ -6,7 +6,5 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 | Mockup | Live |
 |--------|------|
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
-| Otway Tree Care | https://mockups.getsynca.com.au/otway-tree-care/ |
-| Otway Tree Care — 2026 rebuild | https://mockups.getsynca.com.au/otway-tree-care-2026/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
 | Tomorrow People | https://mockups.getsynca.com.au/tomorrow-people/ |
