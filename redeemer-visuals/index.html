@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-AU" data-world="ruff">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redeemer Visuals — Wedding, music video and event films</title>
+<meta name="description" content="Films by Michael, also known as Ruff Pops. Weddings, music videos and live events across Australia, Aotearoa and the Pacific.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=League+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home">
+<main id="top">
+<section class="hero" aria-label="Choose a side of the work">
+    <div class="title">
+      <h1>Redeemer Visuals</h1>
+      <p class="mono">Films by Michael, also known as Ruff Pops</p>
+      <button class="reel" type="button" data-video="XEuYL-qsPhU">Play the latest film</button>
+    </div>
+    <button class="door door--rdv" type="button" data-go="weddings">
+      <img src="img/hero-rdv.webp" alt="A bride and groom kissing with the sun flaring behind them">
+      <span class="label">
+        <span class="mono kicker">Side A · Weddings &amp; milestones</span>
+        <h2>The moment<br>he sees her</h2>
+        <p>Wedding films made to take you straight back to the day.</p>
+        <span class="go mono">See the wedding films</span>
+      </span>
+    </button>
+    <button class="door door--ruff" type="button" data-go="music">
+      <img src="img/hero-ruff.webp" alt="A crowd silhouetted against teal stage lights at a concert">
+      <span class="label">
+        <span class="mono kicker">Side B · Music videos &amp; live</span>
+        <h2>Ruff <em>Pops</em></h2>
+        <p>Music videos, festival stages and game day, shot from inside the noise.</p>
+        <span class="go mono">See the music &amp; live work</span>
+      </span>
+    </button>
+    <span class="seam" aria-hidden="true"></span>
+    <div class="lower mono">
+      <span>Brisbane, Queensland</span>
+      <span>Filming across Australia, Aotearoa and the Pacific</span>
+    </div>
+  </section>
+
+  <section class="credits" aria-label="Events and artists Michael has filmed">
+    <div class="track" id="track">
+      <span>State of Origin 2025</span><span>Ultra Gold Coast</span><span>Juicy Fest</span><span>One Love Festival NZ</span>
+      <span>Josh Tatofi</span><span>Fetu Samoa</span><span>Toa Samoa</span><span>Lisi</span><span>Jay Sean</span><span>Maoli</span>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <h2 class="display" id="work-title">Music videos</h2>
+          <p id="work-blurb"></p>
+        </div>
+        <div class="chips" role="group" aria-label="Type of film">
+          <button type="button" data-cat="weddings" aria-pressed="false">Weddings</button>
+          <button type="button" data-cat="music" aria-pressed="true">Music videos</button>
+          <button type="button" data-cat="events" aria-pressed="false">Live &amp; events</button>
+        </div>
+      </div>
+      <div class="reel-grid six" id="grid"></div>
+      <div class="more">
+        <span class="mono" id="count"></span>
+        <a href="music-videos.html" id="work-all">See all music videos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <figure class="portrait">
+        <img src="img/michael.webp" alt="Michael, the filmmaker behind Redeemer Visuals, holding his camera" loading="lazy">
+        <figcaption class="mono"><span>Michael</span><span>Samoan Aussie · self-taught</span></figcaption>
+      </figure>
+      <div>
+        <h2>Talofa <em>&amp;</em> hello.</h2>
+        <blockquote>“To capture the moments that mattered and the moments that were missed.”</blockquote>
+        <dl class="chapters">
+          <div><dt class="mono">Travel</dt><dd>It started with a camera on the road with my wife Jessica: Rome, Venice, the snow on top of the Jungfrau. I filmed so family back home could feel like they were travelling with us.</dd></div>
+          <div><dt class="mono">Wedding day</dt><dd>My favourite moment to capture is when the groom sees his wife-to-be walk towards him, and only the two of them matter in that time and space.</dd></div>
+        </dl>
+        <a class="go mono" href="about.html">Read the full story</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="enquire">
+    <div class="wrap">
+      <div>
+        <h2 class="shout">Check<br>a <em>date</em></h2>
+        <p class="lede">Tell me what you're planning and when. I'll reply with availability, then we meet up to talk through details and packages.</p>
+        <div class="direct">
+          <a href="mailto:redeemervisuals@gmail.com">redeemervisuals@gmail.com</a>
+          <a href="tel:+61411128394">0411 128 394</a>
+        </div>
+      </div>
+      <div>
+        <p class="mono" style="color:var(--muted);margin:0 0 10px">What are we filming?</p>
+        <div class="paths">
+          <a href="enquire.html?type=weddings"><b>Wedding</b><small>Or another family milestone</small></a>
+          <a href="enquire.html?type=music"><b>Music video</b><small>Directed as Ruff Pops</small></a>
+          <a href="enquire.html?type=events"><b>Event</b><small>Festival, tour, sport, brand</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="films.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

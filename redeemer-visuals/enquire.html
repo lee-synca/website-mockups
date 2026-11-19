@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-AU" data-world="rdv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Check a date — Redeemer Visuals</title>
+<meta name="description" content="Check Michael's availability for a wedding, music video or event film.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=League+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="enquire">
+<main id="top">
+<section class="enquire">
+    <div class="wrap">
+      <div>
+        <h1 class="shout">Check<br>a <em>date</em></h1>
+        <p class="lede">Tell me what you're planning and when. I'll reply with availability, then we meet up to talk through details and packages.</p>
+        <div class="direct">
+          <a href="mailto:redeemervisuals@gmail.com">redeemervisuals@gmail.com</a>
+          <a href="tel:+61411128394">0411 128 394</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <fieldset>
+          <legend class="mono">What are we filming?</legend>
+          <div class="paths four">
+            <label><input type="radio" name="path" value="weddings"><b>Wedding</b><small>Or a family milestone</small></label>
+            <label><input type="radio" name="path" value="music"><b>Music video</b><small>Directed as Ruff Pops</small></label>
+            <label><input type="radio" name="path" value="events"><b>Event</b><small>Festival, tour, sport, brand</small></label>
+            <label><input type="radio" name="path" value="other"><b>Other</b><small>Mentoring, merch, anything else</small></label>
+          </div>
+        </fieldset>
+        <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+        <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="field"><span id="q1">Your partner's name</span><input name="q1"></label>
+        <label class="field"><span id="q2">Wedding date</span><input name="q2"></label>
+        <label class="field"><span id="q3">Venue or location</span><input name="q3"></label>
+        <label class="field"><span>How did you hear about me?</span>
+          <select name="heard">
+            <option value="">Choose one</option>
+            <option>Friend or family</option><option>Instagram</option><option>Facebook</option>
+            <option>YouTube</option><option>Google search</option><option>Saw me filming at an event</option><option>Other</option>
+          </select></label>
+        <label class="field full"><span id="q4">Anything you'd love captured?</span><textarea name="msg" rows="4"></textarea></label>
+        <div class="send">
+          <button class="btn" type="submit">Send enquiry</button>
+          <output id="out" aria-live="polite"></output>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<script src="films.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
