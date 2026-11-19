@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply to join | AVEA</title>
+<meta name="description" content="Apply to join AVEA. Share a few details about yourself, your music and what you're hoping to do next. There's no fee to apply.">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<script>if (!/[?&]static/.test(location.search)) document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-join">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak-lines" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav" data-nav>
+  <a class="nav__logo" href="index.html" aria-label="AVEA home"><img src="assets/logo-wordmark.png" alt="AVEA"></a>
+  <nav class="nav__links caps" aria-label="Main">
+    <a href="index.html#story">Our story</a>
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <a class="btn btn--sm caps nav__cta" href="#apply">Start application</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu" data-menu-toggle><span></span><span></span><span class="sr">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <a href="index.html#story">Our story</a>
+  <a href="services.html">Services</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a class="btn caps" href="#apply">Start application</a>
+</div>
+
+<main id="top">
+  <section class="apply">
+    <svg class="apply__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="wrap split split--top">
+
+      <header class="head head--sticky apply__intro">
+        <p class="label">Apply to join AVEA</p>
+        <h1 class="h2 apply__title">Let's take your music further.</h1>
+        <p class="lead">We'd love to hear what you're making. Share a few details about yourself, your music and what you're hoping to do next.</p>
+        <ul class="name__tags caps apply__tags">
+          <li>You keep your masters</li><li>~5 minutes</li><li>Reviewed personally</li>
+        </ul>
+        <ul class="apply__points">
+          <li><strong class="h3">You keep your masters</strong><span>Applying doesn't change who owns your music. Any services and rights will be set out in an agreement before we start.</span></li>
+          <li><strong class="h3">No false promises</strong><span>We can't promise streams, playlists or particular results. We'll be clear about what we can do.</span></li>
+          <li><strong class="h3">Pacific-first, always</strong><span>We work with artists across the Pacific and beyond, and want the process to feel straightforward wherever you're based.</span></li>
+        </ul>
+      </header>
+
+      <div class="apply__panel" id="apply">
+        <form class="form" novalidate data-form>
+          <div class="form__overview">
+            <p class="label">Your application</p>
+            <ol class="form__steps">
+              <li><a href="#s-artist"><span class="caps">01</span>Artist details</a></li>
+              <li><a href="#s-music"><span class="caps">02</span>Music &amp; links</a></li>
+              <li><a href="#s-catalogue"><span class="caps">03</span>Catalogue details</a></li>
+              <li><a href="#s-support"><span class="caps">04</span>Support needs</a></li>
+              <li><a href="#s-goals"><span class="caps">05</span>Your goals</a></li>
+            </ol>
+            <p class="form__note">We review every application personally. Timing depends on the number of applications and what you need help with.</p>
+          </div>
+
+          <fieldset id="s-artist" class="form__section">
+            <legend class="form__legend"><span class="caps">01</span><span class="h3">Artist details</span></legend>
+            <p class="form__intro">The basics &ndash; who you are and how to reach you. Everything you share stays private and is only used to review your application.</p>
+            <div class="field">
+              <label for="f-artist">Artist / band name</label>
+              <input id="f-artist" name="artist" type="text" autocomplete="off" placeholder="The name your music is released under" required data-msg="Please tell us your artist name.">
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="The person we'll be speaking with" required data-msg="Please tell us your name.">
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required data-msg="Please enter a valid email address.">
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone / WhatsApp <em>optional</em></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Include country code">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-region">Where are you based?</label>
+              <select id="f-region" name="region" required data-msg="Please select your region.">
+                <option value="">Select your region</option>
+                <option>Aotearoa / New Zealand</option>
+                <option>Australia</option>
+                <option>Fiji</option>
+                <option>Tonga</option>
+                <option>Samoa</option>
+                <option>Cook Islands</option>
+                <option>Other Pacific nation</option>
+                <option>Pacific diaspora (elsewhere)</option>
+                <option>Other</option>
+              </select>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-genre">Primary genre</label>
+              <input id="f-genre" name="genre" type="text" autocomplete="off" placeholder="e.g. R&amp;B, Reggae, Hip-Hop, Pop, Island Gospel" required data-msg="Please tell us your main genre.">
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+          </fieldset>
+
+          <fieldset id="s-music" class="form__section">
+            <legend class="form__legend"><span class="caps">02</span><span class="h3">Music &amp; links</span></legend>
+            <p class="form__intro">Show us your sound. Share the links where we can hear your music and see how you show up online. At least one listening link helps us review you properly.</p>
+            <div class="field">
+              <label for="f-link">Main music link</label>
+              <input id="f-link" name="link" type="url" inputmode="url" autocomplete="off" placeholder="https://" aria-describedby="f-link-hint" required data-msg="Please add at least one link to your music." data-msg-format="That link doesn't look right. It needs to start with https://">
+              <p class="field__hint" id="f-link-hint">Spotify, Apple Music, YouTube, SoundCloud or a private link to unreleased music.</p>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-spotify">Spotify <em>optional</em></label>
+              <input id="f-spotify" name="spotify" type="url" inputmode="url" autocomplete="off" placeholder="https://open.spotify.com/artist/…">
+            </div>
+            <div class="field">
+              <label for="f-youtube">YouTube channel <em>optional</em></label>
+              <input id="f-youtube" name="youtube" type="url" inputmode="url" autocomplete="off" placeholder="https://youtube.com/@…">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-instagram">Instagram <em>optional</em></label>
+                <input id="f-instagram" name="instagram" type="text" autocomplete="off" placeholder="@yourhandle">
+              </div>
+              <div class="field">
+                <label for="f-tiktok">TikTok <em>optional</em></label>
+                <input id="f-tiktok" name="tiktok" type="text" autocomplete="off" placeholder="@yourhandle">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset id="s-catalogue" class="form__section">
+            <legend class="form__legend"><span class="caps">03</span><span class="h3">Catalogue details</span></legend>
+            <p class="form__intro">Where your music sits today. This helps us understand your setup and plan the cleanest possible path forward &ndash; nothing gets disrupted without a plan.</p>
+            <div class="field">
+              <label for="f-stage">Where are you in your journey?</label>
+              <select id="f-stage" name="stage" required data-msg="Please select your stage.">
+                <option value="">Select one</option>
+                <option>Preparing my first release</option>
+                <option>1&ndash;3 releases out</option>
+                <option>Releasing regularly</option>
+                <option>Established catalogue</option>
+              </select>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-tracks">Roughly how many released tracks? <em>optional</em></label>
+              <select id="f-tracks" name="tracks">
+                <option value="">Select a range</option>
+                <option>None yet</option>
+                <option>1&ndash;5</option>
+                <option>6&ndash;15</option>
+                <option>16&ndash;40</option>
+                <option>40+</option>
+              </select>
+            </div>
+            <div class="field" data-group="distributor" data-msg="Please choose one.">
+              <span class="field__label" id="distributor-label">Do you currently work with a distributor?</span>
+              <div class="chips" role="radiogroup" aria-labelledby="distributor-label">
+                <label class="chip"><input type="radio" name="distributor" value="No, not yet"><span>No, not yet</span></label>
+                <label class="chip"><input type="radio" name="distributor" value="Yes, currently signed"><span>Yes, currently signed</span></label>
+                <label class="chip"><input type="radio" name="distributor" value="Between distributors"><span>Between distributors</span></label>
+              </div>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-rights">Do you own your masters &amp; rights? <em>optional</em></label>
+              <p class="field__hint" id="f-rights-hint">If you're not sure, that's completely fine &ndash; just say so and we'll help you work it out.</p>
+              <select id="f-rights" name="rights" aria-describedby="f-rights-hint">
+                <option value="">Select one</option>
+                <option>Yes, I own everything</option>
+                <option>Partially / it’s shared</option>
+                <option>No</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset id="s-support" class="form__section">
+            <legend class="form__legend"><span class="caps">04</span><span class="h3">Support needs</span></legend>
+            <p class="form__intro">What are you hoping AVEA can help with? Choose everything that applies &ndash; this shapes how we&rsquo;d work together. We never guarantee playlists, streams or virality; we&rsquo;re honest about what we can do.</p>
+            <div class="field" data-group="help" data-msg="Please choose at least one.">
+              <span class="field__label" id="help-label">I'm looking for help with</span>
+              <div class="chips" role="group" aria-labelledby="help-label">
+                <label class="chip"><input type="checkbox" name="help" value="Distribution"><span>Distribution</span></label>
+                <label class="chip"><input type="checkbox" name="help" value="YouTube monetisation"><span>YouTube monetisation</span></label>
+                <label class="chip"><input type="checkbox" name="help" value="Release strategy"><span>Release strategy</span></label>
+                <label class="chip"><input type="checkbox" name="help" value="Rights &amp; royalties"><span>Rights &amp; royalties</span></label>
+                <label class="chip"><input type="checkbox" name="help" value="Artist growth"><span>Artist growth</span></label>
+                <label class="chip"><input type="checkbox" name="help" value="Not sure yet"><span>Not sure yet</span></label>
+              </div>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-start">When are you hoping to start? <em>optional</em></label>
+              <select id="f-start" name="start">
+                <option value="">Select one</option>
+                <option>As soon as possible</option>
+                <option>Within 1&ndash;3 months</option>
+                <option>Just exploring for now</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset id="s-goals" class="form__section">
+            <legend class="form__legend"><span class="caps">05</span><span class="h3">Your goals</span></legend>
+            <p class="form__intro">The most important part. Tell us where you want your music to go &ndash; and anything else we should know. The more we understand, the better we can review your fit.</p>
+            <div class="field">
+              <label for="f-goals">What are you trying to achieve?</label>
+              <textarea id="f-goals" name="goals" rows="5" placeholder="Your ambitions for the next year or two, what success looks like to you, and where you feel stuck right now…" required data-msg="Please tell us a little about your goals."></textarea>
+              <p class="field__error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-notes">Anything else we should know? <em>optional</em></label>
+              <textarea id="f-notes" name="notes" rows="4" placeholder="Upcoming releases, a story behind your music, questions for us &ndash; anything at all."></textarea>
+            </div>
+            <div class="field">
+              <label for="f-heard">How did you hear about AVEA? <em>optional</em></label>
+              <select id="f-heard" name="heard">
+                <option value="">Select one</option>
+                <option>Another artist</option>
+                <option>Social media</option>
+                <option>Search</option>
+                <option>Event or show</option>
+                <option>Word of mouth</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <div class="field field--check" data-msg="Please tick this so we can review your application and contact you.">
+            <label class="check"><input type="checkbox" name="consent" required><span>I understand AVEA reviews every application personally and makes no guarantees of playlists, streams or income. I agree to be contacted about my application and have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+            <p class="field__error" aria-live="polite"></p>
+          </div>
+
+          <div class="form__foot">
+            <button class="btn caps" type="submit">Submit application</button>
+            <p class="form__note">No fee to apply. Under our standard distribution arrangement, you keep ownership of your masters.</p>
+          </div>
+        </form>
+
+        <div class="form__done" hidden data-done tabindex="-1">
+          <svg viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+          <p class="label">Application sent</p>
+          <h2 class="h2">Application received.</h2>
+          <p class="lead">Thank you &ndash; your application is with us. We review every submission personally, and timing depends on the number of applications and what you need help with. If it's a fit, we'll be in touch about the next steps.</p>
+          <p>In the meantime, learn exactly what happens next.</p>
+          <a class="btn caps" href="how-it-works.html">See how it works</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="assets/logo-lockup.png" alt="AVEA, Where Artists Become">
+      <div class="foot__cols">
+        <div>
+          <h4 class="caps">Talk to us</h4>
+          <a href="mailto:hello@avea.co.nz">hello@avea.co.nz</a>
+          <span>Wellington, Aotearoa New Zealand</span>
+        </div>
+        <div>
+          <h4 class="caps">AVEA</h4>
+          <a href="index.html#story">Our story</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html">Apply to join</a>
+        </div>
+        <div>
+          <h4 class="caps">Services</h4>
+          <a href="services.html#distribution">Distribution</a>
+          <a href="youtube.html">YouTube Services</a>
+          <a href="services.html#release-strategy">Release Strategy</a>
+          <a href="services.html#rights">Rights &amp; Royalties</a>
+          <a href="services.html#growth">Artist Growth</a>
+        </div>
+        <div>
+          <h4 class="caps">Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; 2026 AVEA. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/join.js"></script>
+</body>
+</html>

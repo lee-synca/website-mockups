@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Services | AVEA</title>
+<meta name="description" content="AVEA YouTube services for artists, creators, labels and broadcasters: video optimisation, network growth and Content ID revenue collection.">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<script>
+  // ?static shows the page without motion. ?static&shot=deal shows one section alone (for screenshots).
+  if (!/[?&]static/.test(location.search)) document.documentElement.classList.add('js');
+  (function(){ var m = /[?&]shot=([\w-]+)/.exec(location.search); if (!m) return;
+    document.write('<style>main>section:not(#' + m[1] + '),.foot:not(#' + m[1] + '){display:none}</style>');
+    document.addEventListener('DOMContentLoaded', function(){ [].forEach.call(document.querySelectorAll('img[loading=lazy]'), function(i){ i.loading = 'eager'; }); }); })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared peak artwork, drawn from the shape in the logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak-lines" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav" data-nav>
+  <a class="nav__logo" href="index.html" aria-label="AVEA home"><img src="assets/logo-wordmark.png" alt="AVEA"></a>
+  <nav class="nav__links caps" aria-label="Main">
+    <a href="index.html#story">Our story</a>
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <a class="btn btn--sm caps nav__cta" href="join.html">Apply to join AVEA</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu" data-menu-toggle><span></span><span></span><span class="sr">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <a href="index.html#story">Our story</a>
+  <a href="services.html">Services</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a class="btn caps" href="join.html">Apply to join AVEA</a>
+</div>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero hero--page" id="hero">
+    <svg class="page-hero__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="hero__copy">
+      <p class="label" data-hero>YouTube Services</p>
+      <h1 class="hero__title page-title">
+        <span class="line"><span>Make more</span></span>
+        <span class="line"><span>of your</span></span>
+        <span class="line line--gold"><span>YouTube channel.</span></span>
+      </h1>
+      <p class="lead" data-hero>Whether you're an artist, creator, label or broadcaster, we help you get more from the content you've already created. From growing your audience to collecting revenue you may be missing, we help you make YouTube work harder for you.</p>
+      <ul class="name__tags caps" data-hero aria-label="Who it's for">
+        <li>Artists</li><li>Creators</li><li>Labels</li><li>Broadcasters</li>
+      </ul>
+      <div class="actions" data-hero>
+        <a class="btn caps" href="join.html">Apply to join AVEA</a>
+      </div>
+    </div>
+    <nav class="page-hero__index" aria-label="On this page" data-hero>
+      <ol>
+        <li><a href="#optimisation"><span class="caps">01</span><strong class="h3">Video &amp; Asset Optimisation</strong></a></li>
+        <li><a href="#network"><span class="caps">02</span><strong class="h3">Network Growth &amp; Cross-Promotion</strong></a></li>
+        <li><a href="#revenue"><span class="caps">03</span><strong class="h3">UGC &amp; Third-Party Revenue Collection</strong></a></li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Three services -->
+  <section class="section trio-section" id="services">
+    <div class="wrap">
+      <header class="head trio-section__head">
+        <p class="label" data-reveal>Our services</p>
+        <h2 class="h2" data-reveal>Three ways we help your channel.</h2>
+        <p class="lead" data-reveal>There's more to YouTube than uploading videos. We help with the details that make your content easier to find, bring new viewers to your channel and make sure eligible uses of your work are earning for you.</p>
+      </header>
+      <div class="trio">
+        <article class="trio__item" id="optimisation" data-reveal>
+          <div class="svc-detail__media">
+            <div class="duo"><img src="assets/svc-youtube.jpg" alt="" loading="lazy"></div>
+            <span class="how__num" aria-hidden="true">01</span>
+          </div>
+          <h3 class="h3">Video &amp; Asset Optimisation</h3>
+          <p>We look at what's already on your channel and find ways to give it a better chance of being discovered. That includes new uploads and older videos that still have an audience to reach.</p>
+          <ul class="points">
+            <li><span>Improve video titles, descriptions, tags and thumbnails.</span></li>
+            <li><span>Organise playlists around what your audience likes to watch.</span></li>
+            <li><span>Refresh older videos and catalogue content so they stay relevant.</span></li>
+          </ul>
+        </article>
+        <article class="trio__item" id="network" data-reveal>
+          <div class="svc-detail__media">
+            <div class="duo"><img src="assets/dir-guitar.jpg" alt="" loading="lazy"></div>
+            <span class="how__num" aria-hidden="true">02</span>
+          </div>
+          <h3 class="h3">Network Growth &amp; Cross-Promotion</h3>
+          <p>Your channel doesn't have to grow on its own. We look for ways to introduce your content to audiences across the wider network, where the fit makes sense.</p>
+          <ul class="points">
+            <li><span>Connect videos through playlists, end screens and cards.</span></li>
+            <li><span>Explore collaborations and cross-promotion with relevant channels.</span></li>
+            <li><span>Support releases, events and campaigns that bring viewers back to your channel.</span></li>
+          </ul>
+        </article>
+        <article class="trio__item" id="revenue" data-reveal>
+          <div class="svc-detail__media">
+            <div class="duo"><img src="assets/dir-portrait.jpg" alt="" loading="lazy"></div>
+            <span class="how__num" aria-hidden="true">03</span>
+          </div>
+          <h3 class="h3">UGC &amp; Third-Party Revenue Collection</h3>
+          <p>When other people use your content on YouTube, there may be revenue you're not collecting. We use Content ID to identify eligible uses, manage claims and help you get paid where the rights allow.</p>
+          <ul class="points">
+            <li><span>Monitor eligible re-uploads, fan videos, reactions and compilations.</span></li>
+            <li><span>Claim and collect eligible third-party revenue through Content ID.</span></li>
+            <li><span>Handle unauthorised uses thoughtfully, while allowing fan activity that helps your reach where appropriate.</span></li>
+          </ul>
+        </article>
+      </div>
+      <div class="actions trio-section__more" data-reveal><a class="link caps" href="services.html">See all services</a></div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section class="join" id="join">
+    <svg class="join__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="wrap join__inner">
+      <p class="label" data-reveal>Ready to take the next step?</p>
+      <h2 class="h2" data-reveal>Let's build your future.</h2>
+      <p class="lead" data-reveal>Got music you're ready to share? Tell us about it and we'll take it from there.</p>
+      <a class="btn caps" href="join.html" data-reveal>Apply to join AVEA</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="assets/logo-lockup.png" alt="AVEA, Where Artists Become">
+      <div class="foot__cols">
+        <div>
+          <h4 class="caps">Talk to us</h4>
+          <a href="mailto:hello@avea.co.nz">hello@avea.co.nz</a>
+          <span>Wellington, Aotearoa New Zealand</span>
+        </div>
+        <div>
+          <h4 class="caps">AVEA</h4>
+          <a href="index.html#story">Our story</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html">Apply to join</a>
+        </div>
+        <div>
+          <h4 class="caps">Services</h4>
+          <a href="services.html#distribution">Distribution</a>
+          <a href="youtube.html">YouTube Services</a>
+          <a href="services.html#release-strategy">Release Strategy</a>
+          <a href="services.html#rights">Rights &amp; Royalties</a>
+          <a href="services.html#growth">Artist Growth</a>
+        </div>
+        <div>
+          <h4 class="caps">Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; 2026 AVEA. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

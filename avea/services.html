@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services | AVEA</title>
+<meta name="description" content="AVEA services: distribution, YouTube services, release strategy, rights and royalties, and artist growth for Pacific artists.">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<script>
+  // ?static shows the page without motion. ?static&shot=deal shows one section alone (for screenshots).
+  if (!/[?&]static/.test(location.search)) document.documentElement.classList.add('js');
+  (function(){ var m = /[?&]shot=([\w-]+)/.exec(location.search); if (!m) return;
+    document.write('<style>main>section:not(#' + m[1] + '),.foot:not(#' + m[1] + '){display:none}</style>');
+    document.addEventListener('DOMContentLoaded', function(){ [].forEach.call(document.querySelectorAll('img[loading=lazy]'), function(i){ i.loading = 'eager'; }); }); })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared peak artwork, drawn from the shape in the logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak-lines" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav" data-nav>
+  <a class="nav__logo" href="index.html" aria-label="AVEA home"><img src="assets/logo-wordmark.png" alt="AVEA"></a>
+  <nav class="nav__links caps" aria-label="Main">
+    <a href="index.html#story">Our story</a>
+    <a href="services.html" aria-current="page">Services</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <a class="btn btn--sm caps nav__cta" href="join.html">Apply to join AVEA</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu" data-menu-toggle><span></span><span></span><span class="sr">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <a href="index.html#story">Our story</a>
+  <a href="services.html" aria-current="page">Services</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a class="btn caps" href="join.html">Apply to join AVEA</a>
+</div>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero hero--page" id="hero">
+    <svg class="page-hero__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="hero__copy">
+      <p class="label" data-hero>What we do</p>
+      <h1 class="hero__title page-title">
+        <span class="line"><span>Everything</span></span>
+        <span class="line"><span>you need to</span></span>
+        <span class="line line--gold"><span>go global.</span></span>
+      </h1>
+      <p class="lead" data-hero>From getting your music online to planning the next release, we help with the work that happens around the music. You choose the support that makes sense for you.</p>
+      <div class="actions" data-hero>
+        <a class="btn caps" href="join.html">Apply to join AVEA</a>
+      </div>
+    </div>
+    <nav class="page-hero__index" aria-label="Services on this page" data-hero>
+      <ol>
+        <li><a href="#distribution"><span class="caps">01</span><strong class="h3">Distribution</strong></a></li>
+        <li><a href="#youtube"><span class="caps">02</span><strong class="h3">YouTube Services</strong></a></li>
+        <li><a href="#release-strategy"><span class="caps">03</span><strong class="h3">Release Strategy</strong></a></li>
+        <li><a href="#rights"><span class="caps">04</span><strong class="h3">Rights &amp; Royalties</strong></a></li>
+        <li><a href="#growth"><span class="caps">05</span><strong class="h3">Artist Growth</strong></a></li>
+      </ol>
+    </nav>
+  </section>
+
+  <section class="section svc-detail" id="distribution">
+    <div class="wrap split">
+      <div class="svc-detail__media" data-reveal>
+        <div class="duo"><img src="assets/svc-distribution.jpg" alt="" loading="lazy"></div>
+        <span class="how__num" aria-hidden="true">01</span>
+      </div>
+      <div class="svc-detail__copy">
+        <p class="label" data-reveal>Your music, everywhere it matters</p>
+        <h2 class="h2" data-reveal>Distribution</h2>
+        <p class="lead" data-reveal>We help deliver your releases to major streaming and download platforms, including Spotify, Apple Music and YouTube Music. We'll work with you to get the artwork, credits and release details right.</p>
+        <ul class="points" data-reveal>
+          <li><strong class="h3">Global reach</strong><span>Major streaming and download platforms, one delivery.</span></li>
+          <li><strong class="h3">Clean metadata</strong><span>Credits, artwork and release info done right.</span></li>
+          <li><strong class="h3">Release scheduling</strong><span>Coordinated drops across your chosen platforms.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section svc-detail svc-detail--alt svc-detail--flip" id="youtube">
+    <div class="wrap split">
+      <div class="svc-detail__media" data-reveal>
+        <div class="duo"><img src="assets/svc-youtube.jpg" alt="" loading="lazy"></div>
+        <span class="how__num" aria-hidden="true">02</span>
+      </div>
+      <div class="svc-detail__copy">
+        <p class="label" data-reveal>Grow your channel. Make more of your content.</p>
+        <h2 class="h2" data-reveal>YouTube Services</h2>
+        <p class="lead" data-reveal>Your YouTube channel can do more than you think. We help you improve how your videos are found, reach more people through our network and collect eligible revenue from uses of your content across YouTube.</p>
+        <ul class="points" data-reveal>
+          <li><strong class="h3">Video optimisation</strong><span>Improve titles, thumbnails, metadata and playlists.</span></li>
+          <li><strong class="h3">Audience growth</strong><span>Connect with viewers through playlists, collaborations and cross-promotion.</span></li>
+          <li><strong class="h3">Content ID</strong><span>Identify eligible third-party uses and collect revenue where available.</span></li>
+        </ul>
+        <a class="link caps" href="youtube.html" data-reveal>Explore YouTube services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section svc-detail" id="release-strategy">
+    <div class="wrap split">
+      <div class="svc-detail__media" data-reveal>
+        <div class="duo"><img src="assets/svc-strategy.jpg" alt="" loading="lazy"></div>
+        <span class="how__num" aria-hidden="true">03</span>
+      </div>
+      <div class="svc-detail__copy">
+        <p class="label" data-reveal>Launch with impact, not luck</p>
+        <h2 class="h2" data-reveal>Release Strategy</h2>
+        <p class="lead" data-reveal>Every release is different. We'll help you think through the timing, content, pitching and promotion so there's a plan behind the music.</p>
+        <ul class="points" data-reveal>
+          <li><strong class="h3">Timing &amp; rollout</strong><span>A plan built around your goals, not guesswork.</span></li>
+          <li><strong class="h3">Pitching &amp; positioning</strong><span>Working to get your music in front of the right ears.</span></li>
+          <li><strong class="h3">Data-informed decisions</strong><span>Insight guiding every move.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section svc-detail svc-detail--alt svc-detail--flip" id="rights">
+    <div class="wrap split">
+      <div class="svc-detail__media" data-reveal>
+        <div class="duo"><img src="assets/svc-rights.jpg" alt="" loading="lazy"></div>
+        <span class="how__num" aria-hidden="true">04</span>
+      </div>
+      <div class="svc-detail__copy">
+        <p class="label" data-reveal>Get paid what you're owed</p>
+        <h2 class="h2" data-reveal>Rights &amp; Royalties</h2>
+        <p class="lead" data-reveal>You should know what you own and where your income comes from. We help with royalty reporting and rights information, and can discuss additional rights services where they apply. Your ownership stays subject to the agreement you choose.</p>
+        <ul class="points" data-reveal>
+          <li><strong class="h3">Your masters</strong><span>Under our standard distribution arrangement, you keep ownership of your masters.</span></li>
+          <li><strong class="h3">Additional rights services</strong><span>Publishing, neighbouring rights and sync, discussed where they apply.</span></li>
+          <li><strong class="h3">Transparent reporting</strong><span>Clarity on what you've earned and why.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section svc-detail" id="growth">
+    <div class="wrap split">
+      <div class="svc-detail__media" data-reveal>
+        <div class="duo"><img src="assets/artist-growth.jpg" alt="" loading="lazy"></div>
+        <span class="how__num" aria-hidden="true">05</span>
+      </div>
+      <div class="svc-detail__copy">
+        <p class="label" data-reveal>A career, not just a release</p>
+        <h2 class="h2" data-reveal>Artist Growth</h2>
+        <p class="lead" data-reveal>A release is a starting point, not the whole story. We can help you work on your audience, your profile and the opportunities that make sense for your music.</p>
+        <ul class="points" data-reveal>
+          <li><strong class="h3">Audience building</strong><span>Turning listeners into a lasting fanbase.</span></li>
+          <li><strong class="h3">Brand &amp; networking</strong><span>Connections and positioning that open doors.</span></li>
+          <li><strong class="h3">Long-term development</strong><span>Support that compounds over time.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section how" id="how">
+    <div class="wrap">
+      <header class="head">
+        <p class="label" data-reveal>How it works</p>
+        <h2 class="h2" data-reveal>One partner, the whole way through.</h2>
+      </header>
+      <ol class="how__steps">
+        <li data-reveal>
+          <span class="how__num">01</span>
+          <h3 class="h3">Apply &amp; onboard</h3>
+          <p>Tell us what you're making and what you'd like help with. We'll talk through the fit and the next steps.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">02</span>
+          <h3 class="h3">Release &amp; promote</h3>
+          <p>We'll get your release ready and work through a promotion plan that suits it.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">03</span>
+          <h3 class="h3">Grow together</h3>
+          <p>We'll look at the numbers, learn from the release and plan the next one.</p>
+        </li>
+      </ol>
+      <div class="actions how__more" data-reveal><a class="link caps" href="how-it-works.html">See the full process</a></div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section class="join" id="join">
+    <svg class="join__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="wrap join__inner">
+      <p class="label" data-reveal>Ready to take the next step?</p>
+      <h2 class="h2" data-reveal>Let's build your future.</h2>
+      <p class="lead" data-reveal>Got music you're ready to share? Tell us about it and we'll take it from there.</p>
+      <a class="btn caps" href="join.html" data-reveal>Apply to join AVEA</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="assets/logo-lockup.png" alt="AVEA, Where Artists Become">
+      <div class="foot__cols">
+        <div>
+          <h4 class="caps">Talk to us</h4>
+          <a href="mailto:hello@avea.co.nz">hello@avea.co.nz</a>
+          <span>Wellington, Aotearoa New Zealand</span>
+        </div>
+        <div>
+          <h4 class="caps">AVEA</h4>
+          <a href="index.html#story">Our story</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html">Apply to join</a>
+        </div>
+        <div>
+          <h4 class="caps">Services</h4>
+          <a href="#distribution">Distribution</a>
+          <a href="youtube.html">YouTube Services</a>
+          <a href="#release-strategy">Release Strategy</a>
+          <a href="#rights">Rights &amp; Royalties</a>
+          <a href="#growth">Artist Growth</a>
+        </div>
+        <div>
+          <h4 class="caps">Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; 2026 AVEA. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

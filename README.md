@@ -5,6 +5,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 
 | Mockup | Live |
 |--------|------|
+| AVEA | https://mockups.getsynca.com.au/avea/ |
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
 | Tomorrow People | https://mockups.getsynca.com.au/tomorrow-people/ |

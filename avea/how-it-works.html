@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How It Works | AVEA</title>
+<meta name="description" content="How working with AVEA goes: apply and onboard, plan and release, then grow together. What stays true at every stage, and common questions.">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<script>
+  // ?static shows the page without motion. ?static&shot=deal shows one section alone (for screenshots).
+  if (!/[?&]static/.test(location.search)) document.documentElement.classList.add('js');
+  (function(){ var m = /[?&]shot=([\w-]+)/.exec(location.search); if (!m) return;
+    document.write('<style>main>section:not(#' + m[1] + '),.foot:not(#' + m[1] + '){display:none}</style>');
+    document.addEventListener('DOMContentLoaded', function(){ [].forEach.call(document.querySelectorAll('img[loading=lazy]'), function(i){ i.loading = 'eager'; }); }); })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared peak artwork, drawn from the shape in the logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak-lines" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav" data-nav>
+  <a class="nav__logo" href="index.html" aria-label="AVEA home"><img src="assets/logo-wordmark.png" alt="AVEA"></a>
+  <nav class="nav__links caps" aria-label="Main">
+    <a href="index.html#story">Our story</a>
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html" aria-current="page">How it works</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <a class="btn btn--sm caps nav__cta" href="join.html">Apply to join AVEA</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu" data-menu-toggle><span></span><span></span><span class="sr">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <a href="index.html#story">Our story</a>
+  <a href="services.html">Services</a>
+  <a href="how-it-works.html" aria-current="page">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a class="btn caps" href="join.html">Apply to join AVEA</a>
+</div>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero hero--page" id="hero">
+    <svg class="page-hero__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="hero__copy">
+      <p class="label" data-hero>How it works</p>
+      <h1 class="hero__title page-title">
+        <span class="line"><span>One partner,</span></span>
+        <span class="line"><span>the whole</span></span>
+        <span class="line line--gold"><span>way.</span></span>
+      </h1>
+      <p class="lead" data-hero>There's no complicated mystery to getting started. We get to know your music, agree on what support you need and make a plan together.</p>
+      <div class="actions" data-hero>
+        <a class="btn caps" href="join.html">Apply to join AVEA</a>
+      </div>
+    </div>
+    <nav class="page-hero__index" aria-label="On this page" data-hero>
+      <ol>
+        <li><a href="#apply"><span class="caps">01</span><strong class="h3">Apply &amp; onboard</strong></a></li>
+        <li><a href="#release"><span class="caps">02</span><strong class="h3">Plan &amp; release</strong></a></li>
+        <li><a href="#grow"><span class="caps">03</span><strong class="h3">Grow together</strong></a></li>
+      </ol>
+    </nav>
+  </section>
+
+  <section class="section stage" id="apply">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <span class="how__num" aria-hidden="true" data-reveal>01</span>
+        <p class="label" data-reveal>Step one &ndash; your foundation</p>
+        <h2 class="h2" data-reveal>Apply &amp; onboard</h2>
+        <p class="stage__tag" data-reveal>Getting to know your music</p>
+        <p class="lead" data-reveal>Start by telling us about your music, your plans and what you'd like help with.</p>
+      </header>
+      <ul class="stage__list">
+        <li data-reveal>
+          <h3 class="h3">Apply to join</h3>
+          <p>Share your music and goals through a short application. There's no fee to apply &ndash; just a conversation about where you're headed.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">We review the fit</h3>
+          <p>We listen properly and look at where you are now. If AVEA is the right partner for your next chapter, we'll say so &ndash; honestly.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Onboarding &amp; setup</h3>
+          <p>We set up your accounts, rights and profiles the right way &ndash; clean metadata, correct splits, and your masters kept with you under our standard distribution terms.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section stage stage--alt" id="release">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <span class="how__num" aria-hidden="true" data-reveal>02</span>
+        <p class="label" data-reveal>Step two &ndash; your launch</p>
+        <h2 class="h2" data-reveal>Plan &amp; release</h2>
+        <p class="stage__tag" data-reveal>Your music, everywhere it matters</p>
+        <p class="lead" data-reveal>Once we've agreed on the services, we'll get the release information sorted and work through the timing and promotion.</p>
+      </header>
+      <ul class="stage__list">
+        <li data-reveal>
+          <h3 class="h3">Build the release plan</h3>
+          <p>Timing, rollout, pitching and positioning &ndash; a data-informed strategy designed to give each release its best possible start.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Deliver the release</h3>
+          <p>Your music goes to major streaming and download platforms, including Spotify, Apple Music, TikTok and YouTube &ndash; delivered properly.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Promote &amp; amplify</h3>
+          <p>We support the launch with marketing and pitching, and can set up YouTube monetisation and Content ID so eligible uses of your music can earn where the rights allow.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section stage" id="grow">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <span class="how__num" aria-hidden="true" data-reveal>03</span>
+        <p class="label" data-reveal>Step three &ndash; the long game</p>
+        <h2 class="h2" data-reveal>Grow together</h2>
+        <p class="stage__tag" data-reveal>A career, not just a release</p>
+        <p class="lead" data-reveal>After release, we'll look at performance and royalty reporting, and talk about what could work better next time.</p>
+      </header>
+      <ul class="stage__list">
+        <li data-reveal>
+          <h3 class="h3">Track &amp; learn</h3>
+          <p>Transparent reporting shows what's working and why, so every next move is sharper than the last.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Collect what you're owed</h3>
+          <p>We help with royalty reporting, and can discuss additional rights services &ndash; publishing, neighbouring rights and sync &ndash; where they apply.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Build the career</h3>
+          <p>Audience growth, brand, networking and long-term development that compounds with every release.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- What stays true -->
+  <section class="section deal" id="true">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <p class="label" data-reveal>What stays true at every stage</p>
+        <h2 class="h2" data-reveal>The way we work never changes.</h2>
+      </header>
+      <ul class="deal__list">
+        <li data-reveal>
+          <h3 class="h3">You keep your masters</h3>
+          <p>You keep ownership of your music under our standard distribution terms. We'll be clear about the permissions we need.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Transparent, always</h3>
+          <p>We want you to understand your reports and what you've earned.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">One partner, one team</h3>
+          <p>We can help with distribution, YouTube and release support, depending on the services you choose.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- At a glance -->
+  <section class="section glance" id="glance">
+    <div class="wrap">
+      <header class="head glance__head">
+        <p class="label" data-reveal>At a glance</p>
+        <h2 class="h2" data-reveal>From application to a career that lasts.</h2>
+      </header>
+      <ol class="glance__steps">
+        <li data-reveal>
+          <span class="caps">Week 1</span>
+          <h3 class="h3">You apply</h3>
+          <p>Send us your music and tell us what you're planning.</p>
+        </li>
+        <li data-reveal>
+          <span class="caps">Onboarding</span>
+          <h3 class="h3">Set up right</h3>
+          <p>We'll confirm the agreement, rights details and platform setup.</p>
+        </li>
+        <li data-reveal>
+          <span class="caps">Release</span>
+          <h3 class="h3">Go global</h3>
+          <p>We'll prepare the release and work through the rollout.</p>
+        </li>
+        <li data-reveal>
+          <span class="caps">Ongoing</span>
+          <h3 class="h3">Keep growing</h3>
+          <p>We'll review performance and talk about the next steps.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Common questions -->
+  <section class="section faq" id="questions">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <p class="label" data-reveal>Common questions</p>
+        <h2 class="h2" data-reveal>Before you apply.</h2>
+        <p class="lead" data-reveal>A few common questions before you get started.</p>
+      </header>
+      <div class="faq__list">
+        <details data-reveal open>
+          <summary class="h3">Does AVEA take ownership of my music?</summary>
+          <p>Under our standard distribution terms, you keep your masters. We'll explain any licences and permissions in the agreement.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">How much does it cost to apply?</summary>
+          <p>Nothing. There's no fee to apply and no obligation to sign up. Our standard services use a revenue-share model, and we'll explain the relevant fees and splits before you agree to anything.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">Do I need a finished release to join?</summary>
+          <p>No. We work with artists at different stages and can talk about what support would be useful for you.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">Where will my music be available?</summary>
+          <p>We help deliver your releases to major streaming and download platforms, including Spotify, Apple Music, TikTok and YouTube, and we'll work with you to get the artwork, credits and release details right.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section class="join" id="join">
+    <svg class="join__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="wrap join__inner">
+      <p class="label" data-reveal>Ready to take the next step?</p>
+      <h2 class="h2" data-reveal>Let's build your future.</h2>
+      <p class="lead" data-reveal>Have something you're working on? We'd like to hear it.</p>
+      <a class="btn caps" href="join.html" data-reveal>Apply to join AVEA</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="assets/logo-lockup.png" alt="AVEA, Where Artists Become">
+      <div class="foot__cols">
+        <div>
+          <h4 class="caps">Talk to us</h4>
+          <a href="mailto:hello@avea.co.nz">hello@avea.co.nz</a>
+          <span>Wellington, Aotearoa New Zealand</span>
+        </div>
+        <div>
+          <h4 class="caps">AVEA</h4>
+          <a href="index.html#story">Our story</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html">Apply to join</a>
+        </div>
+        <div>
+          <h4 class="caps">Services</h4>
+          <a href="services.html#distribution">Distribution</a>
+          <a href="youtube.html">YouTube Services</a>
+          <a href="services.html#release-strategy">Release Strategy</a>
+          <a href="services.html#rights">Rights &amp; Royalties</a>
+          <a href="services.html#growth">Artist Growth</a>
+        </div>
+        <div>
+          <h4 class="caps">Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; 2026 AVEA. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVEA | Where Artists Become</title>
+<meta name="description" content="AVEA is a Pacific-owned music distribution and artist services company. We help artists get their music out, understand their rights and build careers.">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<script>
+  // ?static shows the page without motion. ?static&shot=deal shows one section alone (for screenshots).
+  if (!/[?&]static/.test(location.search)) document.documentElement.classList.add('js');
+  (function(){ var m = /[?&]shot=([\w-]+)/.exec(location.search); if (!m) return;
+    document.write('<style>main>section:not(#' + m[1] + '),.foot:not(#' + m[1] + '){display:none}</style>');
+    document.addEventListener('DOMContentLoaded', function(){ [].forEach.call(document.querySelectorAll('img[loading=lazy]'), function(i){ i.loading = 'eager'; }); }); })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Shared peak artwork, drawn from the shape in the logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak-lines" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav" data-nav>
+  <a class="nav__logo" href="#top" aria-label="AVEA home"><img src="assets/logo-wordmark.png" alt="AVEA"></a>
+  <nav class="nav__links caps" aria-label="Main">
+    <a href="#story">Our story</a>
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="faq.html">FAQ</a>
+  </nav>
+  <a class="btn btn--sm caps nav__cta" href="join.html">Apply to join AVEA</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu" data-menu-toggle><span></span><span></span><span class="sr">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" data-menu>
+  <a href="#story">Our story</a>
+  <a href="services.html">Services</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a class="btn caps" href="join.html">Apply to join AVEA</a>
+</div>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__copy">
+      <p class="label" data-hero>Your Sound. Your Story. Your Future</p>
+      <h1 class="hero__title">
+        <span class="line"><span>Where</span></span>
+        <span class="line"><span>artists</span></span>
+        <span class="line line--gold"><span>become</span></span>
+      </h1>
+      <p class="lead" data-hero>AVEA is a Pacific-owned music distribution and artist services company. We help artists get their music out, understand their rights and build careers without losing what makes them who they are.</p>
+      <div class="actions" data-hero>
+        <a class="btn caps" href="join.html">Apply to join AVEA</a>
+        <a class="link caps" href="#deal">See the deal</a>
+      </div>
+    </div>
+    <div class="hero__art" aria-hidden="true">
+      <svg viewBox="0 0 640 560" fill="none">
+        <defs>
+          <clipPath id="peak-clip"><polygon points="320,150 566,560 74,560"/></clipPath>
+          <linearGradient id="peak-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#021824" stop-opacity="0"/>
+            <stop offset=".55" stop-color="#04273b" stop-opacity=".25"/>
+            <stop offset="1" stop-color="#021824" stop-opacity=".95"/>
+          </linearGradient>
+        </defs>
+        <g clip-path="url(#peak-clip)" class="hero__photo">
+          <rect x="74" y="150" width="492" height="410" fill="#021824"/>
+          <image href="assets/dir-stage.jpg" x="74" y="130" width="492" height="656" preserveAspectRatio="xMidYMin slice"/>
+          <rect x="74" y="150" width="492" height="410" fill="#f0b565" style="mix-blend-mode:multiply"/>
+          <rect x="74" y="150" width="492" height="410" fill="url(#peak-fade)"/>
+        </g>
+        <g class="hero__lines" stroke="#f0b565" stroke-linejoin="miter" stroke-miterlimit="10">
+          <polyline class="draw" pathLength="1" points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+          <polyline class="draw" pathLength="1" points="8,560 320,40 632,560" stroke-width="10"/>
+          <polyline class="draw" pathLength="1" points="32,560 320,80 608,560" stroke-width="1.5"/>
+          <polyline class="dash" points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+          <polyline class="draw" pathLength="1" points="59,560 320,125 581,560" stroke-width="1.5"/>
+          <polyline class="draw" pathLength="1" points="74,560 320,150 566,560" stroke-width="4"/>
+        </g>
+      </svg>
+    </div>
+    <ul class="band band--platforms caps" data-hero aria-label="Platforms">
+      <li>Spotify</li><li class="band__sep" aria-hidden="true"></li><li>Apple Music</li><li class="band__sep" aria-hidden="true"></li><li>YouTube</li><li class="band__sep" aria-hidden="true"></li><li>TikTok</li><li class="band__sep" aria-hidden="true"></li><li>Deezer</li><li class="band__sep" aria-hidden="true"></li><li>TIDAL</li><li class="band__sep" aria-hidden="true"></li><li>Amazon Music</li><li class="band__sep" aria-hidden="true"></li><li>SoundCloud</li><li class="band__sep" aria-hidden="true"></li><li>+ More</li>
+    </ul>
+  </section>
+
+  <!-- Why AVEA exists, and the name -->
+  <section class="section name" id="story">
+    <div class="wrap split">
+      <div>
+        <p class="label" data-reveal>Why AVEA exists</p>
+        <p class="name__word" data-reveal>avea</p>
+        <dl class="name__def" data-reveal>
+          <div><dt class="caps">Language</dt><dd>Gagana Samoa</dd></div>
+          <div><dt class="caps">Meaning</dt><dd>To be carried. And in <i>avea ma</i>, to become.</dd></div>
+        </dl>
+      </div>
+      <div class="name__body">
+        <h2 class="h2" data-reveal>We champion the next wave of Pacific talent.</h2>
+        <p class="name__story" data-words>Pacific artists have been reaching audiences around the world for years. We want the support behind the music to catch up. AVEA brings together the tools, people and know-how to help artists make their next move while staying connected to where they come from.</p>
+        <ul class="name__tags caps" data-reveal>
+          <li>Our Sound</li><li>Our Stories</li><li>Our Future</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <section class="statement" id="statement">
+    <div class="duo statement__bg"><img src="assets/backstage.jpg" alt="" loading="lazy" data-parallax></div>
+    <svg class="statement__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <figure class="wrap statement__inner">
+      <p class="label" data-reveal>What we stand for</p>
+      <blockquote class="h2" data-reveal>Your music and your story should stay yours. We're here to help you do more with both.</blockquote>
+      <figcaption class="caps" data-reveal>AVEA &ndash; Where Artists Become</figcaption>
+    </figure>
+  </section>
+
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="wrap">
+      <header class="head">
+        <p class="label" data-reveal>What we do</p>
+        <h2 class="h2" data-reveal>Everything you need to take your music to the world.</h2>
+        <p class="lead" data-reveal>Making music is one part of the job. Getting it released, heard and paid for takes a lot of work too. That's where we come in.</p>
+      </header>
+      <ul class="svc">
+        <li class="svc__row" data-reveal>
+          <div class="svc__title"><h3 class="h3">Distribution</h3><p class="svc__tag">Your music, everywhere it matters</p></div>
+          <p>We help get your music onto major streaming platforms, with the release details and delivery taken care of.</p>
+          <div class="duo svc__img"><img src="assets/svc-distribution.jpg" alt="" loading="lazy"></div>
+        </li>
+        <li class="svc__row" data-reveal>
+          <div class="svc__title"><h3 class="h3">YouTube Services</h3><p class="svc__tag">Grow your channel. Make more of your content.</p></div>
+          <p>We help you get more from your YouTube content, from improving videos and reaching new audiences to collecting eligible revenue when your work is used elsewhere.</p>
+          <div class="duo svc__img"><img src="assets/svc-youtube.jpg" alt="" loading="lazy"></div>
+        </li>
+        <li class="svc__row" data-reveal>
+          <div class="svc__title"><h3 class="h3">Release Strategy</h3><p class="svc__tag">Launch with impact, not luck</p></div>
+          <p>Good releases need a plan. We'll work with you on timing, content and the steps that make sense for your music.</p>
+          <div class="duo svc__img"><img src="assets/svc-strategy.jpg" alt="" loading="lazy"></div>
+        </li>
+        <li class="svc__row" data-reveal>
+          <div class="svc__title"><h3 class="h3">Rights &amp; Royalties</h3><p class="svc__tag">Get paid what you're owed</p></div>
+          <p>Knowing what you own and what you've earned matters. We help you make sense of your rights and royalty reporting, with additional services agreed where available.</p>
+          <div class="duo svc__img"><img src="assets/svc-rights.jpg" alt="" loading="lazy"></div>
+        </li>
+        <li class="svc__row" data-reveal>
+          <div class="svc__title"><h3 class="h3">Artist Growth</h3><p class="svc__tag">A career, not just a release</p></div>
+          <p>We look beyond the next single. It's about finding your audience, building good relationships and making progress that lasts.</p>
+          <div class="duo svc__img"><img src="assets/artist-growth.jpg" alt="" loading="lazy"></div>
+        </li>
+      </ul>
+      <div class="actions services__more" data-reveal><a class="link caps" href="services.html">See all services</a></div>
+    </div>
+  </section>
+
+  <!-- The deal -->
+  <section class="section deal" id="deal">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <p class="label" data-reveal>The deal</p>
+        <h2 class="h2" data-reveal>The deal, in plain words.</h2>
+        <p class="lead" data-reveal>Before you send us anything, here is how working with AVEA goes.</p>
+      </header>
+      <ul class="deal__list">
+        <li data-reveal>
+          <h3 class="h3">There's no fee to apply.</h3>
+          <p>Our standard services use a revenue-share model, and we'll explain the relevant fees and splits before you agree to anything.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Under our standard distribution arrangement, you keep ownership of your masters.</h3>
+          <p>We'll explain the rights we need to work with your music before you sign.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">Nothing is signed until you understand it.</h3>
+          <p>We'll talk you through the terms and splits first. Bring your family, your manager or your lawyer.</p>
+        </li>
+        <li data-reveal>
+          <h3 class="h3">We won't promise streams, playlists or fame.</h3>
+          <p>Nobody honestly can. What we offer is proper work, straight answers and clear reporting.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section how" id="how">
+    <div class="wrap">
+      <header class="head how__head">
+        <p class="label" data-reveal>How it works</p>
+        <h2 class="h2" data-reveal>Your journey, step by step.</h2>
+        <p class="lead" data-reveal>Getting started should be straightforward. Here's what working with AVEA looks like.</p>
+      </header>
+      <ol class="how__steps how__steps--six">
+        <li data-reveal>
+          <span class="how__num">01</span>
+          <h3 class="h3">Apply</h3>
+          <p>Tell us a bit about yourself and what you're working on.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">02</span>
+          <h3 class="h3">Review</h3>
+          <p>We'll listen to your music and talk about what you need.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">03</span>
+          <h3 class="h3">Onboard</h3>
+          <p>If we're a good fit, we'll get the details sorted together.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">04</span>
+          <h3 class="h3">Release</h3>
+          <p>We'll prepare and deliver your release.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">05</span>
+          <h3 class="h3">Promote</h3>
+          <p>We'll work through a plan to help people find it.</p>
+        </li>
+        <li data-reveal>
+          <span class="how__num">06</span>
+          <h3 class="h3">Grow</h3>
+          <p>We'll look at the results and figure out what comes next.</p>
+        </li>
+      </ol>
+      <div class="actions how__cta" data-reveal><a class="btn caps" href="join.html">Start at step 01</a></div>
+    </div>
+  </section>
+
+  <!-- People -->
+  <section class="section people" id="people">
+    <div class="wrap split">
+      <header class="head">
+        <p class="label" data-reveal>The people</p>
+        <h2 class="h2" data-reveal>Know who you're talking to.</h2>
+        <p class="lead" data-reveal>AVEA is Pacific-owned and based in Wellington. When you get in touch, you'll know who you're dealing with.</p>
+        <blockquote class="people__quote" data-reveal>&ldquo;A line from the founders, in their own words, about why they started AVEA.&rdquo;</blockquote>
+      </header>
+      <div class="people__grid">
+        <figure class="person" data-reveal>
+          <div class="person__photo"><svg viewBox="0 0 640 560"><use href="#peak-lines"/></svg><span class="caps">Founder photo</span></div>
+          <figcaption><strong class="h3">Founder name</strong><span>Role · Village or home town</span></figcaption>
+        </figure>
+        <figure class="person" data-reveal>
+          <div class="person__photo"><svg viewBox="0 0 640 560"><use href="#peak-lines"/></svg><span class="caps">Founder photo</span></div>
+          <figcaption><strong class="h3">Founder name</strong><span>Role · Village or home town</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="section faq" id="faq">
+    <div class="wrap split split--top">
+      <header class="head head--sticky">
+        <p class="label" data-reveal>Questions</p>
+        <h2 class="h2" data-reveal>Before you ask&nbsp;&ndash; the honest answers.</h2>
+        <p class="lead" data-reveal>Here are a few things you might want to know before getting in touch.</p>
+        <a class="link caps" href="mailto:hello@avea.co.nz" data-reveal>Still curious? Talk to us</a>
+      </header>
+      <div class="faq__list">
+        <details data-reveal open>
+          <summary class="h3">Do I keep my rights and my masters?</summary>
+          <p>Under our standard distribution arrangement, you keep ownership of your masters. We'll explain the rights we need to work with your music before you sign.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">What does it cost to join AVEA?</summary>
+          <p>There's no fee to apply. Our standard services use a revenue-share model, and we'll explain the relevant fees and splits before you agree to anything.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">Who can apply?</summary>
+          <p>We work with artists from across the Pacific and its communities around the world. Whether you're just getting started or have an established catalogue, we'd like to hear what you're doing.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">How long does the process take?</summary>
+          <p>We'll review your application and get back to you. Timing depends on the number of applications and what you need help with.</p>
+        </details>
+        <details data-reveal>
+          <summary class="h3">Do I have to leave my current distributor?</summary>
+          <p>Not necessarily. We can talk through your current agreement and what a move might involve before any changes are made.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section class="join" id="join">
+    <svg class="join__peak" viewBox="0 0 640 560" aria-hidden="true"><use href="#peak-lines"/></svg>
+    <div class="wrap join__inner">
+      <p class="label" data-reveal>Ready to take the next step?</p>
+      <h2 class="h2" data-reveal>Ready to become?</h2>
+      <p class="lead" data-reveal>Tell us what you're working on and where you'd like to take it. We'd love to hear from you.</p>
+      <a class="btn caps" href="join.html" data-reveal>Apply to join AVEA</a>
+      <p class="join__founding" data-reveal><strong class="caps">Founding artists</strong><span>AVEA is new. We're taking on our first artists now, and they get our full attention.</span></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img class="foot__logo" src="assets/logo-lockup.png" alt="AVEA, Where Artists Become">
+      <div class="foot__cols">
+        <div>
+          <h4 class="caps">Talk to us</h4>
+          <a href="mailto:hello@avea.co.nz">hello@avea.co.nz</a>
+          <span>Wellington, Aotearoa New Zealand</span>
+        </div>
+        <div>
+          <h4 class="caps">AVEA</h4>
+          <a href="#story">Our story</a>
+          <a href="services.html">Services</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html">Apply to join</a>
+        </div>
+        <div>
+          <h4 class="caps">Services</h4>
+          <a href="services.html#distribution">Distribution</a>
+          <a href="youtube.html">YouTube Services</a>
+          <a href="services.html#release-strategy">Release Strategy</a>
+          <a href="services.html#rights">Rights &amp; Royalties</a>
+          <a href="services.html#growth">Artist Growth</a>
+        </div>
+        <div>
+          <h4 class="caps">Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; 2026 AVEA. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
