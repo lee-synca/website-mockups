@@ -87,6 +87,7 @@
     const quarter = sample.rows.reduce((s, r) => s + r.revenue, 0);
 
     const todo = [];
+    (window.CC.pulseExtras || []).forEach(f => todo.push(...f()));
     newApps.forEach(a => todo.push({ dot: 'gold', text: `Listen to <b>${esc(a.artist)}</b>`, meta: `Applied ${ago(a.applied)}`, href: '#/applications', app: a.id }));
     state.apps.filter(a => a.stage === 'call').forEach(a => todo.push({ dot: 'ok', text: `Call with <b>${esc(a.artist)}</b>`, meta: a.call || 'Booked', href: '#/applications', app: a.id }));
     state.apps.filter(a => a.stage === 'offer').forEach(a => todo.push({ dot: '', text: `Follow up the offer to <b>${esc(a.artist)}</b>`, meta: 'Sent 5 days ago', href: '#/applications', app: a.id }));
@@ -501,6 +502,11 @@
   /* ---------- Boot ---------- */
   $('[data-date]').textContent = TODAY.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   $('[data-menu]').addEventListener('click', () => $('[data-side]').classList.toggle('open'));
+
+  /* Shared with admin.js, which adds the website, agreements, funding and wording-check sections */
+  window.CC = Object.assign(window.CC || {}, { state, routes, view, $, $$, esc, toast, fmtDate, daysFrom, addDays, iso, money, int, k, ago, TODAY, ASSETS, timelineFor, openApp, closeDrawer, closeModal, openDrawer, updateCounts, route });
+  document.addEventListener('DOMContentLoaded', boot);
+  function boot() {
   route();
 
   /* Deep links for walkthroughs: ?open=a2 opens an application, ?artist shows the
@@ -509,4 +515,5 @@
   if (q.get('open')) setTimeout(() => openApp(q.get('open')), 50);
   if (q.has('artist')) { const id = location.hash.split('/')[2]; const r = state.releases.find(x => x.id === id); if (r) openArtistView(r); }
   if (q.has('sample') && location.hash.includes('statements')) { $('[data-sample]').click(); if (q.get('sample') === 'statement') $('[data-make]').click(); }
+  }
 })();
