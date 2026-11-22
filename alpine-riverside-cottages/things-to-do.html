@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Things to do in Porepunkah and Bright — Alpine Riverside Cottages</title>
+<meta name="description" content="Swim in the Ovens River, ride the Murray to Mountains Rail Trail, walk to two wineries and play in the snow on Mount Buffalo, all from Alpine Riverside Cottages in Porepunkah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=4">
+<style>
+/* ---------- this page only ---------- */
+.hero{height:clamp(460px,64svh,640px)}
+.hero > img{object-position:50% 60%}
+.hero-text{bottom:clamp(48px,7vw,84px)}
+
+.door{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px)}
+.door article{background:var(--white);border-radius:22px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column}
+.door .dist{font:600 .72rem/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.door h3{font-size:1.9rem;font-weight:400;margin-top:12px}
+.door p{margin-top:10px;color:var(--soft);font-size:1rem}
+
+.season-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.season-row + .season-row{margin-top:clamp(56px,8vw,110px)}
+.season-row.flip .pic{order:2}
+.season-row img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:22px}
+.season-row h3{font-size:clamp(2.4rem,4.6vw,4rem);margin-top:12px}
+.season-row h3 i{color:var(--blue)}
+.season-row p.body{margin-top:16px;font-size:1.1rem;max-width:32em}
+.season-row ul{list-style:none;padding:0;margin-top:22px}
+.season-row li{padding:13px 0;border-top:1px solid var(--line)}
+.season-row li:last-child{border-bottom:1px solid var(--line)}
+.season-row li b{font-weight:600}
+.season-row li span{color:var(--soft)}
+
+.more-grid{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:start}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pics img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:22px}
+.pics img:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.acts{list-style:none;padding:0;columns:2;column-gap:32px}
+.acts li{break-inside:avoid;padding:12px 0;border-top:1px solid #c9d8dc}
+.acts li small{display:block;color:var(--soft);font-size:.92rem}
+.ask{margin-top:24px;color:var(--soft)}
+
+.groups{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(28px,4vw,56px) clamp(24px,4.5vw,60px);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.groups h2{font-size:clamp(2rem,3.8vw,3.2rem);margin-top:10px}
+.groups p{color:#b9c8cd;margin-top:10px;max-width:48ch}
+.groups .caps{color:#9fc4d6}
+
+@media (max-width:1040px){.door{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){
+  .season-row,.more-grid,.groups{grid-template-columns:1fr}
+  .season-row.flip .pic{order:0}
+  .groups .btn{justify-self:start}
+}
+@media (max-width:520px){.door{grid-template-columns:1fr}.acts{columns:1}}
+</style>
+</head>
+<body>
+
+<header class="frame hero" id="top">
+  <!-- Concept only: AI mock-up, same image as the homepage's summer panel. Replace after the shoot. -->
+  <img src="images/season-summer-mockup.jpg" alt="Paddling on the Ovens River in summer">
+  <a class="logo-tab" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+  <nav class="nav" aria-label="Main">
+    <div class="links"><a href="index.html#stay">Cottages</a><a href="things-to-do.html" aria-current="page">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="faq.html">Questions</a></div>
+    <div><a class="contact" href="contact.html">Contact</a><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="pill" href="index.html#dates">Check dates</a><details class="menu"><summary><span class="o">Menu</span><span class="c">Close</span></summary><div class="menu-panel"><a href="index.html">Home</a><a href="index.html#stay">Cottages</a><a href="things-to-do.html" aria-current="page">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="group-stays.html">Group stays</a><a href="faq.html">Questions</a><a href="contact.html">Contact</a><div class="small"><a class="btn btn-light" href="index.html#dates">Check dates</a><a href="tel:+61490217218">0490 217 218</a></div></div></details></div>
+  </nav>
+  <div class="hero-text">
+    <p class="caps">Porepunkah · Bright · Mount Buffalo</p>
+    <h1>Things <i>to do.</i></h1>
+  </div>
+</header>
+
+<main>
+  <section class="section statement">
+    <div class="wrap">
+      <p class="caps blue">Or nothing at all</p>
+      <p class="say">You could fill a week without starting the car. The river, a rail trail and two wineries are <i>all within a short walk.</i></p>
+    </div>
+  </section>
+
+  <section class="section pool" id="door">
+    <div class="wrap">
+      <div class="head"><h2>From the front door</h2><p style="color:var(--soft);max-width:34ch">Everything here is on the property or a short walk from it.</p></div>
+      <div class="door">
+        <article><span class="dist">On the property</span><h3>The river</h3><p>200 metres of private bank on the Ovens. Swim, paddle, drift in a tube or just sit beside it.</p></article>
+        <article><span class="dist">Across the road</span><h3>The Rail Trail</h3><p>The Murray to Mountains Rail Trail links Bright, Beechworth and Wangaratta. Bring your bikes; there's storage here.</p></article>
+        <article><span class="dist">A short stroll</span><h3>Two wineries</h3><p>Feathertop Winery and Ringer Reef Winery are both close enough to walk to, and to walk home from.</p></article>
+        <article><span class="dist">On the property</span><h3>The wildlife</h3><p>King parrots at the window, platypus in the river and wallabies on the lawn at dawn. <a class="link" href="index.html#meet">Who you might meet</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="seasons">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:clamp(40px,6vw,72px)"><h2>Through the year</h2><p style="color:var(--soft);max-width:34ch">The valley changes completely from one season to the next.</p></div>
+
+      <div class="season-row">
+        <div class="pic"><img src="images/DSC1932950.jpg" alt="Kayaking on the river in summer" loading="lazy"></div>
+        <div>
+          <p class="caps blue">December to February</p>
+          <h3>Summer <i>on the water</i></h3>
+          <p class="body">A cool, leafy place to be when the rest of the state is hot.</p>
+          <ul>
+            <li><b>Swim.</b> <span>Deep enough for adults, shallow at the edge for children with a parent beside them.</span></li>
+            <li><b>Drift.</b> <span>Bring a tube or a kayak and launch from the lawn.</span></li>
+            <li><b>Ride early.</b> <span>The Rail Trail is at its best before the heat.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="season-row flip">
+        <div class="pic"><img src="images/Family-Picnic_Autumn950.jpg" alt="A family picnic among autumn leaves" loading="lazy"></div>
+        <div>
+          <p class="caps blue">March to May</p>
+          <h3>Autumn <i>colour</i></h3>
+          <p class="body">The valley is known for it, and the trees along our own bank turn too.</p>
+          <ul>
+            <li><b>Walk Bright's avenues.</b> <span>8 km away, and at their best in late April.</span></li>
+            <li><b>Visit the cellar doors.</b> <span>Vintage is in, and two are a stroll from here.</span></li>
+            <li><b>Picnic on the lawn.</b> <span>The barbecues are free to use.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="season-row">
+        <div class="pic"><img src="images/Snowplay_Family950.jpg" alt="Children playing in the snow" loading="lazy"></div>
+        <div>
+          <p class="caps blue">June to August</p>
+          <h3>Winter <i>snow</i></h3>
+          <p class="body">A quiet, affordable base for the mountains, with a warm cottage to come back to.</p>
+          <ul>
+            <li><b>Mount Buffalo.</b> <span>About 40 minutes away for tobogganing, snow play and building a snowman.</span></li>
+            <li><b>Dry your gear.</b> <span>There's a ski drying room on site.</span></li>
+            <li><b>Stay in.</b> <span>Every cottage is heated, with electric blankets on the beds.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="season-row flip">
+        <div class="pic"><img src="images/season-spring-mockup.jpg" alt="The gardens in spring" loading="lazy"></div>
+        <div>
+          <p class="caps blue">September to November</p>
+          <h3>Spring <i>gardens</i></h3>
+          <p class="body">Bulbs, azaleas, rhododendrons and roses come out across the grounds.</p>
+          <ul>
+            <li><b>The Spring Festival.</b> <span>Bright opens its private gardens to visitors.</span></li>
+            <li><b>Bushwalking.</b> <span>Mild days and wildflowers on the lower tracks.</span></li>
+            <li><b>Birdwatching.</b> <span>The dawn chorus is loudest now.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pool">
+    <div class="wrap">
+      <div class="head"><h2>Further afield</h2><p style="color:var(--soft);max-width:34ch">For days when you do want to start the car.</p></div>
+      <div class="more-grid">
+        <div class="pics">
+          <img src="images/2JE6943950.jpg" alt="A group of cyclists riding with the mountains behind them" loading="lazy">
+          <img src="images/Horse-Riding950.jpg" alt="Horse riders on a ridge" loading="lazy">
+          <img src="images/Outddoors-Cover-walk950.jpg" alt="A couple walking a dog on a bush track" loading="lazy">
+        </div>
+        <div>
+          <ul class="acts">
+            <li>Scenic drives</li>
+            <li>Bushwalking</li>
+            <li>Horse riding<small>Bogong Horseback Adventures</small></li>
+            <li>Paragliding and hang gliding</li>
+            <li>Fishing</li>
+            <li>Canoeing</li>
+            <li>Golf</li>
+            <li>Tennis</li>
+            <li>Winery tours<small>Shauns Winery Tours</small></li>
+            <li>Four-wheel-drive tours<small>North East Off Road Tours</small></li>
+            <li>Scenic flights</li>
+            <li>Local produce</li>
+          </ul>
+          <p class="ask">Ask us when you arrive. We know who's running what this season.</p>
+          <p style="margin-top:18px"><a class="link" href="local-guide.html">Read the local guide</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="groups">
+        <div><p class="caps">Walking and cycling groups</p><h2>Coming as <i>a group?</i></h2><p>Take a few cottages side by side, store the bikes on site and meet at the covered barbecue in the evening.</p></div>
+        <a class="btn btn-light" href="group-stays.html">Plan a group stay</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="frame back">
+    <img src="images/banner-back-mockup.jpg" alt="" loading="lazy">
+    <div>
+      <p class="caps">Alpine Riverside Cottages</p>
+      <h2>Pick a season, <i>then a cottage.</i></h2>
+      <p class="sub">Choose your dates to see what's free.</p>
+      <div class="row"><a class="btn btn-light" href="index.html#dates">Check dates</a><a class="tel" href="tel:+61490217218">0490 217 218</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="plaque" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+    <div><b>Stay</b><ul><li><a href="riverfront-studios.html">Riverfront Studios</a></li><li><a href="family-riverview-cottages.html">Family Riverview Cottages</a></li><li><a href="family-lakeview-cottages.html">Family Lakeview Cottages</a></li><li><a href="garden-view-cottages.html">Garden View Cottages</a></li><li><a href="mt-buffalo-motel-rooms.html">Mt Buffalo Motel Rooms</a></li></ul></div>
+    <div><b>Explore</b><ul><li><a href="things-to-do.html" aria-current="page">Things to do</a></li><li><a href="local-guide.html">Local guide</a></li><li><a href="dogs-welcome.html">Dogs welcome</a></li><li><a href="group-stays.html">Group stays</a></li><li><a href="faq.html">Questions</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><b>Find us</b>6706 Great Alpine Road<br>Porepunkah VIC 3740<br><a href="tel:+61490217218">0490 217 218</a><br><a href="mailto:stay@alpineparkcottages.com.au">stay@alpineparkcottages.com.au</a></div>
+    <div class="smallprint"><span>Free Wi-Fi in every cottage</span><span>The whole property is non-smoking</span><a href="privacy-policy.html">Privacy policy</a></div>
+    <p class="concept">Design concept for discussion. Some photos are mock-ups and the rest are from the current website, standing in until the new photoshoot.</p>
+  </div>
+</footer>
+</body>
+</html>

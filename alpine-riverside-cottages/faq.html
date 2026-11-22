@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions guests ask — Alpine Riverside Cottages, Porepunkah</title>
+<meta name="description" content="Answers about booking, check-in, what's in the cottages, dogs, the river and getting around at Alpine Riverside Cottages, Porepunkah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=4">
+<style>
+/* ---------- this page only ---------- */
+.hero{height:clamp(380px,52svh,520px)}
+.hero > img{object-position:50% 60%}
+.hero-text{bottom:clamp(40px,6vw,72px)}
+
+.faq .wrap{display:grid;grid-template-columns:260px 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.jump{position:sticky;top:28px}
+.jump ul{list-style:none;padding:0;margin-top:16px}
+.jump li a{display:block;padding:10px 0;border-top:1px solid var(--line);text-decoration:none;font-weight:500}
+.jump li:last-child a{border-bottom:1px solid var(--line)}
+.jump li a:hover{color:var(--blue)}
+
+.group{scroll-margin-top:24px}
+.group + .group{margin-top:clamp(48px,6vw,80px)}
+.group h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:18px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:400 clamp(1.25rem,2vw,1.55rem)/1.25 var(--serif)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:36px;height:36px;border-radius:50%;background:var(--pool) linear-gradient(var(--ink),var(--ink)) center/14px 1.5px no-repeat;transition:transform .25s}
+details:not([open]) summary::after{background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink));background-size:14px 1.5px,1.5px 14px;background-position:center,center;background-repeat:no-repeat}
+summary:hover{color:var(--blue)}
+.a{padding:0 56px 26px 0;max-width:44em}
+.a p + p{margin-top:12px}
+.a a{font-weight:600;text-underline-offset:4px}
+.need{display:block;border:1.5px dashed #9db3ba;border-radius:16px;padding:14px 18px;color:var(--soft);background:rgba(228,237,239,.35)}
+.need b{display:block;color:var(--ink);font-weight:600}
+
+.more{background:var(--pool);border-radius:var(--r);padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.more h2{font-size:clamp(2rem,3.8vw,3.2rem)}
+.more p{margin-top:10px;color:var(--soft)}
+.more .row{display:flex;gap:16px 26px;align-items:center;flex-wrap:wrap}
+.more .tel{font:300 2rem/1 var(--serif);text-decoration:none}
+
+@media (max-width:900px){
+  .faq .wrap{grid-template-columns:1fr}
+  .jump{position:static}
+  .jump ul{display:flex;flex-wrap:wrap;gap:8px}
+  .jump li a,.jump li:last-child a{border:1.5px solid var(--line);border-radius:999px;padding:8px 16px}
+  .more{grid-template-columns:1fr}
+  .a{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){summary::after{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="frame hero" id="top">
+  <!-- Concept only: AI mock-up, same image as the homepage's closing section. Replace after the shoot. -->
+  <img src="images/banner-back-mockup.jpg" alt="The lawn and river bank at Alpine Riverside Cottages">
+  <a class="logo-tab" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+  <nav class="nav" aria-label="Main">
+    <div class="links"><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="faq.html" aria-current="page">Questions</a></div>
+    <div><a class="contact" href="contact.html">Contact</a><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="pill" href="index.html#dates">Check dates</a><details class="menu"><summary><span class="o">Menu</span><span class="c">Close</span></summary><div class="menu-panel"><a href="index.html">Home</a><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="group-stays.html">Group stays</a><a href="faq.html" aria-current="page">Questions</a><a href="contact.html">Contact</a><div class="small"><a class="btn btn-light" href="index.html#dates">Check dates</a><a href="tel:+61490217218">0490 217 218</a></div></div></details></div>
+  </nav>
+  <div class="hero-text">
+    <p class="caps">Before you book</p>
+    <h1>Questions <i>guests ask.</i></h1>
+  </div>
+</header>
+
+<main>
+  <section class="section faq">
+    <div class="wrap">
+      <nav class="jump" aria-label="Question groups">
+        <p class="caps blue">Jump to</p>
+        <ul>
+          <li><a href="#booking">Booking and paying</a></li>
+          <li><a href="#arriving">Arriving and leaving</a></li>
+          <li><a href="#cottages">In the cottages</a></li>
+          <li><a href="#dogs">Dogs</a></li>
+          <li><a href="#property">Around the property</a></li>
+          <li><a href="#area">The area</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="group" id="booking">
+          <h2>Booking and paying</h2>
+          <details open>
+            <summary>How do I book?</summary>
+            <div class="a"><p>Pick your dates with <a href="index.html#dates">Check dates</a> and you'll see what's free and the price. The booking comes straight to us. If you'd rather talk it through, ring <a href="tel:+61490217218">0490 217 218</a>.</p></div>
+          </details>
+          <details>
+            <summary>What does it cost?</summary>
+            <div class="a"><p>Rates change with the season and the cottage. Choose your dates and the price for each cottage shows before you commit to anything.</p></div>
+          </details>
+          <details>
+            <summary>Can I change or cancel my booking?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Your cancellation and change terms.</span></div>
+          </details>
+          <details>
+            <summary>Do I pay a deposit?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Deposit amount, when the balance is due and how guests can pay.</span></div>
+          </details>
+          <details>
+            <summary>Is there a minimum stay?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Minimum nights, including weekends, school holidays and long weekends.</span></div>
+          </details>
+        </div>
+
+        <div class="group" id="arriving">
+          <h2>Arriving and leaving</h2>
+          <details>
+            <summary>What time can I check in and out?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Check-in and check-out times.</span></div>
+          </details>
+          <details>
+            <summary>What if I'm arriving late?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>How late arrivals collect their key.</span></div>
+          </details>
+          <details>
+            <summary>Where are you?</summary>
+            <div class="a"><p>6706 Great Alpine Road, Porepunkah, on the main road between Myrtleford and Bright. Bright is 8 km further on. There's a map and driving times on the <a href="contact.html">contact page</a>.</p></div>
+          </details>
+          <details>
+            <summary>Is there parking?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Where guests park, and whether there's room for a trailer or bike rack.</span></div>
+          </details>
+        </div>
+
+        <div class="group" id="cottages">
+          <h2>In the cottages</h2>
+          <details>
+            <summary>Do I need to bring linen or towels?</summary>
+            <div class="a"><p>No. Linen and towels are supplied in every cottage.</p></div>
+          </details>
+          <details>
+            <summary>Can I cook?</summary>
+            <div class="a"><p>Yes. The cottages and studios have a full kitchen with an oven, stove top, microwave and full-size fridge. The two Mt Buffalo Motel Rooms have a kitchenette with a microwave, kettle, toaster and bar fridge. There are also free barbecues in the garden.</p></div>
+          </details>
+          <details>
+            <summary>How many people does each cottage sleep?</summary>
+            <div class="a"><p>Riverfront Studios and Mt Buffalo Motel Rooms sleep two. Garden View Cottages sleep three. The Family Riverview and Family Lakeview Cottages sleep six, in two bedrooms. <a href="index.html#stay">Compare the cottages</a>.</p></div>
+          </details>
+          <details>
+            <summary>Is there heating and cooling?</summary>
+            <div class="a"><p>Yes, every cottage has both, so it's comfortable in January and in July.</p></div>
+          </details>
+          <details>
+            <summary>Is there Wi-Fi?</summary>
+            <div class="a"><p>Yes, and it's free.</p></div>
+          </details>
+          <details>
+            <summary>Can I smoke?</summary>
+            <div class="a"><p>No. The whole property is non-smoking.</p></div>
+          </details>
+          <details>
+            <summary>Do you have a cot or high chair?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Whether cots and high chairs are available, and any charge.</span></div>
+          </details>
+        </div>
+
+        <div class="group" id="dogs">
+          <h2>Dogs</h2>
+          <details>
+            <summary>Can I bring my dog?</summary>
+            <div class="a"><p>Small dogs are welcome in two of our ten cottages. Conditions and a small charge apply, and because there are only two, ring us before you book. The <a href="dogs-welcome.html">dogs welcome page</a> has the rules.</p></div>
+          </details>
+        </div>
+
+        <div class="group" id="property">
+          <h2>Around the property</h2>
+          <details>
+            <summary>Can we swim in the river?</summary>
+            <div class="a"><p>Yes. In summer it's deep enough to swim or drift along in a tube, and shallow enough at the edge for small children to paddle with a parent beside them. It's a natural river with no lifeguard, so please watch children at all times.</p></div>
+          </details>
+          <details>
+            <summary>What is there for children?</summary>
+            <div class="a"><p>Swings, a playground and plenty of lawn to run on, plus the river in summer.</p></div>
+          </details>
+          <details>
+            <summary>Is there a laundry?</summary>
+            <div class="a"><p>Yes, there are shared laundry facilities. The family cottages also have their own washing machine.</p></div>
+          </details>
+          <details>
+            <summary>Where can I keep bikes or dry ski gear?</summary>
+            <div class="a"><p>There's bicycle storage and a ski drying room on site.</p></div>
+          </details>
+          <details>
+            <summary>Can we have a campfire?</summary>
+            <div class="a"><span class="need"><b>Answer needed from Steve and Narelle</b>Whether fires are allowed, where, and what happens on fire-ban days.</span></div>
+          </details>
+        </div>
+
+        <div class="group" id="area">
+          <h2>The area</h2>
+          <details>
+            <summary>How far is Bright?</summary>
+            <div class="a"><p>8 km, about ten minutes by car, or a ride along the Rail Trail.</p></div>
+          </details>
+          <details>
+            <summary>Can I walk to anything?</summary>
+            <div class="a"><p>Yes. Feathertop Winery and Ringer Reef Winery are a short stroll away, and the Murray to Mountains Rail Trail is across the road.</p></div>
+          </details>
+          <details>
+            <summary>How far is the snow?</summary>
+            <div class="a"><p>Mount Buffalo is about 40 minutes away for snow play and tobogganing in winter.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom:clamp(72px,9vw,130px)">
+    <div class="wrap">
+      <div class="more">
+        <div><h2>Still not sure about <i>something?</i></h2><p>Ask us. It's quicker than guessing.</p></div>
+        <div class="row"><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="btn" href="contact.html">Send a message</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="plaque" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+    <div><b>Stay</b><ul><li><a href="riverfront-studios.html">Riverfront Studios</a></li><li><a href="family-riverview-cottages.html">Family Riverview Cottages</a></li><li><a href="family-lakeview-cottages.html">Family Lakeview Cottages</a></li><li><a href="garden-view-cottages.html">Garden View Cottages</a></li><li><a href="mt-buffalo-motel-rooms.html">Mt Buffalo Motel Rooms</a></li></ul></div>
+    <div><b>Explore</b><ul><li><a href="things-to-do.html">Things to do</a></li><li><a href="local-guide.html">Local guide</a></li><li><a href="dogs-welcome.html">Dogs welcome</a></li><li><a href="group-stays.html">Group stays</a></li><li><a href="faq.html" aria-current="page">Questions</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><b>Find us</b>6706 Great Alpine Road<br>Porepunkah VIC 3740<br><a href="tel:+61490217218">0490 217 218</a><br><a href="mailto:stay@alpineparkcottages.com.au">stay@alpineparkcottages.com.au</a></div>
+    <div class="smallprint"><span>Free Wi-Fi in every cottage</span><span>The whole property is non-smoking</span><a href="privacy-policy.html">Privacy policy</a></div>
+    <p class="concept">Design concept for discussion. Answers marked "needed" are waiting on Steve and Narelle.</p>
+  </div>
+</footer>
+</body>
+</html>

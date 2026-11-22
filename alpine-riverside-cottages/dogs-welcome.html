@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dogs welcome — pet-friendly cottages on the Ovens River | Alpine Riverside Cottages</title>
+<meta name="description" content="Two of our ten riverfront cottages in Porepunkah, near Bright, welcome small dogs. Read the rules and check dates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=4">
+<style>
+/* ---------- this page only ---------- */
+.hero{height:clamp(560px,80svh,760px)}
+.hero > img{object-position:78% 50%}
+@media (min-width:821px){
+  .hero > img{object-position:50% 60%}
+  .hero-text{text-align:left;left:clamp(28px,5vw,80px);right:50%}
+  .hero-text h1{text-wrap:wrap}
+}
+.crumb{display:inline-block;margin-bottom:26px;font-weight:600;text-decoration:none;color:var(--soft)}
+.crumb:hover{color:var(--blue)}
+.tbc{display:inline-block;font:400 .9rem/1.4 var(--sans);color:var(--soft);border:1px dashed #9db3ba;border-radius:999px;padding:2px 12px}
+
+.about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:start}
+.about h2{font-size:clamp(2.2rem,4.4vw,3.7rem)}
+.about h2 i{color:var(--blue)}
+.about p.body{margin-top:22px;font-size:1.1rem;max-width:34em}
+.about figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 70%;border-radius:22px}
+.facts{margin-top:34px;background:var(--pool);border-radius:22px;padding:clamp(24px,3vw,36px)}
+.facts div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:14px 0;border-top:1px solid #c9d8dc}
+.facts div:first-child{border-top:0;padding-top:0}
+.facts dt{color:var(--soft)}
+.facts dd{font-weight:600;text-align:right}
+
+.rules-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+.rules{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);list-style:none;padding:0}
+.rules li{background:var(--white);border-radius:22px;padding:clamp(22px,2.6vw,32px)}
+.rules h3{font-size:1.7rem;font-weight:400}
+.rules p{margin-top:10px;color:var(--soft);font-size:1rem}
+.rules li.why{background:var(--ink);color:#fff}
+.rules li.why p{color:#b9c8cd}
+
+.out .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.out ul{list-style:none;padding:0;margin-top:28px}
+.out li{padding:16px 0;border-top:1px solid var(--line)}
+.out li:last-child{border-bottom:1px solid var(--line)}
+.out li b{font-weight:600;display:block}
+.out li span{color:var(--soft)}
+.pack{background:var(--pool);border-radius:22px;padding:clamp(24px,3vw,40px)}
+.pack h3{font-size:2rem}
+.pack ul{margin-top:14px}
+.pack li{border-color:#c9d8dc}
+
+@media (max-width:1040px){.rules{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){
+  .about .wrap,.out .wrap{grid-template-columns:1fr}
+  .about figure img{aspect-ratio:4/3}
+}
+@media (max-width:560px){.rules{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="frame hero" id="top">
+  <!-- Their own photo, re-lit and tidied with AI. Faces and details may differ slightly from the original; replace after the shoot. -->
+  <img src="images/hero-dogs-wide2.jpg" alt="A couple walking a small dog on a lead along a bush track in evening light">
+  <a class="logo-tab" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+  <nav class="nav" aria-label="Main">
+    <div class="links"><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html" aria-current="page">Dogs welcome</a><a href="faq.html">Questions</a></div>
+    <div><a class="contact" href="contact.html">Contact</a><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="pill" href="#dates">Check dates</a><details class="menu"><summary><span class="o">Menu</span><span class="c">Close</span></summary><div class="menu-panel"><a href="index.html">Home</a><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html" aria-current="page">Dogs welcome</a><a href="group-stays.html">Group stays</a><a href="faq.html">Questions</a><a href="contact.html">Contact</a><div class="small"><a class="btn btn-light" href="#dates">Check dates</a><a href="tel:+61490217218">0490 217 218</a></div></div></details></div>
+  </nav>
+  <div class="hero-text">
+    <p class="caps">Two dog-friendly cottages · small dogs</p>
+    <h1>Bring <i>the dog.</i></h1>
+  </div>
+</header>
+
+<form class="book" id="dates" novalidate>
+  <label><span>Arrive</span><input type="date" id="arrive" required></label>
+  <label><span>Leave</span><input type="date" id="leave" required></label>
+  <label><span>Guests</span>
+    <select id="guests"><option value="1">1 adult</option><option value="2" selected>2 adults</option><option value="3">3 adults</option><option value="4">4 adults</option><option value="5">5 adults</option><option value="6">6 adults</option></select>
+  </label>
+  <button class="btn" type="submit">Check dates</button>
+</form>
+<p class="book-error" id="book-error" role="alert"></p>
+<p class="book-note">Only two cottages take dogs, so ring or email us before you book and we'll hold one for you.</p>
+
+<main>
+  <section class="section about">
+    <div class="wrap">
+      <div>
+        <a class="crumb" href="index.html#stay">← All cottages</a>
+        <h2>Small dogs are <i>welcome here.</i></h2>
+        <p class="body">Two of our ten cottages are kept for guests travelling with a small dog. There's lawn to stretch out on, the river to sniff along and the Rail Trail across the road for a proper walk.</p>
+        <p class="body">We ask a few things of dog owners, mostly so the wildlife and the other guests stay as relaxed as you are.</p>
+        <dl class="facts">
+          <div><dt>Dog-friendly cottages</dt><dd>2 of 10</dd></div>
+          <div><dt>Which ones</dt><dd><span class="tbc">Cottage names go here</span></dd></div>
+          <div><dt>Size</dt><dd>Small dogs</dd></div>
+          <div><dt>Charge</dt><dd><span class="tbc">Amount goes here</span></dd></div>
+          <div><dt>To book</dt><dd>Ring <a href="tel:+61490217218">0490 217 218</a></dd></div>
+        </dl>
+      </div>
+      <figure><img src="images/RIVERCABINSS-3-21920.jpg" alt="The lawn running down to the Ovens River, with guests sitting on the bank" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="section pool" id="rules">
+    <div class="wrap">
+      <div class="rules-head"><h2>The dog rules</h2><span class="tbc">Draft wording for Steve and Narelle to confirm</span></div>
+      <ul class="rules">
+        <li><h3>On a lead outside</h3><p>Please keep your dog on a lead anywhere in the grounds, including the lawns and the river bank.</p></li>
+        <li><h3>Never left alone</h3><p>Dogs can't be left in the cottage by themselves. If you're heading out, they come too.</p></li>
+        <li><h3>Off the beds</h3><p>Bring your dog's own bed or blanket, and keep them off the beds and sofas.</p></li>
+        <li><h3>Clean up</h3><p>Pick up after your dog everywhere on the property and use the bins.</p></li>
+        <li><h3>Keep it quiet</h3><p>Other guests come here for the peace. A dog that barks a lot may not enjoy it, and nor will they.</p></li>
+        <li class="why"><h3>Why the lead matters</h3><p>Wallabies, echidnas, possums and parrots live in these gardens. A lead keeps them safe, and keeps your dog out of trouble too.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section out">
+    <div class="wrap">
+      <div>
+        <p class="caps blue">Out and about</p>
+        <h2 style="margin-top:14px">Where to take them</h2>
+        <ul>
+          <li><b>The Rail Trail</b><span>Across the road. Flat, sealed and good for a long walk on a lead.</span></li>
+          <li><b>The river bank</b><span>200 metres of it, right here, on a lead.</span></li>
+          <li><b>Bright</b><span>8 km away, with riverside paths through town.</span></li>
+          <li><b>Not Mount Buffalo</b><span>Dogs aren't allowed in the national park, so plan that day without them.</span></li>
+        </ul>
+      </div>
+      <div class="pack">
+        <p class="caps blue">Packing list</p>
+        <h3 style="margin-top:12px">What to bring</h3>
+        <ul>
+          <li><span>Their bed or blanket</span></li>
+          <li><span>A lead</span></li>
+          <li><span>Food and water bowls</span></li>
+          <li><span>A towel for after the river</span></li>
+          <li><span>Bags for cleaning up</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="frame back">
+    <img src="images/banner-back-mockup.jpg" alt="" loading="lazy">
+    <div>
+      <p class="caps">Dogs welcome</p>
+      <h2>Only two cottages <i>take dogs.</i></h2>
+      <p class="sub">Ring us with your dates and we'll tell you whether one is free.</p>
+      <div class="row"><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="btn btn-light" href="#dates">Check dates</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="plaque" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+    <div><b>Stay</b><ul><li><a href="riverfront-studios.html">Riverfront Studios</a></li><li><a href="family-riverview-cottages.html">Family Riverview Cottages</a></li><li><a href="family-lakeview-cottages.html">Family Lakeview Cottages</a></li><li><a href="garden-view-cottages.html">Garden View Cottages</a></li><li><a href="mt-buffalo-motel-rooms.html">Mt Buffalo Motel Rooms</a></li></ul></div>
+    <div><b>Explore</b><ul><li><a href="things-to-do.html">Things to do</a></li><li><a href="local-guide.html">Local guide</a></li><li><a href="dogs-welcome.html" aria-current="page">Dogs welcome</a></li><li><a href="group-stays.html">Group stays</a></li><li><a href="faq.html">Questions</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><b>Find us</b>6706 Great Alpine Road<br>Porepunkah VIC 3740<br><a href="tel:+61490217218">0490 217 218</a><br><a href="mailto:stay@alpineparkcottages.com.au">stay@alpineparkcottages.com.au</a></div>
+    <div class="smallprint"><span>Free Wi-Fi in every cottage</span><span>The whole property is non-smoking</span><a href="privacy-policy.html">Privacy policy</a></div>
+    <p class="concept">Design concept for discussion. The dog rules are draft wording. The top photo is their own, re-lit with AI, and the others stand in until the new photoshoot.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn" href="#dates">Check dates</a></div>
+
+<script>
+(function(){
+  var iso=function(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  var arrive=document.getElementById('arrive'), leave=document.getElementById('leave'),
+      guests=document.getElementById('guests'), err=document.getElementById('book-error');
+
+  // default to the coming Friday, two nights
+  var today=new Date(), fri=new Date(today);
+  fri.setDate(today.getDate()+((5-today.getDay()+7)%7||7));
+  var sun=new Date(fri); sun.setDate(fri.getDate()+2);
+  arrive.min=iso(today); arrive.value=iso(fri); leave.value=iso(sun);
+  arrive.addEventListener('change',function(){
+    if(!leave.value||leave.value<=arrive.value){var d=new Date(arrive.value+'T00:00');d.setDate(d.getDate()+2);leave.value=iso(d)}
+    err.classList.remove('on');
+  });
+  leave.addEventListener('change',function(){err.classList.remove('on')});
+
+  document.getElementById('dates').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!arrive.value||!leave.value){err.textContent='Choose the day you arrive and the day you leave.';err.classList.add('on');return}
+    if(leave.value<=arrive.value){err.textContent='Choose a leave date after the day you arrive.';err.classList.add('on');return}
+    var url='https://book-directonline.com/properties/alpineparkcottdirect?locale=en'
+      +'&items[0][adults]='+guests.value+'&items[0][children]=0&items[0][infants]=0&currency=AUD'
+      +'&checkInDate='+arrive.value+'&checkOutDate='+leave.value+'&trackPage=yes';
+    window.open(url,'_blank','noopener');
+  });
+
+  // phone: keep "Check dates" in reach once the booking bar has scrolled away
+  var sticky=document.getElementById('sticky'), form=document.getElementById('dates'), tick=false;
+  function update(){tick=false;sticky.classList.toggle('on',form.getBoundingClientRect().bottom<0)}
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>

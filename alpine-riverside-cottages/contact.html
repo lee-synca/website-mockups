@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact and find us — Alpine Riverside Cottages, Porepunkah</title>
+<meta name="description" content="Ring, email or visit Alpine Riverside Cottages at 6706 Great Alpine Road, Porepunkah, 8 km from Bright in Victoria's High Country.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=4">
+<style>
+/* ---------- this page only ---------- */
+.hero{height:clamp(380px,52svh,520px)}
+.hero > img{object-position:50% 60%}
+.hero-text{bottom:clamp(40px,6vw,72px)}
+
+.reach .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.ways{list-style:none;padding:0;margin-top:8px}
+.ways li{padding:26px 0;border-top:1px solid var(--line)}
+.ways li:first-child{border-top:0;padding-top:0}
+.ways .big{display:block;margin-top:8px;font:300 clamp(1.8rem,3.4vw,2.8rem)/1.1 var(--serif);text-decoration:none;overflow-wrap:anywhere}
+.ways .big.email{font-size:clamp(1.15rem,2.3vw,1.9rem)}
+.ways a.big:hover{color:var(--blue)}
+.ways p{margin-top:8px;color:var(--soft)}
+.tbc{display:inline-block;font:400 .9rem/1.4 var(--sans);color:var(--soft);border:1px dashed #9db3ba;border-radius:999px;padding:2px 12px}
+
+.form{background:var(--pool);border-radius:22px;padding:clamp(24px,3.4vw,44px)}
+.form h2{font-size:clamp(2rem,3.4vw,2.8rem)}
+.form > p{margin-top:10px;color:var(--soft)}
+.field{margin-top:20px}
+.field label{display:block;font-weight:600;margin-bottom:6px}
+.field label small{font-weight:400;color:var(--soft)}
+.field input,.field textarea{width:100%;border:1.5px solid #c3d2d7;border-radius:14px;background:var(--white);color:var(--ink);font:400 1.05rem/1.4 var(--sans);padding:14px 16px}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.field .err{display:none;margin-top:6px;color:#a3341f;font-weight:600;font-size:.95rem}
+.field.bad input,.field.bad textarea{border-color:#a3341f}
+.field.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form .btn{margin-top:26px;width:100%}
+.sent{display:none;margin-top:22px;background:var(--white);border-radius:14px;padding:18px 20px}
+.sent b{display:block}
+.sent.on{display:block}
+
+.find .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,5vw,72px);align-items:start}
+.mapbox{border-radius:22px;overflow:hidden;background:#d5e0e3;aspect-ratio:4/3}
+.mapbox{position:relative}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapbox .fallback{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:24px;color:var(--soft)}
+.mapbox .fallback b{display:block;color:var(--ink);font:300 1.8rem/1.2 var(--serif);margin-bottom:10px}
+.find dl{margin-top:28px}
+.find dl div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid #c9d8dc}
+.find dt{font-weight:600}
+.find dd{color:var(--soft);text-align:right}
+.find .fine{margin-top:14px;font-size:.92rem;color:var(--soft)}
+
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.next a{display:block;text-decoration:none;background:var(--pool);border-radius:22px;padding:clamp(22px,2.6vw,32px);transition:background .2s}
+.next a:hover{background:#d7e4e8}
+.next h3{font-size:1.7rem;font-weight:400}
+.next p{margin-top:8px;color:var(--soft);font-size:1rem}
+
+@media (max-width:820px){
+  .reach .wrap,.find .wrap,.next{grid-template-columns:1fr}
+}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="frame hero" id="top">
+  <!-- Concept only: AI mock-up, same image as the homepage. Replace with the real photo after the shoot. -->
+  <img src="images/hero-golden-hour-mockup.jpg" alt="The Ovens River running past the lawn in golden evening light">
+  <a class="logo-tab" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+  <nav class="nav" aria-label="Main">
+    <div class="links"><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="faq.html">Questions</a></div>
+    <div><a class="contact" href="contact.html" aria-current="page">Contact</a><a class="tel" href="tel:+61490217218">0490 217 218</a><a class="pill" href="index.html#dates">Check dates</a><details class="menu"><summary><span class="o">Menu</span><span class="c">Close</span></summary><div class="menu-panel"><a href="index.html">Home</a><a href="index.html#stay">Cottages</a><a href="things-to-do.html">Things to do</a><a href="dogs-welcome.html">Dogs welcome</a><a href="group-stays.html">Group stays</a><a href="faq.html">Questions</a><a href="contact.html" aria-current="page">Contact</a><div class="small"><a class="btn btn-light" href="index.html#dates">Check dates</a><a href="tel:+61490217218">0490 217 218</a></div></div></details></div>
+  </nav>
+  <div class="hero-text">
+    <p class="caps">Contact and find us</p>
+    <h1>Get in <i>touch.</i></h1>
+  </div>
+</header>
+
+<main>
+  <section class="section reach">
+    <div class="wrap">
+      <div>
+        <ul class="ways">
+          <li>
+            <span class="caps blue">Ring</span>
+            <a class="big" href="tel:+61490217218">0490 217 218</a>
+            <p>The quickest way to reach us. You'll get Steve or Narelle. <span class="tbc">Phone hours go here</span></p>
+          </li>
+          <li>
+            <span class="caps blue">Email</span>
+            <a class="big email" href="mailto:stay@alpineparkcottages.com.au">stay@alpineparkcottages.com.au</a>
+            <p>Good for questions that can wait a day.</p>
+          </li>
+          <li>
+            <span class="caps blue">Visit</span>
+            <span class="big">6706 Great Alpine Road, Porepunkah VIC 3740</span>
+            <p><a class="link" href="https://www.google.com/maps/search/?api=1&query=6706+Great+Alpine+Road+Porepunkah+VIC+3740" target="_blank" rel="noopener">Open in Google Maps</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form" id="enquiry" novalidate>
+        <h2>Send us a message</h2>
+        <p>Tell us what you're after and we'll come back to you.</p>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required><p class="err">Enter your name.</p></div>
+        <div class="two">
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><p class="err">Enter an email address we can reply to.</p></div>
+          <div class="field"><label for="f-phone">Phone <small>(optional)</small></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="f-dates">Dates you're thinking of <small>(optional)</small></label><input id="f-dates" name="dates" placeholder="For example, 12 to 15 March"></div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea><p class="err">Write a short message.</p></div>
+        <button class="btn" type="submit">Send message</button>
+        <div class="sent" id="sent" role="status"><b>This form isn't connected yet.</b>On the live site, "Send message" delivers this to stay@alpineparkcottages.com.au and shows a confirmation here.</div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section pool find">
+    <div class="wrap">
+      <div class="mapbox">
+        <div class="fallback"><b>6706 Great Alpine Road, Porepunkah</b><a class="link" href="https://www.google.com/maps/search/?api=1&query=6706+Great+Alpine+Road+Porepunkah+VIC+3740" target="_blank" rel="noopener">Open in Google Maps</a></div>
+        <iframe title="Map showing Alpine Riverside Cottages at 6706 Great Alpine Road, Porepunkah" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=6706+Great+Alpine+Road+Porepunkah+VIC+3740&output=embed"></iframe>
+      </div>
+      <div>
+        <p class="caps blue">Getting here</p>
+        <h2 style="margin-top:14px">On the Great Alpine Road</h2>
+        <p class="lede">We're on the main road through Porepunkah, between Myrtleford and Bright, with the river behind us.</p>
+        <dl>
+          <div><dt>From Bright</dt><dd>8 km, about 10 minutes</dd></div>
+          <div><dt>From Wangaratta</dt><dd>about 1 hour</dd></div>
+          <div><dt>From Albury</dt><dd>about 1 hour 20 minutes</dd></div>
+          <div><dt>From Melbourne</dt><dd>about 3½ hours</dd></div>
+        </dl>
+        <p class="fine">Driving times are a guide. Check in is from <span class="tbc">time goes here</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap next">
+      <a href="index.html#dates"><h3>Ready to book?</h3><p>Pick your dates and see what's free.</p></a>
+      <a href="dogs-welcome.html"><h3>Bringing a dog?</h3><p>Two cottages welcome small dogs. Read the rules.</p></a>
+      <a href="index.html#stay"><h3>Not sure which cottage?</h3><p>Compare all ten, or ring and we'll help you choose.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="plaque" href="index.html"><img src="images/logo.jpg" alt="Alpine Riverside Cottages, home"></a>
+    <div><b>Stay</b><ul><li><a href="riverfront-studios.html">Riverfront Studios</a></li><li><a href="family-riverview-cottages.html">Family Riverview Cottages</a></li><li><a href="family-lakeview-cottages.html">Family Lakeview Cottages</a></li><li><a href="garden-view-cottages.html">Garden View Cottages</a></li><li><a href="mt-buffalo-motel-rooms.html">Mt Buffalo Motel Rooms</a></li></ul></div>
+    <div><b>Explore</b><ul><li><a href="things-to-do.html">Things to do</a></li><li><a href="local-guide.html">Local guide</a></li><li><a href="dogs-welcome.html">Dogs welcome</a></li><li><a href="group-stays.html">Group stays</a></li><li><a href="faq.html">Questions</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></div>
+    <div><b>Find us</b>6706 Great Alpine Road<br>Porepunkah VIC 3740<br><a href="tel:+61490217218">0490 217 218</a><br><a href="mailto:stay@alpineparkcottages.com.au">stay@alpineparkcottages.com.au</a></div>
+    <div class="smallprint"><span>Free Wi-Fi in every cottage</span><span>The whole property is non-smoking</span><a href="privacy-policy.html">Privacy policy</a></div>
+    <p class="concept">Design concept for discussion. The enquiry form is not connected yet, and the top photo is a mock-up.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('enquiry'), sent=document.getElementById('sent');
+  function check(input){
+    var field=input.closest('.field'), ok=input.value.trim()!=='' && input.checkValidity();
+    field.classList.toggle('bad',!ok);
+    return ok;
+  }
+  var required=[].slice.call(form.querySelectorAll('[required]'));
+  required.forEach(function(i){i.addEventListener('input',function(){if(i.closest('.field').classList.contains('bad'))check(i)})});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var firstBad=null;
+    required.forEach(function(i){if(!check(i)&&!firstBad)firstBad=i});
+    if(firstBad){sent.classList.remove('on');firstBad.focus();return}
+    sent.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>
