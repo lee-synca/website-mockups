@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVEA Control Centre | Demo</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#021824">
+<link rel="icon" href="assets/chevron.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-side>
+    <div class="side__logo"><img src="assets/logo-wordmark.png" alt="AVEA"><span>Control centre</span></div>
+    <nav class="nav" aria-label="Control centre">
+      <a href="#/" data-route="">Monday pulse</a>
+      <a href="#/applications" data-route="applications">Applications <span class="count" data-count-new></span></a>
+      <a href="#/releases" data-route="releases">Releases</a>
+      <a href="#/statements" data-route="statements">Statements</a>
+      <p class="nav__h caps">Coming next</p>
+      <a class="soon" aria-disabled="true">Funding calendar <em>Soon</em></a>
+      <a class="soon" aria-disabled="true">Agreements <em>Soon</em></a>
+      <a class="soon" aria-disabled="true">Wording check <em>Soon</em></a>
+    </nav>
+    <div class="side__foot small muted">
+      <span class="caps gold">Demo</span>
+      <span>Sample data. Every artist and number here is made up.</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="menu-btn caps" data-menu aria-label="Open menu">Menu</button>
+      <span class="small muted" data-date></span>
+      <span class="pill">Demo data</span>
+    </header>
+    <main class="view" id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<div class="scrim" data-scrim></div>
+<aside class="drawer" data-drawer aria-modal="true" role="dialog" aria-labelledby="drawer-title"></aside>
+<div class="modal" data-modal hidden></div>
+<div class="toast" data-toast role="status"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
