@@ -7,6 +7,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 |--------|------|
 | Alpine Riverside Cottages | https://mockups.getsynca.com.au/alpine-riverside-cottages/ |
 | AVEA | https://mockups.getsynca.com.au/avea/ |
+| JP Electrical & Airconditioning | https://mockups.getsynca.com.au/jp-electrical/ |
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
 | Redeemer Visuals | https://mockups.getsynca.com.au/redeemer-visuals/ |
