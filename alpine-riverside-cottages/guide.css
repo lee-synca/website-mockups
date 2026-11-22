@@ -60,6 +60,9 @@
 .know-list span{color:var(--soft)}
 .map-slot{aspect-ratio:4/3;border:1.5px dashed #9db3ba;border-radius:22px;display:grid;place-content:center;text-align:center;padding:24px;color:var(--soft)}
 .map-slot b{display:block;color:var(--ink);font:300 1.7rem/1.2 var(--serif);margin-bottom:8px}
+.map-live{display:block;aspect-ratio:auto;border:0;padding:0;text-align:left}
+.map-live iframe{display:block;width:100%;aspect-ratio:4/3;border:0;border-radius:22px;background:var(--pool)}
+.map-live p{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px 22px}
 
 /* where to stay + more guides */
 .stay-row{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,28px)}
