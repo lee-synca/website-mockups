@@ -9,6 +9,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 | AVEA | https://mockups.getsynca.com.au/avea/ |
 | AVEA Control Centre (demo) | https://mockups.getsynca.com.au/avea-control/ |
 | Bradmac Heating & Cooling | https://mockups.getsynca.com.au/bradmac/ |
+| Ikon Music: Ikon Studio (demo) | https://mockups.getsynca.com.au/ikon-music/ |
 | JP Electrical & Airconditioning | https://mockups.getsynca.com.au/jp-electrical/ |
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
 | McCarthy Plumbing Group | https://mockups.getsynca.com.au/mccarthy-plumbing/ |
