@@ -37,6 +37,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
 .wrap--wide{max-width:1440px}
+.wrap--full{max-width:1760px}
 .band{padding-block:clamp(64px,9vw,128px)}
 .eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px;opacity:.75}
 .display{font-family:var(--display);font-stretch:112%;font-weight:900;font-style:italic;line-height:.98;letter-spacing:-.015em;word-spacing:.06em;margin:0}
@@ -56,7 +57,7 @@ a:hover .arrow{transform:translateX(4px)}
 
 /* ---------- Header ---------- */
 .top{position:fixed;z-index:50;top:14px;left:0;right:0;padding-inline:var(--gut)}
-.top__bar{max-width:calc(1440px - 2 * var(--gut));margin:0 auto;background:#fff;border-radius:999px;display:flex;align-items:center;gap:28px;padding:9px 10px 9px 26px;box-shadow:0 10px 40px rgba(3,10,30,.22)}
+.top__bar{max-width:calc(1760px - 2 * var(--gut));margin:0 auto;background:#fff;border-radius:999px;display:flex;align-items:center;gap:28px;padding:9px 10px 9px 26px;box-shadow:0 10px 40px rgba(3,10,30,.22)}
 .logo{display:flex;align-items:center;text-decoration:none;flex:none}
 .logo img{height:40px;width:auto}
 .logo__text{font-family:var(--display);font-stretch:118%;font-weight:900;font-style:italic;font-size:1.5rem;color:var(--red);letter-spacing:-.02em}
@@ -450,7 +451,7 @@ a:hover .arrow{transform:translateX(4px)}
 </main>
 
 <footer class="foot">
-  <div class="wrap wrap--wide">
+  <div class="wrap wrap--full">
     <div class="foot__grid">
       <div>
         <p class="foot__tag">We live &amp; breathe air.</p>
