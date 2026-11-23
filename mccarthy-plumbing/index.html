@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>McCarthy Plumbing Group — homepage concept v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1B1E;
+  --deep:#13272B;
+  --slate:#2F4A50;
+  --teal:#1F857F;
+  --aqua:#8FD6CE;
+  --fog:#F1F5F4;
+  --text:#22363A;
+  --muted:#5B7074;
+  --line:rgba(47,74,80,.18);
+  --line-d:rgba(255,255,255,.16);
+  --max:1440px;
+  --pad:clamp(20px,4vw,56px);
+  --display:"Jost",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:#fff;color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.04;letter-spacing:-.015em;margin:0;color:var(--deep)}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:4px}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.label{font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--teal)}
+.dark{background:var(--deep);color:rgba(255,255,255,.8)}
+.dark h1,.dark h2,.dark h3{color:#fff}
+.dark .label{color:var(--aqua)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:17px 32px;border-radius:999px;font-family:var(--display);font-weight:500;font-size:16px;letter-spacing:.05em;text-decoration:none;border:1px solid var(--slate);cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--slate);color:#fff}
+.btn-solid:hover{background:var(--deep);border-color:var(--deep)}
+.btn-line{background:transparent;color:var(--slate)}
+.btn-line:hover{background:var(--slate);color:#fff}
+.dark .btn-solid{background:var(--aqua);color:var(--ink);border-color:var(--aqua)}
+.dark .btn-solid:hover{background:#fff;border-color:#fff}
+.dark .btn-line{color:#fff;border-color:rgba(255,255,255,.45)}
+.dark .btn-line:hover{background:#fff;color:var(--ink);border-color:#fff}
+.arrow{display:inline-block;transition:transform .25s}
+a:hover .arrow,.btn:hover .arrow{transform:translateX(6px)}
+
+/* ---------- header ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s,box-shadow .3s}
+.top .wrap{display:flex;align-items:center;gap:36px;height:88px;transition:height .3s}
+.top .logo img{height:46px;width:auto;filter:brightness(0) invert(1);transition:filter .3s,height .3s}
+.top nav{margin-left:auto;display:flex;gap:34px}
+.top nav a{font-family:var(--display);font-size:15px;letter-spacing:.08em;text-decoration:none;color:rgba(255,255,255,.85);position:relative;padding:6px 0}
+.top nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.top nav a:hover::after{transform:scaleX(1)}
+.top .tel{font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:.05em;text-decoration:none;color:#fff;white-space:nowrap}
+.top .btn{padding:12px 24px;font-size:15px;background:var(--aqua);border-color:var(--aqua);color:var(--ink)}
+.top.solid{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.top.solid .wrap{height:72px}
+.top.solid .logo img{filter:none;height:40px}
+.top.solid nav a{color:var(--slate)}
+.top.solid .tel{color:var(--deep)}
+.top.solid .btn{background:var(--slate);border-color:var(--slate);color:#fff}
+@media (max-width:1100px){.top nav{display:none}.top .tel{margin-left:auto}}
+@media (max-width:560px){.top .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:radial-gradient(120% 90% at 78% 40%,#1D3B40 0%,var(--deep) 45%,var(--ink) 100%);color:#fff;overflow:hidden}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,72px);align-items:center;min-height:min(900px,100svh);padding-top:120px;padding-bottom:150px}
+.hero .label{display:flex;align-items:center;gap:16px}
+.hero .label::before{content:"";width:46px;height:1px;background:var(--aqua)}
+.hero h1{font-size:clamp(50px,7.4vw,108px);font-weight:200;margin:26px 0 30px;color:#fff}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln > span{display:block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.7,.1,1) forwards}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.14s;font-weight:500}
+.hero h1 em{font-style:normal;color:var(--aqua)}
+@keyframes rise{to{transform:none}}
+.hero .sub{font-size:clamp(18px,1.4vw,21px);color:rgba(255,255,255,.76);max-width:46ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.fade{opacity:0;animation:fade .9s .5s ease forwards}
+@keyframes fade{to{opacity:1}}
+
+.orb{position:relative;aspect-ratio:1;width:100%;max-width:500px;justify-self:end;margin-right:clamp(0px,3vw,44px)}
+.orb .photo{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:2;box-shadow:0 40px 90px rgba(0,0,0,.45)}
+.orb .photo img{width:100%;height:100%;object-fit:cover;object-position:center 28%;transform:scale(1.12);animation:settle 2.4s cubic-bezier(.2,.7,.1,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.orb .spin{position:absolute;inset:-15%;width:130%;height:130%;z-index:3;animation:spin 46s linear infinite}
+.orb .spin text{font-family:var(--display);font-weight:500;font-size:7.1px;letter-spacing:.33em;fill:var(--aqua);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb .ripple{position:absolute;inset:0;border-radius:50%;border:1px solid var(--aqua);opacity:0;z-index:1;animation:ripple 6s cubic-bezier(.2,.6,.3,1) infinite}
+.orb .ripple:nth-child(2){animation-delay:2s}
+.orb .ripple:nth-child(3){animation-delay:4s}
+@keyframes ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.3);opacity:0}}
+
+.stats{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line-d)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);min-height:0;padding-top:0;padding-bottom:0;gap:0}
+.stat{padding:26px 0 28px;display:flex;align-items:baseline;gap:16px}
+.stat + .stat{padding-left:32px;border-left:1px solid var(--line-d)}
+.stat b{font-family:var(--display);font-weight:300;font-size:clamp(30px,3vw,46px);color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-family:var(--display);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:120px;padding-bottom:40px}
+  .orb{justify-self:center;max-width:300px;order:-1;margin:20px 0 10px}
+  .stats{position:static}
+  .stats .wrap{grid-template-columns:1fr 1fr;padding-inline:var(--pad)}
+  .stat{flex-direction:column;gap:6px;padding:20px 0}
+  .stat + .stat{padding-left:0;border-left:0}
+  .stat:nth-child(even){padding-left:20px;border-left:1px solid var(--line-d)}
+  .stat:nth-child(n+3){border-top:1px solid var(--line-d)}
+}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);padding:26px 0;background:#fff}
+.marquee .track{display:flex;width:max-content;animation:slide 38s linear infinite}
+.marquee span{font-family:var(--display);font-weight:300;font-size:clamp(34px,4.6vw,68px);line-height:1;white-space:nowrap;color:var(--deep);padding-right:.5em;display:flex;align-items:center;gap:.5em}
+.marquee span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--slate)}
+.marquee span::after{content:"";width:.28em;height:.28em;border-radius:50%;border:1px solid var(--teal);flex:none}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(80px,9vw,150px) 0}
+.head{display:grid;gap:20px;max-width:900px;margin-bottom:clamp(44px,5vw,76px)}
+.head h2{font-size:clamp(36px,4.8vw,72px)}
+.head p{font-size:19px;color:var(--muted);max-width:58ch}
+.dark .head p{color:rgba(255,255,255,.7)}
+
+/* expanding service panels */
+.panels{display:flex;height:620px;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+.pn{flex:1;min-width:0;position:relative;overflow:hidden;cursor:pointer;border-left:1px solid var(--line-d);transition:flex .7s cubic-bezier(.3,.7,.1,1),background .5s}
+.pn:first-child{border-left:0}
+.pn.on{flex:4.2;background:rgba(143,214,206,.06);cursor:default}
+.pn .dot{position:absolute;left:34px;top:34px;width:16px;height:16px;border-radius:50%;border:1px solid var(--aqua);transition:background .4s,box-shadow .4s}
+.pn.on .dot{background:var(--aqua);box-shadow:0 0 0 8px rgba(143,214,206,.14)}
+.pn .v{position:absolute;left:34px;bottom:34px;transform-origin:left bottom;transform:rotate(-90deg) translateY(100%);white-space:nowrap;font-family:var(--display);font-weight:300;font-size:30px;color:#fff;transition:opacity .3s}
+.pn.on .v{opacity:0}
+.pn:not(.on):hover{background:rgba(255,255,255,.04)}
+.pn .body{position:absolute;left:34px;bottom:40px;width:min(600px,calc(100vw - 2*var(--pad) - 68px));opacity:0;transform:translateY(18px);transition:opacity .35s,transform .5s;pointer-events:none}
+.pn.on .body{opacity:1;transform:none;transition-delay:.3s;pointer-events:auto}
+.pn h3{font-size:clamp(34px,3.6vw,54px);margin-bottom:18px}
+.pn p{max-width:50ch;font-size:17.5px}
+.pn ul{list-style:none;margin:26px 0 32px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pn li{border:1px solid var(--line-d);border-radius:999px;padding:7px 16px;font-size:15px;color:#fff}
+.pn a{font-family:var(--display);font-weight:500;letter-spacing:.06em;color:var(--aqua);text-decoration:none}
+.sectors{margin-top:48px;display:flex;flex-wrap:wrap;gap:10px 34px;align-items:baseline}
+.sectors span{font-family:var(--display);font-weight:300;font-size:22px;color:#fff}
+@media (max-width:900px){
+  .panels{display:block;height:auto;border-bottom:0}
+  .pn,.pn.on{border-left:0;border-bottom:1px solid var(--line-d);padding:30px 0 34px;background:none;cursor:default}
+  .pn .dot,.pn .v{display:none}
+  .pn .body{position:static;opacity:1;transform:none;width:auto;pointer-events:auto}
+}
+
+/* who */
+.who{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.who article{padding:38px 30px 34px 0;position:relative;transition:background .3s}
+.who article + article{padding-left:30px;border-left:1px solid var(--line)}
+.who article::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.3,.7,.1,1)}
+.who article:hover::before{transform:scaleX(1)}
+.who h3{font-size:28px;font-weight:400;margin-bottom:14px}
+.who p{font-size:16px;color:var(--muted)}
+.who a{display:inline-block;margin-top:22px;font-family:var(--display);font-weight:500;letter-spacing:.05em;font-size:15px;color:var(--teal);text-decoration:none}
+@media (max-width:1000px){.who{grid-template-columns:1fr 1fr}.who article:nth-child(3){padding-left:0;border-left:0}.who article:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.who{grid-template-columns:1fr}.who article + article{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* residential */
+.fogbg{background:var(--fog)}
+.fix{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,5vw,90px);align-items:start}
+.opts{display:grid;border-top:1px solid var(--line)}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:300;font-size:26px;color:var(--muted);transition:color .2s,padding .3s}
+.opt::after{content:"";width:10px;height:10px;border-radius:50%;border:1px solid currentColor;transition:background .2s}
+.opt:hover{color:var(--deep);padding-left:10px}
+.opt:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.opt[aria-selected="true"]{color:var(--deep);padding-left:18px}
+.opt[aria-selected="true"]::after{background:var(--teal);border-color:var(--teal)}
+.panel{background:#fff;border-radius:8px;padding:clamp(30px,4.4vw,68px);min-height:420px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 30px 70px rgba(19,39,43,.08)}
+.panel h3{font-size:clamp(30px,3.4vw,50px);margin:16px 0 18px}
+.panel p{color:var(--muted);max-width:52ch}
+.panel ul{list-style:none;margin:26px 0 34px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.panel li{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:15px}
+.panel .btn{align-self:flex-start}
+.panel > *{animation:fade .5s ease both}
+@media (max-width:900px){.fix{grid-template-columns:1fr}.panel{min-height:0}}
+
+/* awards */
+.awards{border-top:1px solid var(--line-d)}
+.award{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,6fr) minmax(0,3fr);gap:24px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line-d);transition:padding .4s,background .4s}
+.award:hover{padding-left:24px;padding-right:24px;background:rgba(143,214,206,.06)}
+.award .yr{font-family:var(--display);font-weight:200;font-size:clamp(56px,8vw,128px);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--aqua);transition:color .4s}
+.award:hover .yr{color:var(--aqua)}
+.award h3{font-size:clamp(24px,2.6vw,38px)}
+.award p{font-family:var(--display);font-size:13px;letter-spacing:.2em;text-transform:uppercase;text-align:right;color:rgba(255,255,255,.6)}
+@media (max-width:760px){.award{grid-template-columns:1fr;gap:8px}.award p{text-align:left}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,7vw,120px);align-items:center}
+.about .pic{position:relative;aspect-ratio:1;max-width:520px;width:100%}
+.about .pic img{width:100%;height:100%;object-fit:cover;object-position:center 22%;border-radius:50%}
+.about .pic::before,.about .pic::after{content:"";position:absolute;border-radius:50%;border:1px solid var(--line)}
+.about .pic::before{inset:-22px}
+.about .pic::after{inset:-52px;border-style:dashed;animation:spin 90s linear infinite}
+.about blockquote{margin:24px 0 26px;font-family:var(--display);font-weight:300;font-size:clamp(26px,3vw,46px);line-height:1.18;color:var(--deep)}
+.about cite{font-style:normal;font-family:var(--display);font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:13px;color:var(--teal)}
+.about p{margin-top:28px;color:var(--muted);max-width:58ch;font-size:18px}
+@media (max-width:900px){.about{grid-template-columns:1fr}.about .pic{max-width:280px;margin:40px auto}}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.case .ph{aspect-ratio:4/3;border-radius:8px;border:1px dashed rgba(47,74,80,.4);display:grid;place-items:center;color:var(--muted);font-size:14.5px;background:#fff}
+.case .label{display:block;margin:22px 0 8px}
+.case h3{font-size:26px;font-weight:400;margin-bottom:8px}
+.case p{font-size:15.5px;color:var(--muted)}
+@media (max-width:860px){.cases{grid-template-columns:1fr}}
+
+/* areas */
+.suburbs{columns:6 150px;column-gap:32px}
+.suburbs a{display:block;padding:9px 0;text-decoration:none;font-size:16px;color:var(--slate);border-bottom:1px solid var(--line);break-inside:avoid;transition:color .2s,padding .2s}
+.suburbs a:hover{color:var(--teal);padding-left:8px}
+
+/* contact */
+.contact{position:relative;overflow:hidden;background:radial-gradient(90% 120% at 15% 100%,#1D3B40 0%,var(--deep) 50%,var(--ink) 100%)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,8vw,140px);position:relative}
+.contact h2{font-size:clamp(52px,8vw,128px);font-weight:200;margin-top:20px}
+.contact .big{display:inline-block;font-family:var(--display);font-weight:300;font-size:clamp(34px,4vw,58px);color:var(--aqua);text-decoration:none;margin-top:38px}
+.contact .mail{display:block;margin-top:6px;color:rgba(255,255,255,.8)}
+form{display:grid;gap:18px;align-content:center}
+label{display:grid;gap:7px;font-family:var(--display);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+input,select,textarea{font:400 18px var(--body);letter-spacing:0;text-transform:none;padding:13px 0;border:0;border-bottom:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:0;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--aqua)}
+select option{color:var(--deep)}
+textarea{min-height:90px;resize:vertical}
+form .btn{justify-self:start;margin-top:10px}
+.note{font-size:14.5px;color:var(--aqua);min-height:1.4em}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.66);font-size:15.5px;overflow:hidden}
+.f-main{display:grid;grid-template-columns:minmax(0,4fr) repeat(3,minmax(0,2fr)) minmax(0,3fr);gap:40px;padding-top:88px;padding-bottom:64px}
+.f-main img{height:52px;width:auto;filter:brightness(0) invert(1)}
+.f-main .blurb{margin-top:24px;max-width:34ch}
+.f-main h4{margin:0 0 20px;font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--aqua)}
+.f-main ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.f-main a{text-decoration:none;transition:color .2s}
+.f-main a:hover{color:#fff}
+.f-main .f-tel{display:block;font-family:var(--display);font-weight:300;font-size:32px;color:#fff;line-height:1.1;margin-bottom:10px}
+.f-main address{font-style:normal;margin-top:16px;line-height:1.7}
+.f-word{font-family:var(--display);font-weight:500;font-size:min(15.4vw,222px);letter-spacing:.06em;line-height:.8;text-align:center;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(143,214,206,.28);user-select:none;margin-bottom:-.06em}
+.f-base{border-top:1px solid var(--line-d)}
+.f-base .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-top:22px;padding-bottom:22px;font-size:14px}
+.f-base a{text-decoration:none}
+.f-base a:hover{color:#fff}
+.f-base nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+@media (max-width:1000px){.f-main{grid-template-columns:1fr 1fr}.f-main > :first-child,.f-main > :last-child{grid-column:1/-1}}
+@media (max-width:720px){.f-base{padding-bottom:76px}}
+
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(13,27,30,.97)}
+.callbar .btn{padding:13px 10px}
+@media (min-width:721px){.callbar{display:none}}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .rv,.fade{opacity:1;transform:none}
+  .hero h1 .ln > span{transform:none}
+  .orb .photo img{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="McCarthy Plumbing Group home"><img src="https://mccarthyplumbinggroup.com.au/wp-content/uploads/2022/02/mlogo.png" alt="McCarthy Plumbing Group"></a>
+    <nav aria-label="Main">
+      <a href="#commercial">Commercial</a>
+      <a href="#residential">Residential</a>
+      <a href="#awards">Awards</a>
+      <a href="#about">About</a>
+      <a href="#work">Our work</a>
+      <a href="#areas">Areas</a>
+    </nav>
+    <a class="tel" href="tel:0399310905">03 9931 0905</a>
+    <a class="btn" href="#contact">Request a quote</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero dark">
+  <div class="wrap">
+    <div>
+      <p class="label fade">Award-winning · Family owned · Since 2013</p>
+      <h1><span class="ln"><span>Plumbing,</span></span><span class="ln"><span>done <em>properly.</em></span></span></h1>
+      <p class="sub fade">Commercial maintenance, construction and residential plumbing across Melbourne, from a team of 20 licensed and insured professionals.</p>
+      <div class="cta fade">
+        <a class="btn btn-solid" href="#contact">Request a quote <span class="arrow">→</span></a>
+        <a class="btn btn-line" href="tel:0399310905">Call 03 9931 0905</a>
+      </div>
+    </div>
+    <div class="orb" id="orb">
+      <i class="ripple"></i><i class="ripple"></i><i class="ripple"></i>
+      <div class="photo"><img src="https://mccarthyplumbinggroup.com.au/wp-content/uploads/2024/04/McCarthy-Plumbing-Group.jpg" alt="Owners Cat and Dave McCarthy beside a McCarthy Plumbing Group ute"></div>
+      <svg class="spin" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="circ" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
+        <text><textPath href="#circ" textLength="548">Residential · Commercial · Industrial · Melbourne · Residential · Commercial · Industrial · Melbourne · </textPath></text>
+      </svg>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b data-n="2013" data-from="1990">2013</b><span>Established</span></div>
+      <div class="stat"><b data-n="20">20</b><span>Team members</span></div>
+      <div class="stat"><b data-n="3">3</b><span>National awards</span></div>
+      <div class="stat"><b data-n="50" data-suffix="+">50+</b><span>Suburbs serviced</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Commercial maintenance</span><span>Projects and construction</span><span>Compliance and specialist</span><span>Residential plumbing</span>
+    <span>Commercial maintenance</span><span>Projects and construction</span><span>Compliance and specialist</span><span>Residential plumbing</span>
+  </div>
+</div>
+
+<section class="sec" id="who">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Who we work with</p>
+      <h2>One plumbing team, for the people responsible for the building.</h2>
+    </div>
+    <div class="who rv">
+      <article><h3>Facility and property managers</h3><p>Scheduled maintenance, a fast response when something fails, and compliance testing kept up to date across your sites.</p><a href="#commercial">Maintenance <span class="arrow">→</span></a></article>
+      <article><h3>Builders and developers</h3><p>Boutique residential builds, commercial fit-outs and amenities upgrades, delivered safely, on time and on budget.</p><a href="#commercial">Projects <span class="arrow">→</span></a></article>
+      <article><h3>Business owners</h3><p>Offices, retail, factories, schools, childcare and aged care kept running with as little disruption as possible.</p><a href="#commercial">Commercial <span class="arrow">→</span></a></article>
+      <article><h3>Homeowners</h3><p>Repairs, hot water, gas, roofing and renovations from a plumber you will want to call again.</p><a href="#residential">Residential <span class="arrow">→</span></a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="commercial">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Commercial and industrial</p>
+      <h2>Keep your site open, safe and compliant.</h2>
+      <p>Maintenance, new works and compliance testing from one accountable team.</p>
+    </div>
+    <div class="panels rv" id="panels">
+      <div class="pn on" tabindex="0">
+        <i class="dot"></i><span class="v">Maintenance</span>
+        <div class="body">
+          <h3>Commercial maintenance</h3>
+          <p>Planned preventative programs and rapid response plumbing when issues arise, with minimal disruption to your operations.</p>
+          <ul><li>Scheduled servicing</li><li>Reactive repairs</li><li>Owners corporations</li></ul>
+          <a href="#contact">Discuss a maintenance program <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="pn" tabindex="0">
+        <i class="dot"></i><span class="v">Projects</span>
+        <div class="body">
+          <h3>Projects and construction</h3>
+          <p>Installations and upgrades for builders, developers and facility managers, from underground drainage through to final fit-off.</p>
+          <ul><li>Underground drainage</li><li>Hydraulic rough-in</li><li>Commercial fit-outs</li><li>Amenities upgrades</li></ul>
+          <a href="#contact">Request a project quote <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="pn" tabindex="0">
+        <i class="dot"></i><span class="v">Compliance</span>
+        <div class="body">
+          <h3>Compliance and specialist</h3>
+          <p>Licensed testing, servicing and investigation to keep buildings compliant and operating efficiently.</p>
+          <ul><li>Backflow prevention testing</li><li>TMV servicing</li><li>Gas appliance servicing</li><li>CCTV drain inspections</li><li>EPA compliance plumbing</li></ul>
+          <a href="#contact">Book compliance testing <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="sectors rv">
+      <p class="label">Sectors</p>
+      <span>Offices</span><span>Retail centres</span><span>Factories</span><span>Schools</span><span>Childcare</span><span>Aged care</span><span>Owners corporations</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec fogbg" id="residential">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Residential</p>
+      <h2>What do you need fixed?</h2>
+      <p>For homeowners and residential property managers across Melbourne's western suburbs.</p>
+    </div>
+    <div class="fix rv">
+      <div class="opts" role="tablist" aria-label="Residential services" id="opts"></div>
+      <div class="panel" role="tabpanel" id="panel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="awards">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Recognition</p>
+      <h2>Three national awards in three years.</h2>
+    </div>
+    <div class="awards">
+      <div class="award rv"><div class="yr">2019</div><h3>National Trades Business of the Year</h3><p>My Business Awards</p></div>
+      <div class="award rv"><div class="yr">2020</div><h3>National Trades Business of the Year</h3><p>My Business Awards</p></div>
+      <div class="award rv"><div class="yr">2021</div><h3>Plumbing Champions</h3><p>Australian Small Business Champions</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about rv">
+      <div class="pic"><img src="https://mccarthyplumbinggroup.com.au/wp-content/uploads/2022/06/McCarthy-Plumbing-Group-family-business.jpg" alt="Owners Cat and Dave McCarthy" loading="lazy"></div>
+      <div>
+        <p class="label">Family owned</p>
+        <blockquote>"We aim to provide a premium client experience to our clients to ensure we become their lifelong plumber."</blockquote>
+        <cite>David McCarthy, Director</cite>
+        <p>McCarthy Plumbing Group is owned and managed by husband and wife team Cat and David McCarthy. Established in 2013, with more than 20 years' experience behind it, the business is based in Laverton North and delivers high-quality workmanship safely, on time and on budget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec fogbg" id="work">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Our work</p>
+      <h2>Case studies.</h2>
+      <p>Placeholders for now. Each becomes a short write-up of a real job once photos and details are supplied.</p>
+    </div>
+    <div class="cases">
+      <article class="case rv"><div class="ph">Project photo</div><span class="label">Commercial maintenance</span><h3>Client or site name</h3><p>The problem, what we did, and the result for the client.</p></article>
+      <article class="case rv"><div class="ph">Project photo</div><span class="label">Construction</span><h3>Client or site name</h3><p>The problem, what we did, and the result for the client.</p></article>
+      <article class="case rv"><div class="ph">Project photo</div><span class="label">Residential renovation</span><h3>Suburb and job type</h3><p>The problem, what we did, and the result for the client.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="areas">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="label">Service area</p>
+      <h2>Local to Melbourne's west.</h2>
+    </div>
+    <div class="suburbs rv" id="suburbs"></div>
+  </div>
+</section>
+
+<section class="sec dark contact" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <p class="label">Contact</p>
+      <h2>Let's talk.</h2>
+      <a class="big" href="tel:0399310905">03 9931 0905</a>
+      <a class="mail" href="mailto:info@mccarthyplumbinggroup.com.au">info@mccarthyplumbinggroup.com.au</a>
+    </div>
+    <form class="rv" id="quote">
+      <label>Name <input name="name" autocomplete="name" required></label>
+      <label>Phone <input name="phone" type="tel" autocomplete="tel" required></label>
+      <label>Service
+        <select name="type"><option>Commercial maintenance</option><option>Project or construction quote</option><option>Compliance testing</option><option>Residential plumbing</option></select>
+      </label>
+      <label>Details <textarea name="msg"></textarea></label>
+      <button class="btn btn-solid" type="submit">Send request <span class="arrow">→</span></button>
+      <p class="note" id="note" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-main">
+    <div>
+      <img src="https://mccarthyplumbinggroup.com.au/wp-content/uploads/2022/02/mlogo.png" alt="McCarthy Plumbing Group">
+      <p class="blurb">Award-winning, family-owned plumbers delivering residential, commercial and industrial plumbing across Melbourne.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#commercial">Commercial maintenance</a></li>
+        <li><a href="#commercial">Projects and construction</a></li>
+        <li><a href="#commercial">Compliance and specialist</a></li>
+        <li><a href="#residential">Residential plumbing</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/melbourne-renovations/">Renovations</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#work">Our work</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/join-our-team/">Join our team</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Areas</h4>
+      <ul>
+        <li><a href="https://mccarthyplumbinggroup.com.au/plumber-point-cook/">Point Cook</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/best-emergency-plumber-werribee/">Werribee</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/best-emergency-plumber-altona/">Altona</a></li>
+        <li><a href="https://mccarthyplumbinggroup.com.au/best-emergency-plumber-williamstown/">Williamstown</a></li>
+        <li><a href="#areas">All suburbs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a class="f-tel" href="tel:0399310905">03 9931 0905</a>
+      <a href="mailto:info@mccarthyplumbinggroup.com.au">info@mccarthyplumbinggroup.com.au</a>
+      <address>Office in Laverton North<br>PO Box 7207, Point Cook VIC 3030</address>
+    </div>
+  </div>
+  <div class="f-word" aria-hidden="true">McCARTHY</div>
+  <div class="f-base">
+    <div class="wrap">
+      <span>Homepage design concept v3 — not the live site. Photos linked from the current website as placeholders.</span>
+      <nav aria-label="Legal">
+        <a href="https://mccarthyplumbinggroup.com.au/terms-conditions/">Terms and conditions</a>
+        <a href="https://mccarthyplumbinggroup.com.au/privacy-policy/">Privacy policy</a>
+        <a href="https://mccarthyplumbinggroup.com.au/insurances/">Insurances</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar dark">
+  <a class="btn btn-solid" href="tel:0399310905">Call now</a>
+  <a class="btn btn-line" href="#contact">Request a quote</a>
+</div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* header */
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>60);
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+/* hero parallax */
+const orb=document.getElementById('orb');
+if(!reduce && matchMedia('(pointer:fine)').matches){
+  document.querySelector('.hero').addEventListener('pointermove',e=>{
+    const x=(e.clientX/innerWidth-.5), y=(e.clientY/innerHeight-.5);
+    orb.style.transform=`translate(${x*-18}px,${y*-18}px)`;
+  });
+}
+
+/* count-up */
+function count(el){
+  const to=+el.dataset.n, from=+(el.dataset.from||0), suf=el.dataset.suffix||'', t0=performance.now(), d=1600;
+  (function step(t){
+    const p=Math.min(1,(t-t0)/d), e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(from+(to-from)*e)+suf;
+    if(p<1) requestAnimationFrame(step);
+  })(t0);
+}
+if(!reduce) document.querySelectorAll('.stat b').forEach(el=>{el.textContent=(el.dataset.from||0)+(el.dataset.suffix||'');setTimeout(()=>count(el),700)});
+
+/* panels */
+const pns=[...document.querySelectorAll('.pn')];
+const act=p=>pns.forEach(x=>x.classList.toggle('on',x===p));
+pns.forEach(p=>{p.addEventListener('mouseenter',()=>act(p));p.addEventListener('focus',()=>act(p));p.addEventListener('click',()=>act(p));});
+
+/* residential picker */
+const services=[
+  {k:"Blocked drains", t:"Cleared, then inspected so it stays clear.",
+   p:"We use modern equipment to unblock drains quickly, and can inspect by camera to find the cause.",
+   l:["High-pressure sewer jetter","Drain-clearing eels","CCTV drain inspection"]},
+  {k:"Hot water", t:"Repairs, replacements and straight advice.",
+   p:"We repair existing systems and help you choose the right replacement for your household.",
+   l:["Gas","Electric","Heat pump","Solar","Instantaneous"]},
+  {k:"Burst pipes", t:"A fast repair to limit the damage.",
+   p:"We repair burst pipes and failed flexi hoses quickly to protect your home.",
+   l:["Burst pipes","Flexi hoses","Leaks"]},
+  {k:"Gas fitting", t:"Type A licensed gas plumbers.",
+   p:"Efficient gas maintenance, repairs, servicing and appliance installations.",
+   l:["Gas leaks","Appliance servicing","New installations"]},
+  {k:"Roofing", t:"Leaks found, fixed and prevented.",
+   p:"From gutter cleans to new roof solutions, we fix roof leaks and prevent future ones.",
+   l:["Roof leaks","Gutters","New roof solutions"]},
+  {k:"Toilets and tapware", t:"Repair or replace, done neatly.",
+   p:"Repair and replacement of toilets, baths, mixer taps, bidets and basins.",
+   l:["Toilets","Mixer taps","Basins and baths"]}
+];
+const opts=document.getElementById('opts'), panel=document.getElementById('panel');
+function show(i){
+  const d=services[i];
+  [...opts.children].forEach((c,j)=>c.setAttribute('aria-selected', j===i));
+  panel.innerHTML=`<p class="label">${d.k}</p><h3>${d.t}</h3><p>${d.p}</p><ul>${d.l.map(x=>`<li>${x}</li>`).join('')}</ul><a class="btn btn-solid" href="tel:0399310905">Call 03 9931 0905</a>`;
+}
+services.forEach((d,i)=>{
+  const b=document.createElement('button');
+  b.className='opt'; b.type='button'; b.setAttribute('role','tab'); b.textContent=d.k;
+  b.addEventListener('click',()=>show(i));
+  opts.appendChild(b);
+});
+show(0);
+
+/* suburbs */
+const base='https://mccarthyplumbinggroup.com.au/';
+const suburbs=[["Altona","best-emergency-plumber-altona/"],["Altona Meadows","best-emergency-plumber-altona-meadows/"],["Altona North","plumber-altona-north/"],["Caroline Springs","plumber-caroline-springs"],["Corio","plumber-corio"],["Deer Park","best-emergency-plumber-deer-park/"],["Derrimut","plumber-derrimut"],["Footscray","plumber-footscray"],["Hoppers Crossing","best-emergency-plumber-hoppers-crossing/"],["Lara","plumber-lara"],["Laverton","plumber-laverton/"],["Laverton North","plumber-laverton-north"],["Little River","plumber-little-river/"],["Manor Lakes","plumber-manor-lakes"],["Melton","plumber-melton"],["Newport","plumber-newport/"],["Point Cook","plumber-point-cook/"],["Rockbank","plumber-rockbank"],["Seddon","plumber-seddon"],["Spotswood","plumber-spotswood"],["Sunshine","plumber-sunshine"],["Tarneit","plumber-tarneit/"],["Truganina","plumber-truganina/"],["Werribee","best-emergency-plumber-werribee/"],["Williams Landing","plumber-williams-landing/"],["Williamstown","best-emergency-plumber-williamstown/"],["Wyndham Vale","plumber-wyndham-vale/"],["Yarraville","plumber-yarraville/"]];
+document.getElementById('suburbs').innerHTML=suburbs.map(([n,u])=>`<a href="${base+u}">${n}</a>`).join('')+`<a href="${base}">All suburbs →</a>`;
+
+document.getElementById('quote').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('note').textContent='Concept only: this form is not connected yet.';
+});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
