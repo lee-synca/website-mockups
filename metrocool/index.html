@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metrocool — Air conditioning &amp; refrigeration, Melbourne (homepage concept)</title>
+<meta name="description" content="Concept homepage for Metrocool: family-owned air conditioning and refrigeration specialists in Werribee, servicing metro Melbourne since 2002.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#05090D;        /* coolroom black */
+  --ink-2:#0C151C;
+  --blue:#009DDD;       /* Metrocool blue, from the logo */
+  --blue-deep:#0077AB;
+  --frost:#EAF4F9;      /* icy light */
+  --steel:#9FB0BC;      /* the silver in the roundel */
+  --heat:#FF6A2B;       /* only ever used for "too hot" */
+  --white:#fff;
+  --line:rgba(255,255,255,.14);
+  --display:"Unbounded",system-ui,sans-serif;
+  --body:"Figtree",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --wrap:1240px;
+  --gut:clamp(20px,4vw,48px);
+  --tint:#009DDD;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--body);font-size:17px;line-height:1.55;color:var(--ink);background:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.2vw,54px);line-height:1.06;letter-spacing:-.025em}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;border:0;font:600 16.5px var(--body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-blue{background:var(--blue);color:#00131c}
+.btn-blue:hover{background:#27b6f0}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.btn-ink{background:var(--ink);color:#fff}
+
+/* header */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s}
+.top.solid{background:rgba(5,9,13,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.top .wrap{display:flex;align-items:center;gap:32px;height:76px}
+.top img{height:54px;width:auto}
+.nav{display:flex;gap:28px;margin-left:auto}
+.nav a{color:#fff;text-decoration:none;font-weight:500;font-size:15.5px;opacity:.85}
+.nav a:hover{opacity:1;color:var(--blue)}
+.call{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border-radius:999px;background:var(--blue);color:#00131c;font-weight:700;font-size:15.5px;text-decoration:none;white-space:nowrap}
+.call svg{width:16px;height:16px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;color:#fff;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:var(--ink)}
+.hero-photo{position:absolute;inset:0;z-index:-4;background:url("assets/home5-2559x1701.jpg") center/cover;filter:grayscale(1) contrast(1.15) brightness(1.05)}
+.hero-tint{position:absolute;inset:0;z-index:-3;background:var(--tint);mix-blend-mode:multiply;transition:background .35s linear}
+.hero-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(5,9,13,.72) 0%,rgba(5,9,13,.25) 34%,rgba(5,9,13,.82) 100%),linear-gradient(90deg,rgba(5,9,13,.6),transparent 62%)}
+#air{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+.hero .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,80px);align-items:end;padding-top:130px;padding-bottom:clamp(40px,7vh,84px)}
+.now{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;color:#fff}
+.now i{width:9px;height:9px;border-radius:50%;background:var(--tint);box-shadow:0 0 0 5px rgba(255,255,255,.14);transition:background .35s}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6.1vw,88px);line-height:.98;letter-spacing:-.035em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--tint);filter:brightness(1.35) saturate(1.1);transition:color .35s}
+.lede{max-width:33em;margin-top:26px;font-size:clamp(17px,1.45vw,20.5px);color:rgba(255,255,255,.88)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* thermostat */
+.stat{background:rgba(5,9,13,.5);backdrop-filter:blur(18px) saturate(1.3);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,2.4vw,34px)}
+.stat-head{display:flex;justify-content:space-between;gap:12px;color:rgba(255,255,255,.72)}
+.set{display:flex;align-items:flex-start;font-family:var(--display);font-weight:800;font-size:clamp(92px,11.5vw,168px);line-height:.9;letter-spacing:-.06em;margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.set sup{font-size:.34em;font-weight:600;margin:.18em 0 0 .08em;color:var(--tint);filter:brightness(1.4);transition:color .35s}
+.verdict{min-height:3.1em;font-size:17.5px;color:rgba(255,255,255,.92)}
+.dial{margin-top:20px}
+.dial input{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:0;background:transparent;cursor:grab;touch-action:pan-y}
+.dial input:active{cursor:grabbing}
+.dial input::-webkit-slider-runnable-track{height:10px;border-radius:99px;background:linear-gradient(90deg,#cfe9f6 0%,#009DDD 40%,#009DDD 50%,#ff6a2b 100%)}
+.dial input::-moz-range-track{height:10px;border-radius:99px;background:linear-gradient(90deg,#cfe9f6 0%,#009DDD 40%,#009DDD 50%,#ff6a2b 100%)}
+.dial input::-webkit-slider-thumb{-webkit-appearance:none;width:38px;height:38px;margin-top:-14px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 7px rgba(255,255,255,.2),0 8px 22px rgba(0,0,0,.5)}
+.dial input::-moz-range-thumb{width:38px;height:38px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 7px rgba(255,255,255,.2),0 8px 22px rgba(0,0,0,.5)}
+.scale{display:flex;justify-content:space-between;color:rgba(255,255,255,.6);margin-top:2px}
+.hint{display:flex;align-items:center;gap:8px;margin-top:16px;color:rgba(255,255,255,.72);font-size:14.5px}
+.hint svg{width:18px;height:18px;flex:none}
+
+/* three doors */
+.doors{background:var(--frost);padding:clamp(56px,8vw,112px) 0}
+.doors-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,52px)}
+.doors-head p{max-width:27em;color:#31434f}
+.door-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.door{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(380px,44vw,540px);padding:28px;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;isolation:isolate;background:var(--ink)}
+.door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.door::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,9,13,0) 18%,rgba(5,9,13,.78) 52%,rgba(5,9,13,.94) 100%)}
+.door:hover img{transform:scale(1.05)}
+.door .label{color:#8fdcff}
+.door h3{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 10px}
+.door p{color:rgba(255,255,255,.86);font-size:16px}
+.door span.go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:700}
+.door span.go svg{width:18px;height:18px;transition:transform .25s}
+.door:hover span.go svg{transform:translateX(5px)}
+
+/* services */
+.services{background:#fff;padding:clamp(56px,8vw,112px) 0}
+.svc-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,5vw,72px)}
+.svc-col>.label{color:var(--blue-deep)}
+.svc-col h2{margin:12px 0 26px}
+.svc-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.svc-list li{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:8px 28px;padding:18px 0;border-bottom:1px solid #d5e2ea}
+.svc-list b{font-size:18.5px;font-weight:700}
+.svc-list span{color:#3b4d59;font-size:16px}
+.fridge{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(24px,3vw,40px);align-self:start;position:relative;overflow:hidden}
+.fridge::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,157,221,.55),transparent 68%)}
+.fridge .label{color:#8fdcff}
+.fridge h2{font-size:clamp(26px,3vw,38px);margin:12px 0 18px}
+.fridge p{color:rgba(255,255,255,.82);font-size:16.5px}
+.fridge ul{list-style:none;padding:0;margin:22px 0 0;border-top:1px solid var(--line)}
+.fridge li{padding:14px 0;border-bottom:1px solid var(--line);font-weight:600}
+.brands{margin-top:34px;color:#3b4d59;font-size:15.5px}
+.brands b{color:var(--ink)}
+
+/* proof */
+.proof{background:var(--ink);color:#fff;padding:clamp(56px,8vw,112px) 0 0}
+.proof-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:center}
+.since{font-family:var(--display);font-weight:800;font-size:clamp(84px,13vw,190px);line-height:.85;letter-spacing:-.06em;color:var(--blue)}
+.since small{display:block;font-family:var(--mono);font-weight:400;font-size:13px;letter-spacing:.12em;color:var(--steel);margin-bottom:18px;text-transform:uppercase}
+.proof h2{margin-bottom:22px}
+.proof p{color:rgba(255,255,255,.82);max-width:36em}
+.proof p+p{margin-top:14px}
+.creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding:0;list-style:none}
+.creds li{padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:#cfe0ea;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em}
+.clients{margin-top:clamp(48px,7vw,96px);border-top:1px solid var(--line);padding:26px 0 30px;overflow:hidden}
+.clients .label{color:var(--steel);display:block;margin-bottom:18px}
+.track{display:flex;gap:56px;width:max-content;animation:slide 44s linear infinite}
+.track span{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;white-space:nowrap;color:rgba(255,255,255,.9)}
+.track span::after{content:"•";margin-left:56px;color:var(--blue)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* careers */
+.careers{background:var(--blue);color:#00131c;padding:clamp(56px,8vw,112px) 0;position:relative;overflow:hidden}
+.car-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.careers h2{font-weight:800;margin:12px 0 20px}
+.careers p{font-size:18.5px;max-width:30em}
+.perks{list-style:none;padding:0;margin:26px 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.perks li{display:flex;gap:10px;font-weight:600;font-size:16.5px}
+.perks svg{width:20px;height:20px;flex:none;margin-top:3px}
+.car-photo{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--ink)}
+.car-photo img{width:100%;height:100%;object-fit:cover}
+
+/* contact */
+.contact{background:var(--ink-2);color:#fff;padding:clamp(56px,8vw,112px) 0}
+.con-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px)}
+.contact h2{margin:12px 0 20px}
+.contact .label{color:#8fdcff}
+.big-phone{display:inline-block;margin:26px 0 8px;font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,44px);letter-spacing:-.03em;text-decoration:none;color:#fff}
+.big-phone:hover{color:var(--blue)}
+.addr{color:rgba(255,255,255,.75);font-style:normal;margin-top:18px}
+form{background:var(--ink);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,36px)}
+fieldset{border:0;padding:0;margin:0 0 20px}
+legend,.field label{display:block;font-weight:600;font-size:15px;margin-bottom:10px;padding:0;color:#dbe7ee}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:block;padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.28);font-weight:600;font-size:15.5px;transition:all .15s}
+.chips input:checked+span{background:var(--blue);border-color:var(--blue);color:#00131c}
+.chips input:focus-visible+span{outline:3px solid var(--blue);outline-offset:3px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:16px}
+.field input,.field textarea{width:100%;padding:15px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05);color:#fff;font:inherit}
+.field input:focus,.field textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,157,221,.35)}
+form .btn{width:100%;margin-top:6px}
+.sent{padding:28px 6px;text-align:center}
+.sent b{display:block;font-family:var(--display);font-size:24px;margin-bottom:10px}
+
+/* footer */
+footer{background:var(--ink);color:var(--steel);padding:44px 0 110px;font-size:14.5px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+footer img{height:46px}
+.concept{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#6f8290}
+
+/* mobile action bar */
+.bar{display:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav{display:none}
+  .call{margin-left:auto}
+  .hero .wrap,.svc-grid,.proof-grid,.car-grid,.con-grid{grid-template-columns:1fr}
+  .hero{align-items:flex-start}
+  .hero .wrap{padding-top:112px;gap:0}
+  .hero-copy{display:contents}
+  .hero .stat{order:1;margin:28px 0 4px}
+  .hero .lede{order:2}
+  .hero .hero-cta{order:3}
+  .door-grid{grid-template-columns:1fr}
+  .door{min-height:340px}
+  .svc-list li{grid-template-columns:1fr}
+  .car-photo{order:-1}
+}
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .top .wrap{height:64px}
+  .top img{height:36px}
+  .call span{display:none}
+  .call{width:44px;padding:0;justify-content:center}
+  .hero-cta .btn{flex:1 1 100%}
+  .perks,.row{grid-template-columns:1fr}
+  .bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;inset:auto 0 0 0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(5,9,13,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s}
+  .bar.show{transform:none}
+  .bar .btn{min-height:50px;padding:0 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .track{animation:none;flex-wrap:wrap;width:auto;row-gap:10px}
+  .btn,.door img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a href="#home" aria-label="Metrocool home"><img src="assets/logo_mc-283x110.png" alt="Metrocool Refrigeration &amp; Air-Conditioning" width="283" height="110"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Air conditioning</a>
+      <a href="#refrigeration">Refrigeration</a>
+      <a href="#about">About</a>
+      <a href="#careers">Careers</a>
+      <a href="#quote">Get a quote</a>
+    </nav>
+    <a class="call" href="tel:0397415454" aria-label="Call Metrocool on (03) 9741 5454">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></svg>
+      <span>(03) 9741 5454</span>
+    </a>
+  </div>
+</header>
+
+<main id="home">
+
+<!-- HERO: the live thermostat -->
+<section class="hero" id="hero">
+  <div class="hero-photo" role="img" aria-label="A Metrocool technician unpacking air conditioning units"></div>
+  <div class="hero-tint"></div>
+  <div class="hero-shade"></div>
+  <canvas id="air" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="label now"><i></i><span id="nowText">Werribee, right now</span></p>
+      <h1>Melbourne, kept at <em>exactly</em> the right temperature.</h1>
+      <p class="lede">Air conditioning and refrigeration, installed, serviced and repaired by a family-owned Werribee team. Homes, businesses and building sites across metro Melbourne since 2002.</p>
+      <div class="hero-cta">
+        <a class="btn btn-blue" href="#quote">Get a quote</a>
+        <a class="btn btn-ghost" href="tel:0397415454">Call (03) 9741 5454</a>
+      </div>
+    </div>
+
+    <div class="stat" aria-label="Thermostat demo">
+      <div class="stat-head label"><span>Inside</span><span id="outside">Outside —</span></div>
+      <div class="set" aria-hidden="true"><span id="setNum">22</span><sup>°C</sup></div>
+      <p class="verdict" id="verdict" aria-live="polite"></p>
+      <div class="dial">
+        <input id="dial" type="range" min="16" max="30" step="1" value="22" aria-label="Set the inside temperature" aria-valuetext="22 degrees">
+        <div class="scale label"><span>16°</span><span>22°</span><span>30°</span></div>
+      </div>
+      <p class="hint" id="hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+        Drag the dial to 22°
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE DOORS -->
+<section class="doors" id="who">
+  <div class="wrap">
+    <div class="doors-head">
+      <h2 class="h2 rv">What brings you here?</h2>
+      <p class="rv">Three kinds of people land on this page. Pick yours and skip the rest.</p>
+    </div>
+    <div class="door-grid">
+      <a class="door rv" href="#services">
+        <img loading="lazy" src="assets/dom_air5-466x500.jpg" alt="">
+        <span class="label">For your home</span>
+        <h3>A new system, or the old one fixed</h3>
+        <p>Split systems supplied and installed, plus servicing and repairs. Most faults fixed on the spot.</p>
+        <span class="go">Home air conditioning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="door rv" href="#refrigeration">
+        <img loading="lazy" src="assets/commercial_air5-466x500.jpg" alt="">
+        <span class="label">For your business or site</span>
+        <h3>Installs, contracts and breakdowns</h3>
+        <p>Commercial air conditioning and refrigeration for builders, schools, shops, clinics and kitchens.</p>
+        <span class="go">Commercial services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="door rv" href="#careers">
+        <img loading="lazy" src="assets/6-1000x668.jpg" alt="">
+        <span class="label">For your career</span>
+        <h3>Installers wanted, year-round work</h3>
+        <p>Mechanical plumbers and refrigeration mechanics. Company vehicle, monthly RDOs, proper projects.</p>
+        <span class="go">See the role <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap svc-grid">
+    <div class="svc-col">
+      <span class="label rv">Air conditioning</span>
+      <h2 class="h2 rv">Supplied, installed and looked after.</h2>
+      <ul class="svc-list">
+        <li class="rv"><b>Home air conditioning</b><span>Supply and install across the leading brands, sized for your rooms and your budget.</span></li>
+        <li class="rv"><b>Commercial air conditioning</b><span>Systems for most business needs, with servicing and maintenance contracts to follow.</span></li>
+        <li class="rv"><b>Split systems</b><span>Our specialty. Installation, servicing and repairs for homes and commercial fit-outs.</span></li>
+        <li class="rv"><b>Sales and installs</b><span>Need a new unit? We'll match a system to the space and fit it properly.</span></li>
+        <li class="rv"><b>Service and repairs</b><span>Qualified technicians, prompt call-outs, and most issues repaired on the spot.</span></li>
+        <li class="rv"><b>Preventative maintenance</b><span>Scheduled service contracts that catch problems before they cost you a hot week.</span></li>
+      </ul>
+      <p class="brands rv"><b>Brands we supply and service:</b> Daikin, Carrier, Mitsubishi, Samsung and LG.</p>
+    </div>
+    <aside class="fridge rv" id="refrigeration">
+      <span class="label">Refrigeration</span>
+      <h2 class="h2">When the coolroom can't go down.</h2>
+      <p>Domestic and commercial refrigeration, serviced and repaired by fully qualified technicians with experience across a wide range of brands.</p>
+      <ul>
+        <li>Commercial refrigeration</li>
+        <li>Service and repairs</li>
+        <li>Preventative maintenance</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" id="about">
+  <div class="wrap proof-grid">
+    <div class="since rv"><small>Family owned since</small>2002</div>
+    <div>
+      <h2 class="h2 rv">Still the same family. Still answering the phone in Werribee.</h2>
+      <p class="rv">Metrocool has been operating since 2002, building a reputation on friendly, honest and reliable service. Our technicians are qualified, experienced air conditioning and refrigeration professionals.</p>
+      <p class="rv">We work in homes and multi-unit developments, and for builders, schools, shopping centres, cafes and restaurants, aged care and child care, sporting clubs, car dealerships, hospitals and medical facilities.</p>
+      <ul class="creds rv">
+        <li>ARC AU53860</li>
+        <li>PIC 45674</li>
+        <li>PAC LD 11854</li>
+        <li>Metro Melbourne + north and west</li>
+      </ul>
+    </div>
+  </div>
+  <div class="clients">
+    <div class="wrap"><span class="label">Businesses we look after</span></div>
+    <div class="track" aria-label="Clients: Subway, The Women's, Sherridon Homes, Mantra, Hyundai, Jeep, Chrysler, Dodge, Mancini, AHB">
+      <span>Subway</span><span>The Women's</span><span>Sherridon Homes</span><span>Mantra</span><span>Hyundai</span><span>Jeep</span><span>Chrysler</span><span>Dodge</span><span>Mancini</span><span>AHB</span>
+      <span aria-hidden="true">Subway</span><span aria-hidden="true">The Women's</span><span aria-hidden="true">Sherridon Homes</span><span aria-hidden="true">Mantra</span><span aria-hidden="true">Hyundai</span><span aria-hidden="true">Jeep</span><span aria-hidden="true">Chrysler</span><span aria-hidden="true">Dodge</span><span aria-hidden="true">Mancini</span><span aria-hidden="true">AHB</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section class="careers" id="careers">
+  <div class="wrap car-grid">
+    <div>
+      <span class="label rv">Now hiring · Air conditioning installers</span>
+      <h2 class="h2 rv">Good at this? Come and do it with us.</h2>
+      <p class="rv">We're growing and have multiple spots for mechanical plumbers and refrigeration mechanics. The work runs all year: apartments, schools, dealerships, shopping centres and homes.</p>
+      <ul class="perks rv">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Company vehicle</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Monthly RDOs</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Overtime at penalty rates</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Phone allowance</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Major tools and uniform</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>An office team backing you</li>
+      </ul>
+      <a class="btn btn-ink rv" href="#quote">Apply in three steps</a>
+    </div>
+    <div class="car-photo rv">
+      <img loading="lazy" src="assets/2-1000x668.jpg" alt="Metrocool technicians loading a branded van">
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE / CONTACT -->
+<section class="contact" id="quote">
+  <div class="wrap con-grid">
+    <div>
+      <span class="label rv">Get a quote</span>
+      <h2 class="h2 rv">Tell us what's going on. We'll call you back.</h2>
+      <p class="rv" style="color:rgba(255,255,255,.8);max-width:28em">Four quick questions. If it's urgent, ringing the office is faster.</p>
+      <a class="big-phone rv" href="tel:0397415454">(03) 9741 5454</a>
+      <address class="addr rv">131 Railway Avenue, Werribee VIC 3030<br><a href="mailto:admin@metrocool.com.au">admin@metrocool.com.au</a></address>
+    </div>
+    <form id="quoteForm" class="rv" novalidate>
+      <fieldset>
+        <legend>What do you need?</legend>
+        <div class="chips">
+          <label><input type="radio" name="need" value="install" checked><span>New system</span></label>
+          <label><input type="radio" name="need" value="repair"><span>Repair</span></label>
+          <label><input type="radio" name="need" value="service"><span>Service</span></label>
+          <label><input type="radio" name="need" value="contract"><span>Maintenance contract</span></label>
+          <label><input type="radio" name="need" value="refrigeration"><span>Refrigeration</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Where is it?</legend>
+        <div class="chips">
+          <label><input type="radio" name="place" value="home" checked><span>Home</span></label>
+          <label><input type="radio" name="place" value="business"><span>Business</span></label>
+          <label><input type="radio" name="place" value="site"><span>Building site</span></label>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      </div>
+      <div class="field"><label for="f-post">Postcode</label><input id="f-post" name="postcode" inputmode="numeric" autocomplete="postal-code" maxlength="4"></div>
+      <button class="btn btn-blue" type="submit">Request a call back</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo_mc-283x110.png" alt="Metrocool" width="283" height="110">
+    <span>ARC AU53860 · PIC 45674 · PAC LD 11854</span>
+    <span class="concept">HOMEPAGE CONCEPT · NOT THE LIVE SITE</span>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <a class="btn btn-ghost" href="tel:0397415454">Call now</a>
+  <a class="btn btn-blue" href="#quote">Get a quote</a>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement,
+      dial=document.getElementById('dial'),
+      setNum=document.getElementById('setNum'),
+      verdict=document.getElementById('verdict'),
+      outsideEl=document.getElementById('outside'),
+      nowText=document.getElementById('nowText'),
+      hint=document.getElementById('hint'),
+      reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* colour: ice (16) -> Metrocool blue (22) -> heat (30) */
+  var ICE=[150,205,235], BLUE=[0,157,221], HEAT=[255,106,43];
+  function mix(a,b,t){return [0,1,2].map(function(i){return Math.round(a[i]+(b[i]-a[i])*t)})}
+  function tintFor(t){
+    var c = t<=22 ? mix(ICE,BLUE,(t-16)/6) : mix(BLUE,HEAT,Math.min(1,(t-22)/7));
+    return c;
+  }
+  function verdictFor(t){
+    if(t>=28) return "Sticky. This is a place that needs a split system.";
+    if(t>=24) return "Getting there. Keep going.";
+    if(t>=21) return "That's the one. We install, service and repair the systems that hold it here.";
+    if(t>=18) return "A bit fresh for a lounge room.";
+    return "Coolroom territory. We look after those too.";
+  }
+  var current=22, rgb=BLUE, touched=false;
+  function apply(t){
+    current=t; rgb=tintFor(t);
+    root.style.setProperty('--tint','rgb('+rgb.join(',')+')');
+    setNum.textContent=t;
+    verdict.textContent=verdictFor(t);
+    dial.setAttribute('aria-valuetext',t+' degrees');
+  }
+  dial.addEventListener('input',function(){
+    apply(+dial.value);
+    if(!touched){touched=true;}
+    hint.style.visibility = (current>=21&&current<=23) ? 'hidden':'visible';
+  });
+
+  /* live outside temperature for Werribee (Open-Meteo, no key). Falls back quietly. */
+  function start(out, live){
+    if(live){
+      outsideEl.textContent='Outside '+out+'°';
+      nowText.textContent='Werribee, right now: '+out+'°';
+    }else{
+      outsideEl.textContent='Outside, a Melbourne summer';
+    }
+    var s=Math.max(16,Math.min(30,out));
+    if(s>=21&&s<=23) s=28;            /* always give the dial somewhere to go */
+    dial.value=s; apply(s);
+  }
+  apply(22);
+  var done=false, fallback=setTimeout(function(){ if(!done){done=true;start(30,false);} },2500);
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=-37.90&longitude=144.66&current=temperature_2m&timezone=Australia%2FMelbourne')
+    .then(function(r){return r.json()})
+    .then(function(d){ if(done) return; var t=Math.round(d.current.temperature_2m); if(isFinite(t)){done=true;clearTimeout(fallback);start(t,true);} })
+    .catch(function(){ if(!done){done=true;clearTimeout(fallback);start(30,false);} });
+
+  /* airflow: streaks of conditioned air. Cooler setpoint = more, faster, bluer. */
+  var cv=document.getElementById('air'), cx=cv.getContext('2d'), W=0,H=0, dpr=Math.min(2,window.devicePixelRatio||1), S=[];
+  function size(){ W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; cx.setTransform(dpr,0,0,dpr,0,0); }
+  function seed(s,fresh){ s.x=fresh?Math.random()*W:-s.len; s.y=Math.random()*H; s.v=.6+Math.random()*1.6; s.len=120+Math.random()*320; s.amp=6+Math.random()*26; s.ph=Math.random()*6.28; s.w=.6+Math.random()*1.8; return s; }
+  function init(){ size(); S=[]; for(var i=0;i<90;i++) S.push(seed({len:200},true)); }
+  var vis=true;
+  function frame(ts){
+    if(vis){
+      cx.clearRect(0,0,W,H);
+      var cool=Math.max(0,Math.min(1,(30-current)/14)),      /* 0 at 30°, 1 at 16° */
+          n=Math.round(10+cool*80), speed=.5+cool*2.6,
+          col=current>25?'255,190,150':'215,242,255';
+      for(var i=0;i<n;i++){
+        var s=S[i]; s.x+=s.v*speed;
+        if(s.x-s.len>W) seed(s,false);
+        var g=cx.createLinearGradient(s.x-s.len,0,s.x,0);
+        g.addColorStop(0,'rgba('+col+',0)'); g.addColorStop(.7,'rgba('+col+','+(.10+cool*.26)+')'); g.addColorStop(1,'rgba('+col+',0)');
+        cx.strokeStyle=g; cx.lineWidth=s.w; cx.beginPath();
+        for(var k=0;k<=10;k++){
+          var px=s.x-s.len+(s.len*k/10), py=s.y+Math.sin(px*.006+s.ph+ts*.0004)*s.amp;
+          k?cx.lineTo(px,py):cx.moveTo(px,py);
+        }
+        cx.stroke();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  if(!reduce){
+    init(); addEventListener('resize',init);
+    new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(cv);
+    requestAnimationFrame(frame);
+  }
+
+  /* header + mobile bar */
+  var top=document.getElementById('top'), bar=document.getElementById('bar');
+  function onScroll(){ var y=scrollY; top.classList.toggle('solid',y>40); bar.classList.toggle('show',y>innerHeight*.6); }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* reveal on scroll */
+  var rv=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){ rv.forEach(function(el){el.classList.add('in')}); }
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} })},{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){io.observe(el)});
+  }
+
+  /* concept form: nothing is sent anywhere */
+  document.getElementById('quoteForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    this.innerHTML='<div class="sent"><b>Request received</b><p>This is a concept page, so nothing was sent. On the live site this lands with the office and they call back.</p></div>';
+  });
+})();
+</script>
+</body>
+</html>
