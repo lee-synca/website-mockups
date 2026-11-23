@@ -24,7 +24,7 @@
   --display:"Archivo",system-ui,sans-serif;
   --body:"Hanken Grotesk",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
-  --wrap:1240px;
+  --wrap:1440px;
   --gut:clamp(16px,4vw,48px);
   /* live hero colour, set from JS */
   --air:#D71A21;
@@ -36,6 +36,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.wrap--wide{max-width:1440px}
 .band{padding-block:clamp(64px,9vw,128px)}
 .eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px;opacity:.75}
 .display{font-family:var(--display);font-stretch:112%;font-weight:900;font-style:italic;line-height:.98;letter-spacing:-.015em;word-spacing:.06em;margin:0}
@@ -55,7 +56,7 @@ a:hover .arrow{transform:translateX(4px)}
 
 /* ---------- Header ---------- */
 .top{position:fixed;z-index:50;top:14px;left:0;right:0;padding-inline:var(--gut)}
-.top__bar{max-width:var(--wrap);margin:0 auto;background:#fff;border-radius:999px;display:flex;align-items:center;gap:28px;padding:9px 10px 9px 26px;box-shadow:0 10px 40px rgba(3,10,30,.22)}
+.top__bar{max-width:calc(1440px - 2 * var(--gut));margin:0 auto;background:#fff;border-radius:999px;display:flex;align-items:center;gap:28px;padding:9px 10px 9px 26px;box-shadow:0 10px 40px rgba(3,10,30,.22)}
 .logo{display:flex;align-items:center;text-decoration:none;flex:none}
 .logo img{height:40px;width:auto}
 .logo__text{font-family:var(--display);font-stretch:118%;font-weight:900;font-style:italic;font-size:1.5rem;color:var(--red);letter-spacing:-.02em}
@@ -75,7 +76,7 @@ a:hover .arrow{transform:translateX(4px)}
 .hero__inner{padding-top:150px;padding-bottom:clamp(28px,5vw,56px);width:100%}
 .hero h1{font-size:clamp(2.35rem,6.3vw,6rem);margin-bottom:28px}
 .hero h1 span{display:block}
-.hero h1 .out{display:inline-block;min-width:2.25ch;color:var(--air);transition:color .4s;font-variant-numeric:tabular-nums}
+.hero h1 .out{display:inline-block;min-width:2.25ch;color:var(--out,#5CB8FF);transition:color .4s;font-variant-numeric:tabular-nums}
 .hero h1 .in{color:#fff}
 .hero__say{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:46ch;min-height:3.2em;margin:0 0 30px;color:rgba(255,255,255,.9)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(36px,6vw,72px)}
@@ -83,7 +84,7 @@ a:hover .arrow{transform:translateX(4px)}
 .weather{border-top:1px solid rgba(255,255,255,.22);padding-top:22px;display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,3vw,40px);align-items:center}
 .weather__label{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75)}
 .weather__mode{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;min-width:14ch;justify-content:flex-end}
-.weather__mode i{width:10px;height:10px;border-radius:50%;background:var(--air);box-shadow:0 0 0 5px color-mix(in srgb,var(--air) 30%,transparent);transition:background .4s,box-shadow .4s}
+.weather__mode i{width:10px;height:10px;border-radius:50%;background:var(--out);box-shadow:0 0 0 5px color-mix(in srgb,var(--out) 30%,transparent);transition:background .4s,box-shadow .4s}
 .slider{position:relative}
 .slider input{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:ew-resize}
 .slider input::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,#CFE9FF 0%,#5CB8FF 28%,#fff 50%,#FFB38A 72%,#FF5A2E 100%)}
@@ -244,7 +245,7 @@ a:hover .arrow{transform:translateX(4px)}
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="air" aria-hidden="true"></canvas>
-  <div class="wrap hero__inner">
+  <div class="wrap wrap--wide hero__inner">
     <p class="eyebrow">Heating &amp; cooling · Melbourne · Since 1987</p>
     <h1 class="display" id="hero-title">
       <span>Outside, it&rsquo;s <span class="out" id="outTemp">7°</span></span>
@@ -449,7 +450,7 @@ a:hover .arrow{transform:translateX(4px)}
 </main>
 
 <footer class="foot">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="foot__grid">
       <div>
         <p class="foot__tag">We live &amp; breathe air.</p>
@@ -511,6 +512,7 @@ a:hover .arrow{transform:translateX(4px)}
   var COOL = [[30,115,232],[92,184,255],[214,236,255]];
   var BG_W = [56,9,22], BG_C = [4,22,68];
   var warm = 0;       // 1 = we are heating, 0 = we are cooling
+  var heat = 1;       // 1 = hot outside, 0 = cold outside
   var palette = COOL.map(function(c){return c.slice();}), bg = BG_C.slice();
 
   function mix(a,b,t){return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];}
@@ -521,10 +523,13 @@ a:hover .arrow{transform:translateX(4px)}
     outEl.textContent = t + '°';
     var x = Math.min(1, Math.max(0, (30 - t) / 18));
     warm = x*x*(3-2*x);
-    for (var i=0;i<3;i++) palette[i] = mix(COOL[i], WARM[i], warm);
-    bg = mix(BG_C, BG_W, warm);
-    var lead = mix([92,184,255],[255,106,74],warm);
-    root.style.setProperty('--air', rgb(lead,1));
+    // the background shows the weather outside: the colder it is, the bluer it gets
+    heat = 1 - warm;
+    for (var i=0;i<3;i++) palette[i] = mix(COOL[i], WARM[i], heat);
+    bg = mix(BG_C, BG_W, heat);
+    root.style.setProperty('--air', rgb(mix([92,184,255],[255,106,74],heat),1));
+    // the number and the mode dot show what Bradmac is doing about it: warm for heating, cool for cooling
+    root.style.setProperty('--out', rgb(mix([92,184,255],[255,106,74],warm),1));
     for (var j=0;j<lines.length;j++){
       if (t <= lines[j][0]){
         modeEl.textContent = lines[j][1];
@@ -583,7 +588,7 @@ a:hover .arrow{transform:translateX(4px)}
     ctx.fillStyle = rgb(bg,.028); ctx.fillRect(0,0,W,H);
     ctx.lineWidth = 1.4; ctx.lineCap = 'round';
     // warm air rises, cool air sweeps across and settles
-    var dx = .25*warm + 1.05*(1-warm), dy = -.85*warm + .22*(1-warm);
+    var dx = .25*heat + 1.05*(1-heat), dy = -.85*heat + .22*(1-heat);
     for (var k=0;k<3;k++){
       ctx.strokeStyle = rgb(palette[k], k===2 ? .34 : .5);
       ctx.beginPath();
