@@ -180,6 +180,44 @@
     'Email to an artist': 'Kia ora Mele,\n\nGreat to chat. With AVEA you keep everything, and we chase every stream so nothing is left on the table. We guarantee your next single will go viral.',
     'Approved copy': 'We help deliver your releases to major streaming and download platforms. There\'s no fee to apply, and we\'ll explain the fees and splits before you agree to anything.'
   };
+  /* =====================================================================
+     Brand: the guide and the artist pitch deck
+     ===================================================================== */
+  routes['brand'] = () => {
+    view.innerHTML = head('Brand', 'The brand, in one place.', 'The AVEA brand guide and the pitch deck for artists. Open them full screen, present the deck, or grab a logo file.') + `
+      <div class="grid two brand-grid">
+        <section class="panel" style="display:grid;gap:1rem;align-content:start">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap"><h2 class="h3">Brand guidelines</h2><span class="tag tag--ok">V2 · Approved 23 Nov</span></div>
+          <div class="frame" data-frame="1440x900"><iframe src="brand/avea-brand-guide.html" title="AVEA brand guide preview" tabindex="-1"></iframe></div>
+          <p class="small muted">Twelve chapters: who we are, brand platform, the name, tone of voice, logo, colour, typography, photography, the peak, layouts and the brand in use.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn" href="brand/avea-brand-guide.html" target="_blank" rel="noopener">Open the brand guide</a><a class="btn btn--ghost" href="brand/avea-brand-guide.html?static" target="_blank" rel="noopener">Print version</a></div>
+        </section>
+        <section class="panel" style="display:grid;gap:1rem;align-content:start">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap"><h2 class="h3">Pitch deck for artists</h2><span class="tag tag--ok">16 slides · Approved 23 Nov</span></div>
+          <div class="frame" data-frame="1920x1080"><iframe src="brand/avea-pitch-deck.html#1" title="AVEA pitch deck preview" data-deck></iframe></div>
+          <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap"><button class="btn btn--ghost btn--sm" data-slide="-1">‹ Previous</button><span class="small muted" data-slide-n>Slide 1 of 16</span><button class="btn btn--ghost btn--sm" data-slide="1">Next ›</button></div>
+          <p class="small muted">To present: open it, press F for full screen and N for your notes. Arrow keys, a click or a swipe move between slides.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn" href="brand/avea-pitch-deck.html" target="_blank" rel="noopener">Present the deck</a><a class="btn btn--ghost" href="brand/avea-pitch-deck.html?pdf" target="_blank" rel="noopener">Save as PDF</a></div>
+        </section>
+      </div>
+      <section class="panel" style="display:grid;gap:1rem">
+        <h2 class="h3">Quick downloads</h2>
+        <div class="dl-grid">
+          ${[['logo-lockup.png', 'Lockup, white', 'var(--abyss)'], ['logo-wordmark.png', 'Wordmark, white', 'var(--abyss)'], ['logo-lockup-navy.png', 'Lockup, navy', 'var(--sand)'], ['logo-wordmark-navy.png', 'Wordmark, navy', 'var(--sand)'], ['chevron.png', 'The peak', 'var(--abyss)']].map(([f, n, bg]) =>
+            `<a class="dl" href="brand/img/${f}" download><span class="dl__img" style="background:${bg}"><img src="brand/img/${f}" alt=""></span><span class="small"><b>${n}</b><span class="muted"> · PNG</span></span></a>`).join('')}
+        </div>
+        <div class="chips-row">${[['Abyss', '#021824'], ['Ocean', '#04273B'], ['Gold', '#F0B565'], ['Sand', '#ECE2D0'], ['Foam', '#F8F4EC'], ['Mist', '#A9BCC6']].map(([n, h]) =>
+          `<button class="swatch" data-hex="${h}"><i style="background:${h}"></i>${n} <span class="muted">${h}</span></button>`).join('')}</div>
+        <p class="small muted">Click a colour to copy its code. Ask AVEA's logo designer for vector (SVG or PDF) versions of the logo for print.</p>
+      </section>`;
+    // Scale each preview so it shows the full desktop layout
+    const fit = () => $$('[data-frame]').forEach(fr => { const [w, h] = fr.dataset.frame.split('x').map(Number); const f = $('iframe', fr); const s = fr.clientWidth / w; f.style.width = w + 'px'; f.style.height = h + 'px'; f.style.transform = `scale(${s})`; fr.style.height = h * s + 'px'; });
+    fit(); window.addEventListener('resize', fit);
+    let n = 1; const deck = $('[data-deck]');
+    $$('[data-slide]').forEach(b => b.addEventListener('click', () => { n = Math.max(1, Math.min(16, n + +b.dataset.slide)); deck.src = 'brand/avea-pitch-deck.html#' + n; $('[data-slide-n]').textContent = `Slide ${n} of 16`; }));
+    $$('[data-hex]').forEach(b => b.addEventListener('click', async () => { try { await navigator.clipboard.writeText(b.dataset.hex); toast(b.dataset.hex + ' copied'); } catch { toast(b.dataset.hex); } }));
+  };
+
   routes['wording'] = () => {
     view.innerHTML = head('Wording check', 'Does it sound like AVEA?', 'Paste a caption, an email or a page of copy. It flags promises AVEA can\'t make, unclear cost or ownership claims, and style slips, and suggests the approved wording. The same check runs inside the website editor.') + `
       <div class="grid two">

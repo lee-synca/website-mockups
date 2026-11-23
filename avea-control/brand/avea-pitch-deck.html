@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AVEA · For artists</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/chevron.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#021824;--ocean:#04273b;--deep:#0a3349;--lagoon:#3c5f72;--mist:#a9bcc6;
+  --gold:#f0b565;--gold-deep:#9a5f1a;--sand:#ece2d0;--foam:#f8f4ec;--ink:#06202e;
+  --display:"Montserrat",Arial,sans-serif;--font:"Archivo",Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+ul,ol{list-style:none}
+img,svg{display:block}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+
+/* Stage: everything is laid out at 1920 × 1080 and scaled to fit */
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:50% 50%}
+.slide{position:absolute;inset:0;overflow:hidden;background:var(--foam);opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility 0s .7s;padding:96px 120px 110px}
+.slide.on{opacity:1;visibility:visible;transition:opacity .7s var(--ease)}
+.dark{background:var(--abyss);color:var(--foam)}
+.ocean{background:var(--ocean);color:var(--foam)}
+.sand{background:var(--sand)}
+.goldbg{background:var(--gold);color:var(--abyss)}
+
+/* Build-in for elements on the active slide */
+.a{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.on .a{opacity:1;transform:none}
+.on .a1{transition-delay:.12s}.on .a2{transition-delay:.24s}.on .a3{transition-delay:.36s}.on .a4{transition-delay:.48s}.on .a5{transition-delay:.6s}.on .a6{transition-delay:.72s}.on .a7{transition-delay:.84s}
+
+/* Type */
+.lab{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);display:flex;align-items:center;gap:16px}
+.lab::before{content:"";border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:15px solid currentColor}
+.dark .lab,.ocean .lab{color:var(--gold)}
+.goldbg .lab{color:var(--abyss)}
+.hero{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:150px;line-height:.9;letter-spacing:-.025em}
+.h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:96px;line-height:.95;letter-spacing:-.02em}
+.h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:64px;line-height:1;letter-spacing:-.015em}
+.h3{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:30px;line-height:1.15}
+.lead{font-size:34px;line-height:1.45;color:rgba(6,32,46,.75)}
+.dark .lead,.ocean .lead{color:var(--mist)}
+.body{font-size:26px;line-height:1.5;color:rgba(6,32,46,.72)}
+.dark .body,.ocean .body{color:var(--mist)}
+.caps{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.18em;text-transform:uppercase}
+.g{color:var(--gold)}
+.gd{color:var(--gold-deep)}
+
+/* Chrome on each slide */
+.foot{position:absolute;left:120px;right:120px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:rgba(6,32,46,.5)}
+.dark .foot,.ocean .foot{color:rgba(169,188,198,.7)}
+.goldbg .foot{color:rgba(2,24,36,.6)}
+.foot img{height:22px}
+.peak{position:absolute;color:var(--gold);pointer-events:none;overflow:visible}
+.draw polyline:not(.dash){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s var(--ease) .2s}
+.on .draw polyline:not(.dash){stroke-dashoffset:0}
+.draw .dash{opacity:0;transition:opacity 1.2s ease 1.4s}.on .draw .dash{opacity:1}
+.duo{position:relative;overflow:hidden;background:var(--gold);isolation:isolate}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.duo.fade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,24,36,0) 40%,rgba(2,24,36,.75))}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:96px;height:100%;align-items:center}
+.full-photo{position:absolute;top:0;bottom:0;right:0;width:46%}
+
+/* Specific slides */
+.cov-art{position:absolute;right:-180px;bottom:0;height:1000px;width:auto;overflow:visible}
+.word{font-family:var(--display);font-weight:700;font-size:440px;line-height:.78;letter-spacing:-.04em;color:var(--gold);display:flex}
+.word span{display:inline-block;opacity:0;transform:translateY(30%);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.on .word span{opacity:1;transform:none}
+.on .word span:nth-child(2){transition-delay:.1s}.on .word span:nth-child(3){transition-delay:.2s}.on .word span:nth-child(4){transition-delay:.3s}
+.qs{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.qs li{background:#fff;border:1px solid rgba(6,32,46,.12);padding:36px 40px;font-family:var(--display);font-weight:700;font-size:32px;line-height:1.2;text-transform:uppercase;display:flex;gap:24px;align-items:flex-start}
+.qs li::before{content:"?";flex:none;width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--abyss);display:grid;place-items:center;font-size:28px}
+.svc{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.svc li{border-top:3px solid var(--gold);padding-top:28px;display:grid;gap:14px;align-content:start}
+.svc .n{font-family:var(--display);font-weight:700;font-size:72px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+.pts{display:grid;gap:26px}
+.pts li{display:flex;gap:22px;align-items:flex-start}
+.pts li::before{content:"";flex:none;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:18px solid var(--gold);margin-top:12px}
+.sand .pts li::before,.slide:not(.dark):not(.ocean) .pts li::before{border-bottom-color:var(--gold-deep)}
+.pts b{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:28px;margin-bottom:6px}
+.plats{display:flex;flex-wrap:wrap;gap:12px 14px}
+.plats span{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border:1px solid rgba(6,32,46,.2)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.trio article{background:rgba(248,244,236,.05);border:1px solid rgba(248,244,236,.14);padding:40px;display:grid;gap:18px;align-content:start}
+.trio .n{font-family:var(--display);font-weight:700;font-size:64px;color:transparent;-webkit-text-stroke:1.5px var(--gold);line-height:1}
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-top:20px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:22px;height:3px;background:rgba(6,32,46,.15)}
+.tl::after{content:"";position:absolute;left:0;top:22px;height:3px;background:var(--gold-deep);width:0;transition:width 2.6s var(--ease) .4s}
+.on .tl::after{width:100%}
+.tl li{position:relative;padding-top:66px;display:grid;gap:8px;padding-right:22px}
+.tl li::before{content:"";position:absolute;top:10px;left:0;width:26px;height:26px;border-radius:50%;background:var(--sand);border:3px solid var(--gold-deep);z-index:2}
+.tl .d{font-family:var(--display);font-weight:700;font-size:22px;color:var(--gold-deep);letter-spacing:.06em}
+.tl b{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:24px;line-height:1.15}
+.stmt{background:var(--foam);color:var(--ink);padding:48px;display:grid;gap:26px;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.stmt table{width:100%;border-collapse:collapse;font-size:22px}
+.stmt td{padding:14px 0;border-bottom:1px solid rgba(6,32,46,.12)}
+.stmt td:last-child{text-align:right;font-weight:500}
+.bar{height:14px;background:rgba(6,32,46,.1);position:relative;margin-top:8px}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--gold-deep);width:0;transition:width 1.6s var(--ease) .6s}
+.on .bar i{width:var(--w)}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid rgba(248,244,236,.18)}
+.steps li{padding:44px 30px 0 0;display:grid;gap:14px;align-content:start;position:relative}
+.steps li+li{padding-left:30px;border-left:1px solid rgba(248,244,236,.18)}
+.steps .n{font-family:var(--display);font-weight:700;font-size:84px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+.deal{display:grid;gap:0;border-top:1px solid rgba(6,32,46,.2)}
+.deal li{display:grid;grid-template-columns:auto 1fr;gap:10px 30px;padding:30px 0;border-bottom:1px solid rgba(6,32,46,.2)}
+.deal li::before{content:"";grid-row:1/3;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:22px solid var(--gold-deep);margin-top:8px}
+.deal b{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:32px;line-height:1.15}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.faq article{background:#fff;border:1px solid rgba(6,32,46,.12);padding:40px;display:grid;gap:16px;align-content:start}
+.faq b{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:28px;line-height:1.2}
+.big-q{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:110px;line-height:.95;letter-spacing:-.02em}
+
+/* Deck chrome */
+#bar{position:fixed;left:0;bottom:0;height:5px;background:var(--gold);width:0;transition:width .5s var(--ease);z-index:20}
+#count{position:fixed;right:22px;bottom:18px;color:rgba(255,255,255,.55);font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.16em;z-index:20}
+#help{position:fixed;left:22px;bottom:18px;color:rgba(255,255,255,.55);font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:opacity 1s;z-index:20}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:34vh;overflow:auto;background:rgba(2,24,36,.96);color:var(--foam);padding:22px 28px 40px;font-size:16px;line-height:1.55;transform:translateY(100%);transition:transform .4s var(--ease);z-index:19;border-top:2px solid var(--gold)}
+.shownotes #notes{transform:none}
+#notes b{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+aside.notes{display:none}
+.navbtn{position:fixed;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(2,24,36,.55);color:var(--foam);z-index:20;font-size:22px;opacity:0;transition:opacity .3s}
+body:hover .navbtn{opacity:.8}
+#prev{left:14px}#next{right:14px}
+
+/* Print / PDF: every slide on its own page */
+@page{size:1920px 1080px;margin:0}
+body.pdf,body.pdf html{overflow:visible;height:auto;background:#fff}
+body.pdf #stage{position:static;transform:none!important;width:auto;height:auto}
+body.pdf .slide{position:relative;opacity:1;visibility:visible;width:1920px;height:1080px;break-after:page}
+body.pdf .a,body.pdf .word span{opacity:1;transform:none}
+body.pdf .draw polyline:not(.dash){stroke-dashoffset:0}body.pdf .draw .dash{opacity:1}
+body.pdf .tl::after{width:100%}body.pdf .bar i{width:var(--w)}
+body.pdf #bar,body.pdf #count,body.pdf #help,body.pdf #notes,body.pdf .navbtn{display:none}
+@media (prefers-reduced-motion:reduce){.a,.word span,.slide{transition:none!important}.draw polyline:not(.dash){stroke-dashoffset:0}.draw .dash{opacity:1}.tl::after{width:100%;transition:none}.bar i{width:var(--w);transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peak" viewBox="0 0 640 560" overflow="visible">
+    <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="10">
+      <polyline pathLength="1" points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+      <polyline pathLength="1" points="8,560 320,40 632,560" stroke-width="10"/>
+      <polyline pathLength="1" points="32,560 320,80 608,560" stroke-width="1.5"/>
+      <polyline class="dash" points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+      <polyline pathLength="1" points="59,560 320,125 581,560" stroke-width="1.5"/>
+      <polyline pathLength="1" points="74,560 320,150 566,560" stroke-width="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<main id="stage">
+
+<!-- 1 Cover -->
+<section class="slide dark">
+  <svg class="cov-art" viewBox="0 0 640 560">
+    <defs><clipPath id="c1"><polygon points="320,150 566,560 74,560"/></clipPath><linearGradient id="f1" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#021824" stop-opacity="0"/><stop offset="1" stop-color="#021824" stop-opacity=".85"/></linearGradient></defs>
+    <g clip-path="url(#c1)"><rect x="74" y="150" width="492" height="410" fill="#f0b565"/><image href="img/singer.jpg" x="74" y="120" width="492" height="720" preserveAspectRatio="xMidYMin slice" style="filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply"/><rect x="74" y="150" width="492" height="410" fill="url(#f1)"/></g>
+    <g class="draw" style="color:#f0b565"><use href="#peak"/></g>
+  </svg>
+  <div style="position:relative;display:grid;grid-template-rows:auto 1fr auto;height:100%;max-width:900px">
+    <p class="lab a">An introduction for artists</p>
+    <div style="align-self:center;display:grid;gap:40px">
+      <img src="img/logo-wordmark.png" alt="AVEA" style="width:300px" class="a a1">
+      <h1 class="hero a a2">Where<br>artists<br><span class="g">become</span></h1>
+      <p class="lead a a3" style="max-width:760px">Your Sound. Your Story. Your Future.</p>
+    </div>
+    <p class="caps a a4" style="color:var(--mist)">Pacific-owned music distribution and artist services · Wellington, Aotearoa New Zealand</p>
+  </div>
+  <aside class="notes">Kia ora, and thanks for your time. This is a short introduction to AVEA: who we are, what we do for artists, how it works and what we will and won't promise. Ask questions any time.</aside>
+</section>
+
+<!-- 2 Who we are -->
+<section class="slide sand">
+  <div class="split" style="grid-template-columns:1.1fr .9fr">
+    <div style="display:grid;gap:44px">
+      <p class="lab a">Who we are</p>
+      <h2 class="h1 a a1">A Pacific-owned music company.</h2>
+      <p class="lead a a2">AVEA is a Pacific-owned music distribution and artist services company. We help artists get their music out, understand their rights and build careers without losing what makes them who they are.</p>
+    </div>
+    <div class="duo fade a a3" style="height:780px"><img src="img/family.jpg" alt=""></div>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 02</span></div>
+  <aside class="notes">Pacific-owned and based in Wellington. We work with artists in Aotearoa, Australia, the islands and the diaspora.</aside>
+</section>
+
+<!-- 3 The name -->
+<section class="slide dark">
+  <svg class="peak" viewBox="0 0 640 560" style="right:-200px;bottom:0;height:900px;width:auto;opacity:.08"><use href="#peak"/></svg>
+  <div style="position:relative;display:grid;gap:60px;height:100%;align-content:center">
+    <p class="lab a">The name</p>
+    <p class="word" aria-label="avea"><span>a</span><span>v</span><span>e</span><span>a</span></p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:80px;max-width:1500px">
+      <p class="lead a a3"><b class="caps" style="color:var(--foam);display:block;margin-bottom:12px">Gagana Samoa</b>To be carried. And in <i>avea ma</i>, to become.</p>
+      <p class="lead a a4">Pacific artists have been reaching audiences around the world for years. We want the support behind the music to catch up.</p>
+    </div>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark.png" alt="AVEA"><span>avea.co.nz · 03</span></div>
+  <aside class="notes">Confirm the meaning with the founders before this goes out. The name is the brand story: carrying artists, and helping them become.</aside>
+</section>
+
+<!-- 4 The questions -->
+<section class="slide">
+  <div style="display:grid;gap:56px;height:100%;align-content:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:end">
+      <div style="display:grid;gap:30px"><p class="lab a">Why AVEA</p><h2 class="h1 a a1" style="font-size:76px">Your music deserves more than an upload button.</h2></div>
+      <p class="lead a a2">Making music is one part of the job. Getting it released, heard and paid for takes a lot of work too. That's where we come in.</p>
+    </div>
+    <p class="caps a a2" style="color:rgba(6,32,46,.55);margin-bottom:-24px">The questions every artist asks</p>
+    <ul class="qs">
+      <li class="a a3">Where will my music be available?</li>
+      <li class="a a4">Do I keep my rights and my masters?</li>
+      <li class="a a5">What does it cost to join AVEA?</li>
+      <li class="a a6">Do I have to leave my current distributor?</li>
+    </ul>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 04</span></div>
+  <aside class="notes">These four questions come straight from the AVEA FAQ. Each one is answered later in the deck, in plain words.</aside>
+</section>
+
+<!-- 5 What we do -->
+<section class="slide dark">
+  <div style="display:grid;gap:80px;height:100%;align-content:center">
+    <div style="display:grid;gap:30px;max-width:1400px"><p class="lab a">What we do</p><h2 class="h1 a a1">Everything you need to take your music to the world.</h2></div>
+    <ul class="svc">
+      <li class="a a2"><span class="n">01</span><span class="h3">Distribution</span><span class="body" style="font-size:22px">Your music, everywhere it matters</span></li>
+      <li class="a a3"><span class="n">02</span><span class="h3">YouTube Services</span><span class="body" style="font-size:22px">Grow your channel. Make more of your content.</span></li>
+      <li class="a a4"><span class="n">03</span><span class="h3">Release Strategy</span><span class="body" style="font-size:22px">Launch with impact, not luck</span></li>
+      <li class="a a5"><span class="n">04</span><span class="h3">Rights &amp; Royalties</span><span class="body" style="font-size:22px">Get paid what you're owed</span></li>
+      <li class="a a6"><span class="n">05</span><span class="h3">Artist Growth</span><span class="body" style="font-size:22px">A career, not just a release</span></li>
+    </ul>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark.png" alt="AVEA"><span>avea.co.nz · 05</span></div>
+  <aside class="notes">Five services. You choose the support that makes sense for you. The next five slides take one each.</aside>
+</section>
+
+<!-- 6 Distribution -->
+<section class="slide">
+  <div class="duo full-photo a"><img src="img/studio.jpg" alt=""></div>
+  <div style="display:grid;gap:40px;height:100%;align-content:center;max-width:860px">
+    <p class="lab a">01 · Distribution</p>
+    <h2 class="h1 a a1">Your music, everywhere it matters.</h2>
+    <p class="body a a2">We help deliver your releases to major streaming and download platforms, including Spotify, Apple Music and YouTube Music. We'll work with you to get the artwork, credits and release details right.</p>
+    <ul class="pts body a a3">
+      <li><span><b style="color:var(--ink)">Global reach</b>Major streaming and download platforms, one delivery.</span></li>
+      <li><span><b style="color:var(--ink)">Clean metadata</b>Credits, artwork and release info done right.</span></li>
+    </ul>
+    <div class="plats a a4"><span>Spotify</span><span>Apple Music</span><span>YouTube</span><span>TikTok</span><span>Deezer</span><span>TIDAL</span><span>Amazon Music</span><span>+ More</span></div>
+  </div>
+  <div class="foot" style="right:auto;width:760px"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>06</span></div>
+  <aside class="notes">Keep to "major streaming and download platforms". Don't say "every platform worldwide".</aside>
+</section>
+
+<!-- 7 YouTube -->
+<section class="slide dark">
+  <div class="duo fade" style="position:absolute;inset:0 0 0 auto;width:38%"><img src="img/creator.jpg" alt="" style="object-position:50% 25%"></div>
+  <div style="display:grid;gap:44px;height:100%;align-content:center;max-width:1100px;position:relative">
+    <p class="lab a">02 · YouTube Services</p>
+    <h2 class="h1 a a1">Grow your channel. Make more of your content.</h2>
+    <div class="trio" style="grid-template-columns:repeat(3,1fr)">
+      <article class="a a2"><span class="n">01</span><span class="h3" style="font-size:24px">Video &amp; Asset Optimisation</span><span class="body" style="font-size:20px">Titles, descriptions, thumbnails and playlists that help people find you.</span></article>
+      <article class="a a3"><span class="n">02</span><span class="h3" style="font-size:24px">Network Growth</span><span class="body" style="font-size:20px">Connect with viewers through playlists, collaborations and cross-promotion.</span></article>
+      <article class="a a4"><span class="n">03</span><span class="h3" style="font-size:24px">Content ID</span><span class="body" style="font-size:20px">Identify eligible third-party uses and collect revenue where available.</span></article>
+    </div>
+  </div>
+  <div class="foot" style="right:auto;width:1100px"><img src="img/logo-wordmark.png" alt="AVEA"><span>07</span></div>
+  <aside class="notes">Content ID covers eligible uses where the rights allow. Never say "every view earns".</aside>
+</section>
+
+<!-- 8 Release strategy -->
+<section class="slide sand">
+  <div style="display:grid;gap:56px;height:100%;align-content:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:end">
+      <div style="display:grid;gap:30px"><p class="lab a">03 · Release Strategy</p><h2 class="h1 a a1">Launch with impact, not luck.</h2></div>
+      <p class="lead a a2">Every release is different. We'll help you think through the timing, content, pitching and promotion so there's a plan behind the music.</p>
+    </div>
+    <ol class="tl a a3">
+      <li><span class="d">−5 weeks</span><b>Agreement &amp; splits</b></li>
+      <li><span class="d">−4 weeks</span><b>Final files locked</b></li>
+      <li><span class="d">−3 weeks</span><b>Delivered to platforms</b></li>
+      <li><span class="d">−2 weeks</span><b>Pitched &amp; pre-save live</b></li>
+      <li><span class="d">Release day</span><b>Out now</b></li>
+      <li><span class="d">+1 month</span><b>Review &amp; next plan</b></li>
+    </ol>
+    <ul class="pts body a a4" style="grid-template-columns:repeat(3,1fr);display:grid;gap:40px"><li><span><b style="color:var(--ink)">Timing &amp; rollout</b>A plan built around your goals, not guesswork.</span></li><li><span><b style="color:var(--ink)">Pitching &amp; positioning</b>Working to get your music in front of the right ears.</span></li><li><span><b style="color:var(--ink)">Data-informed decisions</b>Insight guiding every move.</span></li></ul>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 08</span></div>
+  <aside class="notes">The countdown is built backwards from the release date. Pitching means pitching, not placement: we never promise playlists.</aside>
+</section>
+
+<!-- 9 Rights -->
+<section class="slide dark">
+  <div class="split" style="grid-template-columns:1fr .9fr">
+    <div style="display:grid;gap:40px">
+      <p class="lab a">04 · Rights &amp; Royalties</p>
+      <h2 class="h1 a a1">Get paid what you're owed.</h2>
+      <p class="body a a2">You should know what you own and where your income comes from. We help with royalty reporting and rights information, and can discuss additional rights services where they apply. Your ownership stays subject to the agreement you choose.</p>
+      <ul class="pts body a a3"><li><span><b style="color:var(--foam)">Transparent reporting</b>Clarity on what you've earned and why.</span></li></ul>
+    </div>
+    <div class="stmt a a3">
+      <div style="display:flex;justify-content:space-between;align-items:start;border-bottom:2px solid var(--ink);padding-bottom:20px"><img src="img/logo-wordmark-navy.png" alt="" style="height:30px"><span class="caps" style="font-size:14px;color:rgba(6,32,46,.6)">Royalty statement · Sample</span></div>
+      <div><p class="caps gd" style="font-size:15px">Your share this period</p><p class="h1" style="font-size:80px">NZ$818.54</p></div>
+      <table><tr><td>Spotify</td><td>NZ$315.88</td></tr><tr><td colspan="2" style="padding-top:0"><div class="bar"><i style="--w:100%"></i></div></td></tr>
+        <tr><td>Apple Music</td><td>NZ$241.50</td></tr><tr><td colspan="2" style="padding-top:0"><div class="bar"><i style="--w:76%"></i></div></td></tr>
+        <tr><td>YouTube</td><td>NZ$108.65</td></tr><tr><td colspan="2" style="padding-top:0"><div class="bar"><i style="--w:34%"></i></div></td></tr></table>
+      <p style="font-size:16px;color:rgba(6,32,46,.6)">Sample statement with made-up numbers.</p>
+    </div>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark.png" alt="AVEA"><span>avea.co.nz · 09</span></div>
+  <aside class="notes">The statement is a sample from the Control Centre demo. Real statements show every song, platform and country, with splits applied.</aside>
+</section>
+
+<!-- 10 Artist growth -->
+<section class="slide">
+  <div class="duo fade full-photo a" style="width:50%"><img src="img/festival.jpg" alt=""></div>
+  <div style="display:grid;gap:40px;height:100%;align-content:center;max-width:780px">
+    <p class="lab a">05 · Artist Growth</p>
+    <h2 class="h1 a a1">A career, not just a release.</h2>
+    <p class="body a a2">A release is a starting point, not the whole story. We can help you work on your audience, your profile and the opportunities that make sense for your music.</p>
+    <ul class="pts body a a3">
+      <li><span><b style="color:var(--ink)">Audience building</b>Turning listeners into a lasting fanbase.</span></li>
+      <li><span><b style="color:var(--ink)">Brand &amp; networking</b>Connections and positioning that open doors.</span></li>
+    </ul>
+  </div>
+  <div class="foot" style="right:auto;width:700px"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>10</span></div>
+  <aside class="notes">Growth is long-term work. Talk about the artist's own goals here.</aside>
+</section>
+
+<!-- 11 How it works -->
+<section class="slide dark">
+  <svg class="peak" viewBox="0 0 640 560" style="right:-160px;bottom:0;height:820px;width:auto;opacity:.07"><use href="#peak"/></svg>
+  <div style="display:grid;gap:70px;height:100%;align-content:center;position:relative">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:end">
+      <div style="display:grid;gap:30px"><p class="lab a">How it works</p><h2 class="h1 a a1">Your journey, step by step.</h2></div>
+      <p class="lead a a2">Getting started should be straightforward. Here's what working with AVEA looks like.</p>
+    </div>
+    <ol class="steps">
+      <li class="a a2"><span class="n">01</span><span class="h3">Apply</span><span class="body" style="font-size:21px">Tell us a bit about yourself and what you're working on.</span></li>
+      <li class="a a3"><span class="n">02</span><span class="h3">Review</span><span class="body" style="font-size:21px">We'll listen to your music and talk about what you need.</span></li>
+      <li class="a a4"><span class="n">03</span><span class="h3">Onboard</span><span class="body" style="font-size:21px">If we're a good fit, we'll get the details sorted together.</span></li>
+      <li class="a a5"><span class="n">04</span><span class="h3">Release</span><span class="body" style="font-size:21px">We'll prepare and deliver your release.</span></li>
+      <li class="a a6"><span class="n">05</span><span class="h3">Promote</span><span class="body" style="font-size:21px">We'll work through a plan to help people find it.</span></li>
+      <li class="a a7"><span class="n">06</span><span class="h3">Grow</span><span class="body" style="font-size:21px">We'll look at the results and figure out what comes next.</span></li>
+    </ol>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark.png" alt="AVEA"><span>avea.co.nz · 11</span></div>
+  <aside class="notes">Six steps, from the How It Works page.</aside>
+</section>
+
+<!-- 12 The deal -->
+<section class="slide sand">
+  <div class="split" style="grid-template-columns:.85fr 1.15fr;align-items:center">
+    <div style="display:grid;gap:36px"><p class="lab a">The deal</p><h2 class="h1 a a1">The deal, in plain words.</h2><p class="lead a a2">Before you send us anything, here is how working with AVEA goes.</p></div>
+    <ul class="deal">
+      <li class="a a2"><b>There's no fee to apply.</b><span class="body">Our standard services use a revenue-share model, and we'll explain the relevant fees and splits before you agree to anything.</span></li>
+      <li class="a a3"><b>You keep ownership of your masters</b><span class="body">under our standard distribution arrangement. We'll explain the rights we need to work with your music before you sign.</span></li>
+      <li class="a a4"><b>Nothing is signed until you understand it.</b><span class="body">We'll talk you through the terms and splits first. Bring your family, your manager or your lawyer.</span></li>
+      <li class="a a5"><b>We won't promise streams, playlists or fame.</b><span class="body">Nobody honestly can. What we offer is proper work, straight answers and clear reporting.</span></li>
+    </ul>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 12</span></div>
+  <aside class="notes">This is the most important slide. Read it slowly. The second point must always carry "under our standard distribution arrangement".</aside>
+</section>
+
+<!-- 13 Quote -->
+<section class="slide dark">
+  <div class="duo" style="position:absolute;inset:0;opacity:.4"><img src="img/backstage.jpg" alt=""></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,24,36,.96) 35%,rgba(2,24,36,.55))"></div>
+  <div style="position:relative;display:grid;gap:44px;height:100%;align-content:center;max-width:1350px">
+    <p class="lab a">What we stand for</p>
+    <p class="big-q a a1">Your music and your story should <span class="g">stay yours.</span></p>
+    <p class="lead a a2">We're here to help you do more with both.</p>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark.png" alt="AVEA"><span>avea.co.nz · 13</span></div>
+  <aside class="notes">Pause here. This is AVEA's promise in one line.</aside>
+</section>
+
+<!-- 14 FAQ -->
+<section class="slide">
+  <div style="display:grid;gap:50px;height:100%;align-content:center">
+    <div style="display:grid;gap:26px"><p class="lab a">Questions</p><h2 class="h1 a a1">Before you ask, the honest answers.</h2></div>
+    <div class="faq">
+      <article class="a a2"><b>Where will my music be available?</b><span class="body" style="font-size:22px">We help deliver your releases to major streaming and download platforms, including Spotify, Apple Music, TikTok and YouTube, and we'll work with you to get the release details right.</span></article>
+      <article class="a a3"><b>Do I keep my rights and my masters?</b><span class="body" style="font-size:22px">Under our standard distribution arrangement, you keep ownership of your masters. We'll explain the rights we need to work with your music before you sign.</span></article>
+      <article class="a a4"><b>What does it cost to join AVEA?</b><span class="body" style="font-size:22px">There's no fee to apply. Our standard services use a revenue-share model, and we'll explain the relevant fees and splits before you agree to anything.</span></article>
+      <article class="a a5"><b>Do I have to leave my current distributor?</b><span class="body" style="font-size:22px">Not necessarily. We can talk through your current agreement and what a move might involve before any changes are made.</span></article>
+    </div>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 14</span></div>
+  <aside class="notes">These answer the four questions from slide 4, word for word from the approved FAQ.</aside>
+</section>
+
+<!-- 15 Founding artists -->
+<section class="slide goldbg">
+  <svg class="peak" viewBox="0 0 640 560" style="right:-120px;bottom:0;height:980px;width:auto;color:var(--abyss);opacity:.12"><use href="#peak"/></svg>
+  <div style="position:relative;display:grid;gap:44px;height:100%;align-content:center;max-width:1300px">
+    <p class="lab a">Founding artists</p>
+    <h2 class="hero a a1" style="font-size:128px">AVEA is new.</h2>
+    <p class="lead a a2" style="color:var(--abyss);font-size:44px;max-width:1200px">We're taking on our first artists now, and they get our full attention.</p>
+  </div>
+  <div class="foot"><img src="img/logo-wordmark-navy.png" alt="AVEA"><span>avea.co.nz · 15</span></div>
+  <aside class="notes">This line is from the preview website and still needs AVEA's sign-off.</aside>
+</section>
+
+<!-- 16 Apply -->
+<section class="slide dark">
+  <svg class="peak draw" viewBox="0 0 640 560" style="left:50%;bottom:0;height:640px;width:auto;transform:translateX(-50%);opacity:.16"><use href="#peak"/></svg>
+  <div style="position:relative;display:grid;gap:44px;height:100%;align-content:center;justify-items:center;text-align:center">
+    <p class="lab a">Ready to take the next step?</p>
+    <h2 class="hero a a1">Ready to <span class="g">become?</span></h2>
+    <p class="lead a a2" style="max-width:1100px">Tell us what you're working on and where you'd like to take it. We'd love to hear from you.</p>
+    <p class="a a3" style="background:var(--gold);color:var(--abyss);padding:26px 40px"><span class="caps" style="font-size:22px">Apply to join AVEA</span></p>
+    <p class="caps a a4" style="color:var(--mist)">avea.co.nz/join · hello@avea.co.nz</p>
+  </div>
+  <aside class="notes">Close with the application link. It takes about five minutes, and there's no fee to apply.</aside>
+</section>
+
+</main>
+
+<button class="navbtn" id="prev" aria-label="Previous slide">‹</button>
+<button class="navbtn" id="next" aria-label="Next slide">›</button>
+<div id="bar"></div>
+<div id="count"></div>
+<div id="help">← → to move · N for notes · F full screen</div>
+<div id="notes"><b>Presenter notes</b><span id="notetext"></span></div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'),slides=[].slice.call(stage.querySelectorAll('.slide')),i=-1;
+  if(/pdf/.test(location.search)){document.body.classList.add('pdf');slides.forEach(function(s){s.classList.add('on')});return;}
+  function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='translate(-50%,-50%) scale('+s+')'}
+  addEventListener('resize',fit);fit();
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));if(n===i)return;i=n;
+    slides.forEach(function(s,k){s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k!==i)});
+    document.getElementById('count').textContent=String(i+1).padStart(2,'0')+' / '+slides.length;
+    document.getElementById('bar').style.width=((i+1)/slides.length*100)+'%';
+    var a=slides[i].querySelector('aside.notes');document.getElementById('notetext').textContent=a?a.textContent:'';
+    if(location.hash!=='#'+(i+1))history.replaceState(null,'','#'+(i+1));
+  }
+  setTimeout(function(){document.getElementById('help').style.opacity=0},5000);
+  addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' ','Enter'].indexOf(e.key)>-1){e.preventDefault();show(i+1)}
+    else if(['ArrowLeft','PageUp','Backspace'].indexOf(e.key)>-1){e.preventDefault();show(i-1)}
+    else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+    else if(e.key==='n'||e.key==='N')document.body.classList.toggle('shownotes');
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  });
+  document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();show(i-1)});
+  document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();show(i+1)});
+  addEventListener('click',function(e){if(e.target.closest('#notes,button'))return;show(e.clientX>innerWidth/3?i+1:i-1)});
+  var tx=null;addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+  addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)show(dx<0?i+1:i-1);tx=null});
+  addEventListener('hashchange',function(){var h=parseInt(location.hash.slice(1),10);if(h)show(h-1)});
+  var h=parseInt(location.hash.slice(1),10);show(h?h-1:0);
+})();
+</script>
+</body>
+</html>
