@@ -119,7 +119,7 @@ window.DEMO = {
 
   replies: [
     { id: 'received', name: 'Thanks, we\'ve got it',
-      text: 'Kia ora {first},\n\nThanks for sending us {artist}. Your application is with us and we\'ll listen to your music properly before we get back to you. Timing depends on how many applications we have and what you need help with.\n\nIn the meantime, here\'s what happens next: https://avea.co.nz/how-it-works\n\nNgā mihi,\nThe AVEA team' },
+      text: 'Kia ora {first},\n\nThanks for sending us {artist}. Your application is with us and we\'ll listen to your music properly before we get back to you. Timing depends on how many applications we have and what you need help with.\n\nIn the meantime, here\'s what happens next: https://weareavea.com/how-it-works\n\nNgā mihi,\nThe AVEA team' },
     { id: 'call', name: 'Let\'s talk',
       text: 'Kia ora {first},\n\nWe\'ve had a listen to {artist} and we\'d love to talk. Could you do a 30-minute video call this week or next? Reply with a couple of times that suit and we\'ll lock one in.\n\nWe\'ll talk through what you need, how we\'d work together, and any fees and splits, before anything is signed.\n\nNgā mihi,\nThe AVEA team' },
     { id: 'notyet', name: 'Not right now',

@@ -94,7 +94,7 @@
       { name: '', role: 'Co-founder', town: '', quote: '', photo: null }
     ],
     photos: [
-      { src: 'assets/photos/dir-stage.jpg', name: 'Live vocal', used: 'Home hero' },
+      { src: 'assets/photos/hero-singer.jpg', name: 'Singer', used: 'Home hero' },
       { src: 'assets/photos/backstage.jpg', name: 'Backstage', used: 'Home quote' },
       { src: 'assets/photos/svc-distribution.jpg', name: 'Studio mic', used: 'Distribution' },
       { src: 'assets/photos/svc-youtube.jpg', name: 'Filming a show', used: 'YouTube Services' },
@@ -107,7 +107,7 @@
     form: {
       open: true,
       closedMsg: 'We\'re not taking new applications right now while we look after our first artists. Leave your email and we\'ll let you know when we reopen.',
-      notify: 'hello@avea.co.nz',
+      notify: 'music@weareavea.com',
       spam: true,
       autoReply: 'Kia ora {first},\n\nThanks for applying to AVEA. Your application is with us and we\'ll listen to your music properly before we get back to you. Timing depends on how many applications we have and what you need help with.\n\nNgā mihi,\nThe AVEA team'
     },
@@ -117,7 +117,7 @@
     ],
     seo: {
       hidden: true,
-      shareImage: 'assets/photos/dir-stage.jpg',
+      shareImage: 'assets/photos/hero-singer.jpg',
       pages: [
         { page: 'Home', path: '/', title: 'AVEA | Where Artists Become', desc: 'AVEA is a Pacific-owned music distribution and artist services company. We help artists get their music out, understand their rights and build careers.' },
         { page: 'Services', path: '/services', title: 'Services | AVEA', desc: 'AVEA services: distribution, YouTube services, release strategy, rights and royalties, and artist growth for Pacific artists.' },
@@ -465,8 +465,8 @@
       const t = $('[data-title]').value, d = $('[data-desc]').value;
       const cnt = (n, max) => `<span style="color:${n > max ? 'var(--bad)' : 'var(--mist)'}">· ${n}/${max}</span>`;
       $('[data-tcount]').innerHTML = cnt(t.length, 60); $('[data-dcount]').innerHTML = cnt(d.length, 155);
-      $('[data-serp]').innerHTML = `<span class="serp__url">avea.co.nz${esc(p.path === '/' ? '' : ' › ' + p.path.slice(1))}</span><span class="serp__t">${esc(t.length > 60 ? t.slice(0, 57) + '…' : t)}</span><span class="serp__d">${esc(d.length > 155 ? d.slice(0, 152) + '…' : d)}</span>`;
-      $('[data-share]').innerHTML = `<div class="share__img duo-css"><img src="${esc(s.shareImage)}" alt=""></div><div class="share__body"><span class="small muted">AVEA.CO.NZ</span><b>${esc(t)}</b><span class="small muted">${esc(d.slice(0, 90))}${d.length > 90 ? '…' : ''}</span></div>`;
+      $('[data-serp]').innerHTML = `<span class="serp__url">weareavea.com${esc(p.path === '/' ? '' : ' › ' + p.path.slice(1))}</span><span class="serp__t">${esc(t.length > 60 ? t.slice(0, 57) + '…' : t)}</span><span class="serp__d">${esc(d.length > 155 ? d.slice(0, 152) + '…' : d)}</span>`;
+      $('[data-share]').innerHTML = `<div class="share__img duo-css"><img src="${esc(s.shareImage)}" alt=""></div><div class="share__body"><span class="small muted">WEAREAVEA.COM</span><b>${esc(t)}</b><span class="small muted">${esc(d.slice(0, 90))}${d.length > 90 ? '…' : ''}</span></div>`;
     };
     wire($('[data-tbox]'), { onChange: draw }); wire($('[data-dbox]'), { onChange: draw });
     $$('[data-seo-page]').forEach(b => b.addEventListener('click', () => { seoPage = +b.dataset.seoPage; WEB.seo(); }));
@@ -542,7 +542,7 @@
           <div><p class="label">If you want to leave</p><p>Give us ${g.notice} days' notice in writing. Your music stays yours, and we'll help move it without taking anything down unexpectedly.</p></div>
           <div><p class="label">What we won't promise</p><p>Streams, playlists or particular results. We'll be clear about what we can do.</p></div>
         </div>
-        <p class="small muted">Example terms for the demo · AVEA · Wellington, Aotearoa New Zealand · hello@avea.co.nz</p>
+        <p class="small muted">Example terms for the demo · AVEA · music@weareavea.com</p>
       </article><div style="margin-top:.8rem"><button class="btn" data-print-sum>Print or save as PDF</button></div>`;
       $('[data-print-sum]', dr).addEventListener('click', () => { document.body.classList.add('print-drawer'); window.print(); setTimeout(() => document.body.classList.remove('print-drawer'), 500); });
       $('[data-ag-out]', dr).scrollIntoView({ behavior: 'smooth', block: 'start' });

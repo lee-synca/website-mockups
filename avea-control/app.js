@@ -493,7 +493,7 @@
           <div style="display:grid;gap:.5rem"><p class="label">Where it came from</p><table><tbody>${plats.map(([p, v]) => `<tr><td>${esc(p)}</td><td class="r">${money(v.revenue)}</td></tr>`).join('')}</tbody></table></div>
           <div style="display:grid;gap:.5rem"><p class="label">Where people listened</p><table><tbody>${countries.slice(0, 6).map(([c, v]) => `<tr><td>${esc(COUNTRY[c] || c)}</td><td class="r">${money(v.revenue)}</td></tr>`).join('')}</tbody></table></div>
         </div>
-        <p class="small muted" style="border-top:1px solid rgba(6,32,46,.15);padding-top:1rem">AVEA · Wellington, Aotearoa New Zealand · hello@avea.co.nz · Demo statement with sample data</p>
+        <p class="small muted" style="border-top:1px solid rgba(6,32,46,.15);padding-top:1rem">AVEA · music@weareavea.com · Demo statement with sample data</p>
       </article>`;
     $('[data-print]').addEventListener('click', () => window.print());
     out.scrollIntoView({ behavior: 'smooth', block: 'start' });

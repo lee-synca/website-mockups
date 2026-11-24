@@ -457,3 +457,4 @@ ul,ol{list-style:none}
   .js .hero__lines .dash,.js .hero__photo{opacity:1}
   .js .name__story .w{opacity:1}
 }
+.section.faq#faq{background:var(--ocean)}
