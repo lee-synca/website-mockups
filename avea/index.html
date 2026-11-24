@@ -72,31 +72,21 @@
         <a class="link caps" href="#deal">See the deal</a>
       </div>
     </div>
-    <div class="hero__art" aria-hidden="true">
-      <svg viewBox="0 0 640 560" fill="none">
-        <defs>
-          <clipPath id="peak-clip"><polygon points="320,150 566,560 74,560"/></clipPath>
-          <linearGradient id="peak-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#021824" stop-opacity="0"/>
-            <stop offset=".55" stop-color="#04273b" stop-opacity=".25"/>
-            <stop offset="1" stop-color="#021824" stop-opacity=".95"/>
-          </linearGradient>
-        </defs>
-        <g clip-path="url(#peak-clip)" class="hero__photo">
-          <rect x="74" y="150" width="492" height="410" fill="#021824"/>
-          <image href="assets/hero-singer.jpg" x="37" y="-10" width="566" height="752" preserveAspectRatio="xMidYMin slice"/>
-          <rect x="74" y="150" width="492" height="410" fill="#f0b565" style="mix-blend-mode:multiply"/>
-          <rect x="74" y="150" width="492" height="410" fill="url(#peak-fade)"/>
-        </g>
-        <g class="hero__lines" stroke="#f0b565" stroke-linejoin="miter" stroke-miterlimit="10">
-          <polyline class="draw" pathLength="1" points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
-          <polyline class="draw" pathLength="1" points="8,560 320,40 632,560" stroke-width="10"/>
-          <polyline class="draw" pathLength="1" points="32,560 320,80 608,560" stroke-width="1.5"/>
-          <polyline class="dash" points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
-          <polyline class="draw" pathLength="1" points="59,560 320,125 581,560" stroke-width="1.5"/>
-          <polyline class="draw" pathLength="1" points="74,560 320,150 566,560" stroke-width="4"/>
+    <div class="hero__art hero__art--spot" aria-hidden="true" data-hero>
+      <svg width="0" height="0" style="position:absolute"><defs><filter id="gold" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.34 0.66 0.13 0 -0.08  0.25 0.49 0.10 0 -0.06  0.14 0.28 0.05 0 -0.03  0 0 0 1 0"/></filter></defs></svg>
+      <div class="spot__glow"></div>
+      <div class="spot__fig spot__stage"><img src="assets/hero-singer.jpg" alt=""></div>
+      <svg class="spot__lines" viewBox="-20 -4 680 568" fill="none">
+        <g stroke="#f0b565" stroke-linejoin="miter" stroke-miterlimit="10">
+          <polyline points="-16,560 320,0 656,560" stroke-width="1.5" opacity=".45"/>
+          <polyline points="8,560 320,40 632,560" stroke-width="10"/>
+          <polyline points="32,560 320,80 608,560" stroke-width="1.5"/>
+          <polyline points="44,560 320,100 596,560" stroke-width="7" stroke-dasharray="14 9"/>
+          <polyline points="59,560 320,125 581,560" stroke-width="1.5"/>
+          <polyline points="74,560 320,150 566,560" stroke-width="4"/>
         </g>
       </svg>
+      <div class="spot__fig spot__cut"><img src="assets/hero-singer-cutout.webp" alt=""></div>
     </div>
     <ul class="band band--platforms caps" data-hero aria-label="Platforms">
       <li>Spotify</li><li class="band__sep" aria-hidden="true"></li><li>Apple Music</li><li class="band__sep" aria-hidden="true"></li><li>YouTube</li><li class="band__sep" aria-hidden="true"></li><li>TikTok</li><li class="band__sep" aria-hidden="true"></li><li>Deezer</li><li class="band__sep" aria-hidden="true"></li><li>TIDAL</li><li class="band__sep" aria-hidden="true"></li><li>Amazon Music</li><li class="band__sep" aria-hidden="true"></li><li>SoundCloud</li><li class="band__sep" aria-hidden="true"></li><li>+ More</li>

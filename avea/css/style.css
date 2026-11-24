@@ -458,3 +458,21 @@ ul,ol{list-style:none}
   .js .name__story .w{opacity:1}
 }
 .section.faq#faq{background:var(--ocean)}
+
+/* Hero: spotlight. Singer stands in front of a faded peak, lit like a stage. */
+.hero__art--spot{position:absolute;top:4.5rem;bottom:3.6rem;right:max(var(--gutter),calc((100vw - var(--wide)) / 2 + var(--gutter)));width:min(50vw,calc((100svh - 8rem) * 1.08),960px);pointer-events:none;z-index:1}
+.spot__glow{position:absolute;left:50%;top:52%;width:92%;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(240,181,101,.38),rgba(240,181,101,.1) 42%,transparent 68%)}
+.hero__art--spot svg.spot__lines{position:absolute;left:0;right:auto;bottom:0;width:100%;height:auto;max-width:none;max-height:none;transform:none;overflow:visible;opacity:.3}
+.hero__art--spot svg[width="0"]{position:absolute;width:0;height:0;right:auto;transform:none}
+.spot__fig{position:absolute;left:50%;bottom:0;height:96%;aspect-ratio:880/1168;transform:translateX(-50%)}
+.spot__fig img{width:100%;height:100%;object-fit:cover;display:block}
+.spot__stage{background:#f0b565;opacity:.5;-webkit-mask-image:radial-gradient(ellipse 62% 48% at 50% 30%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse 62% 48% at 50% 30%,#000 25%,transparent 72%)}
+.spot__stage img{filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.spot__cut img{filter:url(#gold)}
+.spot__cut{-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 97%);mask-image:linear-gradient(180deg,#000 62%,transparent 97%)}
+@media (min-width:900px) and (max-width:1199px){
+  .hero__art--spot{width:44vw}
+}
+@media (max-width:899px){
+  .hero__art--spot{position:relative;top:auto;bottom:auto;right:auto;width:min(100%,560px);height:auto;aspect-ratio:640/568;margin:0 auto}
+}
