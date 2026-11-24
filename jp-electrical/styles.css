@@ -61,7 +61,7 @@ a{color:inherit}
 [data-lights="off"] .hero__photo img{filter:brightness(.16) saturate(.1)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(11,11,12,.6) 0,rgba(11,11,12,0) 70%),linear-gradient(180deg,rgba(11,11,12,.5) 0,rgba(11,11,12,0) 22%,rgba(11,11,12,.1) 55%,var(--black) 100%)}
 .hero__inner{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;padding-bottom:clamp(36px,6vw,72px);padding-top:140px}
-.hero h1{font-size:clamp(4.2rem,14.5vw,13.5rem)}
+.hero h1{font-size:clamp(4.2rem,10vw,9.6rem)}
 .hero h1 span{display:block;transition:color var(--t),text-shadow var(--t),-webkit-text-stroke-color var(--t)}
 .hero h1 .glow{color:var(--yellow);text-shadow:0 0 60px rgba(247,233,43,.55),0 0 140px rgba(247,233,43,.35)}
 [data-lights="off"] .hero h1 span{color:transparent;-webkit-text-stroke:1.5px #55575c;text-shadow:none}
