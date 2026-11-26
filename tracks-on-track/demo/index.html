@@ -11,13 +11,13 @@
       // Light or dark before anything draws: the person's choice on this device, else the device's setting.
       (function () {
         var t = null;
-        try { t = localStorage.getItem('ikon-theme'); } catch (e) {}
+        try { t = localStorage.getItem('tot-theme'); } catch (e) {}
         if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.dataset.theme = t;
         if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#eef0f4');
         // This person's background, remembered on this device (their account has the real choice).
         try {
-          var bg = JSON.parse(localStorage.getItem('ikon-bg') || 'null');
+          var bg = JSON.parse(localStorage.getItem('tot-bg') || 'null');
           if (bg && /^[a-z]+$/.test(bg.key)) {
             document.documentElement.dataset.bg = bg.key;
             if (bg.key === 'image') document.documentElement.style.setProperty('--bg-image', 'url("/api/me/background?v=' + encodeURIComponent(bg.v || 1) + '")');
@@ -26,16 +26,16 @@
       })();
     </script>
     <style>html,body{background:#03070e}html[data-theme=light],html[data-theme=light] body{background:#eef0f4}</style>
-    <meta name="description" content="Track board, mix review and release planning for Ikon Music." />
+    <meta name="description" content="Track board, mix review and release planning for artists, producers and labels." />
     <link rel="icon" type="image/png" sizes="32x32" href="./brand/icon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="./brand/icon-192.png" />
     <link rel="apple-touch-icon" href="./brand/icon-180.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/index-BRahUgh9.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/analysis-BcyN9wGC.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CzOllZyW.css">
+    <script type="module" crossorigin src="./assets/index-BgHROEKU.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/analysis-jq-otAJU.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-UvRwDZoB.css">
   </head>
   <body>
     <div id="root"></div>
