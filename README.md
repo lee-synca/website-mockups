@@ -16,6 +16,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 | Le Makete | https://mockups.getsynca.com.au/le-makete/ |
 | McCarthy Plumbing Group | https://mockups.getsynca.com.au/mccarthy-plumbing/ |
 | Metrocool Refrigeration & Air-Conditioning | https://mockups.getsynca.com.au/metrocool/ |
+| Needle Drop: marketing site, demo app and Control Centre | https://mockups.getsynca.com.au/needle-drop/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
 | Redeemer Visuals | https://mockups.getsynca.com.au/redeemer-visuals/ |
 | Tomorrow People | https://mockups.getsynca.com.au/tomorrow-people/ |
