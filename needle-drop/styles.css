@@ -240,6 +240,8 @@ details p { color: var(--ink-2); margin: 0; padding: 0 4px 26px; max-width: 40em
 .early-lede { color: var(--ink-2); font-size: clamp(17px, 1.4vw, 19px); max-width: 28em; margin: 0; }
 .early .ticks { margin-top: 28px; }
 .text-link { font-weight: 600; }
+.how-more { margin: 36px 0 0; text-align: center; font-size: 17px; }
+.how-more span:last-child { font-size: 15px; color: var(--muted); }
 .form { display: grid; gap: 20px; background: rgb(3 7 14 / 0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgb(255 255 255 / 0.16); border-radius: 22px; padding: 28px 22px; box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.9), inset 0 1px 0 rgb(255 255 255 / 0.08); }
 .form-title { margin: 0 0 2px; font-size: 19px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); }
 .form .fine { text-align: center; }
