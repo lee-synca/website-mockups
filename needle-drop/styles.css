@@ -51,6 +51,10 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .top-nav { display: flex; align-items: center; gap: 6px; margin-left: 28px; margin-right: auto; font-size: 15px; font-weight: 500; }
 .top-nav a { color: var(--ink-2); text-decoration: none; padding: 8px 14px; border-radius: 999px; }
 .top-nav a:hover { color: #fff; background: rgb(255 255 255 / 0.06); }
+@media (max-width: 1260px) {
+  .top-nav { margin-left: 14px; gap: 0; font-size: 14px; }
+  .top-nav a { padding: 8px 10px; white-space: nowrap; }
+}
 .top-cta { display: flex; align-items: center; gap: 22px; margin-left: auto; }
 .top-demo { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 600; }
 .btn .short { display: none; }
