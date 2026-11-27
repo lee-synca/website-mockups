@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stan Walker · Kāinga (concept)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --whenua:#15100b;      /* earth, the indoor dark */
+  --ahi:#d9a046;         /* firelight gold */
+  --kokowai:#a4502a;     /* red ochre */
+  --bone:#ece3d2;
+  --mist:#c9cdc6;        /* coast fog */
+  --stone:#6f756f;
+  --display:"Cormorant Garamond", "Times New Roman", serif;
+  --body:"Hanken Grotesk", system-ui, sans-serif;
+  --pad:clamp(1.25rem, 5vw, 5rem);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-weight:300;background:var(--whenua);color:var(--bone);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--ahi);outline-offset:3px}
+.reo{font-family:var(--display);font-style:italic;font-weight:300}
+.label{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:500}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.1rem var(--pad);transition:background .5s,color .5s;color:#2a241c}
+.nav.dark{color:var(--bone);background:linear-gradient(#15100bee,#15100b00)}
+.nav .mark{font-family:var(--display);font-size:1.35rem;text-decoration:none;letter-spacing:-.01em;opacity:0;transition:opacity .5s}
+.nav.dark .mark{opacity:1}
+.nav ul{display:flex;gap:clamp(.9rem,2.4vw,2.2rem);list-style:none;padding:0}
+.nav li a{text-decoration:none;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:.4rem 0;border-bottom:1px solid transparent}
+.nav li a:hover{border-color:currentColor}
+@media(max-width:720px){.nav ul li:nth-child(n+4){display:none}}
+
+/* hero: the coast at first light */
+.hero{position:relative;height:100svh;min-height:560px;background:linear-gradient(#dfe0d9 0%,#d3d5cd 48%,#b9bdb5 62%,#8f958f 100%);color:#231d16;overflow:hidden;display:grid;place-items:center;text-align:center}
+.hero svg.land{position:absolute;inset:0;width:100%;height:100%}
+.fog{position:absolute;left:-30%;width:160%;height:26%;background:radial-gradient(closest-side,#eef0eaee,#eef0ea00);filter:blur(30px);animation:drift 38s ease-in-out infinite alternate}
+.fog.a{top:38%}.fog.b{top:52%;animation-duration:55s;animation-direction:alternate-reverse;opacity:.8}
+@keyframes drift{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+.hero-in{position:relative;z-index:2;padding:0 var(--pad);margin-top:-8svh}
+.hero h1{font-family:var(--display);font-weight:300;font-size:clamp(4rem,15vw,13.5rem);line-height:.86;letter-spacing:-.035em;animation:rise 2.2s cubic-bezier(.2,.7,.2,1) both}
+.hero .reo{font-size:clamp(1.4rem,3vw,2.3rem);margin-top:1.6rem;animation:rise 2.2s .5s cubic-bezier(.2,.7,.2,1) both}
+.hero .en{margin-top:.4rem;animation:rise 2.2s .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.latest{position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:1.6rem;display:flex;justify-content:space-between;align-items:end;gap:1rem;color:var(--bone)}
+.latest .scroll{margin-bottom:2.6rem}
+.latest a{text-decoration:none;display:flex;align-items:center;gap:.9rem;text-align:left}
+.latest .play{width:46px;height:46px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.latest a:hover .play{background:var(--bone);color:#231d16}
+.latest b{font-family:var(--display);font-weight:400;font-size:1.25rem;display:block;line-height:1.1}
+.latest .scroll{writing-mode:vertical-rl}
+@media(max-width:560px){.latest .scroll{display:none}.latest{bottom:4.2rem}}
+
+/* purpose: the walk inside, mist to firelight */
+.purpose{background:linear-gradient(#8f958f 0%,#3b3a33 30%,var(--whenua) 70%);padding:clamp(7rem,18vw,15rem) var(--pad) clamp(5rem,12vw,10rem)}
+.purpose p.label{color:var(--ahi)}
+.purpose h2{font-family:var(--display);font-weight:300;font-size:clamp(3rem,10.5vw,10rem);line-height:.95;letter-spacing:-.03em;margin-top:1.4rem}
+.purpose h2 span{display:block;opacity:.16;transition:opacity 1s,color 1s}
+.purpose h2 span.lit{opacity:1}
+.purpose h2 span.lit:last-child{color:var(--ahi);font-style:italic}
+
+section{position:relative}
+.head{padding:0 var(--pad);max-width:70rem}
+.head h2{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(3rem,8vw,7rem);line-height:1;letter-spacing:-.02em}
+.head .label{color:var(--ahi);margin-bottom:1rem;display:block}
+.head p.lede{max-width:34rem;margin-top:1.2rem;color:#cfc5b2}
+
+/* story: the awa */
+.story{padding:clamp(4rem,10vw,8rem) 0 0}
+.awa{position:relative;margin-top:clamp(3rem,8vw,6rem);padding:0 var(--pad) 6rem}
+.awa svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.awa path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.awa .bed{stroke:#ece3d214;stroke-width:1.5}
+.awa .flow{stroke:var(--ahi);stroke-width:2.5;filter:drop-shadow(0 0 10px #d9a04688)}
+.stop{position:relative;min-height:74vh;display:flex;align-items:center}
+.stop > div{width:min(30rem,44%);opacity:0;transform:translateY(40px);transition:opacity 1.1s,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.stop.in > div{opacity:1;transform:none}
+.stop:nth-child(odd of .stop){justify-content:flex-end;text-align:left}
+.stop .where{font-family:var(--display);font-size:clamp(2.2rem,5vw,4.2rem);line-height:1;font-weight:300;letter-spacing:-.02em}
+.stop .label{color:var(--ahi);display:block;margin-bottom:.8rem}
+.stop p{margin-top:1rem;color:#cfc5b2;max-width:26rem}
+@media(max-width:720px){.stop > div{width:100%}.stop:nth-child(odd of .stop){justify-content:flex-start}.stop{padding-left:26%}.awa svg{width:24%}}
+.moana{position:relative;padding:clamp(5rem,12vw,9rem) var(--pad);background:linear-gradient(var(--whenua),#1e2a2b 60%,#16201f);text-align:center;overflow:hidden}
+.moana blockquote{font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,6.4vw,6rem);line-height:1.02;letter-spacing:-.02em;max-width:16ch;margin:0 auto}
+.moana cite{display:block;margin-top:1.6rem;font-style:normal;color:#9fb0ac}
+.waves{position:absolute;left:0;bottom:0;width:200%;height:90px;opacity:.5;animation:tide 16s linear infinite}
+@keyframes tide{to{transform:translateX(-50%)}}
+
+/* waiata */
+.waiata{padding:clamp(5rem,12vw,9rem) 0;background:radial-gradient(90rem 40rem at 70% 0%,#3a1f10 0%,#15100b00 70%),var(--whenua)}
+.feature{margin:clamp(2.5rem,6vw,4.5rem) var(--pad) 0;display:grid;grid-template-columns:1.7fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:end}
+@media(max-width:860px){.feature{grid-template-columns:1fr}}
+.vid{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;border:0;padding:0;width:100%;display:block;color:var(--bone)}
+.vid img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:.86}
+.vid:hover img{transform:scale(1.04);opacity:1}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid .go{position:absolute;left:1.2rem;bottom:1.2rem;width:58px;height:58px;border-radius:50%;background:var(--ahi);color:#15100b;display:grid;place-items:center}
+.vid.small .go{width:40px;height:40px;left:.8rem;bottom:.8rem}
+.feature h3{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.95;letter-spacing:-.02em}
+.feature p{color:#cfc5b2;margin-top:1rem;max-width:24rem}
+.switch{display:inline-flex;margin-top:1.6rem;border:1px solid #ece3d240;border-radius:99px;padding:4px}
+.switch button{font:inherit;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--bone);background:none;border:0;padding:.65rem 1.2rem;border-radius:99px;cursor:pointer;transition:background .3s,color .3s}
+.switch button[aria-pressed=true]{background:var(--bone);color:#15100b}
+.reel{display:flex;gap:1.2rem;overflow-x:auto;padding:clamp(3rem,6vw,5rem) var(--pad) 1rem;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad);scrollbar-width:thin;scrollbar-color:#ece3d240 transparent}
+.reel figure{flex:0 0 min(78vw,25rem);scroll-snap-align:start}
+.reel figcaption{margin-top:.9rem;font-family:var(--display);font-size:1.5rem;line-height:1.1}
+.reel figcaption small{display:block;font-family:var(--body);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ahi);margin-bottom:.35rem;font-weight:500}
+
+/* live */
+.live{padding:clamp(5rem,12vw,9rem) 0;background:#0e0a07}
+.symph{margin:clamp(2.5rem,6vw,4.5rem) var(--pad) 0;padding:clamp(2rem,6vw,5rem);border:1px solid #d9a04655;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;background:radial-gradient(40rem 22rem at 20% 50%,#d9a0461c,#0000)}
+@media(max-width:860px){.symph{grid-template-columns:1fr}}
+.symph h3{font-family:var(--display);font-weight:400;color:var(--ahi);font-size:clamp(2rem,4.6vw,3.9rem);letter-spacing:.14em;text-transform:uppercase;line-height:1.08}
+.symph h3 small{display:block;font-size:.3em;letter-spacing:.42em;margin-top:1rem;color:var(--bone)}
+.symph p{color:#cfc5b2;margin-top:1.2rem;max-width:26rem}
+.dates{margin:clamp(2.5rem,6vw,4rem) var(--pad) 0;list-style:none;padding:0;border-top:1px solid #ece3d222}
+.dates li{display:grid;grid-template-columns:8rem 1fr auto;gap:1rem;align-items:baseline;padding:1.3rem 0;border-bottom:1px solid #ece3d222}
+.dates time{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ahi);font-weight:500}
+.dates b{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.1}
+.dates span{color:#9d937f;font-size:.9rem}
+.dates li.next{border:0;padding-top:2rem}
+.dates li.next b{font-style:italic}
+@media(max-width:620px){.dates li{grid-template-columns:1fr}.dates li > *{grid-column:1}}
+.btn{display:inline-block;font:inherit;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;text-decoration:none;padding:1rem 1.6rem;border-radius:99px;border:1px solid var(--ahi);background:var(--ahi);color:#15100b;cursor:pointer;transition:background .3s,color .3s}
+.btn:hover{background:transparent;color:var(--ahi)}
+.btn.ghost{background:transparent;color:var(--bone);border-color:#ece3d255}
+.btn.ghost:hover{border-color:var(--bone)}
+
+/* whānau */
+.whanau{padding:clamp(6rem,14vw,11rem) var(--pad);background:var(--kokowai);color:#fbf3e4;text-align:center}
+.whanau h2{font-family:var(--display);font-weight:300;font-size:clamp(3rem,9vw,8.5rem);line-height:.92;letter-spacing:-.03em}
+.whanau p{max-width:32rem;margin:1.4rem auto 0}
+.join{display:flex;gap:.6rem;max-width:32rem;margin:2.4rem auto 0;border-bottom:1px solid #fbf3e4aa;padding-bottom:.6rem}
+.join input{flex:1;min-width:0;font:inherit;font-size:1.1rem;background:none;border:0;color:inherit;padding:.6rem 0}
+.join input::placeholder{color:#fbf3e4aa}
+.join input:focus{outline:none}
+.join:focus-within{border-color:#fff}
+.join button{font:inherit;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;background:none;border:0;color:inherit;cursor:pointer;padding:.6rem .2rem}
+.done{font-family:var(--display);font-style:italic;font-size:1.7rem;margin-top:2.4rem}
+
+/* store */
+.toa{padding:clamp(5rem,12vw,9rem) 0;background:var(--bone);color:#231d16}
+.toa .head .label{color:var(--kokowai)}
+.toa .head p.lede{color:#5a5145}
+.shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#231d1630;margin:clamp(2.5rem,6vw,4rem) var(--pad) 0;border:1px solid #231d1630}
+@media(max-width:900px){.shelf{grid-template-columns:repeat(2,1fr)}}
+.item{text-decoration:none;background:var(--bone);padding:1.6rem;min-height:17rem;display:flex;flex-direction:column;justify-content:space-between;transition:background .4s,color .4s}
+.item:hover{background:#231d16;color:var(--bone)}
+.item b{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.05;display:block;margin-top:.6rem}
+.item .label{color:var(--kokowai)}
+.item:hover .label{color:var(--ahi)}
+.item span.s{font-size:.85rem;opacity:.75}
+
+/* bookings */
+.book{padding:clamp(5rem,12vw,9rem) var(--pad);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,6vw,6rem)}
+@media(max-width:860px){.book{grid-template-columns:1fr}}
+.book .head{padding:0}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 1.2rem;align-content:start}
+.book label{display:block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:#9d937f}
+.book label.wide{grid-column:1/-1}
+.book input,.book select,.book textarea{display:block;width:100%;margin-top:.5rem;font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;color:var(--bone);background:none;border:0;border-bottom:1px solid #ece3d244;padding:.6rem 0;border-radius:0}
+.book select option{color:#15100b}
+.book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--ahi)}
+.book .btn{justify-self:start}
+
+footer{background:#16201f;padding:4rem var(--pad) 5rem;display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:end;color:#9fb0ac}
+footer .big{font-family:var(--display);font-weight:300;font-size:clamp(2.6rem,7vw,6rem);line-height:.9;color:var(--bone);letter-spacing:-.03em}
+footer ul{list-style:none;padding:0;display:flex;gap:1.6rem;flex-wrap:wrap}
+footer a{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;text-decoration:none}
+footer a:hover{color:var(--bone)}
+.tag{position:fixed;right:1rem;bottom:1rem;z-index:60;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;background:#15100bdd;color:var(--bone);border:1px solid #ece3d233;padding:.5rem .8rem;border-radius:99px;backdrop-filter:blur(6px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .stop > div{opacity:1;transform:none}
+  .purpose h2 span{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="mark" href="#top">Stan Walker</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#story">Ko wai au</a></li>
+      <li><a href="#waiata">Waiata</a></li>
+      <li><a href="#live">Live</a></li>
+      <li><a href="#whanau">Whānau</a></li>
+      <li><a href="#toa">Toa</a></li>
+      <li><a href="#book">Bookings</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-label="Welcome">
+  <svg class="land" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b3b8b1"/><stop offset="1" stop-color="#6d736e"/></linearGradient>
+      <linearGradient id="far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9ada5"/><stop offset="1" stop-color="#bfc2ba"/></linearGradient>
+      <linearGradient id="near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b6a5f"/><stop offset="1" stop-color="#8b8c82"/></linearGradient>
+    </defs>
+    <path fill="url(#far)" d="M0 560 C120 520 240 470 360 480 C470 490 520 540 640 556 L640 600 L0 600Z"/>
+    <path fill="url(#near)" d="M1196 590 L1206 520 L1224 482 L1232 430 L1256 398 L1268 352 L1300 336 L1338 342 L1352 328 L1392 340 L1410 372 L1438 396 L1446 440 L1470 478 L1478 530 L1496 590Z"/>
+    <path fill="#5d5c50" opacity=".45" d="M1268 352 L1284 420 L1272 500 L1296 590 L1196 590 L1206 520 L1224 482 L1232 430 L1256 398Z"/>
+    <rect y="588" width="1600" height="312" fill="url(#sea)"/>
+    <path fill="#5f6660" opacity=".22" d="M1200 590 L1230 640 L1300 668 L1400 664 L1470 630 L1494 590Z"/>
+    <g stroke="#e9ebe4" stroke-opacity=".5" stroke-width="1.5" fill="none">
+      <path d="M80 660 H520"/><path d="M700 720 H1240"/><path d="M260 790 H860"/><path d="M1020 830 H1500"/>
+    </g>
+    <g fill="#5d5c50"><path d="M300 610 q10 -34 16 0z"/><path d="M322 612 q6 -26 12 0z"/><path d="M930 640 q8 -30 15 0z"/><path d="M950 642 q6 -22 11 0z"/></g>
+  </svg>
+  <div class="fog a"></div><div class="fog b"></div>
+
+  <div class="hero-in">
+    <h1>Stan Walker</h1>
+    <p class="reo">Nau mai, haere mai ki te kāinga.</p>
+    <p class="label en">Welcome home</p>
+  </div>
+
+  <div class="latest">
+    <a href="#waiata">
+      <span class="play" aria-hidden="true"><svg width="12" height="14" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span>
+      <span><span class="label">New waiata, out now</span><b>Hoki Mai Rā Koe, with Te Wehi</b></span>
+    </a>
+    <span class="label scroll" aria-hidden="true">Scroll to come inside</span>
+  </div>
+</section>
+
+<section class="purpose" aria-label="What the music is for">
+  <p class="label">What the music is for</p>
+  <h2 id="four"><span>Hope.</span><span>Life.</span><span>Healing.</span><span>Joy.</span></h2>
+</section>
+
+<section class="story" id="story">
+  <div class="head">
+    <span class="label">Whakapapa</span>
+    <h2>Ko wai au</h2>
+    <p class="lede">Who I am. Follow the awa from the valley it starts in to the ocean it reaches.</p>
+  </div>
+
+  <div class="awa" id="awa">
+    <svg viewBox="0 0 100 500" preserveAspectRatio="none" aria-hidden="true">
+      <path class="bed" d="M50 0 C50 30 22 40 22 70 C22 105 78 110 78 150 C78 190 24 200 24 245 C24 290 76 295 76 340 C76 385 30 395 30 430 C30 465 50 475 50 500"/>
+      <path class="flow" id="flow" d="M50 0 C50 30 22 40 22 70 C22 105 78 110 78 150 C78 190 24 200 24 245 C24 290 76 295 76 340 C76 385 30 395 30 430 C30 465 50 475 50 500"/>
+    </svg>
+
+    <article class="stop"><div>
+      <span class="label">Te Urewera</span>
+      <h3 class="where">Ruatoki</h3>
+      <p>Tūhoe country. The valley, the maunga and the marae the songs keep going back to, and the place Stan calls his safe space.</p>
+    </div></article>
+
+    <article class="stop"><div>
+      <span class="label">Tauranga Moana</span>
+      <h3 class="where">Mauao</h3>
+      <p>Raised on a marae at the foot of the mountain. Church at fifteen. A voice already too big for the room.</p>
+    </div></article>
+
+    <article class="stop"><div>
+      <span class="label">2009 · Ahitereiria</span>
+      <h3 class="where">Across the ditch</h3>
+      <p>Wins Australian Idol at nineteen. Platinum records follow. So does the advice to be less Māori if he wants to last.</p>
+    </div></article>
+
+    <article class="stop"><div>
+      <span class="label">2021 · Hoki mai</span>
+      <h3 class="where">Home again</h3>
+      <p>Te Arohanui, his songs re-sung in te reo Māori. Then Māori Ki Te Ao, written in the Tūhoe dialect and filmed with three generations of his people.</p>
+    </div></article>
+
+    <article class="stop"><div>
+      <span class="label">2026 · Te Moana-nui-a-Kiwa</span>
+      <h3 class="where">Out to the ocean</h3>
+      <p>Tahiti. Taputapuātea with the whānau. American Samoa. A Moana album with his own kids on the record. The river reaches the sea.</p>
+    </div></article>
+  </div>
+
+  <div class="moana">
+    <blockquote>“I want my ceiling to be their floor.”</blockquote>
+    <cite class="label">Stan Walker, to The Spinoff, 2024</cite>
+    <svg class="waves" viewBox="0 0 2400 90" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="none" stroke="#9fb0ac" stroke-width="1.5" d="M0 30 q150 -30 300 0 t300 0 t300 0 t300 0 t300 0 t300 0 t300 0 t300 0"/>
+      <path fill="none" stroke="#9fb0ac" stroke-opacity=".5" stroke-width="1.5" d="M0 62 q150 -22 300 0 t300 0 t300 0 t300 0 t300 0 t300 0 t300 0 t300 0"/>
+    </svg>
+  </div>
+</section>
+
+<section class="waiata" id="waiata">
+  <div class="head">
+    <span class="label">Songs</span>
+    <h2>Waiata</h2>
+    <p class="lede">One take, one room, one voice. Start with the song this place is named for.</p>
+  </div>
+
+  <div class="feature">
+    <button class="vid" id="featureVid" data-id="Rl9yUZR4Aro" aria-label="Play Kāinga, official video">
+      <img src="https://i.ytimg.com/vi/Rl9yUZR4Aro/maxresdefault.jpg" alt="">
+      <span class="go" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span>
+    </button>
+    <div>
+      <span class="label" style="color:var(--ahi)">One song, two languages</span>
+      <h3 id="featureTitle">Kāinga</h3>
+      <p>The same song in te reo Māori and in English. Choose the one you want to hear.</p>
+      <div class="switch" role="group" aria-label="Song language">
+        <button type="button" aria-pressed="true" data-id="Rl9yUZR4Aro" data-title="Kāinga">Te reo Māori</button>
+        <button type="button" aria-pressed="false" data-id="eyOrilj67vo" data-title="Home">English</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="reel" tabindex="0" aria-label="Live sessions">
+    <figure><button class="vid small" data-id="KGDPCypoAzI" aria-label="Play Hoki Mai Rā Koe"><img loading="lazy" src="https://i.ytimg.com/vi/KGDPCypoAzI/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>New · with Te Wehi</small>Hoki Mai Rā Koe</figcaption></figure>
+    <figure><button class="vid small" data-id="egBJKb4BUxQ" aria-label="Play We Know The Way, live"><img loading="lazy" src="https://i.ytimg.com/vi/egBJKb4BUxQ/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>Live session</small>We Know The Way</figcaption></figure>
+    <figure><button class="vid small" data-id="BxJBao0fHoQ" aria-label="Play Family Tree, live"><img loading="lazy" src="https://i.ytimg.com/vi/BxJBao0fHoQ/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>Live session</small>Family Tree</figcaption></figure>
+    <figure><button class="vid small" data-id="WkLUsXoQPbQ" aria-label="Play The Lord Is My Light, live"><img loading="lazy" src="https://i.ytimg.com/vi/WkLUsXoQPbQ/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>Live performance</small>The Lord Is My Light</figcaption></figure>
+    <figure><button class="vid small" data-id="0TjYegGva5Q" aria-label="Play Tiaho, live at Parachute"><img loading="lazy" src="https://i.ytimg.com/vi/0TjYegGva5Q/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>Live at Parachute</small>Tiaho</figcaption></figure>
+    <figure><button class="vid small" data-id="O9hd5xRZg4c" aria-label="Play One Life"><img loading="lazy" src="https://i.ytimg.com/vi/O9hd5xRZg4c/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>Featuring Nauti</small>One Life</figcaption></figure>
+    <figure><button class="vid small" data-id="dEa7hscTEVo" aria-label="Play Māori Ki Te Ao"><img loading="lazy" src="https://i.ytimg.com/vi/dEa7hscTEVo/hqdefault.jpg" alt=""><span class="go" aria-hidden="true"><svg width="11" height="13" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span></button><figcaption><small>2024</small>Māori Ki Te Ao</figcaption></figure>
+  </div>
+</section>
+
+<section class="live" id="live">
+  <div class="head">
+    <span class="label">On stage</span>
+    <h2>Live</h2>
+  </div>
+
+  <div class="symph">
+    <div>
+      <h3>Stan Walker<small>A Symphonic Experience</small></h3>
+      <p>Seventeen years of songs with a full orchestra behind them. The Trusts Arena, Tāmaki Makaurau, 17 October 2026.</p>
+      <p style="margin-top:1.8rem"><a class="btn ghost" href="#whanau">Hear first when it returns</a></p>
+    </div>
+    <button class="vid" data-id="JqTY-ch1chE" aria-label="Play orchestra show footage">
+      <img loading="lazy" src="https://i.ytimg.com/vi/JqTY-ch1chE/hqdefault.jpg" alt="">
+      <span class="go" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 12 14"><path fill="currentColor" d="M0 0l12 7-12 7z"/></svg></span>
+    </button>
+  </div>
+
+  <ul class="dates" aria-label="2026 shows">
+    <li><time datetime="2026-04-03">3 Apr 2026</time><b>Place To'atā, Papeete</b><span>One Vibes, Tahiti</span></li>
+    <li><time datetime="2026-10-17">17 Oct 2026</time><b>The Trusts Arena, Tāmaki Makaurau</b><span>A Symphonic Experience</span></li>
+    <li><time datetime="2026-11">Nov 2026</time><b>Ōtautahi Christchurch</b><span>A Symphonic Experience</span></li>
+    <li><time datetime="2026-11-20">20 Nov 2026</time><b>Pōneke Wellington</b><span>A Symphonic Experience</span></li>
+    <li class="next"><time>Next</time><b>New dates go to the whānau first.</b><a class="btn" href="#whanau">Join the whānau</a></li>
+  </ul>
+</section>
+
+<section class="whanau" id="whanau">
+  <p class="label">Hono mai</p>
+  <h2>Join the whānau</h2>
+  <p>New waiata, show dates and first access to tickets, sent straight to you before they reach anyone's feed.</p>
+  <form class="join" id="join">
+    <label class="sr" for="email">Email address</label>
+    <input id="email" type="email" required placeholder="Your email address" autocomplete="email">
+    <button type="submit">Join</button>
+  </form>
+  <p class="done" id="joined" hidden>Ngā mihi. You're whānau now.</p>
+</section>
+
+<section class="toa" id="toa">
+  <div class="head">
+    <span class="label">Store</span>
+    <h2>Toa</h2>
+    <p class="lede">Everything Stan makes, in one place.</p>
+  </div>
+  <div class="shelf">
+    <a class="item" href="#toa"><span class="label">Clothing</span><div><b>You Know</b><span class="s">Stan's own label</span></div></a>
+    <a class="item" href="#toa"><span class="label">Book</span><div><b>Impossible: My Story</b><span class="s">The memoir</span></div></a>
+    <a class="item" href="#toa"><span class="label">Music</span><div><b>Te Arohanui</b><span class="s">The reo Māori album</span></div></a>
+    <a class="item" href="#toa"><span class="label">Fragrance · sold out</span><div><b>Human</b><span class="s">With Jakob Carter. Tell me when it's back</span></div></a>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="head">
+    <span class="label">Whakapā mai</span>
+    <h2>Bookings</h2>
+    <p class="lede">Shows, festivals, speaking, screen and brand work. Tell us what you have in mind and management will come back to you.</p>
+    <p style="margin-top:2rem"><a class="btn ghost" href="#book">Download press kit</a></p>
+  </div>
+  <form id="enquiry">
+    <label>Your name<input required autocomplete="name"></label>
+    <label>Email<input type="email" required autocomplete="email"></label>
+    <label>Type of booking<select><option>Live show or festival</option><option>Corporate or private event</option><option>Speaking</option><option>Screen or brand work</option><option>Media and press</option></select></label>
+    <label>Date and place<input placeholder="e.g. 14 March, Rotorua"></label>
+    <label class="wide">About the kaupapa<textarea rows="3"></textarea></label>
+    <button class="btn" type="submit">Send enquiry</button>
+    <p class="done wide" id="sent" hidden style="grid-column:1/-1;margin:0">Enquiry sent. Management will be in touch.</p>
+  </form>
+</section>
+
+</main>
+
+<footer>
+  <div class="big">Stan<br>Walker</div>
+  <ul>
+    <li><a href="https://www.instagram.com/stanwalker/">Instagram</a></li>
+    <li><a href="https://www.tiktok.com/@stanwalker">TikTok</a></li>
+    <li><a href="https://www.youtube.com/@StanWalkerAotearoa">YouTube</a></li>
+    <li><a href="https://lnk.to/StanWalker_Music">Listen</a></li>
+  </ul>
+</footer>
+
+<div class="tag">Concept pitch · not an official site</div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// nav turns light once you leave the coast
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+new IntersectionObserver(([e]) => nav.classList.toggle('dark', !e.isIntersecting), {rootMargin:'-70px 0px 0px 0px'}).observe(hero);
+
+// the four words light one at a time
+const four = [...document.querySelectorAll('#four span')];
+// the awa draws as you walk it
+const flow = document.getElementById('flow'), awa = document.getElementById('awa');
+const len = flow.getTotalLength();
+flow.style.strokeDasharray = len;
+function onScroll(){
+  const vh = innerHeight;
+  const fr = document.getElementById('four').getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, (vh*0.85 - fr.top) / (fr.height + vh*0.25)));
+  four.forEach((s,i) => s.classList.toggle('lit', reduce || p > (i+0.4)/4.6));
+  const r = awa.getBoundingClientRect();
+  const q = Math.min(1, Math.max(0, (vh*0.6 - r.top) / r.height));
+  flow.style.strokeDashoffset = reduce ? 0 : len * (1 - q);
+}
+addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); onScroll();
+
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold:.35});
+document.querySelectorAll('.stop').forEach(s => io.observe(s));
+
+// videos load only when played
+function play(btn){
+  const f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.id + '?autoplay=1&rel=0';
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.title = btn.getAttribute('aria-label');
+  btn.appendChild(f);
+}
+document.querySelectorAll('.vid').forEach(b => b.addEventListener('click', () => { if(!b.querySelector('iframe')) play(b); }));
+
+// one song, two languages
+const fv = document.getElementById('featureVid'), ft = document.getElementById('featureTitle');
+document.querySelectorAll('.switch button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.switch button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const was = fv.querySelector('iframe'); if (was) was.remove();
+  fv.dataset.id = b.dataset.id;
+  fv.querySelector('img').src = 'https://i.ytimg.com/vi/' + b.dataset.id + '/maxresdefault.jpg';
+  fv.setAttribute('aria-label', 'Play ' + b.dataset.title + ', official video');
+  ft.textContent = b.dataset.title;
+  if (was) play(fv);
+}));
+
+// demo forms: nothing is sent anywhere
+document.getElementById('join').addEventListener('submit', e => { e.preventDefault(); e.target.hidden = true; document.getElementById('joined').hidden = false; });
+document.getElementById('enquiry').addEventListener('submit', e => { e.preventDefault(); document.getElementById('sent').hidden = false; });
+</script>
+</body>
+</html>

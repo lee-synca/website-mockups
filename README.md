@@ -21,6 +21,7 @@ Static website mockups by Synca, served at **https://mockups.getsynca.com.au**
 | Needle Drop: DJ setup wizard and fan quick-buy (mockup) | https://mockups.getsynca.com.au/needle-drop/wizard/ |
 | Powerhouse Socials | https://mockups.getsynca.com.au/powerhouse-socials/ |
 | Redeemer Visuals | https://mockups.getsynca.com.au/redeemer-visuals/ |
+| Stan Walker: Kāinga (concept pitch) | https://mockups.getsynca.com.au/stan-walker/ |
 | Tomorrow People | https://mockups.getsynca.com.au/tomorrow-people/ |
 | Tomorrow People: seven homepage concepts | https://mockups.getsynca.com.au/tomorrow-people/concepts/ |
 | Tracks on Track (early-access site and demo) | https://mockups.getsynca.com.au/tracks-on-track/ |
