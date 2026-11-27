@@ -139,6 +139,23 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   .rel li{grid-template-columns:1fr;gap:.5rem}
   .rel a{justify-self:start}
 }
+.player{margin:auto;border:0;padding:0;background:transparent;width:min(1280px,100% - 2rem);max-width:none;max-height:none;overflow:visible}
+.player::backdrop{background:rgba(10,8,6,.9)}
+.player .frame{aspect-ratio:16/9;background:#000;max-height:calc(100vh - 7rem);margin-inline:auto;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.player iframe{width:100%;height:100%;border:0;display:block}
+.player .close{all:unset;cursor:pointer;display:block;margin:0 0 .75rem auto;color:#fff;font-family:var(--head);font-size:1.25rem;letter-spacing:.08em;padding:.35rem .2rem}
+.player .close:hover{color:var(--gold)}
+.player .close:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){
+  .player[open]{animation:pop .25s ease-out}
+  @keyframes pop{from{opacity:0;transform:scale(.96)}}
+}
+.hero{position:relative;overflow:hidden}
+.hero>.wrap{position:relative;z-index:1}
+.hero-vid{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.2s}
+.hero-vid.on{opacity:1}
+.hero-vid iframe{position:absolute;left:50%;top:50%;width:max(100%,177.78svh);height:max(100%,56.25vw);border:0;transform:translate(-50%,-50%) scale(1.36)}
+.hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,19,15,.55) 0,rgba(22,19,15,.1) 30%,rgba(22,19,15,.92) 100%)}
 </style>
 </head>
 <body>
@@ -160,6 +177,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 
 <main id="top">
   <section class="hero on-dark">
+    <div class="hero-vid" aria-hidden="true"></div>
     <div class="wrap wide">
       <p class="label">New single out now</p>
       <h1>Wasting More Time On You</h1>
@@ -282,6 +300,10 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   </div>
 </footer>
 
+<dialog class="player" id="player" aria-label="Video player">
+  <button class="close" type="button">Close ✕</button>
+  <div class="frame"></div>
+</dialog>
 <script>
 // Nav turns solid once the page is scrolled.
 var nav = document.getElementById('nav');
@@ -289,16 +311,35 @@ function setNav(){ nav.classList.toggle('solid', scrollY > 40); }
 addEventListener('scroll', setNav, {passive:true}); setNav();
 
 // Video posters load the YouTube player only when pressed.
+var box = document.getElementById('player'), frame = box.querySelector('.frame');
+function closePlayer() { if (box.open) box.close(); }
+box.addEventListener('close', function () { frame.innerHTML = ''; });
+box.addEventListener('click', function (e) { if (e.target === box) closePlayer(); });
+box.querySelector('.close').addEventListener('click', closePlayer);
 document.querySelectorAll('.video').forEach(function (v) {
   var id = v.dataset.id, title = v.dataset.title;
   var b = document.createElement('button');
   b.setAttribute('aria-label', 'Play video: ' + title);
   b.innerHTML = '<img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/' + (v.dataset.poster || 'maxresdefault') + '.jpg"><span class="play"></span>';
   b.addEventListener('click', function () {
-    v.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+    frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+    box.showModal();
   });
   v.appendChild(b);
 });
+// Hero background video (mock-up: uses the YouTube clip; swap for a real video file later).
+// Add ?hero=photo to the address to see the still-photo version.
+(function () {
+  var holder = document.querySelector('.hero-vid');
+  var wantsPhoto = /[?&]hero=photo/.test(location.search);
+  var small = window.matchMedia('(max-width: 900px)').matches;
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saver = navigator.connection && navigator.connection.saveData;
+  if (!holder || wantsPhoto || small || calm || saver) return;
+  var id = 'USa7LiAd9d4';
+  holder.innerHTML = '<iframe tabindex="-1" title="" src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + id + '&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&start=20" allow="autoplay; encrypted-media"></iframe>';
+  setTimeout(function () { holder.classList.add('on'); }, 4500);
+})();
 </script>
 </body>
 </html>
