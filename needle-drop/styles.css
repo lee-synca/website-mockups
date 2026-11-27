@@ -352,3 +352,22 @@ input[aria-invalid='true'], select[aria-invalid='true'] { border-color: var(--re
 .pair.phones .over { position: static !important; width: auto !important; margin-top: 56px; }
 
 .float-note { width: min(52%, 300px); padding: 12px 14px; }
+
+/* Needle Drop hero: the app on a laptop, with a phone in front */
+.hero-visual.devices { padding: 34px 0 56px; }
+.laptop { position: relative; margin-left: 9%; animation: rise 0.9s 0.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.laptop-screen { background: #0b0d12; border: 1px solid var(--line-2); border-radius: 16px 16px 6px 6px; padding: 10px; box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.9); }
+.laptop-screen img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.laptop-base { position: relative; height: 14px; margin: 0 -7%; background: linear-gradient(#2c313c, #141821); border-radius: 0 0 16px 16px; box-shadow: 0 18px 40px -12px rgb(0 0 0 / 0.9); }
+.laptop-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 5px; margin-left: -8%; background: #0b0d12; border-radius: 0 0 6px 6px; }
+.phone { position: absolute; left: 0; bottom: 18px; width: 27%; padding: 7px; background: #05070b; border: 1px solid var(--line-2); border-radius: 30px; box-shadow: 0 30px 70px -10px rgb(0 0 0 / 0.95); animation: rise 0.9s 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both, bob 7s ease-in-out 1.2s infinite alternate; }
+.phone img { display: block; width: 100%; height: auto; border-radius: 24px; }
+.devices .float-ok { top: 8px; right: -6px; }
+@media (max-width: 640px) {
+  .hero-visual.devices { padding: 40px 0 40px; }
+  .laptop { margin-left: 14%; }
+  .phone { width: 33%; padding: 4px; border-radius: 18px; bottom: 10px; }
+  .phone img { border-radius: 14px; }
+  .laptop-screen { padding: 5px; border-radius: 10px 10px 4px 4px; }
+  .devices .float-ok { top: 6px; right: 0; }
+}
