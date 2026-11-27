@@ -73,15 +73,11 @@
   @media (max-width: 800px) { .records { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1rem; } }
 
   .shows { margin-top: 2.5rem; display: grid; gap: 0.8rem; }
-  .shows li { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 1rem 1.5rem; color: var(--black); }
+  .shows li { display: grid; grid-template-columns: 1fr; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 1rem 1.5rem; color: var(--black); }
   .shows li:nth-child(1) { background: var(--red); color: var(--white); } .shows li:nth-child(2) { background: var(--yellow); } .shows li:nth-child(3) { background: var(--green); }
-  .shows time { font: 400 clamp(2.4rem, 6vw, 4.6rem)/0.9 var(--display); }
-  .shows h3 { font: 400 clamp(1.3rem, 3vw, 2.4rem)/1 var(--display); text-transform: uppercase; letter-spacing: 0.03em; }
+  .shows h3 { font: 400 clamp(2rem, 5vw, 3.8rem)/1 var(--display); text-transform: uppercase; letter-spacing: 0.03em; }
   .shows p { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
-  .shows a { padding: 0.7em 1.2em; background: var(--black); color: var(--white); font: 400 1rem var(--display); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
-  .shows a:hover { background: var(--white); color: var(--black); }
-  .note { margin-top: 1rem; font-size: 0.85rem; font-weight: 300; opacity: 0.8; }
-  @media (max-width: 700px) { .shows li { grid-template-columns: auto 1fr; } .shows a { grid-column: 1 / -1; justify-self: start; } }
+  #contact .cta { margin-top: 2rem; }
 
   footer { padding: 3rem var(--pad) 6rem; text-align: center; }
   footer .logo { max-width: 460px; margin: 0 auto 1rem; }
@@ -97,13 +93,13 @@
 <header class="hero">
   <nav class="nav" aria-label="Main">
     <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
-    <ul><li><a href="#music">Music</a></li><li><a href="#live">Live</a></li><li><a href="#live">Book</a></li></ul>
+    <ul><li><a href="#music">Music</a></li><li><a href="#contact">Contact</a></li></ul>
   </nav>
   <div class="wings" aria-hidden="true"></div>
   <h1 class="big" aria-label="Sunshine reggae, loud"><span>Sunshine</span><span>Reggae</span><span>Loud</span></h1>
   <div class="hero-foot">
-    <p>Tomorrow People. Seven players from Wellington, three number-one records, and a live show that fills the field.</p>
-    <div class="cta"><a class="btn" href="#music">Hear it</a><a class="btn r" href="#live">See it live</a></div>
+    <p>Tomorrow People. Seven players from Wellington, three number-one records, and songs in three languages.</p>
+    <div class="cta"><a class="btn" href="#music">Hear it</a><a class="btn r" href="#contact">Get in touch</a></div>
   </div>
 </header>
 
@@ -123,14 +119,14 @@
   </ul>
 </section>
 
-<section id="live">
-  <h2 class="big">Catch <em>the show</em></h2>
+<section id="contact">
+  <h2 class="big">Get <em>in touch</em></h2>
   <ul class="shows">
-    <li><time>17.01</time><div><h3>Summer festival</h3><p>Tauranga</p></div><a href="#">Tickets</a></li>
-    <li><time>06.02</time><div><h3>Waitangi weekend</h3><p>Northland</p></div><a href="#">Tickets</a></li>
-    <li><time>14.03</time><div><h3>Hometown show</h3><p>Wellington</p></div><a href="#">Tickets</a></li>
+    <li><div><h3>Bookings</h3><p>Festivals, events and private shows</p></div></li>
+    <li><div><h3>Music licensing</h3><p>Songs for film, television and advertising</p></div></li>
+    <li><div><h3>Press</h3><p>Interviews, photos and the band's story</p></div></li>
   </ul>
-  <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
+  <div class="cta"><a class="btn r" href="#">Send an enquiry</a><a class="btn" href="https://tomorrowpeople.bandcamp.com/music">Hear the records</a></div>
 </section>
 
 <footer>

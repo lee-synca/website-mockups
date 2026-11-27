@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tomorrow People | Sunshine reggae from Wellington (homepage concept)</title>
-<meta name="description" content="Tomorrow People: seven-piece sunshine reggae band from Wellington, Aotearoa. Music, story, live shows and bookings.">
+<meta name="description" content="Tomorrow People: seven-piece sunshine reggae band from Wellington, Aotearoa. Music, story and enquiries.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
@@ -180,6 +180,7 @@
   .shows h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; line-height: 1.3; }
   .shows p { font-weight: 300; opacity: 0.85; }
   .shows .btn { padding: 0.7em 1.1em; font-size: 0.72rem; }
+  .shows.ways li { grid-template-columns: 1fr; }
   .note { font-size: 0.85rem; font-weight: 300; margin-top: 1rem; opacity: 0.8; }
   .booking { background: var(--white); color: var(--black); padding: clamp(1.6rem, 3vw, 2.6rem); border-top: 6px solid var(--yellow); }
   .booking h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 0.7em; }
@@ -232,9 +233,9 @@
     <ul>
       <li class="link"><a href="#music">Music</a></li>
       <li class="link"><a href="#story">Story</a></li>
-      <li class="link"><a href="#live">Live</a></li>
+      <li class="link"><a href="#contact">Contact</a></li>
       <li class="link"><a href="#join">Join</a></li>
-      <li><a class="btn" href="#booking">Book the band</a></li>
+      <li><a class="btn" href="#contact">Get in touch</a></li>
     </ul>
   </nav>
 </header>
@@ -247,7 +248,7 @@
       <p class="lede">Seven players, three number-one records, and songs in English, te reo Māori and gagana Samoa.</p>
       <div class="hero-cta">
         <a class="btn" href="#music">Hear the music</a>
-        <a class="btn ghost" href="#live">Find a show</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
       </div>
     </div>
     <div class="medallion" aria-hidden="true">
@@ -327,22 +328,21 @@
     <div class="slot reveal">Band photo or live video goes here</div>
   </section>
 
-  <section id="live">
-    <p class="eyebrow reveal">Live</p>
-    <h2 class="title reveal">On stage</h2>
+  <section id="contact">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="title reveal">Get in touch</h2>
 
     <div class="live-grid">
       <div>
-        <ul class="shows">
-          <li class="reveal"><time>17<small>JAN</small></time><div><h3>Summer festival</h3><p>Tauranga, Bay of Plenty</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
-          <li class="reveal"><time>06<small>FEB</small></time><div><h3>Waitangi weekend show</h3><p>Northland</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
-          <li class="reveal"><time>14<small>MAR</small></time><div><h3>Hometown show</h3><p>Wellington waterfront</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
+        <ul class="shows ways">
+          <li class="reveal"><div><h3>Bookings</h3><p>Festivals, events and private shows.</p></div></li>
+          <li class="reveal"><div><h3>Music licensing</h3><p>Songs for film, television and advertising.</p></div></li>
+          <li class="reveal"><div><h3>Press</h3><p>Interviews, photos and the band's story.</p></div></li>
         </ul>
-        <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
       </div>
-      <aside class="booking reveal" id="booking">
-        <h3>Book the band</h3>
-        <p>Festivals, council events, weddings and corporate shows. Tana and Avina manage the band themselves, so your enquiry goes straight to them.</p>
+      <aside class="booking reveal">
+        <h3>Straight to the band</h3>
+        <p>Tana and Avina manage the band themselves, so your enquiry goes straight to them.</p>
         <a class="btn" href="#" data-concept>Send an enquiry</a>
       </aside>
     </div>
@@ -353,7 +353,7 @@
       <div>
         <p class="eyebrow reveal">Join</p>
         <h2 class="title reveal">Hear it first</h2>
-        <p class="lede reveal" style="margin-top:1.2rem">New songs, presale tickets and merch drops, sent to your inbox before they go public.</p>
+        <p class="lede reveal" style="margin-top:1.2rem">New songs, videos and merch drops, sent to your inbox before they go public.</p>
         <form id="signup" class="reveal" novalidate>
           <label for="email">Email address</label>
           <input id="email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>

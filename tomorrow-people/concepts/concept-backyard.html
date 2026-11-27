@@ -74,10 +74,9 @@
   .live { background: var(--sky); }
   .tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.6rem; }
   .tickets li { background: var(--cream); border: 4px solid var(--ink); border-radius: 18px; padding: 1.4rem; box-shadow: 0 8px 0 var(--ink); display: grid; gap: 0.5rem; justify-items: start; }
-  .tickets time { font: 400 2.6rem/1 var(--display); color: var(--red); }
+  .tickets b { font: 400 2.6rem/1 var(--display); color: var(--red); }
   .tickets h3 { font: 400 1.4rem/1.1 var(--display); }
-  .tickets .btn { margin-top: 0.6rem; padding: 0.55em 1.1em; font-size: 1rem; box-shadow: 0 4px 0 var(--ink); }
-  .note { margin-top: 1.4rem; font-size: 0.9rem; }
+  .live .cta { margin-top: 2.4rem; justify-content: flex-start; }
   @media (max-width: 800px) { .tickets { grid-template-columns: 1fr; } }
 
   footer { background: var(--ink); color: var(--cream); padding: 3rem var(--pad) 6rem; text-align: center; }
@@ -92,11 +91,11 @@
 <header class="hero">
   <nav class="nav" aria-label="Main">
     <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
-    <ul><li><a href="#music">Music</a></li><li><a href="#live">Shows</a></li><li><a href="#live">Book the band</a></li></ul>
+    <ul><li><a href="#music">Music</a></li><li><a href="#contact">Get in touch</a></li></ul>
   </nav>
   <h1 class="toon" aria-label="Sunshine Reggae"><small>"Sunshine"</small><b>R</b><b>e</b><b>g</b><b>g</b><b>a</b><b>e</b></h1>
   <p>Tomorrow People: seven mates from Wellington making music for the backyard, the beach and the long weekend.</p>
-  <div class="cta"><a class="btn" href="#music">Put a record on</a><a class="btn y" href="#live">Come to a show</a></div>
+  <div class="cta"><a class="btn" href="#music">Put a record on</a><a class="btn y" href="#contact">Get in touch</a></div>
   <div class="yard" aria-hidden="true"><div class="fence"></div><div class="lawn"></div></div>
 </header>
 
@@ -120,14 +119,14 @@
   </ul>
 </section>
 
-<section id="live" class="live">
-  <h2 class="toon">Bring a plate</h2>
+<section id="contact" class="live">
+  <h2 class="toon">Give us a yell</h2>
   <ul class="tickets">
-    <li><time>17 Jan</time><h3>Summer festival, Tauranga</h3><a class="btn y" href="#">Get tickets</a></li>
-    <li><time>6 Feb</time><h3>Waitangi weekend, Northland</h3><a class="btn y" href="#">Get tickets</a></li>
-    <li><time>14 Mar</time><h3>Hometown show, Wellington</h3><a class="btn y" href="#">Get tickets</a></li>
+    <li><b>Bookings</b><h3>Festivals, events and private shows</h3></li>
+    <li><b>Licensing</b><h3>Songs for film, television and advertising</h3></li>
+    <li><b>Press</b><h3>Interviews, photos and the band's story</h3></li>
   </ul>
-  <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
+  <div class="cta"><a class="btn y" href="#">Send an enquiry</a><a class="btn" href="https://tomorrowpeople.bandcamp.com/music">Put a record on</a></div>
 </section>
 
 <footer>
