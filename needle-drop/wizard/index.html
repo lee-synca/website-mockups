@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Needle Drop: setup wizard and quick-buy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#03070e;--panel:#0a1220;--field:#0d1626;--line:rgb(255 255 255/.08);--line-2:rgb(255 255 255/.14);
+  --ink:#e8edf6;--ink-2:#b6c0d2;--muted:#8d99ae;--accent:#ff4fa3;--accent-2:#ff74b7;--on-accent:#2a0015;--green:#6ee7a8;
+  --body:'Inter','Segoe UI',system-ui,sans-serif;--logo:'Barlow Condensed','Arial Narrow',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.page{width:1360px;margin:0 auto;padding:56px 0 80px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.brand{display:flex;align-items:center;gap:10px;font:italic 800 26px/1 var(--logo);letter-spacing:.01em;text-transform:uppercase}
+.brand img{width:34px;height:34px}
+.brand span{color:var(--accent)}
+.tag{font-size:13px;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:6px 14px}
+.section-head{margin:8px 0 26px}
+.label{color:var(--accent);font-weight:600;font-size:14px;margin:0 0 8px}
+h1,h2{margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1}
+h1{font-size:54px}
+h2{font-size:38px}
+.lede{color:var(--ink-2);font-size:17px;max-width:760px;margin:14px 0 0}
+
+/* ---------- wizard frames ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px 28px}
+.frame{background:#060c17;border:1px solid var(--line-2);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgb(0 0 0/.8)}
+.chrome{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:#081020}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#1e2a3d;display:block}
+.chrome .url{margin-left:10px;flex:1;background:var(--field);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
+.wiz{padding:22px 26px 24px;height:520px;display:flex;flex-direction:column}
+.steps{display:flex;gap:6px;margin-bottom:6px}
+.steps b{flex:1;height:4px;border-radius:4px;background:#1a2537}
+.steps b.on{background:var(--accent)}
+.stepn{font-size:12px;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between}
+.wiz h3{margin:0 0 4px;font-size:24px;font-weight:800;letter-spacing:-.01em}
+.wiz .sub{color:var(--ink-2);margin:0 0 16px;font-size:14px}
+.cols{display:grid;grid-template-columns:1fr 190px;gap:22px;flex:1;min-height:0}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:5px}
+.input{background:var(--field);border:1px solid var(--line-2);border-radius:10px;padding:9px 12px;font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.input.focus{border-color:var(--accent);box-shadow:0 0 0 3px rgb(255 79 163/.18)}
+.input .ok{margin-left:auto;color:var(--green);font-size:12px;font-weight:600}
+.input .dim{color:var(--muted)}
+.swatches{display:flex;gap:8px}
+.swatches span{width:30px;height:30px;border-radius:50%;border:2px solid transparent}
+.swatches span.sel{border-color:#fff;box-shadow:0 0 0 3px rgb(255 255 255/.15)}
+.avatar-up{display:flex;align-items:center;gap:12px}
+.avatar-up .av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#ff4fa3,#7a2cff);display:grid;place-items:center;font-weight:800;font-size:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:10px 18px;font-weight:700;font-size:14px;border:1px solid var(--line-2);color:var(--ink);background:transparent}
+.btn.pri{background:var(--accent);color:var(--on-accent);border-color:transparent;box-shadow:0 10px 30px -10px rgb(255 79 163/.7)}
+.btn.sm{padding:6px 12px;font-size:12px;border-radius:9px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.foot .back{color:var(--muted);font-size:14px}
+/* live preview phone */
+.mini-phone{width:180px;height:300px;border-radius:26px;border:6px solid #1c2638;background:#080d17;overflow:hidden;position:relative;justify-self:end}
+.mini-phone .mp-hd{display:flex;align-items:center;gap:6px;padding:12px 10px 6px;font-size:10px;font-weight:700}
+.mini-phone .mp-hd .av{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--c,#ff4fa3),#7a2cff)}
+.mini-phone .mp-card{margin:4px 8px;border-radius:10px;padding:8px;display:flex;gap:8px;align-items:center;background:linear-gradient(120deg,color-mix(in srgb,var(--c,#ff4fa3) 55%,#000),#1a0b14)}
+.mini-phone .mp-card img{width:40px;height:40px;border-radius:6px}
+.mini-phone .mp-card small{display:block;font-size:8px;opacity:.75}
+.mini-phone .mp-card b{font-size:10px;line-height:1.2;display:block}
+.mini-phone .mp-card .buy{font-size:8px;background:var(--c,#ff4fa3);color:#1b0010;border-radius:999px;padding:2px 7px;display:inline-block;margin-top:3px;font-weight:700}
+.mini-phone .mp-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px 8px}
+.mini-phone .mp-row img{border-radius:6px}
+.mini-phone .mp-row small{font-size:8px;color:var(--ink-2);display:block;margin-top:2px}
+.mini-phone .mp-nav{position:absolute;left:0;right:0;bottom:0;height:30px;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center}
+.mini-phone .mp-nav i{width:12px;height:12px;border-radius:3px;background:#2a3548;display:block}
+.mini-phone .mp-nav i.on{background:var(--c,#ff4fa3)}
+.prev-cap{font-size:11px;color:var(--muted);text-align:center;margin-top:8px}
+/* address */
+.choice{border:1px solid var(--line-2);border-radius:14px;padding:14px;margin-bottom:12px;background:var(--panel)}
+.choice.sel{border-color:var(--accent);background:linear-gradient(180deg,rgb(255 79 163/.08),transparent)}
+.choice .ch-hd{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:8px}
+.radio{width:16px;height:16px;border-radius:50%;border:2px solid var(--line-2)}
+.radio.on{border:5px solid var(--accent)}
+.choice p{margin:0;font-size:13px;color:var(--ink-2)}
+.qr-box{background:#fff;border-radius:14px;padding:10px;width:150px;height:150px}
+/* get paid */
+.stripe-card{border:1px solid var(--line-2);border-radius:14px;padding:16px;background:var(--panel);margin-bottom:12px}
+.stripe-card .row{display:flex;align-items:center;gap:12px}
+.stripe-logo{width:40px;height:40px;border-radius:10px;background:#635bff;display:grid;place-items:center;font-weight:800;color:#fff;font-size:18px}
+.tick-list{list-style:none;padding:0;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
+.tick-list li{padding-left:22px;position:relative;margin:5px 0}
+.tick-list li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:6px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.split{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);padding:6px 0;border-bottom:1px dashed var(--line-2)}
+.split b{color:var(--ink)}
+/* upload */
+.upload{display:grid;grid-template-columns:150px 1fr;gap:18px}
+.cover-up{position:relative;border-radius:12px;overflow:hidden}
+.cover-up .chg{position:absolute;left:8px;bottom:8px;font-size:11px;background:rgb(0 0 0/.6);padding:3px 8px;border-radius:6px}
+.filebar{border:1px dashed var(--line-2);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--panel)}
+.filebar .fn{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.filebar .fn span{color:var(--muted)}
+.bar{height:6px;border-radius:6px;background:#1a2537;overflow:hidden}
+.bar i{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.seg{display:flex;background:var(--field);border:1px solid var(--line-2);border-radius:11px;padding:3px}
+.seg span{flex:1;text-align:center;padding:7px 0;font-size:13px;font-weight:600;color:var(--ink-2);border-radius:8px}
+.seg span.on{background:var(--accent);color:var(--on-accent)}
+/* tracklist */
+.wave{position:relative;height:74px;background:var(--panel);border-radius:12px;border:1px solid var(--line);margin-bottom:12px;overflow:hidden}
+.wave canvas{width:100%;height:100%;display:block}
+.tl{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:6px 14px;overflow:hidden}
+.tr{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:13px}
+.tr .t{font-variant-numeric:tabular-nums;color:var(--accent-2);font-weight:600;width:40px;font-size:12px}
+.tr .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tr .nm small{color:var(--muted)}
+.tr .sug{font-size:10px;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:1px 7px}
+.tr.edit{border-color:var(--accent);background:rgb(255 79 163/.07)}
+.tr.edit .sug{color:var(--accent-2);border-color:rgb(255 79 163/.4)}
+/* go live */
+.live{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center}
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.done-badge{display:inline-flex;align-items:center;gap:8px;background:rgb(110 231 168/.12);color:var(--green);border:1px solid rgb(110 231 168/.3);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.checks li{display:flex;gap:10px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.checks li em{font-style:normal;margin-left:auto;font-size:12px;color:var(--green)}
+.cap{margin:12px 2px 0;color:var(--ink-2);font-size:14px}
+.cap b{color:var(--ink)}
+
+/* ---------- quick-buy phones ---------- */
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:start}
+.phone{width:300px;height:620px;border-radius:44px;border:9px solid #1c2638;background:#070b14;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 40px 70px -30px rgb(0 0 0/.9)}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:24px;border-radius:14px;background:#000;z-index:5}
+.status{display:flex;justify-content:space-between;padding:12px 22px 0;font-size:11px;font-weight:600;height:36px}
+.mixpage{position:absolute;inset:0;padding-top:40px}
+.mix-bg{position:absolute;inset:0;height:330px;background:linear-gradient(180deg,rgb(160 40 110/.85),rgb(60 10 40/.6) 60%,#070b14)}
+.mix-in{position:relative;padding:8px 18px}
+.mix-top{display:flex;justify-content:space-between;font-size:16px;color:#fff;margin-bottom:10px}
+.mix-cover{position:relative;width:190px;height:190px;margin:0 auto 14px}
+.mix-cover img{position:relative;z-index:2;border-radius:10px;width:190px;height:190px;box-shadow:0 20px 40px -10px rgb(0 0 0/.7)}
+.mix-cover .rec{position:absolute;z-index:1;top:8px;left:52px;width:174px;height:174px;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 2px,#1d1d1d 2px 4px);box-shadow:inset 0 0 0 1px #333}
+.mix-cover .rec::after{content:"";position:absolute;inset:62px;border-radius:50%;background:var(--accent)}
+.mix-t{font-size:20px;font-weight:800;line-height:1.15}
+.mix-a{font-size:13px;color:var(--ink-2);margin:2px 0 10px}
+.prev-note{font-size:11px;color:var(--ink-2);background:rgb(255 79 163/.1);border:1px solid rgb(255 79 163/.25);border-radius:10px;padding:7px 10px;margin-bottom:12px}
+.buy-btn{display:flex;align-items:center;justify-content:center;width:100%;border-radius:999px;padding:12px;font-weight:800;font-size:15px;background:var(--accent);color:var(--on-accent);margin-bottom:8px}
+.wallet-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;border-radius:999px;padding:12px;font-weight:700;font-size:15px;background:#fff;color:#000;margin-bottom:8px}
+.wallet-btn svg{width:15px;height:15px}
+.alt{text-align:center;font-size:12px;color:var(--muted)}
+.trk{margin-top:14px;font-size:12px;color:var(--ink-2)}
+.trk div{display:flex;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.trk div span{color:var(--muted);width:32px}
+.dim-layer{position:absolute;inset:0;background:rgb(0 0 0/.55);z-index:3}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:4;background:#f2f2f6;color:#111;border-radius:22px 22px 0 0;padding:16px 18px 22px}
+.sheet .sh-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sheet .sh-hd b{font-size:16px;display:flex;align-items:center;gap:5px}
+.sheet .sh-hd b svg{width:16px;height:16px}
+.sheet .x{width:24px;height:24px;border-radius:50%;background:#d9d9e0;display:grid;place-items:center;font-size:12px;color:#555}
+.sh-row{white-space:nowrap;display:flex;gap:12px;align-items:center;background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:13px}
+.sh-row img{width:38px;height:38px;border-radius:6px}
+.sh-row .k{color:#777;width:62px;font-size:12px}
+.card-ic{width:34px;height:22px;border-radius:4px;background:linear-gradient(135deg,#1a1f71,#2b55c6);color:#fff;font-size:8px;font-weight:800;display:grid;place-items:center}
+.sh-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding:8px 4px 12px}
+.faceid{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:#333}
+.faceid .fi{width:46px;height:46px;border:3px solid #2a7bf6;border-radius:12px;position:relative}
+.faceid .fi::before{content:"";position:absolute;left:12px;right:12px;top:22px;height:8px;border-bottom:3px solid #2a7bf6;border-radius:0 0 10px 10px}
+.faceid .fi::after{content:"";position:absolute;left:11px;top:11px;width:4px;height:6px;background:#2a7bf6;border-radius:2px;box-shadow:16px 0 0 #2a7bf6}
+.owned{position:absolute;inset:0;padding-top:44px;text-align:center}
+.owned .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgb(255 79 163/.35),transparent 60%)}
+.owned-in{position:relative;padding:20px 22px}
+.big-rec{width:200px;height:200px;margin:20px auto 18px;border-radius:50%;background:repeating-radial-gradient(circle,#121212 0 2px,#1f1f1f 2px 4px);position:relative;box-shadow:0 0 0 1px #333,0 20px 50px -10px rgb(255 79 163/.5)}
+.big-rec img{position:absolute;inset:62px;border-radius:50%;width:76px;height:76px}
+.check-pill{display:inline-flex;gap:6px;align-items:center;background:rgb(110 231 168/.14);color:var(--green);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;margin-bottom:10px}
+.owned h4{margin:0 0 4px;font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.owned p{margin:0 0 16px;color:var(--ink-2);font-size:13px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.two .btn{padding:10px 0}
+.receipt{font-size:11px;color:var(--muted);margin-top:14px}
+.home-list{position:absolute;inset:0;padding-top:44px}
+.hl-in{padding:6px 16px}
+.hl-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.hl-hd b{font-size:20px;font-weight:800}
+.hl-item{display:flex;gap:12px;align-items:center;padding:8px;border-radius:12px;margin-bottom:6px}
+.hl-item img{width:54px;height:54px;border-radius:8px}
+.hl-item .nm{flex:1;font-size:13px;font-weight:600;line-height:1.25}
+.hl-item .nm small{display:block;color:var(--muted);font-weight:400;font-size:11px}
+.hl-item .own{font-size:10px;color:var(--green);border:1px solid rgb(110 231 168/.35);border-radius:999px;padding:2px 7px}
+.hl-item .pr{font-size:11px;font-weight:700;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:4px 10px}
+.hl-item.hot{background:var(--panel);outline:1px solid rgb(255 79 163/.5)}
+.pop{position:absolute;left:12px;right:12px;bottom:76px;z-index:4;background:#111a2a;border:1px solid var(--line-2);border-radius:18px;padding:14px;box-shadow:0 30px 60px -10px rgb(0 0 0/.9)}
+.pop .row{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.pop .row img{width:44px;height:44px;border-radius:8px}
+.pop .row div{font-size:13px;font-weight:700;line-height:1.25}
+.pop .row small{display:block;color:var(--muted);font-weight:400;font-size:11px}
+.pop .pay-with{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-2);background:var(--field);border-radius:10px;padding:8px 10px;margin-bottom:10px}
+.pop .pay-with span{display:flex;gap:8px;align-items:center;color:var(--ink)}
+.pop .pay-with a{color:var(--accent-2);text-decoration:none}
+.toast{position:absolute;left:12px;right:12px;bottom:76px;z-index:4;background:#0f2a1e;border:1px solid rgb(110 231 168/.4);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:13px}
+.toast b{color:var(--green)}
+.toast .undo{margin-left:auto;font-weight:700;color:#fff;text-decoration:underline}
+.toast .ring{width:22px;height:22px;border-radius:50%;border:2px solid rgb(110 231 168/.3);border-top-color:var(--green);display:grid;place-items:center;font-size:9px}
+.navbar{position:absolute;left:0;right:0;bottom:0;height:58px;border-top:1px solid var(--line);background:#070b14;display:flex;justify-content:space-around;align-items:center;z-index:2}
+.navbar i{width:18px;height:18px;border-radius:5px;background:#243045;display:block}
+.navbar i.on{background:var(--accent)}
+.pcap{margin-top:16px;text-align:center}
+.pcap .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:13px;margin-bottom:8px}
+.pcap b{display:block;font-size:16px;margin-bottom:4px}
+.pcap span{color:var(--ink-2);font-size:13px;display:block;max-width:290px;margin:0 auto}
+.lane{display:flex;align-items:center;gap:14px;margin:6px 0 22px;color:var(--muted);font-size:13px}
+.lane i{flex:1;height:1px;background:var(--line-2)}
+.lane b{color:var(--ink);font-weight:700}
+.notes{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.note{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:16px;padding:18px 20px}
+.note b{display:block;margin-bottom:6px;font-size:15px}
+.note p{margin:0;color:var(--ink-2);font-size:14px}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="brand"><img src="img/nd-mark.svg" alt="">Needle <span>Drop</span></div>
+    <div class="tag">Mockup, not built yet</div>
+  </div>
+
+  <!-- ================= WIZARD ================= -->
+  <header class="section-head">
+    <p class="label">For DJs</p>
+    <h1>Set up your app in six steps</h1>
+    <p class="lede">A DJ signs up, then a short wizard takes them from nothing to a live app with their first mix in it. A live preview of their app updates as they go.</p>
+  </header>
+
+  <div class="grid2">
+    <!-- 1 Brand -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b></b><b></b><b></b><b></b><b></b></div>
+          <div class="stepn"><span>Step 1 of 6</span><span>Your brand</span></div>
+          <div class="cols">
+            <div>
+              <h3>Make it yours</h3>
+              <p class="sub">This is what fans see when they open your app.</p>
+              <div class="field"><label>DJ name</label><div class="input focus">Demo DJ</div></div>
+              <div class="field"><label>Photo or logo</label>
+                <div class="avatar-up"><div class="av">DD</div><span class="btn sm">Change</span><span style="font-size:12px;color:var(--muted)">Square, at least 512px</span></div>
+              </div>
+              <div class="field"><label>Highlight colour</label>
+                <div class="swatches"><span class="sel" style="background:#ff4fa3"></span><span style="background:#ff7a1a"></span><span style="background:#ffd23f"></span><span style="background:#36d399"></span><span style="background:#3aa7ff"></span><span style="background:#9b6bff"></span><span style="background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red)"></span></div>
+              </div>
+            </div>
+            <div>
+              <div class="mini-phone" style="--c:#ff4fa3">
+                <div class="mp-hd"><span class="av"></span>Demo DJ</div>
+                <div class="mp-card"><img src="img/cover-late-night-drive-2.jpg" alt=""><div><small>Just dropped</small><b>Late Night Drive Vol 2</b><span class="buy">Buy $19</span></div></div>
+                <div class="mp-row"><div><img src="img/cover-island-time-1.jpg" alt=""><small>Island Time</small></div><div><img src="img/cover-sunday-slow-jams-4.jpg" alt=""><small>Slow Jams 4</small></div></div>
+                <div class="mp-nav"><i class="on"></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="prev-cap">Live preview</div>
+            </div>
+          </div>
+          <div class="foot"><span class="back">Save and finish later</span><span class="btn pri">Next: your address</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>1. Your brand.</b> Name, photo and colour. The phone on the right changes as they pick.</p>
+    </div>
+
+    <!-- 2 Address -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b class="on"></b><b></b><b></b><b></b><b></b></div>
+          <div class="stepn"><span>Step 2 of 6</span><span>Your address</span></div>
+          <h3>Where fans find you</h3>
+          <p class="sub">Pick a free address now. You can add your own website address any time.</p>
+          <div class="choice sel">
+            <div class="ch-hd"><span class="radio on"></span>Free Needle Drop address</div>
+            <div class="input focus"><span>demodj</span><span class="dim">.needledrop.app</span><span class="ok">Available</span></div>
+          </div>
+          <div class="choice">
+            <div class="ch-hd"><span class="radio"></span>Use my own address</div>
+            <p>For example app.demodj.com. We'll show you the one setting to add where you bought your domain, and check it for you.</p>
+          </div>
+          <div class="foot"><span class="back">Back</span><span class="btn pri">Next: get paid</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>2. Your address.</b> A free address that's checked as they type, or their own domain.</p>
+    </div>
+
+    <!-- 3 Get paid -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b><b></b></div>
+          <div class="stepn"><span>Step 3 of 6</span><span>Get paid</span></div>
+          <div class="cols" style="grid-template-columns:1fr 1fr">
+            <div>
+              <h3>Get paid to your bank</h3>
+              <p class="sub">Fans pay you directly. We never see their card or your bank details.</p>
+              <div class="stripe-card">
+                <div class="row"><div class="stripe-logo">S</div><div><b>Connect with Stripe</b><div style="font-size:12px;color:var(--muted)">About 5 minutes. Stripe checks your ID.</div></div></div>
+                <ul class="tick-list"><li>Payouts to your bank every week</li><li>Apple Pay and Google Pay switched on</li><li>Receipts and refunds handled</li></ul>
+              </div>
+              <span class="btn pri" style="width:100%">Connect with Stripe</span>
+            </div>
+            <div>
+              <div class="field"><label>Default price for a mix</label><div class="input focus">$19.00 <span class="dim" style="margin-left:auto">AUD</span></div></div>
+              <div class="field"><label>Monthly plan (every mix, streamed)</label><div class="input">$9.99 <span class="dim" style="margin-left:auto">a month</span></div></div>
+              <div style="margin-top:14px;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:4px">On a $19 sale, roughly</div>
+              <div class="split"><span>Fan pays</span><b>$19.00</b></div>
+              <div class="split"><span>Card fee (Stripe)</span><span>-$0.59</span></div>
+              <div class="split"><span>Needle Drop</span><span>-$x.xx</span></div>
+              <div class="split" style="border:0"><span>You get</span><b style="color:var(--green)">the rest</b></div>
+            </div>
+          </div>
+          <div class="foot"><span class="back">Back</span><span class="btn">Skip for now, free mixes only</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>3. Get paid.</b> Stripe does the ID check and the payouts. Needle Drop's cut is a placeholder until pricing is set.</p>
+    </div>
+
+    <!-- 4 First mix -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></div>
+          <div class="stepn"><span>Step 4 of 6</span><span>Your first mix</span></div>
+          <h3>Drop in your first mix</h3>
+          <p class="sub">MP3 or WAV, any length. Keep filling this in while it uploads.</p>
+          <div class="filebar">
+            <div class="fn"><b>late-night-drive-vol2-final.wav</b><span>612 MB · 72% · about 1 min left</span></div>
+            <div class="bar"><i></i></div>
+          </div>
+          <div class="upload">
+            <div class="cover-up"><img src="img/cover-late-night-drive-2.jpg" alt=""><span class="chg">Change cover</span></div>
+            <div>
+              <div class="field"><label>Mix title</label><div class="input focus">Late Night Drive Vol 2</div></div>
+              <div class="field"><label>How fans get it</label>
+                <div class="seg"><span>Free</span><span class="on">Buy for $19</span><span>Monthly plan only</span></div>
+              </div>
+              <div style="font-size:12px;color:var(--muted)">Everyone can hear a 10-minute preview. Only buyers and plan members get the full mix.</div>
+            </div>
+          </div>
+          <div class="foot"><span class="back">Back</span><span class="btn pri">Next: tracklist</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>4. First mix.</b> Upload, cover, title and how it's sold. The 10-minute preview is cut automatically.</p>
+    </div>
+
+    <!-- 5 Tracklist -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div>
+          <div class="stepn"><span>Step 5 of 6</span><span>Tracklist</span></div>
+          <h3>We found 25 songs. Check the names.</h3>
+          <p class="sub">We listened for where each song starts. Drag a marker if it's off, and type the names in.</p>
+          <div class="wave"><canvas id="wave" width="1200" height="148"></canvas></div>
+          <div class="tl">
+            <div class="tr"><span class="t">0:00</span><span class="nm">Intro</span></div>
+            <div class="tr"><span class="t">1:52</span><span class="nm">Mele Brooks <small>· Say It Again</small></span></div>
+            <div class="tr"><span class="t">4:37</span><span class="nm">Satin Hours <small>· Velvet Signal</small></span></div>
+            <div class="tr"><span class="t">7:15</span><span class="nm">The Low Tides <small>· Midnight Dreams</small></span></div>
+            <div class="tr"><span class="t">9:58</span><span class="nm">Gia Rua <small>· Late Moves</small></span><span class="sug">Suggested</span></div>
+            <div class="tr edit"><span class="t">12:41</span><span class="nm">Coral Coast <small>· Heavy Fire</small></span><span class="sug">Editing</span></div>
+            <div class="tr"><span class="t">15:20</span><span class="nm">Song 7 <small>· add a name</small></span><span class="sug">Suggested</span></div>
+            <div class="tr"><span class="t">18:06</span><span class="nm">Song 8 <small>· add a name</small></span><span class="sug">Suggested</span></div>
+          </div>
+          <div class="foot"><span class="back">Paste a tracklist instead</span><span class="btn pri">Next: go live</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>5. Tracklist.</b> The song starts are found for them. They fix the names, or paste a list they already have.</p>
+    </div>
+
+    <!-- 6 Go live -->
+    <div>
+      <div class="frame">
+        <div class="chrome"><i></i><i></i><i></i><div class="url">needledrop.app/setup</div></div>
+        <div class="wiz">
+          <div class="steps"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></div>
+          <div class="stepn"><span>Step 6 of 6</span><span>Go live</span></div>
+          <span class="done-badge">● Your app is live</span>
+          <h3>demodj.needledrop.app</h3>
+          <p class="sub">Share the link or the QR code. Fans add it to their home screen in a few taps.</p>
+          <div class="live">
+            <div class="qr-box"><canvas id="qr" width="260" height="260" style="width:130px;height:130px"></canvas></div>
+            <div>
+              <ul class="checks">
+                <li>Brand and colour <em>Done</em></li>
+                <li>Address <em>Done</em></li>
+                <li>Stripe connected <em>Done</em></li>
+                <li>Late Night Drive Vol 2, 25 songs <em>Live</em></li>
+              </ul>
+              <div class="share-row"><span class="btn pri sm">Copy link</span><span class="btn sm">Download QR</span><span class="btn sm">Post to Instagram</span><span class="btn sm">Open my Control Centre</span></div>
+            </div>
+          </div>
+          <div class="foot"><span class="back">Edit anything later in your Control Centre</span><span class="btn">Add another mix</span></div>
+        </div>
+      </div>
+      <p class="cap"><b>6. Go live.</b> Link, QR code and share buttons. Everything after this happens in the Control Centre they already have.</p>
+    </div>
+  </div>
+
+  <!-- ================= QUICK BUY ================= -->
+  <header class="section-head" style="margin-top:80px">
+    <p class="label">For fans</p>
+    <h2>Quick-buy: one tap, like Amazon</h2>
+    <p class="lede">The card lives in the fan's phone (Apple Pay or Google Pay), so the first purchase is a tap and a face scan. After that, their saved card makes every mix one tap, with a few seconds to undo.</p>
+  </header>
+
+  <div class="lane"><b>First purchase</b><i></i><b>Every purchase after</b></div>
+
+  <div class="phones">
+    <!-- P1 mix page -->
+    <div>
+      <div class="phone"><div class="notch"></div>
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="mix-bg"></div>
+        <div class="mixpage"><div class="mix-in">
+          <div class="mix-top"><span>‹</span><span>⋯</span></div>
+          <div class="mix-cover"><span class="rec"></span><img src="img/cover-late-night-drive-2.jpg" alt=""></div>
+          <div class="mix-t">Late Night Drive Vol 2</div>
+          <div class="mix-a">Demo DJ · 64 min · 25 songs</div>
+          <div class="prev-note">You're hearing a 10-minute preview. Buy it to keep the full mix.</div>
+          <div class="wallet-btn">Buy $19 with <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.7zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg>Pay</div>
+          <div class="buy-btn" style="background:transparent;color:var(--ink);border:1px solid var(--line-2)">Or stream it all, $9.99/mo</div>
+          <div class="trk"><div><span>0:00</span>Intro</div><div><span>1:52</span>Mele Brooks · Say It Again</div></div>
+        </div></div>
+      </div>
+      <div class="pcap"><span class="n">1</span><b>Tap buy</b><span>Fans are already in the app, so there's no account to make first. The buy button uses the wallet on their phone.</span></div>
+    </div>
+
+    <!-- P2 wallet sheet -->
+    <div>
+      <div class="phone"><div class="notch"></div>
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="mix-bg"></div>
+        <div class="mixpage"><div class="mix-in">
+          <div class="mix-top"><span>‹</span><span>⋯</span></div>
+          <div class="mix-cover"><span class="rec"></span><img src="img/cover-late-night-drive-2.jpg" alt=""></div>
+          <div class="mix-t">Late Night Drive Vol 2</div>
+        </div></div>
+        <div class="dim-layer"></div>
+        <div class="sheet">
+          <div class="sh-hd"><b><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.7zM14.1 5.6c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></svg>Pay</b><span class="x">✕</span></div>
+          <div class="sh-row"><img src="img/cover-late-night-drive-2.jpg" alt=""><div><b>Late Night Drive Vol 2</b><div style="color:#777;font-size:12px">Demo DJ via Needle Drop</div></div></div>
+          <div class="sh-row"><span class="k">Card</span><span class="card-ic">VISA</span><span>Visa •••• 4242</span><span style="margin-left:auto;color:#999">›</span></div>
+          <div class="sh-row"><span class="k">Receipt</span><span>fan@example.com</span></div>
+          <div class="sh-total"><span>Pay Demo DJ</span><span>$19.00</span></div>
+          <div class="faceid"><span class="fi"></span>Confirm with Face ID</div>
+        </div>
+      </div>
+      <div class="pcap"><span class="n">2</span><b>Confirm with their face</b><span>The phone's own payment sheet. The card and email are already there, so there's nothing to type.</span></div>
+    </div>
+
+    <!-- P3 owned -->
+    <div>
+      <div class="phone"><div class="notch"></div>
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="owned"><div class="glow"></div><div class="owned-in">
+          <span class="check-pill">✓ Paid $19.00</span>
+          <h4>It's yours</h4>
+          <p>The full Late Night Drive Vol 2 is in your library.</p>
+          <div class="big-rec"><img src="img/cover-late-night-drive-2.jpg" alt=""></div>
+          <div class="buy-btn">▶ Play the full mix</div>
+          <div class="two"><span class="btn">Download</span><span class="btn">Share</span></div>
+          <div class="receipt">Receipt sent to fan@example.com. Card saved for one-tap next time.</div>
+        </div></div>
+      </div>
+      <div class="pcap"><span class="n">3</span><b>Straight back to the music</b><span>About three seconds from tap to full mix. The card is remembered for next time.</span></div>
+    </div>
+
+    <!-- P4 one-tap -->
+    <div>
+      <div class="phone"><div class="notch"></div>
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="home-list"><div class="hl-in">
+          <div class="hl-hd"><b>New from Demo DJ</b><span style="color:var(--muted)">⌕</span></div>
+          <div class="hl-item"><img src="img/cover-late-night-drive-2.jpg" alt=""><div class="nm">Late Night Drive Vol 2<small>64 min</small></div><span class="own">Owned</span></div>
+          <div class="hl-item hot"><img src="img/cover-sunday-slow-jams-4.jpg" alt=""><div class="nm">Sunday Slow Jams Vol 4<small>73 min</small></div><span class="pr">$15</span></div>
+          <div class="hl-item"><img src="img/cover-island-time-1.jpg" alt=""><div class="nm">Island Time Vol 1<small>59 min</small></div><span class="pr">$15</span></div>
+          <div class="hl-item"><img src="img/cover-golden-hour-sessions.jpg" alt=""><div class="nm">Golden Hour Sessions<small>67 min</small></div><span class="pr">$12</span></div>
+        </div></div>
+        <div class="toast"><span class="ring">8</span><span><b>Bought.</b> Sunday Slow Jams Vol 4</span><span class="undo">Undo</span></div>
+        <div class="navbar"><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="pcap"><span class="n">4</span><b>Next time: one tap</b><span>Tap the price and it's bought on their saved card. They get 8 seconds to undo, the way Amazon gives you a moment to cancel.</span></div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>No card numbers on our side</b><p>Stripe holds the cards and the DJ's bank details. Needle Drop and the DJ only ever see "Visa ending 4242".</p></div>
+    <div class="note"><b>Money goes to the DJ</b><p>Each sale lands in the DJ's own Stripe account, with Needle Drop's share taken off automatically.</p></div>
+    <div class="note"><b>Locked until paid</b><p>Non-buyers only ever get the 10-minute preview file. Buyers get the full mix through a private link that expires.</p></div>
+  </div>
+</div>
+
+<script>
+// waveform with song markers
+(function(){
+  const c=document.getElementById('wave'),x=c.getContext('2d'),W=c.width,H=c.height;
+  let s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;
+  const marks=[0,.03,.072,.112,.196,.237,.279,.322];
+  for(let i=0;i<W;i+=4){
+    const t=i/W;let a=.35+.45*Math.abs(Math.sin(t*38))*(.6+.4*r());
+    for(const m of marks){const d=Math.abs(t-m);if(d<.006)a*=.35+d*100;}
+    const h=a*H*.8;x.fillStyle=t<.34?'#ff4fa3':'#2b3850';x.fillRect(i,(H-h)/2,3,h);
+  }
+  marks.forEach((m,k)=>{x.fillStyle=k===5?'#ffffff':'rgba(255,255,255,.55)';x.fillRect(m*W,0,k===5?4:2,H);
+    x.beginPath();x.arc(m*W+(k===5?2:1),8,k===5?7:5,0,7);x.fill();});
+  x.fillStyle='rgba(255,255,255,.08)';x.fillRect(0,0,.155*W,H);
+  x.fillStyle='#fff';x.font='600 20px Inter,sans-serif';x.fillText('10-min preview',10,H-12);
+})();
+// placeholder QR-style pattern (not a real code)
+(function(){
+  const c=document.getElementById('qr'),x=c.getContext('2d'),n=29,u=c.width/n;
+  let s=42;const r=()=>(s=(s*9301+49297)%233280)/233280;
+  x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.fillStyle='#03070e';
+  const finder=(cx,cy)=>{x.fillRect(cx*u,cy*u,7*u,7*u);x.fillStyle='#fff';x.fillRect((cx+1)*u,(cy+1)*u,5*u,5*u);x.fillStyle='#03070e';x.fillRect((cx+2)*u,(cy+2)*u,3*u,3*u);};
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){const f=(i<8&&j<8)||(i>n-9&&j<8)||(i<8&&j>n-9);if(!f&&r()>.52)x.fillRect(i*u,j*u,u,u);}
+  finder(0,0);finder(n-7,0);finder(0,n-7);
+  x.fillStyle='#fff';x.fillRect(11*u,11*u,7*u,7*u);x.fillStyle='#ff4fa3';x.beginPath();x.arc(14.5*u,14.5*u,3*u,0,7);x.fill();
+})();
+</script>
+</body>
+</html>
