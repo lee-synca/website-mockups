@@ -17,7 +17,7 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
-.page{width:1360px;margin:0 auto;padding:56px 0 80px}
+.page{width:min(1360px,100% - 32px);margin:0 auto;padding:56px 0 80px}
 .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
 .brand{display:flex;align-items:center;gap:10px;font:italic 800 26px/1 var(--logo);letter-spacing:.01em;text-transform:uppercase}
 .brand img{width:34px;height:34px}
@@ -213,6 +213,43 @@ h2{font-size:38px}
 .note{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:16px;padding:18px 20px}
 .note b{display:block;margin-bottom:6px;font-size:15px}
 .note p{margin:0;color:var(--ink-2);font-size:14px}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .grid2{grid-template-columns:1fr}
+  .phones{grid-template-columns:1fr 1fr;gap:40px 20px}
+  .notes{grid-template-columns:1fr}
+  .wiz{height:auto;min-height:520px}
+}
+/* ---------- phone ---------- */
+@media (max-width:680px){
+  .page{padding:28px 0 56px}
+  .top{margin-bottom:28px}
+  .brand{font-size:22px}
+  .brand img{width:28px;height:28px}
+  .tag{font-size:11px;padding:5px 10px}
+  h1{font-size:34px}
+  h2{font-size:28px}
+  .lede{font-size:15px}
+  .grid2{gap:32px}
+  .frame{border-radius:14px}
+  .wiz{min-height:0;padding:18px 16px 18px}
+  .wiz h3{font-size:20px}
+  .cols,.cols[style]{grid-template-columns:1fr !important;gap:16px}
+  .mini-phone{justify-self:center}
+  .upload{grid-template-columns:1fr}
+  .cover-up{width:150px}
+  .seg span{font-size:12px;padding:7px 2px}
+  .filebar .fn{flex-direction:column;gap:2px}
+  .tl{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .live{grid-template-columns:1fr;justify-items:start}
+  .foot{gap:12px}
+  .foot .back{font-size:13px}
+  .foot .btn{white-space:nowrap}
+  .phones{grid-template-columns:1fr;gap:44px}
+  .lane{display:none}
+  .notes{margin-top:40px}
+}
 </style>
 </head>
 <body>
@@ -262,7 +299,7 @@ h2{font-size:38px}
           <div class="foot"><span class="back">Save and finish later</span><span class="btn pri">Next: your address</span></div>
         </div>
       </div>
-      <p class="cap"><b>1. Your brand.</b> Name, photo and colour. The phone on the right changes as they pick.</p>
+      <p class="cap"><b>1. Your brand.</b> Name, photo and colour. The phone preview changes as they pick.</p>
     </div>
 
     <!-- 2 Address -->
@@ -502,18 +539,18 @@ h2{font-size:38px}
 <script>
 // waveform with song markers
 (function(){
-  const c=document.getElementById('wave'),x=c.getContext('2d'),W=c.width,H=c.height;
+  const c=document.getElementById('wave'),dp=Math.max(2,devicePixelRatio||1);c.width=c.clientWidth*dp;c.height=c.clientHeight*dp;const x=c.getContext('2d'),W=c.width,H=c.height,bw=Math.max(2,Math.round(W/300)),st=bw+Math.ceil(bw/2);
   let s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;
   const marks=[0,.03,.072,.112,.196,.237,.279,.322];
-  for(let i=0;i<W;i+=4){
+  for(let i=0;i<W;i+=st){
     const t=i/W;let a=.35+.45*Math.abs(Math.sin(t*38))*(.6+.4*r());
     for(const m of marks){const d=Math.abs(t-m);if(d<.006)a*=.35+d*100;}
-    const h=a*H*.8;x.fillStyle=t<.34?'#ff4fa3':'#2b3850';x.fillRect(i,(H-h)/2,3,h);
+    const h=a*H*.8;x.fillStyle=t<.34?'#ff4fa3':'#2b3850';x.fillRect(i,(H-h)/2,bw,h);
   }
-  marks.forEach((m,k)=>{x.fillStyle=k===5?'#ffffff':'rgba(255,255,255,.55)';x.fillRect(m*W,0,k===5?4:2,H);
-    x.beginPath();x.arc(m*W+(k===5?2:1),8,k===5?7:5,0,7);x.fill();});
+  marks.forEach((m,k)=>{x.fillStyle=k===5?'#ffffff':'rgba(255,255,255,.55)';x.fillRect(m*W,0,(k===5?2:1)*dp,H);
+    x.beginPath();x.arc(m*W+(k===5?1:.5)*dp,4*dp,(k===5?3.5:2.5)*dp,0,7);x.fill();});
   x.fillStyle='rgba(255,255,255,.08)';x.fillRect(0,0,.155*W,H);
-  x.fillStyle='#fff';x.font='600 20px Inter,sans-serif';x.fillText('10-min preview',10,H-12);
+  x.fillStyle='#fff';x.font='600 '+(10*dp)+'px Inter,sans-serif';x.fillText('10-min preview',5*dp,H-6*dp);
 })();
 // placeholder QR-style pattern (not a real code)
 (function(){
