@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Concept: The Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* The Story: taken from the ONE cover. White space, copper lettering with a
+     mirror reflection, gold for the awards. The site as the band's record of achievement. */
+  :root {
+    --white: #fff; --paper: #F7F2EC; --ink: #2A1109;
+    --copper: linear-gradient(to bottom, #5E1D10 0%, #96461E 55%, #C98232 100%);
+    --gold: linear-gradient(135deg, #FFF3B0 0%, #F3C13F 35%, #B97D10 60%, #FBE07A 100%);
+    --font: "Outfit", "Century Gothic", Futura, sans-serif; --pad: clamp(1.25rem, 6vw, 7rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font); font-weight: 300; font-size: clamp(1.05rem, 1rem + 0.3vw, 1.25rem); line-height: 1.65; overflow-x: hidden; }
+  h1, h2, h3, p, ul, ol { margin: 0; } ul, ol { padding: 0; list-style: none; } a { color: inherit; }
+  :focus-visible { outline: 3px solid #96461E; outline-offset: 4px; }
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; filter: invert(1); mix-blend-mode: multiply; }
+  .cu { background: var(--copper); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mirror { -webkit-box-reflect: below -0.14em linear-gradient(transparent 50%, rgba(0, 0, 0, 0.2)); }
+  .caps { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.36em; }
+  .btn { display: inline-block; padding: 1em 1.9em; border: 1px solid var(--ink); background: var(--ink); color: var(--white); font: 500 0.8rem var(--font); letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none; transition: background-color 0.2s, color 0.2s; }
+  .btn:hover { background: #96461E; border-color: #96461E; }
+  .btn.ghost { background: transparent; color: var(--ink); } .btn.ghost:hover { background: var(--ink); color: var(--white); }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem var(--pad); }
+  .nav .logo { width: 132px; }
+  .nav ul { display: flex; gap: clamp(1rem, 3vw, 2.6rem); } .nav a { text-decoration: none; } .nav ul a:hover { color: #96461E; }
+  @media (max-width: 700px) { .nav ul { display: none; } }
+
+  .hero { min-height: calc(100svh - 5rem); padding: 2rem var(--pad) 7rem; display: grid; align-content: center; }
+  .hero h1 { font-size: clamp(3.4rem, min(13vw, 21svh), 13rem); font-weight: 400; text-transform: uppercase; line-height: 0.92; letter-spacing: 0.01em; margin: 0.25em 0 0.55em -0.04em; }
+  .hero h1 small { display: block; font-size: 0.2em; font-weight: 300; letter-spacing: 0.3em; margin: 0 0 0.6em 0.25em; }
+  .hero-foot { display: flex; flex-wrap: wrap; gap: 1.5rem 4rem; align-items: center; justify-content: space-between; }
+  .hero-foot p { max-width: 27em; }
+  .cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+  section { padding: clamp(4rem, 9vw, 8rem) var(--pad); }
+  h2 { font-size: clamp(2rem, 6vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.26em; line-height: 1.1; }
+
+  .ones { background: var(--paper); }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.2rem, 4vw, 4rem); margin-top: 3.5rem; }
+  .trio img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; box-shadow: 0 30px 50px -25px rgba(42, 17, 9, 0.55); -webkit-box-reflect: below 4px linear-gradient(transparent 78%, rgba(0, 0, 0, 0.18)); }
+  .trio div { margin-top: clamp(3rem, 7vw, 5.5rem); }
+  .trio b { display: block; font-size: clamp(2.6rem, 6.5vw, 5.6rem); font-weight: 400; line-height: 1; }
+  .trio h3 { font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.24em; margin-top: 0.4rem; }
+  .trio p { font-size: 0.95rem; }
+  @media (max-width: 700px) { .trio { grid-template-columns: 1fr; gap: 5rem; } }
+
+  .shelf-grid { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; margin-top: 3rem; }
+  .disc { position: relative; aspect-ratio: 1; max-width: 380px; border-radius: 50%; background: repeating-radial-gradient(circle, rgba(120, 76, 0, 0.35) 0 1px, transparent 1px 4px), var(--gold); box-shadow: 0 30px 50px -22px rgba(120, 76, 0, 0.6); display: grid; place-items: center; }
+  .disc::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 30deg, transparent 0 10%, rgba(255, 255, 255, 0.55) 14%, transparent 19% 52%, rgba(255, 255, 255, 0.45) 57%, transparent 63%); }
+  .disc span { position: relative; width: 38%; aspect-ratio: 1; border-radius: 50%; background: var(--white); display: grid; place-content: center; text-align: center; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.5; box-shadow: 0 0 0 4px rgba(120, 76, 0, 0.35); }
+  .awards { border-top: 1px solid var(--ink); }
+  .awards li { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.5rem; padding: 1.05rem 0; border-bottom: 1px solid rgba(42, 17, 9, 0.3); }
+  .awards time { font-size: 1.5rem; font-weight: 400; line-height: 1.2; }
+  .awards h3 { font-size: 0.98rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; }
+  .awards p { font-size: 0.95rem; }
+  @media (prefers-reduced-motion: no-preference) { .disc { animation: turn 24s linear infinite; } .disc span { animation: turn 24s linear infinite reverse; } @keyframes turn { to { transform: rotate(360deg); } } }
+  @media (max-width: 800px) { .shelf-grid { grid-template-columns: 1fr; } .disc { max-width: 260px; margin: 0 auto; } }
+
+  .begin { background: var(--ink); color: var(--paper); }
+  .begin p { max-width: 21em; font-size: clamp(1.4rem, 3.4vw, 2.6rem); font-weight: 200; line-height: 1.35; }
+  .begin small { display: block; margin-top: 1.6rem; color: #D9A35A; }
+
+  .door { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); }
+  .door h3 { font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.26em; margin-bottom: 0.8rem; }
+  .door p { margin-bottom: 1.4rem; max-width: 26em; }
+  @media (max-width: 800px) { .door { grid-template-columns: 1fr; } }
+  footer { padding: 2rem var(--pad) 6rem; font-size: 0.8rem; opacity: 0.75; }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
+  <ul class="caps"><li><a href="#ones">Records</a></li><li><a href="#awards">Awards</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+
+<header class="hero">
+  <p class="caps">Tomorrow People · Wellington, Aotearoa · Est. 2010</p>
+  <h1 class="cu mirror"><small>Three times</small>Number one</h1>
+  <div class="hero-foot">
+    <p>Four friends started in a home studio. Three of their records went to the top of the New Zealand chart. This is how.</p>
+    <div class="cta"><a class="btn" href="#ones">Read the story</a><a class="btn ghost" href="https://tomorrowpeople.bandcamp.com/music">Listen</a></div>
+  </div>
+</header>
+
+<section id="ones" class="ones">
+  <p class="caps">Straight in at the top</p>
+  <h2>The number ones</h2>
+  <ul class="trio">
+    <li><img src="https://f4.bcbits.com/img/a1463422991_16.jpg" alt="ONE album cover"><div><b class="cu">2012</b><h3>ONE</h3><p>The debut. No.1 and certified Gold.</p></div></li>
+    <li><img src="https://f4.bcbits.com/img/a2795995102_16.jpg" alt="Bass &amp; Bassinets album cover"><div><b class="cu">2015</b><h3>Bass &amp; Bassinets</h3><p>The second album, and the second No.1.</p></div></li>
+    <li><img src="https://f4.bcbits.com/img/a1591401187_16.jpg" alt="BBQ Reggae cover"><div><b class="cu">2018</b><h3>BBQ Reggae</h3><p>Named after a critic's insult. No.1 anyway.</p></div></li>
+  </ul>
+</section>
+
+<section id="awards">
+  <p class="caps">On the shelf</p>
+  <h2>Awards</h2>
+  <div class="shelf-grid">
+    <div class="disc" aria-hidden="true"><span>ONE<br>Gold<br>2012</span></div>
+    <ol class="awards">
+      <li><time class="cu">2012</time><div><h3>Best Roots Reggae Album</h3><p>Waiata Māori Music Awards, for ONE</p></div></li>
+      <li><time class="cu">2013</time><div><h3>Best Pacific Group</h3><p>Pacific Music Awards. Won again in 2018, 2019 and 2020.</p></div></li>
+      <li><time class="cu">2018</time><div><h3>Best Pacific Language</h3><p>Pacific Music Awards, for Sa'ili Le Alofa</p></div></li>
+      <li><time class="cu">2018</time><div><h3>Best Self-Managed Artist</h3><p>Music Managers Forum, to Tana Tupai and Avina Kelekolio</p></div></li>
+      <li><time class="cu">2019</time><div><h3>Best Pacific Album</h3><p>New Zealand Music Awards, for BBQ Reggae</p></div></li>
+      <li><time class="cu">2022</time><div><h3>Best Pacific Album</h3><p>Pacific Music Awards, for 21</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="begin">
+  <p>Māori and Samoan musicians from Wellington, self-managed and self-produced, singing in English, te reo Māori and gagana Samoa.</p>
+  <small class="caps">Named after a Ziggy Marley song</small>
+</section>
+
+<section id="contact">
+  <div class="door">
+    <div><h3>Listen</h3><p>Every record is on Spotify, Apple Music, YouTube and Bandcamp.</p><a class="btn" href="https://tomorrowpeople.bandcamp.com/music">Hear the records</a></div>
+    <div><h3>Get in touch</h3><p>Bookings, music licensing and press. Enquiries go straight to Tana and Avina, who manage the band.</p><a class="btn ghost" href="#">Send an enquiry</a></div>
+  </div>
+</section>
+<footer>Concept: The Story. Logo and covers load from the band's Bandcamp page. Award details are from public sources and need checking with the band.</footer>
+<script src="switch.js"></script>
+</body>
+</html>

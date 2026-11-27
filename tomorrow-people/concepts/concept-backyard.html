@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Concept: Backyard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* Backyard: taken from the BBQ Reggae cover. Blue sky, green lawn,
+     yellow fence, fat red cartoon lettering. Friendly and funny. */
+  :root {
+    --sky: #4FC3E8; --sky2: #BFEBF8; --grass: #5FBF2E; --grass2: #3E9A1C; --fence: #F8C81E; --fence2: #E0A90B;
+    --red: #E8312B; --ink: #2A1A12; --white: #fff; --cream: #FFF8E4;
+    --display: "Lilita One", "Arial Rounded MT Bold", sans-serif; --font: "Nunito", "Segoe UI", sans-serif;
+    --pad: clamp(1.25rem, 5vw, 5rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font); font-weight: 600; font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); line-height: 1.5; overflow-x: hidden; }
+  h1, h2, h3, p, ul { margin: 0; } ul { padding: 0; list-style: none; } a { color: inherit; }
+  :focus-visible { outline: 4px solid var(--ink); outline-offset: 4px; border-radius: 8px; }
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; mix-blend-mode: screen; }
+  .toon { font-family: var(--display); font-weight: 400; color: var(--red); -webkit-text-stroke: 0.045em var(--ink); paint-order: stroke fill; text-shadow: 0.05em 0.06em 0 var(--ink); line-height: 0.95; }
+  .btn { display: inline-block; padding: 0.8em 1.5em; border: 4px solid var(--ink); border-radius: 999px; background: var(--red); color: var(--white); font: 400 1.15rem var(--display); letter-spacing: 0.03em; text-decoration: none; box-shadow: 0 6px 0 var(--ink); transition: transform 0.12s, box-shadow 0.12s; }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--ink); } .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--ink); }
+  .btn.y { background: var(--fence); color: var(--ink); }
+
+  .hero { position: relative; min-height: 100svh; padding: 6.5rem var(--pad) 0; display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; isolation: isolate;
+    background: radial-gradient(circle at 78% 30%, rgba(255,255,255,0.5) 0 5%, transparent 5.3%), radial-gradient(circle at 62% 14%, rgba(255,255,255,0.35) 0 3.4%, transparent 3.7%), radial-gradient(circle at 22% 22%, rgba(255,255,255,0.3) 0 4.4%, transparent 4.7%), radial-gradient(circle at 36% 40%, rgba(255,255,255,0.22) 0 2.6%, transparent 2.9%), radial-gradient(circle at 90% 52%, rgba(255,255,255,0.28) 0 3%, transparent 3.3%), linear-gradient(to bottom, var(--sky), var(--sky2)); }
+  .nav { position: absolute; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem var(--pad); }
+  .nav .logo { width: 130px; }
+  .nav ul { display: flex; gap: clamp(0.8rem, 2.5vw, 2rem); font: 400 1.15rem var(--display); color: var(--white); text-shadow: 0 2px 0 rgba(42, 26, 18, 0.5); }
+  .nav a { text-decoration: none; } .nav a:hover { text-decoration: underline wavy; text-underline-offset: 6px; }
+  @media (max-width: 700px) { .nav ul { display: none; } }
+  .hero h1 { font-size: clamp(3.6rem, 14vw, 12.5rem); }
+  .hero h1 small { display: block; font-size: 0.42em; transform: rotate(-4deg); margin-bottom: 0.1em; }
+  .hero h1 b { display: inline-block; font-weight: 400; }
+  .hero p { max-width: 26em; margin-top: 1.4rem; font-size: 1.15em; font-weight: 800; color: var(--ink); }
+  .cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1.8rem; }
+  .yard { position: relative; width: 100vw; margin-top: auto; padding-top: 3rem; }
+  .fence { height: clamp(90px, 16vw, 170px); background: repeating-linear-gradient(90deg, transparent 0 5px, var(--fence) 5px 28px, var(--fence2) 28px 51px, transparent 51px 56px);
+    -webkit-mask: conic-gradient(from 135deg at 50% 0, #000 90deg, transparent 0) 0 0 / 56px 28px repeat-x, linear-gradient(#000 0 0) 0 28px / 100% 100% no-repeat;
+            mask: conic-gradient(from 135deg at 50% 0, #000 90deg, transparent 0) 0 0 / 56px 28px repeat-x, linear-gradient(#000 0 0) 0 28px / 100% 100% no-repeat; }
+  .lawn { height: clamp(60px, 9vw, 110px); margin-top: -24px; position: relative; background: linear-gradient(to bottom, var(--grass), var(--grass2)); }
+  .lawn::before { content: ""; position: absolute; inset: -14px 0 auto 0; height: 16px; background: conic-gradient(from 150deg at 50% 0, transparent 60deg, var(--grass) 0) 0 0 / 14px 16px repeat-x; transform: scaleY(-1); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1 b { animation: bop 1.6s ease-in-out infinite; }
+    .hero h1 b:nth-child(even) { animation-delay: 0.8s; }
+    @keyframes bop { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-0.06em) rotate(-2deg); } }
+  }
+
+  section { padding: clamp(4rem, 9vw, 7.5rem) var(--pad); }
+  h2 { font-size: clamp(2.6rem, 8vw, 6.5rem); }
+  .lead { max-width: 30em; margin-top: 1rem; font-size: 1.15em; }
+  .story { background: var(--grass2); color: var(--white); }
+  .story .toon { color: var(--fence); }
+  .story-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+  .story img { display: block; width: 100%; border: 10px solid var(--white); border-bottom-width: 44px; transform: rotate(-3deg); box-shadow: 0 14px 0 rgba(0, 0, 0, 0.25); }
+  @media (max-width: 800px) { .story-grid { grid-template-columns: 1fr; } }
+
+  .plates { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2.4vw, 2rem); margin-top: 2.6rem; }
+  .plates a { display: block; padding: 10px 10px 14px; background: var(--white); border: 4px solid var(--ink); border-radius: 18px; text-decoration: none; box-shadow: 0 8px 0 var(--ink); transition: transform 0.15s; }
+  .plates li:nth-child(odd) a { transform: rotate(-2.5deg); } .plates li:nth-child(even) a { transform: rotate(2deg); }
+  .plates a:hover { transform: rotate(0) translateY(-8px); }
+  .plates img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; }
+  .plates h3 { margin-top: 0.7rem; font: 400 1.35rem var(--display); }
+  .plates p { font-size: 0.9rem; font-weight: 800; color: var(--red); }
+  @media (max-width: 800px) { .plates { grid-template-columns: repeat(2, 1fr); } }
+
+  .live { background: var(--sky); }
+  .tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.6rem; }
+  .tickets li { background: var(--cream); border: 4px solid var(--ink); border-radius: 18px; padding: 1.4rem; box-shadow: 0 8px 0 var(--ink); display: grid; gap: 0.5rem; justify-items: start; }
+  .tickets time { font: 400 2.6rem/1 var(--display); color: var(--red); }
+  .tickets h3 { font: 400 1.4rem/1.1 var(--display); }
+  .tickets .btn { margin-top: 0.6rem; padding: 0.55em 1.1em; font-size: 1rem; box-shadow: 0 4px 0 var(--ink); }
+  .note { margin-top: 1.4rem; font-size: 0.9rem; }
+  @media (max-width: 800px) { .tickets { grid-template-columns: 1fr; } }
+
+  footer { background: var(--ink); color: var(--cream); padding: 3rem var(--pad) 6rem; text-align: center; }
+  footer .logo { max-width: 400px; margin: 0 auto 1rem; mix-blend-mode: lighten; }
+  footer p { font-size: 0.85rem; font-weight: 400; opacity: 0.85; }
+  .switch { position: fixed; left: 50%; bottom: 0.8rem; transform: translateX(-50%); z-index: 99; display: flex; gap: 0.2rem; padding: 0.3rem; border-radius: 999px; background: rgba(0, 0, 0, 0.85); font: 500 0.72rem/1 system-ui, sans-serif; white-space: nowrap; }
+  .switch a { padding: 0.6rem 0.8rem; border-radius: 999px; color: #fff; text-decoration: none; }
+  .switch a[aria-current] { background: #fff; color: #000; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <nav class="nav" aria-label="Main">
+    <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
+    <ul><li><a href="#music">Music</a></li><li><a href="#live">Shows</a></li><li><a href="#live">Book the band</a></li></ul>
+  </nav>
+  <h1 class="toon" aria-label="Sunshine Reggae"><small>"Sunshine"</small><b>R</b><b>e</b><b>g</b><b>g</b><b>a</b><b>e</b></h1>
+  <p>Tomorrow People: seven mates from Wellington making music for the backyard, the beach and the long weekend.</p>
+  <div class="cta"><a class="btn" href="#music">Put a record on</a><a class="btn y" href="#live">Come to a show</a></div>
+  <div class="yard" aria-hidden="true"><div class="fence"></div><div class="lawn"></div></div>
+</header>
+
+<section class="story">
+  <div class="story-grid">
+    <img src="https://f4.bcbits.com/img/a1591401187_16.jpg" alt="BBQ Reggae cover: a cartoon chef at a barbecue in a sunny backyard">
+    <div>
+      <h2 class="toon">They called it BBQ reggae</h2>
+      <p class="lead">A critic meant it as an insult. The band put it on the cover, drew him at the grill and took the record to No.1.</p>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <h2 class="toon">On the grill</h2>
+  <ul class="plates">
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/one-2"><img src="https://f4.bcbits.com/img/a1463422991_16.jpg" alt="ONE album cover"><h3>ONE</h3><p>2012 · No.1 · Gold</p></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/bass-bassinets-full-album"><img src="https://f4.bcbits.com/img/a2795995102_16.jpg" alt="Bass &amp; Bassinets album cover"><h3>Bass &amp; Bassinets</h3><p>2015 · No.1</p></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/bbq-reggae"><img src="https://f4.bcbits.com/img/a1591401187_16.jpg" alt="BBQ Reggae cover"><h3>BBQ Reggae</h3><p>2018 · No.1</p></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/21-2"><img src="https://f4.bcbits.com/img/a2816512255_16.jpg" alt="21 album cover"><h3>21</h3><p>2021 · 16 tracks</p></a></li>
+  </ul>
+</section>
+
+<section id="live" class="live">
+  <h2 class="toon">Bring a plate</h2>
+  <ul class="tickets">
+    <li><time>17 Jan</time><h3>Summer festival, Tauranga</h3><a class="btn y" href="#">Get tickets</a></li>
+    <li><time>6 Feb</time><h3>Waitangi weekend, Northland</h3><a class="btn y" href="#">Get tickets</a></li>
+    <li><time>14 Mar</time><h3>Hometown show, Wellington</h3><a class="btn y" href="#">Get tickets</a></li>
+  </ul>
+  <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
+</section>
+
+<footer>
+  <span class="logo" role="img" aria-label="Tomorrow People"></span>
+  <p>Concept: Backyard. Logo and covers load from the band's Bandcamp page.</p>
+</footer>
+
+<script src="switch.js"></script>
+</body>
+</html>

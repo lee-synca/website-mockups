@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Concept: The Wall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* The Wall: taken from the "21" cover. A wall of every sleeve, washed in
+     deep blue, with thin white numerals. The site is the catalogue: come in and press play. */
+  :root {
+    --deep: #070D20; --navy: #111C40; --blue: #2B3F86; --ice: #C9D6FF; --white: #fff; --yellow: #FFD21A;
+    --font: "Outfit", "Century Gothic", Futura, sans-serif; --pad: clamp(1.25rem, 5vw, 5rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--deep); color: var(--white); font-family: var(--font); font-weight: 300; font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); line-height: 1.6; overflow-x: hidden; }
+  h1, h2, h3, p, ul { margin: 0; } ul { padding: 0; list-style: none; } a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; mix-blend-mode: screen; }
+  .caps { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4em; }
+  .btn { display: inline-block; padding: 1em 1.8em; border: 1px solid var(--white); font: 500 0.8rem var(--font); letter-spacing: 0.32em; text-transform: uppercase; text-decoration: none; background: transparent; color: var(--white); cursor: pointer; transition: background-color 0.2s, color 0.2s; }
+  .btn:hover, .btn.solid { background: var(--white); color: var(--deep); }
+  .btn.solid:hover { background: var(--yellow); border-color: var(--yellow); }
+
+  .hero { position: relative; min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 5rem var(--pad); overflow: hidden; isolation: isolate; }
+  .wall { position: absolute; inset: -2%; z-index: -2; display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(110px, 13vw, 190px), 1fr)); grid-auto-rows: max-content; align-content: start; }
+  .wall i { display: block; aspect-ratio: 1; background-size: cover; background-position: center; filter: grayscale(1) brightness(0.6) contrast(1.1); transition: filter 0.6s ease; }
+  .wall i.lit, .wall i:hover { filter: none; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(rgba(27, 43, 110, 0.62), rgba(27, 43, 110, 0.62)), radial-gradient(circle at center, rgba(7, 13, 32, 0.88) 0 22%, rgba(7, 13, 32, 0.25) 62%, rgba(7, 13, 32, 0.6)); mix-blend-mode: multiply; }
+  .hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; z-index: -1; pointer-events: none; background: linear-gradient(transparent, var(--deep)); }
+  .nav { position: absolute; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: center; padding: 1.3rem var(--pad); }
+  .nav .logo { width: 128px; }
+  .nav ul { display: flex; gap: clamp(1rem, 3vw, 2.6rem); } .nav a { text-decoration: none; } .nav ul a:hover { color: var(--yellow); }
+  @media (max-width: 700px) { .nav ul { display: none; } }
+  .hero .num { font-size: clamp(7rem, 26vw, 22rem); font-weight: 100; line-height: 0.82; letter-spacing: -0.03em; }
+  .hero h1 { font-size: clamp(1rem, 2.4vw, 1.7rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.5em; margin: 1.2rem -0.5em 0 0; }
+  .hero p { max-width: 28em; margin: 1.4rem auto 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 2rem; }
+
+  section { padding: clamp(4rem, 9vw, 8rem) var(--pad); }
+  h2 { font-size: clamp(2rem, 6vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.3em; line-height: 1.1; }
+  .cat { margin-top: 3rem; border-top: 1px solid rgba(201, 214, 255, 0.35); }
+  .cat li { border-bottom: 1px solid rgba(201, 214, 255, 0.35); }
+  .cat a { display: grid; grid-template-columns: 72px 6rem 1fr auto; gap: clamp(1rem, 3vw, 2.5rem); align-items: center; padding: 0.9rem 0.6rem; text-decoration: none; transition: background-color 0.25s, padding 0.25s; }
+  .cat a:hover { background: var(--navy); padding-left: 1.2rem; }
+  .cat img { display: block; width: 72px; height: 72px; object-fit: cover; }
+  .cat time { font-size: 1.9rem; font-weight: 100; }
+  .cat h3 { font-size: 1.05rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.24em; }
+  .cat p { font-size: 0.85rem; color: var(--ice); letter-spacing: 0.12em; text-transform: uppercase; }
+  .cat span { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--yellow); }
+  @media (max-width: 700px) { .cat a { grid-template-columns: 56px 1fr; } .cat img { width: 56px; height: 56px; } .cat time, .cat span { display: none; } }
+
+  .listen { background: var(--navy); text-align: center; }
+  .where { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 3rem; background: rgba(201, 214, 255, 0.35); border: 1px solid rgba(201, 214, 255, 0.35); }
+  .where a { padding: clamp(1.6rem, 4vw, 3.2rem) 1rem; background: var(--navy); font-size: clamp(0.9rem, 1.6vw, 1.2rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.34em; text-decoration: none; transition: background-color 0.25s, color 0.25s; }
+  .where a:hover { background: var(--white); color: var(--deep); }
+  @media (max-width: 700px) { .where { grid-template-columns: 1fr 1fr; } }
+
+  .door { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); }
+  .door h3 { font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 0.8rem; }
+  .door p { margin-bottom: 1.4rem; max-width: 26em; }
+  .door form { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .door input { flex: 1 1 12rem; padding: 0.95em 1.1em; border: 1px solid var(--white); background: transparent; color: var(--white); font: 300 1rem var(--font); }
+  .door input::placeholder { color: var(--ice); }
+  .door label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @media (max-width: 800px) { .door { grid-template-columns: 1fr; } }
+  footer { padding: 2rem var(--pad) 6rem; text-align: center; font-size: 0.8rem; color: var(--ice); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Main">
+    <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
+    <ul class="caps"><li><a href="#records">Records</a></li><li><a href="#listen">Listen</a></li><li><a href="#contact">Contact</a></li></ul>
+  </nav>
+  <div>
+    <p class="num" aria-hidden="true">16</p>
+    <h1>Years of sunshine reggae</h1>
+    <p>Tomorrow People, Wellington. Every album, EP and single since 2010, in one place.</p>
+    <div class="cta"><a class="btn solid" href="#listen">Press play</a><a class="btn" href="#records">Browse the records</a></div>
+  </div>
+</header>
+
+<section id="records">
+  <p class="caps">The catalogue</p>
+  <h2>Records</h2>
+  <ul class="cat">
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/21-2"><img src="https://f4.bcbits.com/img/a2816512255_2.jpg" alt=""><time>2021</time><div><h3>21</h3><p>Album · 16 tracks · Best Pacific Album</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/fever-single"><img src="https://f4.bcbits.com/img/a2681308719_2.jpg" alt=""><time>2019</time><div><h3>Fever</h3><p>Single · with Fiji</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/bbq-reggae"><img src="https://f4.bcbits.com/img/a1591401187_2.jpg" alt=""><time>2018</time><div><h3>BBQ Reggae</h3><p>NZ No.1</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/lock-me-up"><img src="https://f4.bcbits.com/img/a1662811838_2.jpg" alt=""><time>2017</time><div><h3>Lock Me Up</h3><p>EP</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/bass-bassinets-full-album"><img src="https://f4.bcbits.com/img/a2795995102_2.jpg" alt=""><time>2015</time><div><h3>Bass &amp; Bassinets</h3><p>Album · NZ No.1</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/one-5-ep"><img src="https://f4.bcbits.com/img/a2434528174_2.jpg" alt=""><time>2013</time><div><h3>ONE.5</h3><p>EP · NZ No.6</p></div><span>Listen</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/one-2"><img src="https://f4.bcbits.com/img/a1463422991_2.jpg" alt=""><time>2012</time><div><h3>ONE</h3><p>Album · NZ No.1 · Gold</p></div><span>Listen</span></a></li>
+  </ul>
+</section>
+
+<section id="listen" class="listen">
+  <p class="caps">Wherever you listen</p>
+  <h2>Press play</h2>
+  <div class="where"><a href="#">Spotify</a><a href="#">Apple Music</a><a href="#">YouTube</a><a href="https://tomorrowpeople.bandcamp.com/music">Bandcamp</a></div>
+</section>
+
+<section id="contact">
+  <div class="door">
+    <div>
+      <h3>Hear what's next</h3>
+      <p>Join the list and be first to know about new music.</p>
+      <form onsubmit="return false"><label for="e">Email address</label><input id="e" type="email" placeholder="Your email address"><button class="btn solid" type="submit">Join</button></form>
+    </div>
+    <div>
+      <h3>Get in touch</h3>
+      <p>Bookings, music licensing and press. Enquiries go straight to Tana and Avina, who manage the band.</p>
+      <a class="btn" href="#">Send an enquiry</a>
+    </div>
+  </div>
+</section>
+<footer>Concept: The Wall. Logo and covers load from the band's Bandcamp page.</footer>
+
+<script>
+(function () {
+  var ids = ['a2816512255', 'a2681308719', 'a1463422991', 'a1591401187', 'a2795995102', 'a2434528174', 'a3525873054', 'a1662811838', 'a3409763482'];
+  var wall = document.getElementById('wall'), tiles = [];
+  for (var n = 0; n < 96; n++) {
+    var t = document.createElement('i');
+    t.style.backgroundImage = 'url(https://f4.bcbits.com/img/' + ids[(n * 4 + Math.floor(n / 9)) % ids.length] + '_2.jpg)';
+    wall.appendChild(t); tiles.push(t);
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(function () {
+      var t = tiles[Math.floor(Math.random() * tiles.length)];
+      t.classList.add('lit');
+      setTimeout(function () { t.classList.remove('lit'); }, 1800);
+    }, 500);
+  }
+})();
+</script>
+<script src="switch.js"></script>
+</body>
+</html>

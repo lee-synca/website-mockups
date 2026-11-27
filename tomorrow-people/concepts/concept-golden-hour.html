@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Concept: Golden Hour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+  /* Golden Hour: taken from the single covers (Fever, Give It To Me):
+     a sunset photo, the lion as a soft watermark, thin spaced capitals,
+     a script accent and roman-numeral dates. */
+  :root {
+    --night: #170B05; --bark: #2B1509; --amber: #F5A524; --sun: #FFD98A; --cream: #FFF3DC;
+    --font: "Outfit", "Century Gothic", Futura, sans-serif; --script: "Kaushan Script", cursive;
+    --pad: clamp(1.25rem, 5vw, 5rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+    --one: url("https://f4.bcbits.com/img/a1463422991_10.jpg");
+    --fever: url("https://f4.bcbits.com/img/a2681308719_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--night); color: var(--cream); font-family: var(--font); font-weight: 300; font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); line-height: 1.6; overflow-x: hidden; }
+  h1, h2, h3, p, ul { margin: 0; } ul { padding: 0; list-style: none; } a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; mix-blend-mode: screen; }
+  .spaced { text-transform: uppercase; letter-spacing: 0.5em; margin-right: -0.5em; }
+  .script { font-family: var(--script); color: var(--sun); font-size: 1.5em; }
+  .btn { display: inline-block; padding: 1em 2em; border: 1px solid var(--cream); border-radius: 999px; background: rgba(255, 243, 220, 0.12); backdrop-filter: blur(8px); font: 500 0.8rem var(--font); letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none; transition: background-color 0.25s, color 0.25s; }
+  .btn:hover, .btn.solid { background: var(--cream); color: var(--night); }
+  .btn.solid:hover { background: var(--amber); border-color: var(--amber); }
+
+  .hero { position: relative; min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 6rem var(--pad) 5rem; overflow: hidden; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: -12%; z-index: -2; background: var(--fever) center / cover; filter: blur(46px) saturate(1.25); }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 68% 30%, rgba(255, 217, 138, 0.55), transparent 34%), linear-gradient(to bottom, rgba(23, 11, 5, 0.25), rgba(23, 11, 5, 0.1) 45%, var(--night)); }
+  .nav { position: absolute; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem var(--pad); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
+  .nav ul { display: flex; gap: clamp(1rem, 3vw, 2.6rem); } .nav a { text-decoration: none; } .nav a:hover { color: var(--sun); }
+  @media (max-width: 700px) { .nav ul { display: none; } }
+  .seal { position: relative; width: min(46vw, 300px); aspect-ratio: 1; margin: 0 auto 2.2rem; border-radius: 50%; border: 3px solid rgba(255, 243, 220, 0.55); background: rgba(255, 243, 220, 0.14); backdrop-filter: blur(6px); overflow: hidden; }
+  .seal i { position: absolute; inset: 9%; border-radius: 50%; background: var(--one) 18.4% 53.4% / 408% no-repeat; filter: grayscale(1) contrast(6) invert(1); mix-blend-mode: screen; opacity: 0.85; }
+  .hero h1 { width: min(84vw, 620px); margin: 0 auto; }
+  .hero .date { margin-top: 1.6rem; font-size: 0.82rem; }
+  .hero .line { margin-top: 0.6rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 2.2rem; }
+  .slotnote { position: absolute; left: var(--pad); bottom: 1.4rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.75; }
+  @media (prefers-reduced-motion: no-preference) {
+    .seal { animation: breathe 6s ease-in-out infinite; }
+    @keyframes breathe { 50% { transform: scale(1.04); } }
+  }
+
+  section { padding: clamp(4rem, 9vw, 8rem) var(--pad); }
+  h2 { font-size: clamp(1.6rem, 4.6vw, 3.6rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.4em; line-height: 1.2; }
+  .kicker { display: block; margin-bottom: 0.4rem; }
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.8rem, 2vw, 1.6rem); margin-top: 3rem; }
+  .strip a { position: relative; display: block; aspect-ratio: 1; overflow: hidden; border-radius: 14px; text-decoration: none; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+  .strip a:hover img { transform: scale(1.07); }
+  .strip span { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1rem 0.9rem; background: linear-gradient(transparent, rgba(23, 11, 5, 0.9)); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; text-align: center; }
+  @media (max-width: 800px) { .strip { grid-template-columns: repeat(2, 1fr); } }
+
+  .quote { background: linear-gradient(to bottom, var(--night), var(--bark)); text-align: center; }
+  .quote p { max-width: 22em; margin: 0 auto; font-size: clamp(1.5rem, 3.6vw, 2.8rem); font-weight: 200; line-height: 1.35; }
+  .quote small { display: block; margin-top: 1.6rem; font-size: 0.78rem; }
+
+  .live { background: var(--bark); }
+  .shows { margin-top: 2.6rem; border-top: 1px solid rgba(255, 243, 220, 0.3); }
+  .shows li { display: grid; grid-template-columns: 9rem 1fr auto; gap: 1.5rem; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(255, 243, 220, 0.3); }
+  .shows time { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3em; color: var(--sun); }
+  .shows h3 { font-size: 1.05rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+  .shows .btn { padding: 0.7em 1.4em; font-size: 0.7rem; }
+  .note { margin-top: 1rem; font-size: 0.85rem; opacity: 0.75; }
+  @media (max-width: 700px) { .shows li { grid-template-columns: 1fr; gap: 0.5rem; } .shows .btn { justify-self: start; } }
+
+  footer { padding: 4rem var(--pad) 6rem; text-align: center; background: var(--night); }
+  footer .logo { max-width: 420px; margin: 0 auto 1rem; }
+  footer p { font-size: 0.8rem; opacity: 0.8; }
+  .switch { position: fixed; left: 50%; bottom: 0.8rem; transform: translateX(-50%); z-index: 99; display: flex; gap: 0.2rem; padding: 0.3rem; border-radius: 999px; background: rgba(0, 0, 0, 0.82); font: 500 0.72rem/1 system-ui, sans-serif; white-space: nowrap; }
+  .switch a { padding: 0.6rem 0.8rem; border-radius: 999px; color: #fff; text-decoration: none; }
+  .switch a[aria-current] { background: #fff; color: #000; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <nav class="nav" aria-label="Main">
+    <span>Sunshine reggae</span>
+    <ul><li><a href="#music">Music</a></li><li><a href="#live">Live</a></li><li><a href="#live">Book the band</a></li></ul>
+  </nav>
+  <div>
+    <div class="seal" aria-hidden="true"><i></i></div>
+    <h1 aria-label="Tomorrow People"><span class="logo"></span></h1>
+    <p class="spaced date">XI / MMXXVI</p>
+    <p class="script line">sunshine reggae from Wellington, Aotearoa</p>
+    <div class="cta"><a class="btn solid" href="#music">Hear the music</a><a class="btn" href="#live">Find a show</a></div>
+  </div>
+  <p class="slotnote">Full-screen band photo or video goes behind this</p>
+</header>
+
+<section id="music">
+  <span class="script kicker">the latest</span>
+  <h2>Singles</h2>
+  <ul class="strip">
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/fever-single"><img src="https://f4.bcbits.com/img/a2681308719_16.jpg" alt="Fever single cover"><span>Fever · IX / MMXIX</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/track/dont-wanna-fight-it-poly-reo-remix"><img src="https://f4.bcbits.com/img/a3525873054_16.jpg" alt="Don't Wanna Fight It Poly Reo Remix cover"><span>Don't Wanna Fight It</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/lock-me-up"><img src="https://f4.bcbits.com/img/a1662811838_16.jpg" alt="Lock Me Up cover"><span>Lock Me Up · MMXVII</span></a></li>
+    <li><a href="https://tomorrowpeople.bandcamp.com/album/21-2"><img src="https://f4.bcbits.com/img/a2816512255_16.jpg" alt="21 album cover"><span>21 · MMXXI</span></a></li>
+  </ul>
+</section>
+
+<section class="quote">
+  <p>Three number-one records. Songs in English, te reo Māori and gagana Samoa. Made for long evenings and good company.</p>
+  <small class="spaced">Since MMX</small>
+</section>
+
+<section id="live" class="live">
+  <span class="script kicker">come and sing</span>
+  <h2>Live</h2>
+  <ul class="shows">
+    <li><time>17 · I · MMXXVII</time><h3>Summer festival, Tauranga</h3><a class="btn" href="#">Tickets</a></li>
+    <li><time>06 · II · MMXXVII</time><h3>Waitangi weekend, Northland</h3><a class="btn" href="#">Tickets</a></li>
+    <li><time>14 · III · MMXXVII</time><h3>Hometown show, Wellington</h3><a class="btn" href="#">Tickets</a></li>
+  </ul>
+  <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
+</section>
+
+<footer>
+  <span class="logo" role="img" aria-label="Tomorrow People"></span>
+  <p>Concept: Golden Hour. Logo and covers load from the band's Bandcamp page.</p>
+</footer>
+
+<script src="switch.js"></script>
+</body>
+</html>

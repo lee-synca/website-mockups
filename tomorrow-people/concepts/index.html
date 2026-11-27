@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Sunshine reggae from Wellington (homepage concept)</title>
+<meta name="description" content="Tomorrow People: seven-piece sunshine reggae band from Wellington, Aotearoa. Music, story, live shows and bookings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Everything here is drawn from the band's own artwork:
+     black-and-white logo with the lion emblem, the red/yellow/green of the
+     Bass & Bassinets butterfly and logo tee, the copper type and reflection of ONE,
+     the gold of ONE.5, and the wide-spaced thin capitals and roman-numeral dates
+     of the single covers. Logo and covers load from the band's Bandcamp page for now. */
+  :root {
+    --black: #000000;
+    --coal: #151515;
+    --white: #FFFFFF;
+    --red: #EE3D23;
+    --yellow: #FFD21A;
+    --green: #35B34A;
+    --copper: linear-gradient(to bottom, #6E2414 0%, #9A4A1F 55%, #C27A2E 100%);
+    --gold: linear-gradient(to bottom, #FFF2A8 0%, #F6C445 45%, #C98A12 100%);
+    --font: "Outfit", "Century Gothic", "Avenir Next", Futura, sans-serif;
+    --pad: clamp(1.25rem, 5vw, 5rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+    --one-cover: url("https://f4.bcbits.com/img/a1463422991_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--black); color: var(--white); font-family: var(--font); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); line-height: 1.55; overflow-x: hidden; }
+  h1, h2, h3, p, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+
+  /* ---------- pieces of the brand ---------- */
+  .tricolour { height: 6px; background: linear-gradient(to right, var(--red) 0 33.4%, var(--yellow) 33.4% 66.7%, var(--green) 66.7%); }
+  /* the real logo, cropped out of its black square */
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; mix-blend-mode: screen; }
+  .spaced { font-weight: 300; text-transform: uppercase; letter-spacing: 0.42em; margin-right: -0.42em; }
+  .eyebrow { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em; }
+  h2.title { font-size: clamp(2.2rem, 7vw, 6.2rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.22em; line-height: 1.05; margin-top: 0.3em; }
+  .lede { max-width: 32em; font-size: 1.15em; font-weight: 300; }
+
+  section { padding: clamp(4.5rem, 10vw, 9rem) var(--pad); }
+  .btn {
+    display: inline-flex; align-items: center; padding: 1em 1.7em; border: 2px solid var(--white); background: var(--white); color: var(--black);
+    font: 700 0.85rem var(--font); text-transform: uppercase; letter-spacing: 0.2em; text-decoration: none; cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:hover { background: var(--yellow); border-color: var(--yellow); }
+  .btn.ghost { background: transparent; color: var(--white); }
+  .btn.ghost:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+  .light .btn { border-color: var(--black); background: var(--black); color: var(--white); }
+  .light .btn:hover { background: var(--red); border-color: var(--red); }
+
+  /* ---------- nav ---------- */
+  .nav { position: absolute; inset: 6px 0 auto 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem var(--pad); }
+  .nav .logo { width: 132px; }
+  .nav ul { display: flex; align-items: center; gap: clamp(1rem, 2.6vw, 2.5rem); }
+  .nav ul a:not(.btn) { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+  .nav ul a:not(.btn):hover { border-color: var(--yellow); }
+  .nav .btn { padding: 0.7em 1.2em; font-size: 0.75rem; }
+  @media (max-width: 760px) { .nav li.link { display: none; } }
+
+  /* ---------- hero: the lion ---------- */
+  .hero { position: relative; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); align-items: center; gap: 2rem; padding-top: 7rem; padding-bottom: 4rem; overflow: hidden; }
+  .hero h1 { max-width: 640px; }
+  .hero .eyebrow { margin-bottom: 1.6rem; display: flex; align-items: center; gap: 1rem; }
+  .hero .eyebrow::before { content: ""; width: 54px; height: 6px; background: linear-gradient(to right, var(--red) 0 33.4%, var(--yellow) 33.4% 66.7%, var(--green) 66.7%); }
+  .hero .lede { margin-top: 1.8rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+
+  .medallion { position: relative; width: min(52vw, 88svh); aspect-ratio: 1; justify-self: center; margin-right: calc(var(--pad) * -1.6); }
+  .rings { position: absolute; inset: 0; border-radius: 50%; filter: url(#rough);
+    background: radial-gradient(circle closest-side, transparent 0 44%, var(--green) 44.5% 58%, transparent 58.5% 61%, var(--yellow) 61.5% 75%, transparent 75.5% 78%, var(--red) 78.5% 94%, transparent 94.5%); }
+  .spray { position: absolute; inset: -6%; border-radius: 50%; filter: url(#rough); opacity: 0.9;
+    background:
+      radial-gradient(circle at 12% 22%, var(--red) 0 0.9%, transparent 1%), radial-gradient(circle at 20% 9%, var(--red) 0 0.5%, transparent 0.6%),
+      radial-gradient(circle at 91% 30%, var(--red) 0 0.7%, transparent 0.8%), radial-gradient(circle at 96% 55%, var(--yellow) 0 0.6%, transparent 0.7%),
+      radial-gradient(circle at 5% 60%, var(--yellow) 0 0.8%, transparent 0.9%), radial-gradient(circle at 82% 90%, var(--green) 0 0.9%, transparent 1%),
+      radial-gradient(circle at 16% 86%, var(--green) 0 0.6%, transparent 0.7%), radial-gradient(circle at 60% 98%, var(--green) 0 0.5%, transparent 0.6%),
+      radial-gradient(circle at 70% 3%, var(--red) 0 0.6%, transparent 0.7%), radial-gradient(circle at 38% 1%, var(--white) 0 0.4%, transparent 0.5%),
+      radial-gradient(circle at 99% 76%, var(--white) 0 0.35%, transparent 0.45%); }
+  .disc { position: absolute; inset: 29%; border-radius: 50%; background: var(--white); overflow: hidden; isolation: isolate; box-shadow: 0 0 0 0.5vw var(--black); }
+  /* the lion emblem, lifted from the O of the ONE cover and pushed to black on white */
+  .lion { position: absolute; inset: 0; background: var(--one-cover) 18.4% 53.4% / 408% no-repeat; filter: grayscale(1) contrast(6); mix-blend-mode: multiply; }
+  @media (prefers-reduced-motion: no-preference) {
+    .rings { animation: bass 3.2s infinite; } /* one bar at 75 bpm, the drop on beat three */
+    @keyframes bass { 0%, 46%, 64%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } 55% { transform: scale(0.995); } }
+    .hero h1, .hero .eyebrow, .hero .lede, .hero-cta { opacity: 0; transform: translateY(22px); animation: up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    .hero h1 { animation-delay: 0.1s; } .hero .lede { animation-delay: 0.25s; } .hero-cta { animation-delay: 0.38s; }
+    .medallion { opacity: 0; transform: scale(0.9) rotate(-8deg); animation: land 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s forwards; }
+    @keyframes up { to { opacity: 1; transform: none; } }
+    @keyframes land { to { opacity: 1; transform: none; } }
+  }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 6.5rem; }
+    .medallion { order: -1; width: min(78vw, 420px); margin: 0 auto 1rem; }
+  }
+
+  /* ---------- ticker ---------- */
+  .ticker { overflow: hidden; padding: 1.1rem 0; white-space: nowrap; background: var(--coal); }
+  .ticker-track { display: inline-flex; }
+  .ticker-track span { font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em; padding-right: 2.2em; }
+  .ticker-track span::after { content: "●"; padding-left: 2.2em; font-size: 0.6em; vertical-align: middle; }
+  .ticker-track span:nth-child(3n+1)::after { color: var(--red); }
+  .ticker-track span:nth-child(3n+2)::after { color: var(--yellow); }
+  .ticker-track span:nth-child(3n)::after { color: var(--green); }
+  @media (prefers-reduced-motion: no-preference) {
+    .ticker-track { animation: slide 42s linear infinite; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+  }
+
+  /* ---------- music ---------- */
+  .covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2.2rem); margin-top: clamp(2.5rem, 6vw, 5rem); }
+  .cover a { display: block; text-decoration: none; }
+  .cover .art { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--coal); }
+  .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .cover .art::after { content: ""; position: absolute; inset: auto 0 0 0; height: 6px; background: linear-gradient(to right, var(--red) 0 33.4%, var(--yellow) 33.4% 66.7%, var(--green) 66.7%); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .cover a:hover img { transform: scale(1.05); }
+  .cover a:hover .art::after, .cover a:focus-visible .art::after { transform: scaleX(1); }
+  .cover h3 { margin-top: 1rem; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
+  .cover p { font-size: 0.85rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.22em; opacity: 0.8; }
+
+  .singles { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); margin-top: clamp(4rem, 9vw, 8rem); align-items: start; }
+  .singles h3 { font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.22em; line-height: 1.15; }
+  .listen { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
+  .listen .btn { padding: 0.75em 1.1em; font-size: 0.72rem; }
+  .tracks { border-top: 1px solid rgba(255, 255, 255, 0.3); }
+  .tracks li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); transition: padding 0.25s ease, border-color 0.25s ease; }
+  .tracks li:hover { padding-left: 0.8rem; border-color: var(--yellow); }
+  .tracks strong { font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.98rem; }
+  .tracks em { font-style: italic; font-weight: 300; opacity: 0.8; }
+  .tracks time { font-size: 0.8rem; font-weight: 300; letter-spacing: 0.3em; }
+  @media (max-width: 860px) {
+    .covers { grid-template-columns: repeat(2, 1fr); }
+    .singles { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- story: white, like the ONE cover ---------- */
+  .light { background: var(--white); color: var(--black); }
+  .story-head { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 2rem 4rem; align-items: end; }
+  .timeline { margin-top: clamp(3rem, 7vw, 6rem); border-top: 1px solid var(--black); }
+  .timeline li { display: grid; grid-template-columns: minmax(7rem, 0.32fr) 1fr; gap: 1rem 3rem; padding: clamp(1.6rem, 3.4vw, 2.8rem) 0; border-bottom: 1px solid var(--black); }
+  .timeline time { font-size: clamp(2.2rem, 5.4vw, 4.8rem); font-weight: 400; line-height: 0.9; letter-spacing: 0.02em; background: var(--copper); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-box-reflect: below -0.16em linear-gradient(transparent 45%, rgba(0, 0, 0, 0.22)); align-self: start; }
+  .timeline h3 { font-size: 1.05em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; line-height: 1.35; margin-bottom: 0.45em; }
+  .timeline p { max-width: 38em; font-weight: 300; }
+  .timeline li.feature { background: var(--black); color: var(--white); border: 0; margin: 1.2rem 0; padding: 0; grid-template-columns: minmax(0, 0.55fr) 1fr; gap: 0; align-items: stretch; }
+  .timeline li.feature img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; }
+  .timeline li.feature div { padding: clamp(1.5rem, 4vw, 3.5rem); align-self: center; }
+  .timeline li.feature time { display: block; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3em; background: none; color: var(--yellow); -webkit-box-reflect: unset; margin-bottom: 1rem; }
+  .timeline li.feature h3 { font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 200; letter-spacing: 0.18em; line-height: 1.2; margin-bottom: 0.7em; }
+  .tongues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(3rem, 7vw, 6rem); }
+  .tongues div { padding: 1.6rem 1.6rem 1.8rem 0; border-top: 6px solid var(--red); }
+  .tongues div:nth-child(2) { border-color: var(--yellow); }
+  .tongues div:nth-child(3) { border-color: var(--green); }
+  .tongues h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 0.6em; }
+  .tongues p { font-weight: 300; }
+  .slot { margin-top: 2rem; aspect-ratio: 21 / 8; border: 1px dashed var(--black); display: grid; place-content: center; text-align: center; padding: 1rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
+  @media (max-width: 800px) {
+    .story-head, .tongues { grid-template-columns: 1fr; }
+    .timeline li { grid-template-columns: 1fr; gap: 1.6rem; }
+    .timeline li.feature { grid-template-columns: 1fr; }
+    .slot { aspect-ratio: 4 / 3; }
+  }
+
+  /* ---------- live ---------- */
+  .live-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(2rem, 5vw, 5rem); margin-top: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+  .shows li { display: grid; grid-template-columns: 6rem 1fr auto; gap: 1.5rem; align-items: center; padding: 1.4rem 1.6rem; margin-bottom: 0.9rem; background: var(--coal); border-left: 6px solid var(--red); }
+  .shows li:nth-child(2) { border-color: var(--yellow); }
+  .shows li:nth-child(3) { border-color: var(--green); }
+  .shows time { font-size: 2.6rem; font-weight: 200; line-height: 0.9; }
+  .shows time small { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; margin-top: 0.6em; }
+  .shows h3 { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; line-height: 1.3; }
+  .shows p { font-weight: 300; opacity: 0.85; }
+  .shows .btn { padding: 0.7em 1.1em; font-size: 0.72rem; }
+  .note { font-size: 0.85rem; font-weight: 300; margin-top: 1rem; opacity: 0.8; }
+  .booking { background: var(--white); color: var(--black); padding: clamp(1.6rem, 3vw, 2.6rem); border-top: 6px solid var(--yellow); }
+  .booking h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 0.7em; }
+  .booking p { font-weight: 300; margin-bottom: 1.5rem; }
+  .booking .btn { border-color: var(--black); background: var(--black); color: var(--white); }
+  .booking .btn:hover { background: var(--red); border-color: var(--red); }
+  @media (max-width: 900px) {
+    .live-grid { grid-template-columns: 1fr; }
+    .shows li { grid-template-columns: 4.5rem 1fr; }
+    .shows .btn { grid-column: 2; justify-self: start; }
+  }
+
+  /* ---------- join + footer ---------- */
+  .join { background: var(--coal); }
+  .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; }
+  .join form { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .join label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .join input { flex: 1 1 14rem; padding: 0.95em 1.2em; border: 2px solid var(--white); background: transparent; color: var(--white); font: 300 1rem var(--font); }
+  .join input::placeholder { color: var(--white); opacity: 0.6; }
+  .form-msg { min-height: 1.5em; margin-top: 0.9rem; font-weight: 300; }
+  .links { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+  .links a { display: flex; justify-content: space-between; padding: 0.95rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-size: 0.82rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em; text-decoration: none; transition: padding 0.2s ease, border-color 0.2s ease; }
+  .links a:hover { padding-left: 0.6rem; border-color: var(--yellow); }
+  .footer-logo { max-width: 760px; margin: clamp(4rem, 10vw, 9rem) auto 0; }
+  .signoff { text-align: center; margin-top: 1.5rem; font-size: clamp(0.8rem, 1.6vw, 1.1rem); }
+  .fine { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 3.5rem; font-size: 0.78rem; font-weight: 300; letter-spacing: 0.08em; opacity: 0.75; }
+  @media (max-width: 800px) { .join-grid { grid-template-columns: 1fr; } }
+
+  .toast { position: fixed; left: 50%; bottom: 1.5rem; z-index: 60; transform: translate(-50%, 250%); background: var(--white); color: var(--black); border-bottom: 6px solid var(--yellow); padding: 0.85em 1.4em; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; max-width: calc(100vw - 2rem); text-align: center; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .toast.show { transform: translate(-50%, 0); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="tricolour" aria-hidden="true"></div>
+<header class="nav">
+  <a href="#top" aria-label="Tomorrow People, back to top"><span class="logo"></span></a>
+  <nav aria-label="Main">
+    <ul>
+      <li class="link"><a href="#music">Music</a></li>
+      <li class="link"><a href="#story">Story</a></li>
+      <li class="link"><a href="#live">Live</a></li>
+      <li class="link"><a href="#join">Join</a></li>
+      <li><a class="btn" href="#booking">Book the band</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Sunshine reggae · Wellington, Aotearoa</p>
+      <h1 aria-label="Tomorrow People"><span class="logo"></span></h1>
+      <p class="lede">Seven players, three number-one records, and songs in English, te reo Māori and gagana Samoa.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#music">Hear the music</a>
+        <a class="btn ghost" href="#live">Find a show</a>
+      </div>
+    </div>
+    <div class="medallion" aria-hidden="true">
+      <div class="spray"></div>
+      <div class="rings"></div>
+      <div class="disc"><div class="lion"></div></div>
+    </div>
+  </section>
+
+  <div class="tricolour" aria-hidden="true"></div>
+  <div class="ticker" aria-label="Three New Zealand number-one records. Best Pacific Group in 2013, 2018, 2019 and 2020. Debut album ONE certified Gold. Homegrown, Rhythm and Vines, One Love and Raggamuffin.">
+    <div class="ticker-track" aria-hidden="true">
+      <span>3 NZ No.1 records</span><span>Best Pacific Group 2013 · 2018 · 2019 · 2020</span><span>ONE certified Gold</span><span>Homegrown</span><span>Rhythm and Vines</span><span>One Love</span>
+      <span>3 NZ No.1 records</span><span>Best Pacific Group 2013 · 2018 · 2019 · 2020</span><span>ONE certified Gold</span><span>Homegrown</span><span>Rhythm and Vines</span><span>One Love</span>
+    </div>
+  </div>
+
+  <section id="music">
+    <p class="eyebrow reveal">Music</p>
+    <h2 class="title reveal">The records</h2>
+
+    <ul class="covers">
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/one-2"><div class="art"><img src="https://f4.bcbits.com/img/a1463422991_16.jpg" alt="ONE album cover: the word ONE in copper with the lion emblem inside the O" loading="lazy"></div><h3>ONE</h3><p>MMXII · NZ No.1 · Gold</p></a></li>
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/one-5-ep"><div class="art"><img src="https://f4.bcbits.com/img/a2434528174_16.jpg" alt="ONE.5 EP cover: gold lettering on black" loading="lazy"></div><h3>ONE.5</h3><p>MMXIII · NZ No.6</p></a></li>
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/bass-bassinets-full-album"><div class="art"><img src="https://f4.bcbits.com/img/a2795995102_16.jpg" alt="Bass &amp; Bassinets cover: a butterfly painted in red, yellow and green on black" loading="lazy"></div><h3>Bass &amp; Bassinets</h3><p>MMXV · NZ No.1</p></a></li>
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/bbq-reggae"><div class="art"><img src="https://f4.bcbits.com/img/a1591401187_16.jpg" alt="BBQ Reggae cover: a cartoon chef at a barbecue in a sunny backyard" loading="lazy"></div><h3>BBQ Reggae</h3><p>MMXVIII · NZ No.1</p></a></li>
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/fever-single"><div class="art"><img src="https://f4.bcbits.com/img/a2681308719_16.jpg" alt="Fever single cover: a couple silhouetted against a golden sunset, featuring Fiji" loading="lazy"></div><h3>Fever</h3><p>MMXIX · with Fiji</p></a></li>
+      <li class="cover reveal"><a href="https://tomorrowpeople.bandcamp.com/album/21-2"><div class="art"><img src="https://f4.bcbits.com/img/a2816512255_16.jpg" alt="21 album cover: a grid of single covers behind the number 21" loading="lazy"></div><h3>21</h3><p>MMXXI · 16 tracks</p></a></li>
+    </ul>
+
+    <div class="singles">
+      <div class="reveal">
+        <p class="eyebrow">Start here</p>
+        <h3 style="margin-top:0.8rem">Seven songs to know</h3>
+        <div class="listen">
+          <a class="btn ghost" href="#" data-concept>Spotify</a>
+          <a class="btn ghost" href="#" data-concept>Apple Music</a>
+          <a class="btn ghost" href="#" data-concept>YouTube</a>
+          <a class="btn ghost" href="https://tomorrowpeople.bandcamp.com/music">Bandcamp</a>
+        </div>
+      </div>
+      <ul class="tracks reveal">
+        <li><span><strong>Don't Wanna Fight It</strong></span><time datetime="2017">MMXVII</time></li>
+        <li><span><strong>Fever</strong> <em>with Fiji</em></span><time datetime="2019">MMXIX</time></li>
+        <li><span><strong>Souljah Feeling</strong></span><time datetime="2012">MMXII</time></li>
+        <li><span><strong>Feel Alright</strong> <em>with Kolohe Kai</em></span><time datetime="2011">MMXI</time></li>
+        <li><span><strong>Give It To Me</strong> <em>with Fiji</em></span><time datetime="2021">MMXXI</time></li>
+        <li><span><strong>Ki Raro</strong></span><time datetime="2023">MMXXIII</time></li>
+        <li><span><strong>It's You</strong> <em>with Canaan Ene</em></span><time datetime="2023">MMXXIII</time></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="story" class="light">
+    <div class="story-head">
+      <div>
+        <p class="eyebrow reveal">Story</p>
+        <h2 class="title reveal">Home studio to number one</h2>
+      </div>
+      <p class="lede reveal">Tomorrow People are Māori and Samoan musicians from Wellington who manage themselves, produce their own records and named the band after a Ziggy Marley song.</p>
+    </div>
+
+    <ol class="timeline">
+      <li class="reveal"><time datetime="2010">2010</time><div><h3>Four friends and a YouTube channel</h3><p>Avina Kelekolio, Tana Tupai, Lio Fili and Liam Va'ai leave covers behind, start writing in Avina's home studio and post the demos online. The first show is a support slot in Masterton.</p></div></li>
+      <li class="reveal"><time datetime="2012">2012</time><div><h3>ONE goes straight to No.1</h3><p>The debut album tops the New Zealand chart, is certified Gold and wins Best Roots Reggae Album at the Waiata Māori Music Awards.</p></div></li>
+      <li class="reveal"><time datetime="2015">2015</time><div><h3>Bass &amp; Bassinets makes it two</h3><p>The second full album also debuts at No.1.</p></div></li>
+      <li class="feature reveal"><img src="https://f4.bcbits.com/img/a1591401187_16.jpg" alt="" loading="lazy"><div><time datetime="2018">MMXVIII</time><h3>They called it BBQ reggae. So did we.</h3><p>A critic used "BBQ reggae" as an insult for the sound. The band put the phrase on the cover, drew the critic at the grill and took the record to No.1. It won at the Waiata Māori Music Awards, the Pacific Music Awards and the New Zealand Music Awards.</p></div></li>
+      <li class="reveal"><time datetime="2021">2021</time><div><h3>A new song on the first Friday of every month</h3><p>A year of monthly singles became the 16-track album 21, which won Best Pacific Album.</p></div></li>
+      <li class="reveal"><time datetime="2023">2023</time><div><h3>Ki Raro, Homegrown and Samoa</h3><p>New waiata in te reo Māori, a hometown Homegrown set on the Wellington waterfront and the Motherland Festival in Samoa.</p></div></li>
+    </ol>
+
+    <div class="tongues">
+      <div class="reveal"><h3>English</h3><p>Souljah Feeling, Don't Wanna Fight It, Fever, Say My Name.</p></div>
+      <div class="reveal"><h3>Te reo Māori</h3><p>Kua To Te Ra, Rere Te Wa, Ōku Rā, Ki Raro.</p></div>
+      <div class="reveal"><h3>Gagana Samoa</h3><p>Sa'ili Le Alofa, winner of Best Pacific Language song in 2018.</p></div>
+    </div>
+    <div class="slot reveal">Band photo or live video goes here</div>
+  </section>
+
+  <section id="live">
+    <p class="eyebrow reveal">Live</p>
+    <h2 class="title reveal">On stage</h2>
+
+    <div class="live-grid">
+      <div>
+        <ul class="shows">
+          <li class="reveal"><time>17<small>JAN</small></time><div><h3>Summer festival</h3><p>Tauranga, Bay of Plenty</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
+          <li class="reveal"><time>06<small>FEB</small></time><div><h3>Waitangi weekend show</h3><p>Northland</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
+          <li class="reveal"><time>14<small>MAR</small></time><div><h3>Hometown show</h3><p>Wellington waterfront</p></div><a class="btn ghost" href="#" data-concept>Tickets</a></li>
+        </ul>
+        <p class="note">Sample listings to show the layout. Real dates come from the band.</p>
+      </div>
+      <aside class="booking reveal" id="booking">
+        <h3>Book the band</h3>
+        <p>Festivals, council events, weddings and corporate shows. Tana and Avina manage the band themselves, so your enquiry goes straight to them.</p>
+        <a class="btn" href="#" data-concept>Send an enquiry</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="join" class="join">
+    <div class="join-grid">
+      <div>
+        <p class="eyebrow reveal">Join</p>
+        <h2 class="title reveal">Hear it first</h2>
+        <p class="lede reveal" style="margin-top:1.2rem">New songs, presale tickets and merch drops, sent to your inbox before they go public.</p>
+        <form id="signup" class="reveal" novalidate>
+          <label for="email">Email address</label>
+          <input id="email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button class="btn" type="submit">Sign up</button>
+        </form>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </div>
+      <div class="links reveal">
+        <a href="https://tomorrowpeople.bandcamp.com/merch">Merch <span aria-hidden="true">↗</span></a>
+        <a href="https://www.instagram.com/tomorrowppl/">Instagram <span aria-hidden="true">↗</span></a>
+        <a href="https://facebook.com/tomorrowppl">Facebook <span aria-hidden="true">↗</span></a>
+        <a href="https://soundcloud.com/tomorrowppl">SoundCloud <span aria-hidden="true">↗</span></a>
+        <a href="#" data-concept>YouTube <span aria-hidden="true">↗</span></a>
+        <a href="#" data-concept>Press kit <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="footer-logo reveal"><span class="logo" role="img" aria-label="Tomorrow People"></span></div>
+    <p class="spaced signoff">See you tomorrow</p>
+    <div class="fine">
+      <span>© 2026 Tomorrow People</span>
+      <span>Homepage concept, November 2026. Logo and covers load from the band's Bandcamp page; photos, video, links and dates still to come.</span>
+    </div>
+  </section>
+  <div class="tricolour" aria-hidden="true"></div>
+</main>
+
+<script src="switch.js"></script>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var toastEl = document.getElementById('toast'), toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 3200);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-concept]');
+    if (!a) return;
+    e.preventDefault();
+    toast('This link gets connected in the full build.');
+  });
+  document.getElementById('signup').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email'), msg = document.getElementById('formMsg');
+    if (!email.checkValidity()) { msg.textContent = 'Enter a full email address, like name@example.com.'; email.focus(); return; }
+    msg.textContent = 'Sign-up is not connected in this concept, so nothing was sent.';
+  });
+
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

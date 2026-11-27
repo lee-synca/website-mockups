@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomorrow People | Concept: Three Languages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Three Languages: red, yellow and green as three full-height bands, one for each
+     language the band sings in. The site is about who they are: reggae from Aotearoa
+     and the Pacific, in English, te reo Māori and gagana Samoa. */
+  :root {
+    --red: #E5371F; --yellow: #FFD21A; --green: #1E9A44; --black: #0B0B0B; --white: #fff;
+    --font: "Outfit", "Century Gothic", Futura, sans-serif; --pad: clamp(1.25rem, 5vw, 5rem);
+    --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--black); color: var(--white); font-family: var(--font); font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); line-height: 1.55; overflow-x: hidden; }
+  h1, h2, h3, p, ul { margin: 0; } ul { padding: 0; list-style: none; } a { color: inherit; }
+  :focus-visible { outline: 4px solid var(--black); outline-offset: -8px; }
+  .logo { display: block; width: 100%; aspect-ratio: 773 / 262; background: var(--logo) 49.8% 34.6% / 126.7% auto no-repeat; mix-blend-mode: screen; }
+  .caps { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.32em; }
+  .btn { display: inline-block; padding: 1em 1.8em; background: var(--white); color: var(--black); font: 800 0.82rem var(--font); letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; transition: background-color 0.2s; }
+  .btn:hover { background: var(--yellow); }
+
+  .top { position: absolute; inset: 0 0 auto 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem var(--pad); background: var(--black); }
+  .top .logo { width: 150px; }
+  .top ul { display: flex; gap: clamp(1rem, 3vw, 2.6rem); } .top a { text-decoration: none; } .top ul a:hover { color: var(--yellow); }
+  @media (max-width: 700px) { .top ul { display: none; } }
+
+  .bands { display: flex; min-height: 100svh; padding-top: 5.2rem; }
+  .band { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(1rem, 2.5vw, 2.5rem); overflow: hidden; text-decoration: none; color: var(--black); transition: flex 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .band.r { background: var(--red); color: var(--white); } .band.y { background: var(--yellow); } .band.g { background: var(--green); color: var(--white); }
+  .band:hover, .band:focus-visible { flex: 1.7; }
+  .band b { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%) rotate(-90deg); font-size: clamp(4rem, 15svh, 10rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.8; white-space: nowrap; }
+  .band span { position: relative; }
+  .band p { position: relative; margin-top: 0.3rem; font-weight: 300; max-width: 18em; }
+  .band em { position: relative; display: inline-block; margin-top: 1rem; font-style: normal; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; border-bottom: 3px solid currentColor; }
+  @media (max-width: 760px) {
+    .bands { flex-direction: column; }
+    .band { min-height: 30svh; justify-content: center; }
+    .band b { position: static; transform: none; font-size: clamp(4rem, 22vw, 7rem); margin-bottom: 0.6rem; }
+    .band:hover { flex: 1; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .band b { animation: in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+    .band.y b { animation-delay: 0.12s; } .band.g b { animation-delay: 0.24s; }
+    @keyframes in { from { opacity: 0; letter-spacing: 0.3em; } }
+  }
+
+  .lede { padding: clamp(4rem, 10vw, 9rem) var(--pad); }
+  .lede h1 { font-size: clamp(2.2rem, 7.4vw, 7rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; max-width: 12em; }
+  .lede h1 i { font-style: normal; } .lede h1 i:nth-of-type(1) { color: var(--red); } .lede h1 i:nth-of-type(2) { color: var(--yellow); } .lede h1 i:nth-of-type(3) { color: var(--green); }
+  .lede p { max-width: 30em; margin-top: 1.8rem; font-weight: 300; font-size: 1.15em; }
+
+  .lang { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; padding: clamp(3.5rem, 8vw, 7rem) var(--pad); color: var(--black); }
+  .lang.r { background: var(--red); color: var(--white); } .lang.y { background: var(--yellow); } .lang.g { background: var(--green); color: var(--white); }
+  .lang h2 { font-size: clamp(3rem, 11vw, 10rem); font-weight: 900; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.02em; margin-top: 0.6rem; }
+  .lang ul { border-top: 3px solid currentColor; }
+  .lang li { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 3px solid currentColor; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+  .lang li small { font-weight: 300; letter-spacing: 0.2em; }
+  .lang p.more { margin-top: 1.2rem; font-weight: 300; }
+  @media (max-width: 800px) { .lang { grid-template-columns: 1fr; } }
+
+  .door { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); padding: clamp(4rem, 9vw, 8rem) var(--pad); }
+  .door h3 { font-size: clamp(1.6rem, 3.4vw, 2.8rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 0.8rem; }
+  .door p { margin-bottom: 1.4rem; max-width: 26em; font-weight: 300; }
+  @media (max-width: 800px) { .door { grid-template-columns: 1fr; } }
+  footer { padding: 1rem var(--pad) 6rem; font-size: 0.8rem; font-weight: 300; opacity: 0.75; }
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <a href="#" aria-label="Tomorrow People"><span class="logo"></span></a>
+  <ul class="caps"><li><a href="#english">Music</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+
+<header class="bands">
+  <a class="band r" href="#english"><b aria-hidden="true">Love</b><span class="caps">English</span><p>Souljah Feeling, Fever, Don't Wanna Fight It</p><em>Hear the songs</em></a>
+  <a class="band y" href="#maori" lang="mi"><b aria-hidden="true">Aroha</b><span class="caps">Te reo Māori</span><p lang="en-NZ">Ki Raro, Ōku Rā, Rere Te Wa</p><em lang="en-NZ">Hear the songs</em></a>
+  <a class="band g" href="#samoan"><b aria-hidden="true" lang="sm">Alofa</b><span class="caps">Gagana Samoa</span><p>Sa'ili Le Alofa</p><em>Hear the songs</em></a>
+</header>
+
+<section class="lede" id="about">
+  <h1>One sound. <i>Three</i> <i>languages.</i> <i>Tomorrow People.</i></h1>
+  <p>Sunshine reggae from Wellington, made by Māori and Samoan musicians. Three number-one records, four Best Pacific Group awards, and songs in the languages they grew up around.</p>
+</section>
+
+<section class="lang r" id="english">
+  <div><p class="caps">English</p><h2>Love</h2></div>
+  <div><ul><li>Souljah Feeling <small>2012</small></li><li>Don't Wanna Fight It <small>2017</small></li><li>Fever, with Fiji <small>2019</small></li><li>Give It To Me, with Fiji <small>2021</small></li></ul></div>
+</section>
+<section class="lang y" id="maori">
+  <div><p class="caps">Te reo Māori</p><h2 lang="mi">Aroha</h2></div>
+  <div><ul><li lang="mi">Kua To Te Ra <small>2018</small></li><li lang="mi">Rere Te Wa <small>2021</small></li><li lang="mi">Ōku Rā <small>2021</small></li><li lang="mi">Ki Raro <small>2023</small></li></ul></div>
+</section>
+<section class="lang g" id="samoan">
+  <div><p class="caps">Gagana Samoa</p><h2 lang="sm">Alofa</h2></div>
+  <div><ul><li lang="sm">Sa'ili Le Alofa <small>2018</small></li></ul><p class="more">Winner of Best Pacific Language at the 2018 Pacific Music Awards.</p></div>
+</section>
+
+<section class="door" id="contact">
+  <div><h3>Listen</h3><p>Every record is on Spotify, Apple Music, YouTube and Bandcamp.</p><a class="btn" href="https://tomorrowpeople.bandcamp.com/music">Hear the records</a></div>
+  <div><h3>Get in touch</h3><p>Bookings, music licensing and press. Enquiries go straight to Tana and Avina, who manage the band.</p><a class="btn" href="#">Send an enquiry</a></div>
+</section>
+<footer>Concept: Three Languages. Logo loads from the band's Bandcamp page. Song titles and spellings need checking with the band.</footer>
+<script src="switch.js"></script>
+</body>
+</html>
