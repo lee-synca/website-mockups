@@ -36,7 +36,7 @@ h2{font-size:38px}
 .chrome{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:#081020}
 .chrome i{width:10px;height:10px;border-radius:50%;background:#1e2a3d;display:block}
 .chrome .url{margin-left:10px;flex:1;background:var(--field);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
-.wiz{padding:22px 26px 24px;height:520px;display:flex;flex-direction:column}
+.wiz{padding:22px 26px 24px;height:560px;display:flex;flex-direction:column}
 .steps{display:flex;gap:6px;margin-bottom:6px}
 .steps b{flex:1;height:4px;border-radius:4px;background:#1a2537}
 .steps b.on{background:var(--accent)}
@@ -96,7 +96,7 @@ h2{font-size:38px}
 .split b{color:var(--ink)}
 /* upload */
 .upload{display:grid;grid-template-columns:150px 1fr;gap:18px}
-.cover-up{position:relative;border-radius:12px;overflow:hidden}
+.cover-up{position:relative;border-radius:12px;overflow:hidden;align-self:start}
 .cover-up .chg{position:absolute;left:8px;bottom:8px;font-size:11px;background:rgb(0 0 0/.6);padding:3px 8px;border-radius:6px}
 .filebar{border:1px dashed var(--line-2);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--panel)}
 .filebar .fn{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
@@ -124,6 +124,8 @@ h2{font-size:38px}
 .checks{list-style:none;padding:0;margin:0;display:grid;gap:6px}
 .checks li{display:flex;gap:10px;align-items:center;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .checks li em{font-style:normal;margin-left:auto;font-size:12px;color:var(--green)}
+.tipbox{margin-top:10px;font-size:12px;color:var(--ink-2);background:rgb(255 79 163/.08);border:1px solid rgb(255 79 163/.25);border-radius:10px;padding:8px 10px}
+.tipbox b{color:var(--accent-2)}
 .cap{margin:12px 2px 0;color:var(--ink-2);font-size:14px}
 .cap b{color:var(--ink)}
 
@@ -219,7 +221,7 @@ h2{font-size:38px}
   .grid2{grid-template-columns:1fr}
   .phones{grid-template-columns:1fr 1fr;gap:40px 20px}
   .notes{grid-template-columns:1fr}
-  .wiz{height:auto;min-height:520px}
+  .wiz{height:auto;min-height:560px}
 }
 /* ---------- phone ---------- */
 @media (max-width:680px){
@@ -378,13 +380,14 @@ h2{font-size:38px}
               <div class="field"><label>How fans get it</label>
                 <div class="seg"><span>Free</span><span class="on">Buy for $19</span><span>Monthly plan only</span></div>
               </div>
-              <div style="font-size:12px;color:var(--muted)">Everyone can hear a 10-minute preview. Only buyers and plan members get the full mix.</div>
+              <div style="font-size:12px;color:var(--muted)">Everyone can hear a 10-minute preview. Only buyers and plan members get the full mix, inside the app.</div>
+              <div class="tipbox"><b>Tip:</b> drop a few voice tags through the mix (“Demo DJ, on the Demo DJ app”). If anyone re-uploads it, it still sends people to you.</div>
             </div>
           </div>
           <div class="foot"><span class="back">Back</span><span class="btn pri">Next: tracklist</span></div>
         </div>
       </div>
-      <p class="cap"><b>4. First mix.</b> Upload, cover, title and how it's sold. The 10-minute preview is cut automatically.</p>
+      <p class="cap"><b>4. First mix.</b> Upload, cover, title and how it's sold. The 10-minute preview is cut automatically, and the wizard suggests voice tags.</p>
     </div>
 
     <!-- 5 Tracklist -->
@@ -501,10 +504,10 @@ h2{font-size:38px}
         <div class="owned"><div class="glow"></div><div class="owned-in">
           <span class="check-pill">✓ Paid $19.00</span>
           <h4>It's yours</h4>
-          <p>The full Late Night Drive Vol 2 is in your library.</p>
+          <p>The full Late Night Drive Vol 2 is in your library, to play any time, even offline.</p>
           <div class="big-rec"><img src="img/cover-late-night-drive-2.jpg" alt=""></div>
           <div class="buy-btn">▶ Play the full mix</div>
-          <div class="two"><span class="btn">Download</span><span class="btn">Share</span></div>
+          <div class="two"><span class="btn">Save offline</span><span class="btn">Share</span></div>
           <div class="receipt">Receipt sent to fan@example.com. Card saved for one-tap next time.</div>
         </div></div>
       </div>
@@ -532,7 +535,7 @@ h2{font-size:38px}
   <div class="notes">
     <div class="note"><b>No card numbers on our side</b><p>Stripe holds the cards and the DJ's bank details. Needle Drop and the DJ only ever see "Visa ending 4242".</p></div>
     <div class="note"><b>Money goes to the DJ</b><p>Each sale lands in the DJ's own Stripe account, with Needle Drop's share taken off automatically.</p></div>
-    <div class="note"><b>Locked until paid</b><p>Non-buyers only ever get the 10-minute preview file. Buyers get the full mix through a private link that expires.</p></div>
+    <div class="note"><b>No downloads, no leaks</b><p>Mixes stay inside the app as scrambled pieces only buyers can unlock. Each buyer's copy carries a hidden tag, so a SoundCloud re-upload can be traced to their account.</p></div>
   </div>
 </div>
 
