@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>MITI | Country duo from Porirua, Aotearoa</title>
-<meta name="description" content="MITI are Tiana and Sonny Miti, a Samoan-Kiwi brother and sister country duo from Cannons Creek, Porirua. New single Wasting More Time On You is out now.">
-<meta property="og:title" content="MITI | Country duo from Porirua, Aotearoa">
+<title>MITI | Country music from Porirua, Aotearoa</title>
+<meta name="description" content="MITI is Tiana Miti: classic country storytelling from Porirua, Aotearoa. New single Wasting More Time On You is out now.">
+<meta property="og:title" content="MITI | Country music from Porirua, Aotearoa">
 <meta property="og:description" content="New single Wasting More Time On You is out now.">
-<meta property="og:image" content="https://i.ytimg.com/vi/2PlFJOfZ0ys/maxresdefault.jpg">
+<meta property="og:image" content="https://i.ytimg.com/vi/USa7LiAd9d4/maxresdefault.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@ footer.site .sig{display:flex;align-items:center;gap:.8rem}
 footer.site .sig img{width:52px;height:52px;mix-blend-mode:screen}
 
 /* Hero */
-.hero{min-height:100svh;display:grid;align-items:end;color:#fff;padding:7rem 0 clamp(2.5rem,6vw,4.5rem);background:linear-gradient(180deg,rgba(22,19,15,.5) 0,rgba(22,19,15,0) 30%,rgba(22,19,15,.9) 100%),url("https://i.ytimg.com/vi/2PlFJOfZ0ys/maxresdefault.jpg") center/cover}
+.hero{min-height:100svh;display:grid;align-items:end;color:#fff;padding:7rem 0 clamp(2.5rem,6vw,4.5rem);background:linear-gradient(180deg,rgba(22,19,15,.5) 0,rgba(22,19,15,0) 30%,rgba(22,19,15,.9) 100%),url("tiana-miti.jpg") 50% 20%/cover #16130F}
 .hero h1{font-family:var(--head);font-weight:400;font-size:clamp(3.6rem,11vw,9rem);line-height:.9;letter-spacing:.01em;max-width:10em;margin:.12em 0 .2em}
 .hero p{max-width:31rem;margin-bottom:1.4rem}
 @media (prefers-reduced-motion:no-preference){
@@ -88,7 +88,7 @@ footer.site .sig img{width:52px;height:52px;mix-blend-mode:screen}
 
 /* Story */
 .story{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
-.story .pic{aspect-ratio:5/4;background:url("https://media.rnztools.nz/rnz/image/upload/s--DOvdIGCG--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1693174840/4ONWP3F_The_Mitis_Press_Pic_jpg?_a=BACCd2AD") center/cover}
+.story .pic{aspect-ratio:1/1;background:url("tiana-miti.jpg") center/cover}
 .story .lede{font-size:1.3rem;line-height:1.5;margin-bottom:1em}
 .story p+p{margin-top:1em}
 .members{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-top:clamp(3rem,6vw,5rem)}
@@ -119,8 +119,8 @@ blockquote footer{margin-top:1rem;font-size:.8rem;font-weight:600;letter-spacing
 .press a:hover .out{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 
 /* Bookings */
-.book{color:#fff;padding:clamp(5rem,12vw,9.5rem) 0;background:linear-gradient(90deg,rgba(22,19,15,.92) 0,rgba(22,19,15,.6) 60%,rgba(22,19,15,.35)),url("https://i.ytimg.com/vi/QSMnFdajn7M/maxres3.jpg") 0% 50%/112%}
-@media (max-width:1000px){.book{background-size:auto,auto 135%;background-position:center,60% center}}
+.book{color:#fff;padding:clamp(5rem,12vw,9.5rem) 0;background:linear-gradient(90deg,rgba(22,19,15,.92) 0,rgba(22,19,15,.6) 60%,rgba(22,19,15,.35)),url("https://i.ytimg.com/vi/USa7LiAd9d4/maxresdefault.jpg") 100% 50%/auto 136% no-repeat #16130F}
+@media (max-width:1000px){.book{background-position:center,60% center}}
 .video.crop img{transform:scale(1.34)}
 .video.crop button:hover img{transform:scale(1.38)}
 .book p{max-width:30rem;margin-bottom:1.5rem}
@@ -134,8 +134,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   .nav ul a{font-size:.68rem;letter-spacing:.14em}
   .nav li.opt{display:none}
   .story,.small-vids,.members{grid-template-columns:1fr}
-  .hero{background-position:center,76% center}
-  .story .pic{aspect-ratio:4/3}
+  .hero{background-position:center,20% center}
+  .story .pic{display:none}
   .rel li{grid-template-columns:1fr;gap:.5rem}
   .rel a{justify-self:start}
 }
@@ -156,6 +156,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 .hero-vid.on{opacity:1}
 .hero-vid iframe{position:absolute;left:50%;top:50%;width:max(100%,177.78svh);height:max(100%,56.25vw);border:0;transform:translate(-50%,-50%) scale(1.36)}
 .hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,19,15,.55) 0,rgba(22,19,15,.1) 30%,rgba(22,19,15,.92) 100%)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -178,6 +179,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
 <main id="top">
   <section class="hero on-dark">
     <div class="hero-vid" aria-hidden="true"></div>
+    <span class="sr-only">Photo: Tiana Miti sitting on the edge of a deck at golden hour, holding a ukulele.</span>
     <div class="wrap wide">
       <p class="label">New single out now</p>
       <h1>Wasting More Time On You</h1>
@@ -202,7 +204,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
         </div>
         <div>
           <div class="video" data-id="2PlFJOfZ0ys" data-title="MITI, See You Again (Official Music Video)"></div>
-          <p class="cap"><strong>See You Again</strong><span>Sonny's tribute to their grandpa. 2023.</span></p>
+          <p class="cap"><strong>See You Again</strong><span>A goodbye to her grandfather. 2023.</span></p>
         </div>
       </div>
     </div>
@@ -211,13 +213,14 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
   <section class="section" id="story">
     <div class="wrap">
       <div class="story">
-        <div class="pic" role="img" aria-label="Tiana and Sonny Miti"></div>
+        <div class="pic" role="img" aria-label="Tiana Miti sitting on the edge of a deck at golden hour, holding a ukulele"></div>
         <div>
           <p class="label">The story</p>
-          <h2>Country music, raised in the Creek</h2>
-          <p class="lede">MITI are Tiana and Sonny Miti, a Samoan-Kiwi brother and sister who grew up in Cannons Creek, Porirua, on their mum's cassette tapes of Glen Campbell and Johnny Cash.</p>
-          <p>As kids they joined the North City Country Music Club at Porirua Club with their sister Justina, and they have been on stages ever since. They have taken home trophies from the New Zealand Gold Guitar Awards in Gore, and Tiana has competed on Star Search Samoa.</p>
-          <p>They started out as The Mitis, known for giving classic country songs a Pacific turn. Their own songs keep the storytelling of the records they were raised on: a goodbye to their grandpa, a song for a grieving friend, and now a breakup anthem with a grin.</p>
+          <h2>Songs that mean what they say</h2>
+          <p class="lede">There's a particular kind of country song that doesn't try too hard, the kind that just tells the truth and lets the melody do the rest. That's the space Tiana Miti writes from.</p>
+          <p>Tiana grew up on her mother's cassette tapes of Glen Campbell and Johnny Cash, the kind of songs that get stuck in your bones before you're old enough to understand why. Raised in Porirua, she came up around music the way most people come up around family: always there, never separate from everyday life.</p>
+          <p>That early foundation became the backbone of MITI: classic country storytelling, plainspoken and honest, with real instruments, straightforward lyrics and a voice that leans into feeling over polish. Her brother Sonny writes and arranges behind the scenes.</p>
+          <p>Country music has never had a strong foothold in New Zealand, but that's beginning to shift, and MITI wants to be part of the reason why. Not by chasing a trend, but by writing songs that are simple, true and built to last, one release at a time.</p>
         </div>
       </div>
     </div>
@@ -245,7 +248,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
         </li>
         <li>
           <span class="yr">2023</span>
-          <div><h3>See You Again</h3><p>The debut single, written by Sonny for their late grandfather.</p></div>
+          <div><h3>See You Again</h3><p>The debut single, a tribute to her late grandfather.</p></div>
           <a href="https://www.youtube.com/watch?v=2PlFJOfZ0ys" target="_blank" rel="noopener">Watch</a>
         </li>
       </ul>
@@ -272,9 +275,9 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
         <a href="https://www.mmf.co.nz/news-pages/2024/4/25/is-miti-new-zealands-answer-to-the-worldwide-country-music-trend-that-we-are-experiencing" target="_blank" rel="noopener">
           <span class="when">April 2024</span><div class="out">MMF Aotearoa</div><p>On I Got You and country's worldwide surge.</p></a>
         <a href="https://tpplus.co.nz/arts-music/polynesian-duo-the-mitis-give-country-music-a-tropical-twist/" target="_blank" rel="noopener">
-          <span class="when">September 2023</span><div class="out">Tagata Pasifika</div><p>A profile of the duo and their debut single.</p></a>
+          <span class="when">September 2023</span><div class="out">Tagata Pasifika</div><p>A profile around the debut single.</p></a>
         <a href="https://www.rnz.co.nz/national/programmes/ninetonoon/audio/2018904760/the-mitis-a-pacific-twist-on-country-music" target="_blank" rel="noopener">
-          <span class="when">August 2023</span><div class="out">RNZ Nine to Noon</div><p>Tiana and Sonny talk with Kathryn Ryan.</p></a>
+          <span class="when">August 2023</span><div class="out">RNZ Nine to Noon</div><p>An interview with Kathryn Ryan.</p></a>
       </div>
     </div>
   </section>
@@ -283,12 +286,13 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:
     <div class="wrap">
       <p class="label">Bookings and enquiries</p>
       <h2>Book MITI</h2>
-      <p>Festivals, events, radio and media. Send a message and we'll come back to you.</p>
+      <p>Festivals, events, radio and media. Bookings go through MITI's manager, Tana Tupai at Ikon Music.</p>
       <div class="acts">
-        <a class="btn solid" href="https://www.facebook.com/wearemiti/" target="_blank" rel="noopener">Message on Facebook</a>
+        <a class="btn solid" href="mailto:ikonmusicnz@gmail.com?subject=MITI%20booking%20enquiry">Email management</a>
+        <a class="btn" href="https://www.facebook.com/wearemiti/" target="_blank" rel="noopener">Facebook</a>
         <a class="btn" href="https://www.instagram.com/weare_miti/" target="_blank" rel="noopener">Instagram</a>
       </div>
-      <p class="draft">Draft note: booking email and show dates to be added.</p>
+      <p class="draft">Draft note: show dates to be added.</p>
     </div>
   </section>
 </main>
@@ -332,7 +336,7 @@ document.querySelectorAll('.video').forEach(function (v) {
 (function () {
   var holder = document.querySelector('.hero-vid');
   var wantsPhoto = /[?&]hero=photo/.test(location.search);
-  var small = window.matchMedia('(max-width: 900px)').matches;
+  var small = window.matchMedia('(max-width: 760px)').matches;
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saver = navigator.connection && navigator.connection.saveData;
   if (!holder || wantsPhoto || small || calm || saver) return;
