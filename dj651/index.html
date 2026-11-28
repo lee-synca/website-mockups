@@ -1194,16 +1194,18 @@ function applySkin(){
    Tapes are grouped into series by their title ("The 90's Tape Vol 5" sits on The 90's Tape spine). */
 const seriesName = t => t.replace(/ Vol \d+$/, '');
 const volNo = t => { const m = t.match(/ Vol (\d+)$/); return m ? +m[1] : 0; };
-function rackSeries(){
+function rackSeries(list){
   const map = new Map();
-  vis().forEach(m => { const k = seriesName(m.t); if (!map.has(k)) map.set(k, []); map.get(k).push(m); });
+  (list || vis()).forEach(m => { const k = seriesName(m.t); if (!map.has(k)) map.set(k, []); map.get(k).push(m); });
   return [...map].map(([name, ms]) => ({name, ms: ms.slice().sort((a, b) => volNo(a.t) - volNo(b.t) || a.d.localeCompare(b.d))}));
 }
 const HL = ['#ffe84a','#ffb977','#ff9ccb','#9ccbff','#a9f0a2','#d9b8ff'];
-/* The Dial: each word is a set of tapes the DJ has tagged (see DJ settings). Picking one plays them back to back. */
+/* The Dial: each word is a set of tapes the DJ has tagged (see DJ settings). Picking one shows only those tapes
+   on the Rack and plays them next, after the tape that's on now. It never stops what's playing. */
 const DIAL = DJ.dial;
 const dialName = () => (DIAL.find(d => d[0] === S.dial) || [])[1];
-const pool = () => { const p = S.dial ? vis().filter(m => m.tags.includes(S.dial)) : []; return p.length > 1 ? p : vis(); };
+const dialTapes = () => S.dial ? vis().filter(m => m.tags.includes(S.dial)) : vis();
+const pool = () => { const p = dialTapes(); return p.length > 1 ? p : vis(); };
 function pulledCard(m){
   const n = tracks(m.id).length, can = canPlay(m.id), cur = S.now === m.id && S.playing;
   return `<div class="rk-pull">
@@ -1262,7 +1264,7 @@ function home(){
   if (S.offerB2B) banners += `<div class="banner hot"><div><b>Tonight only: any 3 mixes for $${member() ? DJ.prices.threeWithPass : DJ.prices.three}</b><span>Add 3 mixes to your cart and the price drops.</span></div></div>`;
   if (S.fired.spend && !member()) banners += `<div class="banner"><div><b>You've spent $${S.spent} on mixes</b><span>Stream all ${vis().length} for $${PASS} a month, and buy any mix for $${MEMBER_PRICE}.</span></div><button class="btn gold" data-act="plan" data-plan="listen" style="align-self:flex-start">Start Listen</button></div>`;
   const open = S.pulled === undefined ? (DJ.media ? DJ.media.tapes[0] : vis()[0].id) : S.pulled;
-  const rack = rackSeries().map((s, i) => {
+  const rack = rackSeries(dialTapes()).map((s, i) => {
     const top = s.ms[s.ms.length - 1], isOpen = s.ms.some(m => m.id === open);
     return `<div class="rk-spine ${i % 2 ? 'alt' : ''}" style="--sc:${HL[i % HL.length]}">
       <button class="rk-name" data-act="pull" data-id="${isOpen ? '' : top.id}" aria-expanded="${isOpen}"><img src="${cover(top.id)}" alt="" loading="lazy"><b><span>${s.name}</span></b></button>
@@ -1274,7 +1276,7 @@ function home(){
     ${banners}
     <div class="dial"><span class="dial-q">What's the occasion?</span>
       <div class="dial-band">${DIAL.map(([k, l]) => `<button class="${S.dial === k ? 'on' : ''}" data-act="dial" data-id="${k}" aria-pressed="${S.dial === k}">${l}</button>`).join('')}</div>
-      ${S.dial ? `<p class="dial-on">${dialName()} tapes are playing back to back.<button data-act="dialoff">Stop</button></p>` : ''}</div>
+      ${S.dial ? `<p class="dial-on">${dialTapes().length} ${dialName()} tapes. They play next, after this one.<button data-act="dialoff">Show all</button></p>` : ''}</div>
     <div class="rack">${rack}</div>
     <div class="endpad"></div></div>`;
 }
@@ -1465,7 +1467,7 @@ function fullPlayer(){
     : `<p class="note">${DJ.name} hasn’t added the song list for this one yet, so each block is 5 minutes.</p>`;
   return `<div class="fp nd g">
     <div class="fp-top"><button data-act="collapse" aria-label="Close player">${ic('down')}</button>
-      <div class="c"><small>${S.dial ? `On the dial: ${dialName()}` : S.preview ? `${PV} preview` : 'Now playing'}</small><b>${m.t}</b></div>
+      <div class="c"><small>${S.preview ? `${PV} preview` : S.dial ? `Now playing · ${dialName()} next` : 'Now playing'}</small><b>${m.t}</b></div>
       <button data-act="mixmore" data-id="${m.id}" aria-label="More options" style="justify-self:end">${ic('dots')}</button></div>
     <div class="nd-head"><img class="fp-cover nd-cover" src="${cover(m.id)}" alt="Cover of ${m.t}" data-act="openfrom" data-id="${m.id}">
       <div class="nd-song"><small id="fpn">Full tape</small><h1 id="fpsong">${m.t}</h1><p id="fpart">${DJ.name}</p></div></div>
@@ -1823,7 +1825,6 @@ async function downloadTape(id){
     await cache.put(`${DJ.media.base}${id}/full.m3u8`, new Response(pl, {headers: {'Content-Type': 'application/vnd.apple.mpegurl'}}));
     delete DL[id]; S.offline.add(id); S.saved.add(id);
     toast('Downloaded', `${byId[id].t} plays with no signal now.`);
-    if (S.now === id) { realKey = ''; }     // switch the player to the saved copy
   } catch (err) {
     delete DL[id];
     toast('Download stopped', err && err.name === 'QuotaExceededError' ? 'Your phone is out of space for downloads.' : 'Check your connection and try again.');
@@ -1834,7 +1835,6 @@ async function removeDownload(id){
   S.offline.delete(id);
   try { const cache = await caches.open(TCACHE), pr = await cache.match(`${DJ.media.base}${id}/full.m3u8`);
     if (pr) { const {urls} = await tapeFiles(id, await pr.text()); await Promise.all([...urls, `${DJ.media.base}${id}/full.m3u8`].map(u => cache.delete(u))); } } catch (e) {}
-  if (S.now === id) realKey = '';
   toast('Removed from downloads'); render();
 }
 /* The saved chunks joined into one playable file. */
@@ -1847,9 +1847,14 @@ async function savedTape(id){
 }
 
 /* ---- playing ---- */
+/* A downloaded tape plays from the saved copy when it starts. If it was already streaming when the download
+   finished, it keeps streaming, so the music never jumps; it moves to the saved copy only if the stream fails. */
+let streamFailed = '';
 function loadReal(){
-  const offline = S.offline.has(S.now) && member() && canDownload(S.now);
-  const src = offline ? `saved:${S.now}` : `${DJ.media.base}${S.now}/${S.preview ? 'preview' : 'full'}.m3u8`;
+  const stream = `${DJ.media.base}${S.now}/${S.preview ? 'preview' : 'full'}.m3u8`;
+  const saved = S.offline.has(S.now) && member() && canDownload(S.now);
+  const offline = saved && !(realKey === stream && streamFailed !== S.now);
+  const src = offline ? `saved:${S.now}` : stream;
   if (realKey === src) return;
   /* Same tape, a different version (preview to full, or stream to saved copy): carry on from the same second. */
   if (realKey && realKey.includes(`${S.now}`) && isFinite(audio.currentTime) && audio.currentTime > 0) S.progress = Math.min(99.9, audio.currentTime / dur() * 100);
@@ -1871,7 +1876,7 @@ function loadReal(){
     if (realKey !== src || !window.Hls || !Hls.isSupported()) return;
     hls = new Hls({maxBufferLength: 30, startPosition: S.progress / 100 * dur()});
     hls.attachMedia(audio);
-    hls.on(Hls.Events.ERROR, (e, d) => { if (d.fatal) toast('This tape won’t play right now', 'Check your connection and try again.'); });
+    hls.on(Hls.Events.ERROR, (e, d) => { if (d.fatal) streamTrouble(); });
     hls.loadSource(src);
     if (S.playing) audio.play().catch(() => {});
   };
@@ -1885,10 +1890,11 @@ function unloadReal(){
   audio.loop = SILENCE_LOOP; audio.src = SILENT_SRC;
 }
 /* Move the audio to where the needle is. If the audio isn't ready yet, it happens on loadedmetadata. */
+let seekTarget = -1;
 function applySeek(){
   if (!realKey) return;
   const d = dur();
-  lastP = S.progress;
+  lastP = S.progress; seekTarget = Math.min(d - 0.5, S.progress / 100 * d);
   if (audio.readyState < 1) { seekPending = true; return; }
   seekPending = false;
   try { audio.currentTime = Math.min(d - 0.5, S.progress / 100 * d); } catch (e) { seekPending = true; }
@@ -1905,8 +1911,16 @@ function followAudio(){
 function tickReal(){ if (seekPending && audio.readyState >= 1) applySeek(); }
 audio.addEventListener('timeupdate', followAudio);
 audio.addEventListener('loadedmetadata', () => { if (realKey && seekPending) applySeek(); });
+['canplay', 'playing'].forEach(ev => audio.addEventListener(ev, () => {
+  if (realKey && seekTarget >= 0 && !audio.seeking && Math.abs(audio.currentTime - seekTarget) > 2) { try { audio.currentTime = seekTarget; } catch (e) {} }
+  if (ev === 'playing') seekTarget = -1;
+}));
 audio.addEventListener('ended', () => { if (realKey && S.playing) ended(); });
-audio.addEventListener('error', () => { if (realKey && (appleNative || blobUrl)) toast('This tape won’t play right now', 'Check your connection and try again.'); });
+audio.addEventListener('error', () => { if (realKey && (appleNative || blobUrl)) streamTrouble(); });
+function streamTrouble(){
+  if (realKey.startsWith('http') && S.offline.has(S.now) && member() && streamFailed !== S.now) { streamFailed = S.now; syncAudio(); return; }
+  toast('This tape won’t play right now', 'Check your connection and try again.');
+}
 const busy = on => $('app').classList.toggle('buffering', on);
 audio.addEventListener('waiting', () => { if (realKey) busy(true); });
 audio.addEventListener('seeking', () => { if (realKey) busy(true); });
@@ -2090,10 +2104,9 @@ document.addEventListener('click', e => {
     case 'pull': S.pulled = id || null; break;
     case 'dial': {
       if (S.dial === id) { S.dial = null; break; }
-      S.dial = id;
-      const list = pool(), first = list.find(m => canPlay(m.id)) || list[0];
-      toast(`On the dial: ${dialName()}`, `${list.length} tapes, back to back.`);
-      play(first.id); return; }
+      S.dial = id; S.pulled = null;
+      render(); $('screen').scrollTop = 0; if (isDesk()) $('side').scrollTop = 0;
+      return; }
     case 'dialoff': S.dial = null; break;
     case 'seg': case 'segstep': {
       const n = segCount(S.now), total = toSecs(byId[S.now].len), at = fullPct() / 100 * n;
@@ -2120,7 +2133,7 @@ document.addEventListener('click', e => {
       render(); churSheet();
       toast(undo ? 'Rating removed' : vote > 0 ? `${DJ.rateWord}! ${DJ.name} will see that` : `Noted. ${DJ.name} will see that`, churLabel(S.now, kind, k));
       return; }
-    case 'playpull': S.dial = null; closeSheet(); play(id, {at: (+b.dataset.at) / toSecs(byId[id].len) * 100}); return;
+    case 'playpull': closeSheet(); play(id, {at: (+b.dataset.at) / toSecs(byId[id].len) * 100}); return;
     case 'skin': {
       SKIN = id; try { localStorage.setItem(DJ.key + '-skin', id); } catch (err) {}
       toast(`${SKINS.find(s => s.id === id).name} is on`, 'Change the look any time in Yours.'); break; }
@@ -2152,11 +2165,9 @@ document.addEventListener('click', e => {
     case 'collapse': collapse(); return;
     case 'shop': closeSheet(); S.stack = []; S.full = false; S.tab = 'home'; S.homeFilter = 'new'; render(); $('screen').scrollTop = 0; return;
     case 'play':
-      S.dial = null;
       if (id === S.now && S.last === id && !S.playing && S.progress < 100) { S.playing = true; break; }
       play(id); return;
     case 'playat': {
-      S.dial = null;
       const n = tracks(id).length, i = +b.dataset.i;
       play(id, {at: n ? i / n * 100 + 0.01 : 0}); return; }
     case 'seekto': {
