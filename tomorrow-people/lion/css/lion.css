@@ -14,8 +14,6 @@
   --gold: linear-gradient(to bottom, #FFF2A8 0%, #F6C445 45%, #C98A12 100%);
   --font: "Outfit", "Century Gothic", "Avenir Next", Futura, sans-serif;
   --pad: clamp(1.25rem, 5vw, 5rem);
-  --logo: url("https://f4.bcbits.com/img/0020009055_10.jpg");
-  --one-cover: url("https://f4.bcbits.com/img/a1463422991_10.jpg");
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -205,8 +203,14 @@ section { padding: clamp(4.5rem, 10vw, 9rem) var(--pad); }
   .reveal.in { opacity: 1; transform: none; }
 }
 
-/* small logo in the menu: the band's own logo file, black artwork turned white */
-.nav .logo { aspect-ratio: 768 / 273; background: url("../img/logo.png") center / contain no-repeat; filter: invert(1); mix-blend-mode: normal; }
+/* the band's own logo and lion emblem, redrawn from the full-size original */
+.logo { aspect-ratio: 1800 / 621; background: url("../img/logo.png") center / contain no-repeat; mix-blend-mode: normal; }
+.nav .logo { background-image: url("../img/logo-small.png"); }
+.lion { background: url("../img/lion.png") center / cover no-repeat; filter: none; mix-blend-mode: normal; }
+.photo { margin: clamp(2.5rem, 6vw, 5rem) 0 0; }
+.photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 62%; }
+@media (max-width: 700px) { .photo img { aspect-ratio: 5 / 4; } }
+.join-grid { align-items: center; }
 /* ================= multi-page additions ================= */
 .skip { position: absolute; left: -999px; top: 0; z-index: 100; background: var(--yellow); color: var(--black); padding: 0.8em 1.2em; font-weight: 700; }
 .skip:focus { left: 0; }
