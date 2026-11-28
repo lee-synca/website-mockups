@@ -383,7 +383,7 @@ a.btn{text-decoration:none}
 @media (prefers-reduced-motion:reduce){.sheet,.notice{animation:none}}
 
 /* ================= DESKTOP: the tape interface, wide =================
-   The Rack on the left, the open tape (song strip, rating button, song list) in the middle, Yours on the right,
+   The Crate on the left, the open tape (song strip, rating button, song list) in the middle, Yours on the right,
    a top bar with search, and a deck bar along the bottom with the platter. Kicks in at 1024px wide once
    signed in. Every colour comes from the skin's tokens, so the skins work here too. */
 #topbar,#side,#rpanel,#pbar,#ctx{display:none}
@@ -630,8 +630,8 @@ a.btn{text-decoration:none}
 [data-skin="hifi"] .desk .pb-plat{background:radial-gradient(circle at 35% 28%,#ffffff,#bfc2c6 45%,#7c8086)}
 [data-skin="hifi"] .desk .pb-r .pb-pull,[data-skin="siapo"] .desk .pb-r .pb-pull{transform:none;font-size:11px;letter-spacing:.08em}
 
-/* ================= THE TAPE INTERFACE: Rack, Dial, platter, needle strip, Yours =================
-   No tab bar and no feed. The Rack lists every series as a spine with its volumes as tabs. The platter
+/* ================= THE TAPE INTERFACE: Crate, Dial, platter, needle strip, Yours =================
+   No tab bar and no feed. The Crate lists every series as a spine with its volumes as tabs. The platter
    in the middle of the bar is the tape that's playing. The player draws the tape as one block per song.
    Everything below is coloured only through tokens, so a skin is one block of tokens plus a few touches. */
 .app,#overlay,#player{background-image:var(--paper);background-size:var(--paper-size)}
@@ -640,7 +640,7 @@ a.btn{text-decoration:none}
 .h-title,.sec h2,.mp-t,.sheet h2,.cat-t,.topres .tt,.card h3,.qlist h3,.plan-h b,.rk-name b,.rk-pull h3,.nd-song h1,.nd-pull,.nav button,.yr-pass b,.rk-logo{font-family:var(--disp);font-weight:var(--dw);text-transform:var(--dt);font-stretch:var(--ds)}
 .rk-logo{font-family:var(--brand)}
 
-/* bar: Rack, platter, Yours */
+/* bar: Crate, platter, Yours */
 .nav{grid-template-columns:1fr auto 1fr;align-items:center;padding:6px 0 var(--nb);background:var(--bg2)}
 .nav::before{display:none}
 .nav button{flex-direction:row;justify-content:center;height:50px;font-size:17px;color:var(--dim)}
@@ -661,7 +661,7 @@ a.btn{text-decoration:none}
 .nowline .nl-dev{color:var(--gold);flex:none}
 .nowline .nl-dev .ic{width:18px;height:18px}
 
-/* Rack */
+/* Crate */
 .rk-hd{gap:12px}
 .rk-logo{font-size:20px;flex:none;line-height:1}
 .rk-find{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:38px;padding:0 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13.5px;background:var(--elev);white-space:nowrap;overflow:hidden}
@@ -1190,7 +1190,7 @@ function applySkin(){
   document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = s.bar; });
 }
 
-/* ---------- the Rack ----------
+/* ---------- the Crate ----------
    Tapes are grouped into series by their title ("The 90's Tape Vol 5" sits on The 90's Tape spine). */
 const seriesName = t => t.replace(/ Vol \d+$/, '');
 const volNo = t => { const m = t.match(/ Vol (\d+)$/); return m ? +m[1] : 0; };
@@ -1201,7 +1201,7 @@ function rackSeries(list){
 }
 const HL = ['#ffe84a','#ffb977','#ff9ccb','#9ccbff','#a9f0a2','#d9b8ff'];
 /* The Dial: each word is a set of tapes the DJ has tagged (see DJ settings). Picking one shows only those tapes
-   on the Rack and plays them next, after the tape that's on now. It never stops what's playing. */
+   on the Crate and plays them next, after the tape that's on now. It never stops what's playing. */
 const DIAL = DJ.dial;
 const dialName = () => (DIAL.find(d => d[0] === S.dial) || [])[1];
 const dialTapes = () => S.dial ? vis().filter(m => m.tags.includes(S.dial)) : vis();
@@ -1329,7 +1329,7 @@ function library(){
   return `<div class="g">
     <div class="stick"><div class="hd"><div class="h-title">Yours</div>${avatarBtn()}${cartIcon()}</div></div>
     ${payBanner()}
-    <div class="yr-pass ${member() ? 'on' : ''}"><div><b>Listen pass</b><span>${member() ? 'On. Every tape is unlocked for $' + PASS + ' a month.' : (PASS_ONLY ? 'Every tape in full, plus downloads to play offline, for $' + PASS + ' a month.' : 'Every tape on the Rack for $' + PASS + ' a month.')}</span></div>
+    <div class="yr-pass ${member() ? 'on' : ''}"><div><b>Listen pass</b><span>${member() ? 'On. Every tape is unlocked for $' + PASS + ' a month.' : (PASS_ONLY ? 'Every tape in full, plus downloads to play offline, for $' + PASS + ' a month.' : 'Every tape on the Crate for $' + PASS + ' a month.')}</span></div>
       ${member() ? `<button class="rk-b line" data-act="tab" data-tab="plans">Manage</button>` : `<button class="rk-b buy" data-act="plan" data-plan="listen">Start</button>`}</div>
     <div class="sec"><h2>Your tapes</h2></div>
     <div class="chips">${(PASS_ONLY ? [['all','All'],['added','Added'],['offline','Downloaded']] : [['all','All'],['owned','Owned'],['added','Added'],['offline','On this phone']]).map(([k,l]) => `<button class="chip ${f===k?'on':''}" data-act="lfilter" data-f="${k}">${l}</button>`).join('')}</div>
@@ -1509,7 +1509,7 @@ function topbar(){
     <div class="tb-c"><label class="tb-search" for="dq" title="Search">${ic('search')}<input id="dq" type="search" placeholder="Find a song or tape" autocomplete="off"><kbd>Ctrl K</kbd></label></div>
     <div class="tb-r"><button class="tb-pill dark" data-act="install">${ic('phone')}Get the app</button>${member() ? '' : `<button class="tb-pill" data-act="plan" data-plan="listen">${PASS_ONLY ? `Get the pass $${PASS}/mth` : 'Try Listen'}</button>`}<span id="tbcart">${cartIcon()}</span>${avatarBtn()}</div>`;
 }
-/* Desktop: the Rack sits in the left column, Yours in the right, and the middle shows the open tape. */
+/* Desktop: the Crate sits in the left column, Yours in the right, and the middle shows the open tape. */
 function side(){ return home(); }
 function rpanel(){ return library(); }
 function pbar(){
@@ -1559,7 +1559,7 @@ function render(){
   $('mini').innerHTML = S.signedIn ? mini() : '';
   const nav = $('nav'); nav.hidden = !S.signedIn;
   nav.innerHTML = !S.signedIn ? '' : (() => { const on = k => S.tab === k && !S.stack.length ? 'on' : '', m = byId[S.now];
-    return `<button class="${on('home')}" data-act="tab" data-tab="home">Rack</button>
+    return `<button class="${on('home')}" data-act="tab" data-tab="home">Crate</button>
       <button class="platter" data-act="expand" aria-label="Open the tape that's playing: ${m.t}"><img src="${cover(m.id)}" alt=""></button>
       <button class="${on('library')}" data-act="tab" data-tab="library">Yours</button>`; })();
   S.curTrack = -2;
