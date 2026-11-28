@@ -383,7 +383,7 @@ a.btn{text-decoration:none}
 @media (prefers-reduced-motion:reduce){.sheet,.notice{animation:none}}
 
 /* ================= DESKTOP: the tape interface, wide =================
-   The Rack on the left, the open tape (song strip, Pull up, song list) in the middle, Yours on the right,
+   The Rack on the left, the open tape (song strip, rating button, song list) in the middle, Yours on the right,
    a top bar with search, and a deck bar along the bottom with the platter. Kicks in at 1024px wide once
    signed in. Every colour comes from the skin's tokens, so the skins work here too. */
 #topbar,#side,#rpanel,#pbar,#ctx{display:none}
@@ -749,6 +749,18 @@ a.btn{text-decoration:none}
 :root:not([data-skin="classic"]) .mp-head .hbg{background:var(--bg)}
 :root:not([data-skin="classic"]) .card{background:var(--elev)}
 
+/* rating sheet */
+.chur-row{display:flex;flex-direction:column;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.chur-row small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
+.chur-row b{font-size:16px;line-height:1.3}
+.chur-v{display:flex;gap:8px}
+.chur-b{flex:1;padding:12px 10px;border-radius:var(--rad);border:1.5px solid var(--line);font-weight:700;text-align:center;font-size:14.5px}
+.chur-b.up.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.chur-b.down.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.yr-vote{font-size:12px;font-weight:700;padding:4px 8px;border-radius:99px;white-space:nowrap}
+.yr-vote.up{background:var(--gold);color:var(--gold-ink)}
+.yr-vote.down{border:1px solid var(--line);color:var(--muted)}
+
 /* ================= SKINS =================
    To release a new skin: add one block here and one line in SKINS in the script. Nothing else changes. */
 
@@ -909,6 +921,7 @@ const DJ = {
   /* How this DJ sells. 'both' = fans buy single tapes or take the monthly pass. 'pass' = pass only: nothing is
      bought one at a time, and pass holders can download tapes into the app to play offline (never a file). */
   sell: 'pass',
+  rateWord: 'Chur',                 // the word on the rating button (fans rate the song or the blend)
   /* Tapes with real audio. Each tape is cut into 10-second chunks (HLS, 192 kbps) at <base><id>/full.m3u8, with the free
      preview at <base><id>/preview.m3u8. Tapes not listed here play silently in the demo. */
   media: {
@@ -980,23 +993,23 @@ const PRICE = DJ.prices.tape, MEMBER_PRICE = DJ.prices.tapeWithPass;
 const PREVIEW_MIN = DJ.previewMinutes, PREVIEW = PREVIEW_MIN * 60, PV = `${PREVIEW_MIN}-minute`;
 
 function fresh(){
-  return {signedIn:false, pulled:undefined, dial:null, skinDrop:false, pullups:[{id:'90s5', i:17, at:3220, song:'Big Poppa'}], sms:false, tab:'home', homeFilter:'all', libFilter:'all', rp:true, sideMin:false, vol:80, fwd:[], libSort:'recent', libGrid:false, q:'', qf:'all', follow:false, plan:'none',
+  return {signedIn:false, pulled:undefined, dial:null, skinDrop:false, churs:[], sms:false, tab:'home', homeFilter:'all', libFilter:'all', rp:true, sideMin:false, vol:80, fwd:[], libSort:'recent', libGrid:false, q:'', qf:'all', follow:false, plan:'none',
     owned:new Set(PASS_ONLY ? [] : ['90s5']), saved:new Set(), offline:new Set(), spent:PASS_ONLY ? 0 : 19, cart:[], plays:{}, recent:[],
     streak:0, last:null, now:DJ.media ? DJ.media.tapes[0] : '90s5', progress:0, playing:false, preview:false, curTrack:-1,
     full:false, stack:[], device:'phone', shuffle:false, repeat:false,
     fired:{}, repeatFired:new Set(), offerB2B:false, released:false, billing:'ok', lapsed:false};
 }
-/* The demo remembers sign-in, the pass, downloads and pull-ups on this phone, so it reopens as the fan left it,
+/* The demo remembers sign-in, the pass, downloads and ratings on this phone, so it reopens as the fan left it,
    including with no signal. "Start again" clears it. */
 const KEEP = DJ.key + '-demo';
 function restore(st){
   try { const k = JSON.parse(localStorage.getItem(KEEP) || 'null'); if (!k) return st;
-    Object.assign(st, {signedIn: !!k.signedIn, plan: k.plan || st.plan, offline: new Set(k.offline || []), saved: new Set(k.saved || []), pullups: k.pullups || st.pullups});
+    Object.assign(st, {signedIn: !!k.signedIn, plan: k.plan || st.plan, offline: new Set(k.offline || []), saved: new Set(k.saved || []), churs: k.churs || st.churs});
   } catch (e) {}
   return st;
 }
 function saveDemo(){
-  try { localStorage.setItem(KEEP, JSON.stringify({signedIn: S.signedIn, plan: S.plan, offline: [...S.offline], saved: [...S.saved], pullups: S.pullups})); } catch (e) {}
+  try { localStorage.setItem(KEEP, JSON.stringify({signedIn: S.signedIn, plan: S.plan, offline: [...S.offline], saved: [...S.saved], churs: S.churs})); } catch (e) {}
 }
 let S = restore(fresh());
 
@@ -1207,11 +1220,39 @@ function pulledCard(m){
 
 /* ---------- the tape as a strip ----------
    One block per song. Tapes with no song list yet are cut into 5-minute blocks instead.
-   The bars above the strip are pull-ups: example numbers here, real counts from every fan in the real app. */
+   The bars above the strip are ratings: example numbers here plus this fan's own, real counts from every fan in the real app. */
 const segCount = id => tracks(id).length || Math.max(1, Math.ceil(toSecs(byId[id].len) / 300));
 const fullPct = () => S.preview ? dur() / toSecs(byId[S.now].len) * S.progress : S.progress;
 const heatOf = (id, i) => { let h = 7; for (const ch of id + i) h = (h * 31 + ch.charCodeAt(0)) % 997; return 12 + h % 78; };
-const myPulls = (id, i) => S.pullups.filter(p => p.id === id && p.i === i).length;
+const myLove = (id, i) => S.churs.filter(c => c.id === id && c.kind === 'song' && c.i === i && c.vote > 0).length;
+
+/* ---------- ratings (the Chur button) ----------
+   Fans rate the song that's playing, or the blend (the change from one song into the next), love it or not.
+   Each rating keeps the exact second, so the DJ sees which songs and which blends land. On tapes without a
+   song list, "song" means the 5-minute block and "blend" the mixing in it. */
+function churSpot(id){
+  const m = byId[id], tr = tracks(id), total = toSecs(m.len), sec = Math.max(0, realSec());
+  const n = segCount(id), i = Math.min(n - 1, Math.floor(sec / total * n)), into = sec / total * n - i;
+  const bi = !tr.length ? i : into < 0.35 && i > 0 ? i - 1 : i < n - 1 ? i : i - 1;
+  return {id, sec, i, bi};
+}
+function churLabel(id, kind, k){
+  const tr = tracks(id), total = toSecs(byId[id].len), n = segCount(id);
+  if (kind === 'song') return tr[k] ? `${tr[k].t} · ${tr[k].a}` : `The mix from ${mmss(k / n * total)}`;
+  return tr[k] && tr[k + 1] ? `${tr[k].t} into ${tr[k + 1].t}` : `The mixing from ${mmss(k / n * total)}`;
+}
+function churSheet(){
+  if (!S.now) return;
+  const {id, sec, i, bi} = churSpot(S.now);
+  const mine = (kind, k) => (S.churs.find(c => c.id === id && c.kind === kind && c.i === k) || {}).vote;
+  const row = (kind, k, title) => { const v = mine(kind, k);
+    return `<div class="chur-row"><div><small>${title}</small><b>${churLabel(id, kind, k)}</b></div>
+      <div class="chur-v"><button class="chur-b up ${v > 0 ? 'on' : ''}" data-act="rate" data-kind="${kind}" data-i="${k}" data-vote="1" data-at="${Math.round(sec)}" aria-pressed="${v > 0}">Love it</button>
+      <button class="chur-b down ${v < 0 ? 'on' : ''}" data-act="rate" data-kind="${kind}" data-i="${k}" data-vote="-1" data-at="${Math.round(sec)}" aria-pressed="${v < 0}">Not for me</button></div></div>`; };
+  openSheet(`<h2>${DJ.rateWord}</h2><p>Tell ${DJ.name} what's working. Every rating reaches him with the exact second it happened.</p>
+    ${row('song', i, 'This song')}${row('blend', bi, 'This blend')}
+    <button class="btn ghost wide" data-act="closesheet">Done</button>`);
+}
 function tile(m){
   return `<div class="tile" data-act="open" data-id="${m.id}" style="cursor:pointer">${cv(m.id, true)}<div class="tt">${m.t}</div><div class="ts">Mixtape ${badge(m)}</div></div>`;
 }
@@ -1293,9 +1334,9 @@ function library(){
     <div style="margin-top:10px">${list.map(m => `<div class="row big" data-act="open" data-id="${m.id}">${cv(m.id)}<div style="min-width:0"><div class="rt" ${S.now===m.id && S.playing?'style="color:var(--gold)"':''}>${m.t}</div>
       <div class="rs">${sub(m)}</div></div>${owns(m.id) ? '<span class="stamp">Owned</span>' : PASS_ONLY && kept(m.id) ? '<span class="stamp">Offline</span>' : '<span></span>'}</div>`).join('')}</div>
     ${list.length ? '' : `<p class="empty">${f === 'added' ? (member() ? 'Tap + on any tape to add it here.' : 'With a Listen pass you can add any tape here.') : (PASS_ONLY ? (member() ? 'Nothing here yet. Tapes you add or download show up here.' : 'Nothing here yet. With the pass, tapes you add or download show up here.') : 'Nothing here yet. Tapes you own show up here.')}</p>`}
-    <div class="sec"><h2>Your pull-ups</h2></div>
-    ${S.pullups.length ? S.pullups.map(p => `<button class="yr-pu" data-act="playpull" data-id="${p.id}" data-at="${p.at}"><span><b>${p.song}</b><small>${byId[p.id].t}</small></span><span class="tab">${mmss(p.at)}</span></button>`).join('')
-      : '<p class="empty">Tap Pull up! while a tape plays and the moment is saved here.</p>'}
+    <div class="sec"><h2>Your ratings</h2></div>
+    ${S.churs.length ? S.churs.map(c => `<button class="yr-pu" data-act="playpull" data-id="${c.id}" data-at="${Math.max(0, c.at - 5)}"><span><b>${churLabel(c.id, c.kind, c.i)}</b><small>${c.kind === 'song' ? 'Song' : 'Blend'} · ${byId[c.id].t} · ${mmss(c.at)}</small></span><span class="yr-vote ${c.vote > 0 ? 'up' : 'down'}">${c.vote > 0 ? 'Love it' : 'Not for me'}</span></button>`).join('')
+      : `<p class="empty">Tap ${DJ.rateWord} while a tape plays to rate the song or the blend. Your ratings show here.</p>`}
     <div class="sec"><h2>Skin</h2></div>
     <p class="yr-note">Change the look any time. New skins from ${DJ.name} show up here for everyone.</p>
     <div class="yr-skins">${skinsOut().map(s => `<button class="yr-skin ${s.id === SKIN ? 'on' : ''}" data-act="skin" data-id="${s.id}" aria-pressed="${s.id === SKIN}"><span class="sw" style="background:${s.sw[0]};color:${s.sw[1]}">Aa<i style="background:${s.sw[2]}"></i><i style="background:${s.sw[3]}"></i></span><b>${s.name}</b><small>${s.id === SKIN ? 'On now' : s.sub}</small>${s.release && s.id !== SKIN ? '<em>New</em>' : ''}</button>`).join('')}</div>
@@ -1417,10 +1458,10 @@ function fullPlayer(){
   else if (own) cta = `<div class="card plain"><h3>You own this mix</h3><p style="margin:0;color:var(--muted);font-size:13.5px">Download the MP3 any time, even without a plan.</p><div class="cta"><button class="btn white" data-act="download" data-id="${m.id}">${ic('arrow')} Download MP3</button></div></div>`;
   else if (member()) cta = `<div class="card plain"><h3>Keep it forever</h3><p style="margin:0;color:var(--muted);font-size:13.5px">It's included with Listen. Buy the MP3 to keep it even if you cancel.</p><div class="cta"><button class="btn gold" data-act="buynow" data-id="${m.id}">Buy for $${MEMBER_PRICE}</button></div></div>`;
   else cta = `<div class="card plain"><h3>Own this mix</h3><p style="margin:0;color:var(--muted);font-size:13.5px">Buy it to keep and download, or stream every mix with Listen.</p><div class="cta"><button class="btn gold" data-act="buynow" data-id="${m.id}">Buy now $${PRICE}</button><button class="btn ghost" data-act="plan" data-plan="listen">Listen $${PASS}/mth</button></div></div>`;
-  const heat = Array.from({length:n}, (_, i) => `<i style="height:${Math.min(100, heatOf(m.id, i) + myPulls(m.id, i) * 14)}%"></i>`).join('');
+  const heat = Array.from({length:n}, (_, i) => `<i style="height:${Math.min(100, heatOf(m.id, i) + myLove(m.id, i) * 14)}%"></i>`).join('');
   const segs = Array.from({length:n}, (_, i) => `<button class="${locked(i) ? 'lock' : ''}" data-act="seg" data-i="${i}" aria-label="${tr[i] ? `${tr[i].t}, ${tr[i].a}` : `From ${mmss(i / n * total)}`}${locked(i) ? ', locked' : ''}"></button>`).join('');
   const list = tr.length
-    ? `<div class="qlist"><h3>Song list <small>↺ pull-ups</small></h3><ol class="tl nd-tl" id="tl">${tr.map((t, i) => `<li class="${locked(i) ? 'lock' : ''}" data-act="seg" data-i="${i}"><span class="i">${i + 1}</span><span class="ti"><b>${t.t}</b><small>${t.a}</small></span><span class="tm tab">${locked(i) ? 'Locked' : `↺ ${Math.round(heatOf(m.id, i) * 2.4) + myPulls(m.id, i)}`}</span></li>`).join('')}</ol></div>`
+    ? `<div class="qlist"><h3>Song list <small>${DJ.rateWord}s</small></h3><ol class="tl nd-tl" id="tl">${tr.map((t, i) => `<li class="${locked(i) ? 'lock' : ''}" data-act="seg" data-i="${i}"><span class="i">${i + 1}</span><span class="ti"><b>${t.t}</b><small>${t.a}</small></span><span class="tm tab">${locked(i) ? 'Locked' : `♥ ${Math.round(heatOf(m.id, i) * 2.4) + myLove(m.id, i)}`}</span></li>`).join('')}</ol></div>`
     : `<p class="note">${DJ.name} hasn’t added the song list for this one yet, so each block is 5 minutes.</p>`;
   return `<div class="fp nd g">
     <div class="fp-top"><button data-act="collapse" aria-label="Close player">${ic('down')}</button>
@@ -1436,7 +1477,7 @@ function fullPlayer(){
       <button class="pn" data-act="segstep" data-d="-1" aria-label="Previous song">${ic('prev')}</button>
       <button class="big" data-act="toggle" aria-label="${S.playing?'Pause':'Play'}">${ic(S.playing?'pause':'play')}</button>
       <button class="pn" data-act="segstep" data-d="1" aria-label="Next song">${ic('next')}</button>
-      <button class="nd-pull" data-act="pullup" aria-label="Pull up: replay the last 20 seconds and save this moment">Pull up!</button></div>
+      <button class="nd-pull" data-act="chur" aria-label="${DJ.rateWord}: rate this song or this blend">${DJ.rateWord}</button></div>
     <div class="fp-low"><button class="dev ${S.device!=='phone'?'on':''}" data-act="devices">${ic('devices')}${S.device!=='phone' ? dev.name : ''}</button>
       <div class="r"><button data-act="share" aria-label="Share">${ic('share')}</button><button data-act="queue" aria-label="Queue">${ic('queue')}</button></div></div>
     ${S.preview ? `<div class="pvnote"><b>${PV} preview.</b> ${PASS_ONLY ? `Get the pass and play every tape for $${PASS} a month.` : `Own this tape for $${PRICE}, or play every tape for $${PASS} a month.`}</div>` : ''}
@@ -1478,7 +1519,7 @@ function pbar(){
         <button class="pp" data-act="toggle" title="${S.playing ? 'Pause' : 'Play'} (Space)">${ic(S.playing ? 'pause' : 'play')}</button>
         <button data-act="segstep" data-d="1" title="Next song">${ic('next')}</button></div>
       <div class="pb-prog tab"><span id="pbtel">0:00</span><input class="seek ${S.preview ? 'pv' : ''}" id="pbseek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span>${mmss(dur())}</span></div></div>
-    <div class="pb-r"><button class="pb-pull" data-act="pullup" title="Pull up: replay the last 20 seconds and save this moment">Pull up!</button>
+    <div class="pb-r"><button class="pb-pull" data-act="chur" title="Rate this song or this blend">${DJ.rateWord}</button>
       <button data-act="queue" title="Up next">${ic('queue')}</button>
       <button class="${S.device !== 'phone' ? 'on' : ''}" data-act="devices" title="Play on a speaker">${ic('devices')}</button>
       <button data-act="mute" title="${S.vol === 0 ? 'Unmute' : 'Mute'}">${ic(volIc)}</button><input class="seek vol" id="vol" type="range" min="0" max="100" value="${S.vol}" aria-label="Volume" style="--p:${S.vol}%"></div>`;
@@ -2067,15 +2108,18 @@ document.addEventListener('click', e => {
       S.progress = sec / dur() * 100 + 0.01; S.curTrack = -2;
       if (!S.playing) { togglePlay(); return; }
       updateProgress(); updatePosition(true); return; }
-    case 'pullup': {
-      const total = toSecs(byId[S.now].len), d = dur(), sec = realSec(), back = Math.max(0, sec - 20);
-      const n = segCount(S.now), i = Math.min(n - 1, Math.floor(sec / total * n)), tr = tracks(S.now);
-      const song = tr[i] ? tr[i].t : `${byId[S.now].t} at ${mmss(back)}`;
-      S.pullups = [{id:S.now, i, at:Math.round(back), song}, ...S.pullups.filter(p => !(p.id === S.now && p.i === i))].slice(0, 12);
-      S.progress = back / d * 100; S.curTrack = -2;
-      try { if (navigator.vibrate) navigator.vibrate(40); } catch (err) {}
-      toast('Pull up!', `${tr[i] ? tr[i].t : 'This moment'} is saved in Yours.`);
-      break; }
+    case 'chur': churSheet(); return;
+    case 'rate': {
+      const kind = b.dataset.kind, k = +b.dataset.i, vote = +b.dataset.vote, at = +b.dataset.at;
+      const prev = S.churs.find(c => c.id === S.now && c.kind === kind && c.i === k);
+      S.churs = S.churs.filter(c => c !== prev);
+      const undo = prev && prev.vote === vote;
+      if (!undo) S.churs.unshift({id: S.now, kind, i: k, vote, at});
+      S.churs = S.churs.slice(0, 50);
+      try { if (navigator.vibrate) navigator.vibrate(30); } catch (err) {}
+      render(); churSheet();
+      toast(undo ? 'Rating removed' : vote > 0 ? `${DJ.rateWord}! ${DJ.name} will see that` : `Noted. ${DJ.name} will see that`, churLabel(S.now, kind, k));
+      return; }
     case 'playpull': S.dial = null; closeSheet(); play(id, {at: (+b.dataset.at) / toSecs(byId[id].len) * 100}); return;
     case 'skin': {
       SKIN = id; try { localStorage.setItem(DJ.key + '-skin', id); } catch (err) {}
