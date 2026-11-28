@@ -868,6 +868,51 @@ a.btn{text-decoration:none}
 @keyframes twinkle{to{filter:drop-shadow(0 0 1px rgba(255,214,120,.2));opacity:.75}}
 @media (prefers-reduced-motion:reduce){[data-skin="xmas"] .nav::after,[data-skin="xmas"] .desk #pbar::before{animation:none}}
 
+/* Decks: a club DJ booth. Matte black hardware, a lit screen for the track info, the song strip drawn as a
+   waveform, the platter as a jog wheel with a lit ring, cue-pad volume tabs, a green-ringed play button and
+   the rating button as an orange cue pad. Original: no maker's name, logo or exact layout. */
+:root[data-skin="decks"]{--bg:#111214;--bg2:#0b0c0e;--elev:#1b1d21;--elev2:#26292e;--line:#33363c;--fg:#e9ecef;--muted:#9aa1a9;--dim:#6b7179;
+  --gold:#ff7a1a;--gold-ink:#140a00;--hib:#19d3ff;--hib-ink:#001218;--sea:#3ddc84;--sheet:#1b1d21;--needle:#ff3b30;
+  --font:'Inter','Segoe UI',sans-serif;--brand:'Archivo','Arial Narrow',sans-serif;--disp:'Archivo','Arial Narrow',sans-serif;--dw:800;--dt:uppercase;--ds:75%;--rad:6px;
+  --paper:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);color-scheme:dark}
+[data-skin="decks"] .h-title,[data-skin="decks"] .sec h2,[data-skin="decks"] .rk-name b,[data-skin="decks"] .nav button,[data-skin="decks"] .yr-pass b,[data-skin="decks"] .sheet h2{letter-spacing:.06em}
+[data-skin="decks"] .rk-logo{font-stretch:75%;font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:17px}
+/* lit screens: the Dial, the open tape and the track read-out */
+[data-skin="decks"] .dial-band{background:#081320;border:1px solid #23415e;border-radius:6px;box-shadow:inset 0 0 14px rgba(25,211,255,.12);padding:0 6px 8px;
+  background-image:repeating-linear-gradient(90deg,#23415e 0 1px,transparent 1px 9px);background-size:100% 5px;background-position:bottom;background-repeat:no-repeat}
+[data-skin="decks"] .dial-band button{color:#5f86a6;font-weight:600;letter-spacing:.04em}
+[data-skin="decks"] .dial-band button.on{color:var(--hib);text-shadow:0 0 8px rgba(25,211,255,.7);font-weight:700}
+[data-skin="decks"] .rk-pull,[data-skin="decks"] .nd-song{background:#081320;border:1px solid #23415e;box-shadow:inset 0 0 18px rgba(25,211,255,.10);border-radius:6px}
+[data-skin="decks"] .rk-pull h3,[data-skin="decks"] .nd-song h1{color:#ffffff;font-stretch:75%;letter-spacing:.02em}
+[data-skin="decks"] .rk-pull p,[data-skin="decks"] .nd-song p,[data-skin="decks"] .nd-song small{color:var(--hib)}
+[data-skin="decks"] .nd-song{padding:12px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+/* crate spines as rubber strips, volume tabs as cue pads */
+[data-skin="decks"] .rk-spine{border-left:4px solid var(--sc);background:linear-gradient(#202328,#181a1e);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+[data-skin="decks"] .rk-vols button{border-radius:4px;background:#2a2d33;border-color:#3a3e45;color:#c7ccd2;box-shadow:inset 0 -2px 0 rgba(0,0,0,.4)}
+[data-skin="decks"] .rk-vols .own{background:var(--gold);border-color:var(--gold);color:var(--gold-ink);box-shadow:0 0 8px rgba(255,122,26,.55)}
+[data-skin="decks"] .rk-vols .sel{border-color:var(--hib);box-shadow:0 0 0 1.5px var(--hib),0 0 8px rgba(25,211,255,.5);color:#fff}
+[data-skin="decks"] .rk-vols .own.sel{color:var(--gold-ink)}
+[data-skin="decks"] .rk-b{border-radius:4px}
+[data-skin="decks"] .rk-b.line,[data-skin="decks"] .btn.ghost{border-color:#3a3e45}
+[data-skin="decks"] .chip{border-radius:4px}
+/* the song strip as a waveform */
+[data-skin="decks"] .nd-heat i{opacity:1;background:linear-gradient(#ffffff,#3a86ff 45%,#1747a6)}
+[data-skin="decks"] .nd-strip{background:#081320;padding:4px;border-radius:6px;border:1px solid #23415e;height:52px}
+[data-skin="decks"] .nd-strip button{background:#14263d;box-shadow:none}
+[data-skin="decks"] .nd-strip button.done{background:#3a86ff}
+[data-skin="decks"] .nd-strip button.cur{background:var(--gold);box-shadow:0 0 8px rgba(255,122,26,.7)}
+[data-skin="decks"] .nd-strip button.lock{background:repeating-linear-gradient(135deg,#23415e 0 1px,transparent 1px 5px)}
+[data-skin="decks"] .nd-needle{box-shadow:0 0 6px rgba(255,59,48,.8)}
+/* play button with a green ring, rating button as an orange cue pad */
+[data-skin="decks"] .nd-ctl .big{background:#1f2227;color:#3ddc84;box-shadow:0 0 0 3px #3ddc84,0 0 14px rgba(61,220,132,.45),inset 0 -3px 0 rgba(0,0,0,.4)}
+[data-skin="decks"] .nd-pull,[data-skin="decks"] .desk .pb-r .pb-pull{transform:none;border-radius:6px;background:linear-gradient(#ff8a30,#e5650a);color:#140a00;box-shadow:0 0 12px rgba(255,122,26,.5),inset 0 -3px 0 rgba(0,0,0,.25);font-size:15px;letter-spacing:.08em}
+[data-skin="decks"] .desk .pb-ctrls .pp{background:#1f2227;color:#3ddc84;box-shadow:0 0 0 2px #3ddc84}
+/* the platter as a jog wheel with a lit ring */
+[data-skin="decks"] .nav .platter,[data-skin="decks"] .desk .pb-plat{background:radial-gradient(circle,transparent 58%,#0d0e10 59% 66%,transparent 67%),conic-gradient(var(--hib) var(--p,0%),#2a2d33 0);
+  box-shadow:0 0 10px rgba(25,211,255,.35)}
+[data-skin="decks"] .nav{border-top:1px solid #23272c}
+[data-skin="decks"] .stamp{border-color:var(--sea);color:var(--sea)}
+
 /* Hi-Fi: a brushed-metal stereo with amber read-outs */
 :root[data-skin="hifi"]{--bg:#c9ccd0;--bg2:#b6b9be;--elev:#dcdee1;--elev2:#b4b8bd;--line:#8d9197;--fg:#1b1d20;--muted:#474b51;--dim:#6d7177;
   --gold:#ff9a1f;--gold-ink:#1b1d20;--hib:#c8321f;--hib-ink:#ffffff;--sea:#1f6b3a;--sheet:#dcdee1;--needle:#ff3b2f;
@@ -955,7 +1000,7 @@ const DJ = {
   /* The Dial: each word, and the tag on the tapes it plays. */
   dial: [['cruise','Cruise'],['summer','BBQ'],['rnb','Slow jams'],['gospel','Sunday'],['party','Party'],['island','Island']],
   skin: 'jcard',                     // the look a new fan starts with
-  skins: ['jcard','classic','siapo','riso','xmas','hifi'],   // which looks from the Needle Drop library this DJ offers
+  skins: ['jcard','classic','siapo','riso','decks','xmas','hifi'],   // which looks from the Needle Drop library this DJ offers
   /* How this DJ sells. 'both' = fans buy single tapes or take the monthly pass. 'pass' = pass only: nothing is
      bought one at a time, and pass holders can download tapes into the app to play offline (never a file). */
   sell: 'pass',
@@ -1218,6 +1263,7 @@ const SKINS = [
   {id:'siapo', name:'Siapo', sub:'Bark-cloth and bold geometry', sw:['#22130c','#f3e4c4','#e0672d','#f0b64a'], bar:'#190d08'},
   {id:'riso', name:'Riso flyer', sub:'Two-ink club flyer', sw:['#f8f1e7','#2230c4','#ff4a93','#2230c4'], bar:'#f8f1e7'},
   {id:'xmas', name:'Kerisimasi', sub:'Christmas: pohutukawa red, gold and fairy lights', sw:['#0f2a22','#fbf3e4','#e23b4a','#f4c95d'], bar:'#0a1f19', badge:'Christmas'},
+  {id:'decks', name:'Decks', sub:'DJ booth: jog wheel, waveform and cue pads', sw:['#111214','#e9ecef','#ff7a1a','#19d3ff'], bar:'#0b0c0e'},
   {id:'hifi', name:'Hi-Fi', sub:'Brushed-metal stereo', sw:['#c9ccd0','#1b1d20','#ff9a1f','#0c100e'], bar:'#b6b9be', release:true},
 ];
 let SKIN = (() => { try { return localStorage.getItem(DJ.key + '-skin'); } catch (e) { return null; } })();
