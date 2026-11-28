@@ -272,15 +272,8 @@ section.flush { padding-top: 0; }
 .contact-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .direct { margin-top: 1.6rem; font-weight: 300; }
 .direct a { font-weight: 500; text-decoration-color: var(--yellow); text-underline-offset: 0.25em; overflow-wrap: anywhere; }
-.enquiry { background: var(--coal); padding: clamp(1.4rem, 3.5vw, 3rem); border-top: 6px solid var(--yellow); display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-.enquiry .wide { grid-column: 1 / -1; }
-.enquiry label { display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.26em; }
-.enquiry input, .enquiry select, .enquiry textarea { width: 100%; padding: 0.9em 1em; border: 2px solid var(--white); border-radius: 0; background: var(--black); color: var(--white); font: 300 1rem var(--font); }
-.enquiry textarea { min-height: 9rem; resize: vertical; }
-.enquiry [aria-invalid="true"] { border-color: var(--red); }
-.enquiry .form-msg { margin: 0; }
+.mailpanel .addr { margin: 1.2rem 0 0; font-weight: 500; overflow-wrap: anywhere; }
 @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .enquiry { grid-template-columns: 1fr; } }
 .press-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; margin-top: clamp(2rem, 5vw, 4rem); }
 .press-grid .bio p { font-weight: 300; max-width: 36em; }
 .press-grid .bio p + p { margin-top: 1em; }
