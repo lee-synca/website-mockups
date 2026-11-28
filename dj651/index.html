@@ -373,16 +373,17 @@ a.btn{text-decoration:none}
 @keyframes down{from{transform:translateY(-14px);opacity:.3}}
 @media (prefers-reduced-motion:reduce){.sheet,.notice{animation:none}}
 
-/* ================= DESKTOP: Spotify desktop layout =================
-   Library sidebar on the left, main panel in the middle, Now Playing panel on the right,
-   a search top bar and a full-width player bar. Kicks in at 1024px wide once signed in. */
+/* ================= DESKTOP: the tape interface, wide =================
+   The Rack on the left, the open tape (song strip, Pull up, song list) in the middle, Yours on the right,
+   a top bar with search, and a deck bar along the bottom with the platter. Kicks in at 1024px wide once
+   signed in. Every colour comes from the skin's tokens, so the skins work here too. */
 #topbar,#side,#rpanel,#pbar,#ctx{display:none}
 @media (min-width:1024px){
   .app{max-width:none;border:0}
   .signin > :not(.sp-bg):not(.sp-glow):not(.sp-skip){width:100%;max-width:440px;margin-left:auto;margin-right:auto}
 }
-.app.desk{--gut:24px;--lw:300px;--rw:340px;display:grid;grid-template-areas:"top top top" "side main right" "bar bar bar";grid-template-columns:var(--lw) minmax(0,1fr) var(--rw);grid-template-rows:64px minmax(0,1fr) 80px;column-gap:8px;padding:0 8px;background:#000}
-@media (max-width:1279px){.app.desk{--lw:260px;--rw:290px}}
+.app.desk{--gut:24px;--lw:380px;--rw:340px;display:grid;grid-template-areas:"top top top" "side main right" "bar bar bar";grid-template-columns:var(--lw) minmax(0,1fr) var(--rw);grid-template-rows:64px minmax(0,1fr) 84px;column-gap:8px;padding:0 8px;background:var(--bg2)}
+@media (max-width:1279px){.app.desk{--lw:290px;--rw:270px}}
 .app.desk.norp{grid-template-areas:"top top" "side main" "bar bar";grid-template-columns:var(--lw) minmax(0,1fr)}
 .app.desk.sidemin{--lw:72px !important}
 .desk .viewport{grid-area:main;position:relative;inset:auto;border-radius:8px;overflow:hidden;background:var(--bg)}
@@ -406,14 +407,14 @@ a.btn{text-decoration:none}
 .tb-l,.tb-r{display:flex;align-items:center;gap:8px}
 .tb-r{justify-content:flex-end}
 .tb-c{display:flex;align-items:center;gap:8px}
-.tb-round{width:48px;height:48px;border-radius:50%;background:#1f1c23;display:grid;place-items:center;color:var(--muted);flex:none}
+.tb-round{width:48px;height:48px;border-radius:50%;background:var(--elev);display:grid;place-items:center;color:var(--muted);flex:none}
 .tb-round:hover{color:var(--fg);transform:scale(1.04)}
 .tb-round.on{color:var(--fg)}
 .tb-arrow{width:32px;height:32px;border-radius:50%;background:var(--bg);display:grid;place-items:center}
 .tb-arrow[disabled]{opacity:.4;cursor:not-allowed}
 .tb-arrow .ic{width:18px;height:18px}
-.tb-search{display:flex;align-items:center;gap:10px;width:min(480px,36vw);height:48px;border-radius:999px;background:#1f1c23;padding:0 8px 0 14px;color:var(--muted);cursor:text}
-.tb-search:hover{background:#2b2731}
+.tb-search{display:flex;align-items:center;gap:10px;width:min(480px,36vw);height:48px;border-radius:999px;background:var(--elev);padding:0 8px 0 14px;color:var(--muted);cursor:text}
+.tb-search:hover{background:var(--elev2)}
 .tb-search:focus-within{box-shadow:0 0 0 2px var(--fg);color:var(--fg)}
 .tb-search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--fg);font:inherit;font-size:15px}
 .tb-search input::placeholder{color:var(--muted)}
@@ -433,19 +434,19 @@ a.btn{text-decoration:none}
 .sd-title{display:flex;align-items:center;gap:12px;font-weight:800;font-size:16px;color:var(--muted)}
 .sd-title:hover{color:var(--fg)}
 .sd-ic{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
-.sd-ic:hover{color:var(--fg);background:#ffffff14}
+.sd-ic:hover{color:var(--fg);background:color-mix(in srgb,var(--fg) 8%,transparent)}
 .sd-ic .ic{width:20px;height:20px}
 .sd-chips{padding:6px 16px 4px}
 .sd-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px 4px 16px;color:var(--muted);font-size:13px}
 .sd-tools button{display:flex;align-items:center;gap:6px;color:var(--muted)}
 .sd-tools button:hover{color:var(--fg)}
 .sd-tools .ic{width:16px;height:16px}
-.sd-find{display:flex;align-items:center;gap:6px;background:#2b2731;border-radius:6px;padding:0 8px;height:32px;flex:1;max-width:180px}
+.sd-find{display:flex;align-items:center;gap:6px;background:var(--elev2);border-radius:6px;padding:0 8px;height:32px;flex:1;max-width:180px}
 .sd-find input{background:transparent;border:0;outline:0;color:var(--fg);font:inherit;font-size:13px;width:100%}
 .sd-list{flex:1;overflow-y:auto;padding:4px 8px 12px;min-height:0}
 .sd-row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:center;padding:6px 8px;border-radius:6px;cursor:pointer}
-.sd-row:hover{background:#ffffff12}
-.sd-row.on{background:#ffffff1f}
+.sd-row:hover{background:color-mix(in srgb,var(--fg) 7%,transparent)}
+.sd-row.on{background:color-mix(in srgb,var(--fg) 12%,transparent)}
 .sd-row img{width:48px;height:48px;border-radius:4px;object-fit:cover;display:block}
 .sd-row .rt{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sd-row .rt.now{color:var(--gold)}
@@ -459,7 +460,7 @@ a.btn{text-decoration:none}
 .sd-empty b{display:block;font-size:16px;margin-bottom:6px}
 .sd-empty p{margin:0 0 14px;color:var(--muted);font-size:13.5px}
 .sd-resize{position:absolute;top:0;bottom:0;right:-8px;width:8px;cursor:col-resize;z-index:3}
-.sd-resize:hover,.sd-resize.drag{background:linear-gradient(90deg,transparent 3px,#ffffff40 3px,#ffffff40 5px,transparent 5px)}
+.sd-resize:hover,.sd-resize.drag{background:linear-gradient(90deg,transparent 3px,color-mix(in srgb,var(--fg) 25%,transparent) 3px,color-mix(in srgb,var(--fg) 25%,transparent) 5px,transparent 5px)}
 .sidemin .sd-title b,.sidemin .sd-head .sd-ic,.sidemin .sd-chips,.sidemin .sd-tools,.sidemin .sd-row > div,.sidemin .sd-row > .eqi,.sidemin .sd-empty{display:none}
 .sidemin .sd-head{justify-content:center;padding:16px 0 8px}
 .sidemin .sd-row{grid-template-columns:48px;justify-content:center}
@@ -515,7 +516,7 @@ a.btn{text-decoration:none}
 /* main panel content, desktop sizes */
 .desk .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));grid-template-rows:auto;grid-auto-rows:0;row-gap:0;column-gap:0;overflow:hidden;margin:0 -12px;padding:0}
 .desk .tile{padding:12px;border-radius:8px;gap:6px;position:relative}
-.desk .tile:hover,.desk .ct:hover{background:#ffffff12}
+.desk .tile:hover,.desk .ct:hover{background:color-mix(in srgb,var(--fg) 7%,transparent)}
 .desk .tile img{width:100%;height:auto;aspect-ratio:1;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .desk .tile .tt{font-size:15px}
 .desk .tplay{display:grid;place-items:center;position:absolute;right:8px;bottom:8px;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--gold-ink);opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;box-shadow:0 8px 16px rgba(0,0,0,.4)}
@@ -523,8 +524,8 @@ a.btn{text-decoration:none}
 .desk .tile:hover .tplay,.desk .ct:hover .tplay{opacity:1;transform:none}
 .desk .tile:hover .own-tick,.desk .ct:hover .own-tick{opacity:0}
 .desk .quick{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
-.desk .qt{height:64px;grid-template-columns:64px minmax(0,1fr) auto;background:#ffffff14;position:relative}
-.desk .qt:hover{background:#ffffff24}
+.desk .qt{height:64px;grid-template-columns:64px minmax(0,1fr) auto;background:color-mix(in srgb,var(--fg) 8%,transparent);position:relative}
+.desk .qt:hover{background:color-mix(in srgb,var(--fg) 14%,transparent)}
 .desk .qt img{width:64px;height:64px}
 .desk .qt span{font-size:14px}
 .desk .qplay{display:grid;place-items:center;width:36px;height:36px;margin-right:10px;border-radius:50%;background:var(--gold);color:var(--gold-ink);opacity:0;transition:opacity .2s}
@@ -537,7 +538,7 @@ a.btn{text-decoration:none}
 .desk .cgrid,.desk .lgrid{grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:0;margin:18px -12px 0}
 .desk .ct{padding:12px;border-radius:8px}
 .desk .topres{max-width:460px}
-.desk .row:hover{background:#ffffff0d;border-radius:6px}
+.desk .row:hover{background:color-mix(in srgb,var(--fg) 5%,transparent);border-radius:6px}
 .desk .h-title{font-size:28px}
 
 /* mix + category pages */
@@ -559,7 +560,7 @@ a.btn{text-decoration:none}
 .desk .acts .sp{display:none}
 .desk .thead,.desk .trk{display:grid;grid-template-columns:32px minmax(0,1fr) 90px 40px;gap:16px;align-items:center;padding:6px 16px;margin:0 -16px;border-radius:6px}
 .desk .thead{color:var(--muted);font-size:13px;border-bottom:1px solid var(--line);border-radius:0;margin-bottom:10px;padding-bottom:8px;position:sticky;top:64px;background:var(--bg);z-index:3}
-.desk .trk:hover{background:#ffffff14}
+.desk .trk:hover{background:color-mix(in srgb,var(--fg) 8%,transparent)}
 .desk .tno,.desk .tst{display:block;color:var(--muted);font-size:15px;text-align:center}
 .desk .tst{text-align:right;font-size:14px}
 .desk .thead .tst{font-size:13px}
@@ -572,19 +573,53 @@ a.btn{text-decoration:none}
 .desk .trk:hover .more{opacity:1}
 
 /* right-click menu */
-#ctx{position:fixed;z-index:60;min-width:220px;max-width:280px;background:#2b2731;border-radius:6px;padding:4px;box-shadow:0 16px 40px rgba(0,0,0,.6)}
+#ctx{position:fixed;z-index:60;min-width:220px;max-width:280px;background:var(--elev2);border-radius:6px;padding:4px;box-shadow:0 16px 40px rgba(0,0,0,.6)}
 #ctx.on{display:block}
-#ctx button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:4px;font-size:14px;color:#eae6ee}
-#ctx button:hover{background:#ffffff1a}
+#ctx button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:4px;font-size:14px;color:var(--fg)}
+#ctx button:hover{background:color-mix(in srgb,var(--fg) 10%,transparent)}
 #ctx .ic{width:18px;height:18px;color:var(--muted)}
-#ctx hr{border:0;border-top:1px solid #ffffff1a;margin:4px 0}
+#ctx hr{border:0;border-top:1px solid color-mix(in srgb,var(--fg) 10%,transparent);margin:4px 0}
 
 /* QR + shortcuts */
-.qr{background:var(--fg);padding:12px;border-radius:12px;width:192px;height:192px;margin:4px auto;display:grid;place-items:center}
+.qr{background:#fff;padding:12px;border-radius:12px;width:192px;height:192px;margin:4px auto;display:grid;place-items:center}
 .qr img,.qr canvas{display:block}
 .kb{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:14px 16px;font-size:14px}
 .kb kbd{font:inherit;font-size:12px;background:var(--elev2);border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--fg);white-space:nowrap}
 .desk .list-card.kb{display:grid}
+
+/* ---------- desktop: tape layout ---------- */
+.desk #side,.desk #rpanel,.desk .viewport{background-color:var(--bg);background-image:var(--paper);background-size:var(--paper-size)}
+.desk #side{display:block;overflow-y:auto;--gut:16px}
+.desk #rpanel{--gut:18px}
+.desk #side .rk-hd{display:none}
+.desk #side{overflow-x:hidden}
+.desk #side .rk-pull{grid-template-columns:96px minmax(0,1fr);gap:12px}
+.desk #side .rk-cv img{width:96px;height:96px}
+.desk #side .rk-b{white-space:normal}
+[data-skin="hifi"] .desk #side .rk-pull h3{font-size:22px}
+.desk #side .dial{margin-top:14px}
+.desk #side .rk-spine.alt,.desk #side .rk-spine:not(.alt){transform:none}
+.desk .tb-logo{font-size:22px;padding:0 6px;white-space:nowrap;line-height:1}
+.desk .tb-search{border:1px solid var(--line)}
+.desk .tb-pill:not(.dark){background:var(--gold);color:var(--gold-ink)}
+.desk .dk-tape{container-type:inline-size}
+.desk .dk-tape .fp{max-width:880px;margin:0 auto;padding-top:14px}
+.desk .dk-tape [data-act=collapse]{visibility:hidden}
+.desk .dk-tape .nd-head{grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:28px}
+.desk .dk-tape .nd-song h1{font-size:44px}
+.desk .dk-tape .nd-strip{height:58px}
+.desk .dk-tape .nd-heat{height:44px}
+.desk .dk-tape .nd-strip button:hover:not(.cur){outline:2px solid var(--gold);outline-offset:-2px}
+.desk .dk-tape .nd-pull:hover{transform:rotate(-3deg) scale(1.05)}
+.desk .dk-tape .tl li:hover{background:color-mix(in srgb,var(--fg) 6%,transparent)}
+.desk #pbar{border-top:1px solid var(--line)}
+.desk .pb-plat{width:60px;height:60px;border-radius:50%;padding:4px;flex:none;background:conic-gradient(var(--gold) var(--p,0%),var(--line) 0)}
+.desk .pb-l .pb-plat img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.desk .pb-r .pb-pull{font-family:var(--disp);font-weight:var(--dw);text-transform:var(--dt);font-stretch:var(--ds);font-size:15px;padding:9px 14px;border-radius:var(--rad);background:var(--gold);color:var(--gold-ink);transform:rotate(-3deg);white-space:nowrap}
+.desk .pb-r .pb-pull:hover{color:var(--gold-ink);transform:rotate(-3deg) scale(1.05)}
+@container (max-width:620px){.desk .dk-tape .nd-head{grid-template-columns:40% minmax(0,1fr);gap:16px}.desk .dk-tape .nd-song h1{font-size:28px}}
+[data-skin="hifi"] .desk .pb-plat{background:radial-gradient(circle at 35% 28%,#ffffff,#bfc2c6 45%,#7c8086)}
+[data-skin="hifi"] .desk .pb-r .pb-pull,[data-skin="siapo"] .desk .pb-r .pb-pull{transform:none;font-size:11px;letter-spacing:.08em}
 
 /* ================= THE TAPE INTERFACE: Rack, Dial, platter, needle strip, Yours =================
    No tab bar and no feed. The Rack lists every series as a spine with its volumes as tabs. The platter
@@ -1088,9 +1123,8 @@ const SKINS = [
 let SKIN = (() => { try { return localStorage.getItem(DJ.key + '-skin'); } catch (e) { return null; } })();
 if (!SKINS.some(s => s.id === SKIN && DJ.skins.includes(s.id))) SKIN = DJ.skin;
 const skinsOut = () => SKINS.filter(s => DJ.skins.includes(s.id) && (!s.release || S.skinDrop || s.id === SKIN));
-/* The desktop layout keeps the Midnight look for now; skins are for the phone app. */
 function applySkin(){
-  const id = isDesk() && S.signedIn ? 'classic' : SKIN, s = SKINS.find(x => x.id === id);
+  const id = SKIN, s = SKINS.find(x => x.id === id);
   document.documentElement.dataset.skin = id;
   document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = s.bar; });
 }
@@ -1214,9 +1248,9 @@ function library(){
     <div class="sec"><h2>Your pull-ups</h2></div>
     ${S.pullups.length ? S.pullups.map(p => `<button class="yr-pu" data-act="playpull" data-id="${p.id}" data-at="${p.at}"><span><b>${p.song}</b><small>${byId[p.id].t}</small></span><span class="tab">${mmss(p.at)}</span></button>`).join('')
       : '<p class="empty">Tap Pull up! while a tape plays and the moment is saved here.</p>'}
-    <div class="sec m-only"><h2>Skin</h2></div>
-    <p class="yr-note m-only">Change the look any time. New skins from ${DJ.name} show up here for everyone.</p>
-    <div class="yr-skins m-only">${skinsOut().map(s => `<button class="yr-skin ${s.id === SKIN ? 'on' : ''}" data-act="skin" data-id="${s.id}" aria-pressed="${s.id === SKIN}"><span class="sw" style="background:${s.sw[0]};color:${s.sw[1]}">Aa<i style="background:${s.sw[2]}"></i><i style="background:${s.sw[3]}"></i></span><b>${s.name}</b><small>${s.id === SKIN ? 'On now' : s.sub}</small>${s.release && s.id !== SKIN ? '<em>New</em>' : ''}</button>`).join('')}</div>
+    <div class="sec"><h2>Skin</h2></div>
+    <p class="yr-note">Change the look any time. New skins from ${DJ.name} show up here for everyone.</p>
+    <div class="yr-skins">${skinsOut().map(s => `<button class="yr-skin ${s.id === SKIN ? 'on' : ''}" data-act="skin" data-id="${s.id}" aria-pressed="${s.id === SKIN}"><span class="sw" style="background:${s.sw[0]};color:${s.sw[1]}">Aa<i style="background:${s.sw[2]}"></i><i style="background:${s.sw[3]}"></i></span><b>${s.name}</b><small>${s.id === SKIN ? 'On now' : s.sub}</small>${s.release && s.id !== SKIN ? '<em>New</em>' : ''}</button>`).join('')}</div>
     <div class="sec"><h2>Playing on</h2></div>
     <button class="btn wide" data-act="devices">${ic(dev.icon)} ${dev.name}</button>
     <button class="btn ghost wide" data-act="tab" data-tab="plans" style="margin-top:10px">Account, plans and alerts</button>
@@ -1379,62 +1413,26 @@ const deskMQ = matchMedia('(min-width:1024px)');
 const isDesk = () => deskMQ.matches && !$('app').classList.contains('fit');
 const songNow = () => { const tr = tracks(S.now), pct = S.preview ? (dur() / toSecs(byId[S.now].len)) * S.progress : S.progress, ti = trackAt(S.now, pct); return ti >= 0 ? tr[ti] : null; };
 function topbar(){
-  const home = S.tab === 'home' && !S.stack.length;
-  return `<div class="tb-l"><button class="tb-arrow" data-act="back" title="Go back" ${S.stack.length ? '' : 'disabled'}>${ic('back')}</button><button class="tb-arrow" data-act="fwd" title="Go forward" ${S.fwd.length ? '' : 'disabled'}>${ic('fwd')}</button></div>
-    <div class="tb-c"><button class="tb-round ${home ? 'on' : ''}" data-act="tab" data-tab="home" title="Home">${ic(home ? 'homeOn' : 'home')}</button>
-      <label class="tb-search" for="dq" title="Search">${ic('search')}<input id="dq" type="search" placeholder="What do you want to play?" autocomplete="off"><kbd>Ctrl K</kbd><button class="tb-browse" data-act="tab" data-tab="search" title="Browse">${ic('browse')}</button></label></div>
-    <div class="tb-r"><button class="tb-pill dark" data-act="install">${ic('phone')}Get the app</button>${member() ? '' : `<button class="tb-pill" data-act="plan" data-plan="listen">Try Listen</button>`}<span id="tbcart">${cartIcon()}</span>${avatarBtn()}</div>`;
+  return `<div class="tb-l"><button class="tb-logo rk-logo" data-act="tab" data-tab="home" title="Back to the tape">${DJ.app}</button><button class="tb-arrow" data-act="back" title="Go back" ${S.stack.length ? '' : 'disabled'}>${ic('back')}</button><button class="tb-arrow" data-act="fwd" title="Go forward" ${S.fwd.length ? '' : 'disabled'}>${ic('fwd')}</button></div>
+    <div class="tb-c"><label class="tb-search" for="dq" title="Search">${ic('search')}<input id="dq" type="search" placeholder="Find a song or tape" autocomplete="off"><kbd>Ctrl K</kbd></label></div>
+    <div class="tb-r"><button class="tb-pill dark" data-act="install">${ic('phone')}Get the app</button>${member() ? '' : `<button class="tb-pill" data-act="plan" data-plan="listen">${PASS_ONLY ? `Get the pass $${PASS}/mth` : 'Try Listen'}</button>`}<span id="tbcart">${cartIcon()}</span>${avatarBtn()}</div>`;
 }
-function side(){
-  const f = S.libFilter, list = libList();
-  const rows = list.map(m => { const playing = S.now === m.id && S.playing, open = topPage() && topPage().id === m.id;
-    return `<div class="sd-row ${open ? 'on' : ''}" data-act="open" data-id="${m.id}" title="${m.t}">${cv(m.id)}<div style="min-width:0"><div class="rt ${S.now === m.id ? 'now' : ''}">${m.t}</div><div class="rs">${libSub(m)}</div></div>${playing ? `<span class="eqi">${ic('vol')}</span>` : '<span></span>'}</div>`; }).join('');
-  return `<div class="sd-head"><button class="sd-title" data-act="sidemin" title="${S.sideMin ? 'Open' : 'Collapse'} Your Library">${ic(S.sideMin ? 'library' : 'libraryOn')}<b>Your Library</b></button><span style="flex:1"></span>
-      <button class="sd-ic" data-act="tab" data-tab="search" title="Find mixes">${ic('add')}</button><button class="sd-ic" data-act="tab" data-tab="library" title="Show Your Library in the main view">${ic('expand')}</button></div>
-    <div class="chips sd-chips">${(PASS_ONLY ? [['all','All'],['added','Added'],['offline','Downloaded']] : [['all','All'],['owned','Bought'],['added','Added'],['offline','Downloaded']]).map(([k,l]) => `<button class="chip ${f===k?'on':''}" data-act="lfilter" data-f="${k}">${l}</button>`).join('')}</div>
-    <div class="sd-tools"><label class="sd-find" title="Search in Your Library">${ic('search')}<input id="sdq" type="search" placeholder="Search in Your Library" autocomplete="off"></label><button data-act="lsort" title="Change sort order">${SORTS[S.libSort]} ${ic('sort')}</button></div>
-    <div class="sd-list" id="sdlist">${rows || `<div class="sd-empty"><b>${f === 'all' ? 'Build your library' : 'Nothing here yet'}</b><p>${f === 'added' ? (member() ? 'Add any mix with the + button.' : 'Listen members can add any mix here.') : 'Mixes you buy or add show up here.'}</p><button class="pill" data-act="tab" data-tab="search">Browse mixes</button></div>`}</div>
-    <div class="sd-resize" id="sdres" title="Drag to resize"></div>`;
-}
-function rpanel(){
-  const m = byId[S.now], own = owns(m.id), t = songNow(), nx = upNext()[0];
-  const addIcon = own || S.saved.has(m.id) ? 'added' : 'add';
-  let cta;
-  if (PASS_ONLY) cta = passCta(m.id);
-  else if (own) cta = `<div class="card plain"><h3>You own this mix</h3><p style="margin:0;color:var(--muted);font-size:13.5px">Download the MP3 to your computer any time.</p><div class="cta"><button class="btn white" data-act="download" data-id="${m.id}">${ic('arrow')} Download MP3</button></div></div>`;
-  else if (member()) cta = `<div class="card plain"><h3>Keep it forever</h3><p style="margin:0;color:var(--muted);font-size:13.5px">It's included with Listen. Buy the MP3 to keep it even if you cancel.</p><div class="cta"><button class="btn gold" data-act="buynow" data-id="${m.id}">Buy for $${MEMBER_PRICE}</button></div></div>`;
-  else cta = `<div class="card plain"><h3>Own this mix</h3><p style="margin:0;color:var(--muted);font-size:13.5px">Buy it to keep and download, or stream every mix with Listen.</p><div class="cta"><button class="btn gold" data-act="buynow" data-id="${m.id}">Buy now $${PRICE}</button><button class="btn ghost" data-act="plan" data-plan="listen">Listen $${PASS}/mth</button></div></div>`;
-  return `<div class="rp"><div class="rp-head"><b data-act="open" data-id="${m.id}">${m.t}</b><button class="sd-ic" data-act="rptoggle" title="Hide Now Playing view">${ic('x')}</button></div>
-    <img class="rp-cover" src="${cover(m.id)}" alt="Cover of ${m.t}" data-act="open" data-id="${m.id}">
-    <div class="rp-meta"><div style="min-width:0"><h2 id="rpsong">${t ? t.t : m.t}</h2><p id="rpart">${t && t.a !== DJ.name ? `${t.a} · ` : ''}${DJ.name}</p></div>
-      <button class="${addIcon === 'added' ? 'on' : ''}" data-act="${own ? 'noop' : member() ? 'save' : 'buynow'}" data-id="${m.id}" title="${own ? 'You own this mix' : member() ? 'Add to Your Library' : 'Buy this mix'}">${ic(addIcon)}</button></div>
-    ${S.preview ? `<div class="pvnote"><b>${PV} preview.</b> ${PASS_ONLY ? `Get the pass and play every tape for $${PASS} a month.` : `Buy this mix for $${PRICE}, or stream every mix for $${PASS} a month.`}</div>` : ''}
-    ${cta}
-    <div class="about"><div class="ab-img" style="background-image:url(${cover(DJ.face)})"><span>About the artist</span></div>
-      <div class="ab-b"><b>${DJ.name}</b><div class="ab-row"><span>${vis().length} mixes on ${DJ.app}</span><button class="pill ${S.follow ? 'line' : ''}" data-act="follow">${S.follow ? 'Following' : 'Follow'}</button></div>
-      <p>${DJ.about}</p></div></div>
-    ${nx ? `<div class="card plain rp-next"><h3>Next in queue <button data-act="queue">Open queue</button></h3><div class="row" data-act="play" data-id="${nx.id}">${cv(nx.id)}<div style="min-width:0"><div class="rt">${nx.t}</div><div class="rs">${DJ.name} ${canPlay(nx.id) ? '' : '<span class="badge pv">Preview</span>'}</div></div><span></span></div></div>` : ''}
-  </div>`;
-}
+/* Desktop: the Rack sits in the left column, Yours in the right, and the middle shows the open tape. */
+function side(){ return home(); }
+function rpanel(){ return library(); }
 function pbar(){
-  const m = byId[S.now], own = owns(m.id), t = songNow();
-  const addIcon = own || S.saved.has(m.id) ? 'added' : 'add';
-  const volIc = S.vol === 0 ? 'volMute' : 'vol';
-  return `<div class="pb-l"><img src="${cover(m.id)}" alt="" data-act="open" data-id="${m.id}" title="Open ${m.t}">
-      <div class="tx"><div class="pb-t" data-act="open" data-id="${m.id}"><span>${m.t}</span>${S.preview ? '<i class="badge pv" style="font-style:normal">Preview</i>' : ''}</div><div class="pb-s" id="pbsub">${t ? `${t.t} · ${t.a}` : DJ.name}</div></div>
-      <button class="add ${addIcon === 'added' ? 'on' : ''}" data-act="${own ? 'noop' : member() ? 'save' : 'buynow'}" data-id="${m.id}" title="${own ? 'You own this mix' : member() ? 'Add to Your Library' : 'Buy this mix'}">${ic(addIcon)}</button></div>
+  const m = byId[S.now], t = songNow(), volIc = S.vol === 0 ? 'volMute' : 'vol';
+  return `<div class="pb-l"><button class="platter pb-plat" data-act="expand" title="Open ${m.t}"><img src="${cover(m.id)}" alt=""></button>
+      <div class="tx"><div class="pb-t" data-act="expand"><span>${m.t}</span>${S.preview ? '<i class="badge pv" style="font-style:normal">Preview</i>' : ''}</div><div class="pb-s" id="pbsub">${t ? `${t.t} · ${t.a}` : DJ.name}</div></div></div>
     <div class="pb-c"><div class="pb-ctrls">
-        <button class="${S.shuffle ? 'on' : ''}" data-act="shuffle" title="Shuffle">${ic('shuffle')}</button>
-        <button data-act="prev" title="Previous">${ic('prev')}</button>
+        <button data-act="segstep" data-d="-1" title="Previous song">${ic('prev')}</button>
         <button class="pp" data-act="toggle" title="${S.playing ? 'Pause' : 'Play'} (Space)">${ic(S.playing ? 'pause' : 'play')}</button>
-        <button data-act="next" title="Next">${ic('next')}</button>
-        <button class="${S.repeat ? 'on' : ''}" data-act="repeat" title="Repeat">${ic('repeat')}</button></div>
+        <button data-act="segstep" data-d="1" title="Next song">${ic('next')}</button></div>
       <div class="pb-prog tab"><span id="pbtel">0:00</span><input class="seek ${S.preview ? 'pv' : ''}" id="pbseek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span>${mmss(dur())}</span></div></div>
-    <div class="pb-r"><button class="${S.rp ? 'on' : ''}" data-act="rptoggle" title="Now playing view">${ic('npview')}</button>
-      <button data-act="queue" title="Queue">${ic('queue')}</button>
-      <button class="${S.device !== 'phone' ? 'on' : ''}" data-act="devices" title="Connect to a device">${ic('devices')}</button>
-      <button data-act="mute" title="${S.vol === 0 ? 'Unmute' : 'Mute'}">${ic(volIc)}</button><input class="seek vol" id="vol" type="range" min="0" max="100" value="${S.vol}" aria-label="Volume" style="--p:${S.vol}%">
-      <button data-act="fullscreen" title="Full screen">${ic('expand')}</button></div>`;
+    <div class="pb-r"><button class="pb-pull" data-act="pullup" title="Pull up: replay the last 20 seconds and save this moment">Pull up!</button>
+      <button data-act="queue" title="Up next">${ic('queue')}</button>
+      <button class="${S.device !== 'phone' ? 'on' : ''}" data-act="devices" title="Play on a speaker">${ic('devices')}</button>
+      <button data-act="mute" title="${S.vol === 0 ? 'Unmute' : 'Mute'}">${ic(volIc)}</button><input class="seek vol" id="vol" type="range" min="0" max="100" value="${S.vol}" aria-label="Volume" style="--p:${S.vol}%"></div>`;
 }
 let lastW = null;
 function renderDesk(){
@@ -1442,19 +1440,20 @@ function renderDesk(){
   if (lastW) app.style.setProperty('--lw', lastW + 'px'); else app.style.removeProperty('--lw');
   $('topbar').innerHTML = topbar();
   const dq = $('dq'); if (dq) dq.value = S.q;
-  const sl = $('sdlist'), sk = sl ? sl.scrollTop : 0;
-  $('side').innerHTML = side();
-  if ($('sdlist')) $('sdlist').scrollTop = sk;
+  const sd = $('side'), sk = sd.scrollTop;
+  sd.innerHTML = side(); sd.scrollTop = sk;
   const rp = $('rpanel'), rk = rp.scrollTop;
-  rp.innerHTML = S.rp ? rpanel() : ''; rp.scrollTop = rk;
+  rp.innerHTML = rpanel(); rp.scrollTop = rk;
   $('pbar').innerHTML = pbar();
 }
 
 /* ---------- render ---------- */
+const deskTape = () => `<div class="dk-tape">${fullPlayer()}</div>`;
 function render(){
   applySkin();
   const sc = $('screen'), keep = sc.scrollTop, same = sc.dataset.k === S.tab;
-  sc.innerHTML = !S.signedIn ? signin() : ({home, search, library, plans})[S.tab]();
+  const wide = isDesk();
+  sc.innerHTML = !S.signedIn ? signin() : (wide ? {home:deskTape, library:deskTape, search, plans} : {home, search, library, plans})[S.tab]();
   sc.dataset.k = S.signedIn ? S.tab : '';
   if (same) sc.scrollTop = keep;
   const ov = $('overlay'), t = topPage(), ok = t ? t.type + (t.id || '') : '', okeep = ov.scrollTop, osame = ov.dataset.k === ok;
@@ -1462,9 +1461,9 @@ function render(){
   ov.dataset.k = ok; ov.scrollTop = osame ? okeep : 0;
   onScroll();
   const pl = $('player'), pkeep = pl.scrollTop;
-  pl.innerHTML = S.signedIn ? fullPlayer() : '';
+  pl.innerHTML = S.signedIn && !wide ? fullPlayer() : '';
   pl.scrollTop = pkeep;
-  pl.classList.toggle('open', S.signedIn && S.full);
+  pl.classList.toggle('open', S.signedIn && S.full && !wide);
   $('mini').innerHTML = S.signedIn ? mini() : '';
   const nav = $('nav'); nav.hidden = !S.signedIn;
   nav.innerHTML = !S.signedIn ? '' : (() => { const on = k => S.tab === k && !S.stack.length ? 'on' : '', m = byId[S.now];
@@ -1477,8 +1476,6 @@ function render(){
   $('app').classList.toggle('full', S.signedIn && S.full);
   const D = isDesk() && S.signedIn;
   $('app').classList.toggle('desk', D);
-  $('app').classList.toggle('norp', D && !S.rp);
-  $('app').classList.toggle('sidemin', D && S.sideMin);
   if (D) { const typing = document.activeElement && document.activeElement.id; renderDesk(); if (typing === 'dq' && $('dq')) { const q = $('dq'); q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
   else ['topbar','side','rpanel','pbar'].forEach(k => { $(k).innerHTML = ''; });
   updateProgress();
@@ -1497,7 +1494,7 @@ function updateProgress(){
   const pct = S.preview ? (dur() / toSecs(byId[S.now].len)) * S.progress : S.progress;
   const ti = trackAt(S.now, pct), tr = tracks(S.now);
   if ($('needle')) $('needle').style.left = pct + '%';
-  $('nav').style.setProperty('--p', pct + '%');
+  $('nav').style.setProperty('--p', pct + '%'); $('pbar').style.setProperty('--p', pct + '%');
   if ($('fpsong')) { $('fpsong').textContent = ti >= 0 ? tr[ti].t : byId[S.now].t; $('fpart').textContent = ti >= 0 ? tr[ti].a : DJ.name; $('fpn').textContent = ti >= 0 ? `Song ${ti + 1} of ${tr.length}` : 'Full tape'; }
   const st = $('ndstrip');
   if (st) { const sn = segCount(S.now), si = Math.min(sn - 1, Math.floor(pct / 100 * sn));
@@ -1837,6 +1834,7 @@ document.addEventListener('click', e => {
   hideCtx();
   const b = e.target.closest('[data-act]'); if (!b || b.disabled) return;
   const a = b.dataset.act, id = b.dataset.id;
+  if (isDesk() && S.signedIn && (a === 'expand' || a === 'fullscreen')) { closeSheet(); S.tab = 'home'; S.stack = []; S.full = false; render(); $('screen').scrollTop = 0; return; }
   if (PASS_ONLY && ['buynow','buyspecial','addcart','cart','pay','checkout'].includes(a)) { closeSheet(); passOffer('Pass only', 'Every tape comes with the pass'); return; }
   if (['open','openfrom','cat','cart','tab'].includes(a)) S.fwd = [];
   switch (a){
