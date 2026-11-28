@@ -239,6 +239,15 @@ button:active{opacity:.7}
 .seek::-moz-range-track{height:4px;border-radius:2px;background:color-mix(in srgb,var(--fg) 25%,transparent)}
 .seek::-moz-range-progress{height:4px;border-radius:2px;background:var(--c)}
 .seek::-moz-range-thumb{width:13px;height:13px;border:0;border-radius:50%;background:var(--fg)}
+/* playhead under the song strip: a big thumb that's easy to drag with a thumb */
+.nd-seek{--c:var(--gold);display:block;height:34px;margin:8px 0 0;touch-action:none}
+.nd-seek::-webkit-slider-runnable-track{height:6px;border-radius:3px}
+.nd-seek::-webkit-slider-thumb{width:24px;height:24px;margin-top:-9px;background:var(--needle);border:3px solid var(--bg);box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.nd-seek::-moz-range-track{height:6px;border-radius:3px}
+.nd-seek::-moz-range-progress{height:6px;border-radius:3px}
+.nd-seek::-moz-range-thumb{width:20px;height:20px;background:var(--needle);border:3px solid var(--bg);box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.nd-seek:active::-webkit-slider-thumb{transform:scale(1.15)}
+.nd-seek:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .seek.pv{--c:var(--hib)}
 .times{position:relative;display:flex;justify-content:space-between;font-size:11.5px;color:color-mix(in srgb,var(--fg) 70%,transparent);margin-top:-4px}
 .ctrls{position:relative;display:flex;align-items:center;justify-content:space-between;margin-top:10px}
@@ -1421,6 +1430,7 @@ function fullPlayer(){
       <div class="nd-song"><small id="fpn">Full tape</small><h1 id="fpsong">${m.t}</h1><p id="fpart">${DJ.name}</p></div></div>
     <div class="nd-wrap"><div class="nd-heat" aria-hidden="true">${heat}</div>
       <div class="nd-strip" id="ndstrip">${segs}<span class="nd-needle" id="needle"></span></div>
+      <input class="seek nd-seek" id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Playhead: drag to move through the tape">
       <div class="times tab"><span id="tel">0:00</span>${S.preview ? `<span class="nd-free">Free until ${PREVIEW_MIN}:00</span>` : `<span>Tap a block to drop the needle</span>`}<span>${mmss(total)}</span></div></div>
     <div class="nd-ctl">
       <button class="pn" data-act="segstep" data-d="-1" aria-label="Previous song">${ic('prev')}</button>
@@ -1522,7 +1532,7 @@ function render(){
   syncAudio();
 }
 function updateProgress(){
-  if (realKey && Math.abs(S.progress - lastP) > 0.05) applySeek();
+  if (realKey && !scrubbing && Math.abs(S.progress - lastP) > 0.05) applySeek();
   updatePosition();
   if (!S.signedIn) return;
   const d = dur(), el = d * S.progress / 100, seek = $('seek');
@@ -1534,6 +1544,7 @@ function updateProgress(){
   const pct = S.preview ? (dur() / toSecs(byId[S.now].len)) * S.progress : S.progress;
   const ti = trackAt(S.now, pct), tr = tracks(S.now);
   if ($('needle')) $('needle').style.left = pct + '%';
+  const ph = $('seek'); if (ph && ph.classList.contains('nd-seek')) { if (document.activeElement !== ph || !scrubbing) ph.value = Math.round(pct * 10); ph.style.setProperty('--p', pct + '%'); }
   $('nav').style.setProperty('--p', pct + '%'); $('pbar').style.setProperty('--p', pct + '%');
   if ($('fpsong')) { $('fpsong').textContent = ti >= 0 ? tr[ti].t : byId[S.now].t; $('fpart').textContent = ti >= 0 ? tr[ti].a : DJ.name; $('fpn').textContent = ti >= 0 ? `Song ${ti + 1} of ${tr.length}` : 'Full tape'; }
   const st = $('ndstrip');
@@ -1736,7 +1747,7 @@ const realTape = id => !!(DJ.media && DJ.media.tapes.includes(id));
 const ua = navigator.userAgent;
 const appleNative = !!audio.canPlayType('application/vnd.apple.mpegurl') && (/iPhone|iPad|iPod/.test(ua) || (/Safari/.test(ua) && !/Chrome|Chromium|Edg|Android|Firefox/.test(ua)));
 let hls = null, hlsLoading = null, realKey = '', lastP = -1, seekPending = false, blobUrl = '';
-let switching = false;   // true while the audio changes source: the browser's own pause events then aren't the fan pausing
+let switching = false, scrubbing = false, scrubLocked = false;   // true while the audio changes source: the browser's own pause events then aren't the fan pausing
 const loadHlsJs = () => hlsLoading || (hlsLoading = new Promise((ok, no) => {
   const t = document.createElement('script');
   t.src = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.17/hls.min.js';
@@ -1844,7 +1855,7 @@ function applySeek(){
 /* Where the audio really is, in seconds from the start of what's loaded. */
 const realSec = () => realKey && !seekPending && isFinite(audio.currentTime) ? audio.currentTime : dur() * S.progress / 100;
 function followAudio(){
-  if (!realKey || seekPending || audio.seeking || !isFinite(audio.currentTime)) return;
+  if (scrubbing || !realKey || seekPending || audio.seeking || !isFinite(audio.currentTime)) return;
   const d = dur();
   S.progress = Math.min(100, audio.currentTime / d * 100); lastP = S.progress;
   updateProgress();
@@ -1998,13 +2009,28 @@ function bought(ids, total){
 
 /* ---------- events ---------- */
 document.addEventListener('input', e => {
-  if (e.target.id === 'seek' || e.target.id === 'pbseek') { S.progress = e.target.value / 10; updateProgress(); updatePosition(true); }
+  if (e.target.id === 'seek' || e.target.id === 'pbseek') {
+    scrubbing = true;
+    let v = e.target.value / 10;
+    if (e.target.classList.contains('nd-seek')) {
+      /* The playhead covers the whole tape. In a preview, it stops where the free minutes end. */
+      const lim = S.preview ? dur() / toSecs(byId[S.now].len) * 100 : 100;
+      if (v > lim - 0.1) { v = lim - 0.1; scrubLocked = S.preview; e.target.value = Math.round(v * 10); }
+      S.progress = v / lim * 100;
+    } else S.progress = v;
+    S.curTrack = -2; updateProgress();
+  }
   if (e.target.id === 'vol') { setVol(+e.target.value, true); }
   if (e.target.id === 'dq') { S.q = e.target.value; S.tab = 'search'; S.stack = []; S.full = false; render(); }
   if (e.target.id === 'sdq') { const q = e.target.value.trim().toLowerCase(); document.querySelectorAll('#sdlist .sd-row').forEach(r => { r.style.display = !q || r.title.toLowerCase().includes(q) ? '' : 'none'; }); }
   if (e.target.id === 'q') { S.q = e.target.value; const pos = e.target.selectionStart; render(); const q = $('q'); if (q) { q.focus(); q.setSelectionRange(pos, pos); } }
 });
 document.addEventListener('change', e => {
+  if (e.target.id === 'seek' || e.target.id === 'pbseek') {
+    scrubbing = false; applySeek(); updatePosition(true);
+    if (scrubLocked) { scrubLocked = false; PASS_ONLY ? passOffer('Past the free preview', 'The rest is on the full tape')
+      : offer('Past the free preview', 'The rest is on the full tape', `Own ${byId[S.now].t} for $${PRICE}, or play every tape for $${PASS} a month.`, [{act:'buynow', id:S.now, label:`Own it $${PRICE}`}, {act:'plan', plan:'listen', label:'Every tape for $' + PASS + '/mth'}, {act:'closesheet', label:'Not now'}]); }
+  }
   if (e.target.id === 'smsopt') S.sms = e.target.checked;
   if (e.target.dataset.pref === 'sms') { S.sms = e.target.checked; toast(S.sms ? 'Texts on' : 'Texts off', S.sms ? 'You’ll get offers and new mix alerts by text.' : 'You’ll get them as notifications instead.'); }
 });
