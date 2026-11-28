@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Flyscreen Repair &amp; Security Door Mesh Replacement Melbourne | Door Remesh Doctor (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0d1d3f;      /* flywire at night */
+  --blue:#1f4fb5;       /* his brand blue */
+  --blue-soft:#e7eefb;
+  --orange:#ef4a1b;     /* his quote-button orange */
+  --orange-dark:#c93a10;
+  --alu:#c9ced6;        /* door-frame aluminium */
+  --alu-light:#eef0f3;
+  --paper:#fbfbf9;
+  --ink:#141821;
+  --muted:#5a6272;
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --body:"Instrument Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --wrap:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.95;margin:0;letter-spacing:.005em}
+h2{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:800}
+h3{font-size:1.65rem;font-weight:800;line-height:1}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.lede{color:var(--muted);max-width:56ch;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:6px;font-weight:700;font-size:1.02rem;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:var(--body);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-dark)}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-blue{background:var(--blue);color:#fff}
+.section{padding:88px 0}
+.section-head{margin-bottom:44px}
+
+/* pitch notes */
+.pitchbar{background:#fff6d6;border-bottom:1px solid #ecd98a;font-size:.86rem;padding:8px 0}
+.pitchbar .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.pitchbar label{display:inline-flex;gap:8px;align-items:center;cursor:pointer;font-weight:600}
+.note{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;text-transform:none;font-weight:500;line-height:1.3;background:#fff6d6;color:#6b5200;border:1px dashed #c9a400;border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.notes-off .note,.notes-off .pitchbar .hint{display:none}
+
+/* header */
+.strip{background:var(--night);color:#cfd8ee;font-size:.86rem}
+.strip .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+header.site{background:#fff;border-bottom:1px solid #e3e6eb;position:sticky;top:0;z-index:20}
+header.site .wrap{display:flex;align-items:center;gap:28px;height:84px}
+.logo{text-decoration:none}
+.logo img{height:68px;width:auto}
+nav.main{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:.96rem}
+nav.main a{text-decoration:none;padding:8px 0;border-bottom:2px solid transparent}
+nav.main a:hover{border-color:var(--orange)}
+.head-call{display:flex;flex-direction:column;line-height:1.15;text-decoration:none}
+.head-call small{font-size:.74rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.head-call strong{font-family:var(--display);font-size:1.7rem;font-weight:800;color:var(--blue);white-space:nowrap}
+
+/* hero */
+.hero{background:var(--night);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:9px 9px;mask-image:linear-gradient(100deg,transparent 30%,#000 100%);-webkit-mask-image:linear-gradient(100deg,transparent 30%,#000 100%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero .eyebrow{color:#9db8f2}
+.hero h1{font-size:clamp(3.2rem,8.2vw,6.6rem);font-weight:900}
+.hero h1 em{font-style:normal;color:var(--orange);display:block}
+.hero p.sub{font-size:1.16rem;color:#d5ddf0;max-width:44ch;margin-top:22px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);font-size:.95rem;color:#d5ddf0}
+.proof b{color:#fff}
+.stars{color:#ffc531;letter-spacing:2px}
+
+/* the screen door */
+.door{position:relative;max-width:400px;margin-left:auto;width:100%}
+.door-frame{background:linear-gradient(135deg,#f4f5f7,#aeb5c0 45%,#e6e9ed 70%,#9aa2ae);padding:16px;border-radius:10px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.door-frame svg{display:block;width:100%;height:auto;border-radius:3px;background:#bcd9f3}
+.door-handle{position:absolute;left:-7px;top:52%;width:14px;height:74px;border-radius:7px;background:linear-gradient(90deg,#5d6573,#2b303a);box-shadow:2px 2px 5px rgba(0,0,0,.4)}
+.door button{position:absolute;right:14px;bottom:-46px;background:none;border:0;color:#9db8f2;font-family:var(--mono);font-size:.76rem;cursor:pointer;padding:8px;text-decoration:underline;text-underline-offset:3px}
+.hole{transform-box:view-box;transform-origin:232px 300px;animation:mend 1.9s .9s cubic-bezier(.6,.05,.25,1) both}
+.fray{animation:fray 1.5s .9s ease-in both}
+.stamp{opacity:0;transform-box:fill-box;transform-origin:center;animation:stamp .45s 2.7s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes mend{from{transform:scale(1)}to{transform:scale(0)}}
+@keyframes fray{from{opacity:1}to{opacity:0}}
+@keyframes stamp{from{opacity:0;transform:scale(1.5) rotate(-10deg)}to{opacity:1;transform:scale(1) rotate(-7deg)}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{background:#fff;border:1px solid #e3e6eb;border-radius:8px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(13,29,63,.12)}
+.svc img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--alu-light)}
+.svc div{padding:20px 22px 24px}
+.svc p{color:var(--muted);font-size:.96rem;margin-top:8px}
+.svc span.go{display:inline-block;margin-top:14px;font-weight:700;color:var(--blue);font-size:.94rem}
+
+/* mesh chart */
+.meshsec{background:var(--alu-light)}
+.chart{background:#fff;border-radius:8px;border:1px solid #dfe3e9;overflow:hidden}
+.row{display:grid;grid-template-columns:84px 1.1fr 1.5fr .9fr;gap:22px;align-items:center;padding:18px 24px;border-top:1px solid #e9ecf0}
+.row:first-child{border-top:0}
+.row.headrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#f7f8fa;padding-top:12px;padding-bottom:12px}
+.row img{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--alu-light)}
+.row strong{font-size:1.04rem;line-height:1.25}
+.row .use{color:var(--muted);font-size:.97rem}
+.tag{font-family:var(--mono);font-size:.74rem;background:var(--blue-soft);color:var(--blue);border-radius:99px;padding:5px 12px;justify-self:start;white-space:nowrap}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;border-top:3px solid var(--ink)}
+.step{padding:26px 26px 0 0;counter-increment:s}
+.step::before{content:counter(s);font-family:var(--display);font-weight:900;font-size:4.2rem;line-height:.9;color:var(--orange);display:block;margin-bottom:10px}
+.step p{color:var(--muted);font-size:.97rem;margin-top:8px}
+
+/* prices */
+.pricesec{background:var(--night);color:#fff}
+.pricesec .eyebrow{color:#9db8f2}
+.pricesec .lede{color:#c6d0e8}
+.pricegrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.pricelist{list-style:none;margin:0;padding:0}
+.pricelist li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.pricelist li span:first-child{font-weight:600}
+.pricelist .amt{font-family:var(--display);font-weight:800;font-size:1.9rem;white-space:nowrap}
+.pricelist .amt small{font-family:var(--mono);font-size:.72rem;font-weight:400;color:#9db8f2;margin-right:8px;text-transform:uppercase;letter-spacing:.06em}
+
+/* reviews */
+.revhead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font-family:var(--display);font-size:4.6rem;font-weight:900;line-height:.85;color:var(--blue)}
+.score span{font-size:.94rem;color:var(--muted);display:block}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review{background:#fff;border:1px solid #e3e6eb;border-radius:8px;padding:26px;margin:0}
+.review blockquote{margin:12px 0 18px;font-size:1.02rem}
+.review figcaption{font-weight:700;font-size:.94rem}
+
+/* jobs */
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.jobs figure{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--alu-light)}
+.jobs img{aspect-ratio:1;object-fit:cover;width:100%}
+.jobs figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(13,29,63,.85));color:#fff;font-family:var(--mono);font-size:.72rem}
+
+/* areas + faq */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.regions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding:0;list-style:none}
+.regions li{border:1.5px solid var(--alu);border-radius:99px;padding:7px 16px;font-weight:600;font-size:.94rem;background:#fff}
+details{border-top:1px solid #dfe3e9;padding:18px 0}
+details:last-of-type{border-bottom:1px solid #dfe3e9}
+summary{font-weight:700;font-size:1.06rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.7rem;line-height:.8;color:var(--orange)}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:10px;max-width:60ch}
+
+/* quote */
+.quotesec{background:var(--blue);color:#fff;position:relative}
+.quotesec::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:9px 9px}
+.quotesec .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.quotesec .eyebrow{color:#cfe0ff}
+.quotesec .lede{color:#dbe6ff}
+.bigcall{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,6vw,4.2rem);text-decoration:none;display:inline-block;margin-top:24px;line-height:1}
+form.quote{background:#fff;color:var(--ink);border-radius:10px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.quote label{font-size:.84rem;font-weight:700;display:grid;gap:6px}
+form.quote .full{grid-column:1/-1}
+form.quote input,form.quote select{font:inherit;font-weight:400;height:50px;border:1.5px solid var(--alu);border-radius:6px;padding:0 14px;width:100%;background:#fff}
+.photo{border:2px dashed var(--alu);border-radius:8px;padding:18px;text-align:center;font-weight:600;color:var(--blue);cursor:pointer;display:block;position:relative;overflow:hidden}
+form.quote .photo input{position:absolute;left:0;top:0;opacity:0;width:1px;height:1px;padding:0;border:0}
+.photo:focus-within{outline:3px solid var(--orange);outline-offset:3px}
+/* stand-ins when a photo can't be loaded */
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-family:var(--mono);font-size:.72rem;color:#5a6272;background-color:#e4e8ee;background-image:linear-gradient(rgba(13,29,63,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(13,29,63,.09) 1px,transparent 1px);background-size:7px 7px}
+.svc .ph{aspect-ratio:16/10;width:100%}
+.jobs .ph{aspect-ratio:1;width:100%}
+.row .ph{width:72px;height:72px;border-radius:50%;font-size:0;padding:0}
+.wordmark{font-family:var(--display);font-weight:900;font-size:1.7rem;line-height:.9;text-transform:uppercase;color:var(--blue);text-decoration:none;display:block}
+.wordmark span{color:var(--orange)}
+.photo small{display:block;color:var(--muted);font-weight:400;margin-top:2px}
+form.quote .btn{width:100%;justify-content:center}
+.formmsg{font-size:.9rem;color:var(--muted);min-height:1.3em}
+
+footer{background:var(--night);color:#b9c4de;padding:54px 0 110px;font-size:.94rem}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:#fff;margin:0 0 12px;font-weight:500}
+footer a{color:#fff}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+
+.mobilebar{display:none}
+
+@media (max-width:960px){
+  nav.main{display:none}
+  .head-call{margin-left:auto}
+  .hero .wrap{grid-template-columns:1fr;padding-top:48px;padding-bottom:84px}
+  .door{margin:0 auto;max-width:300px}
+  .services,.reviews{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .pricegrid,.split,.quotesec .wrap{grid-template-columns:1fr;gap:36px}
+  .jobs{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:60px 1fr;gap:6px 16px}
+  .row.headrow{display:none}
+  .row img,.row .ph{width:56px;height:56px;grid-row:span 3}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .section{padding:60px 0}
+  .strip .hours{display:none}
+  header.site .wrap{height:68px}
+  .logo img{height:54px}
+  .head-call small{display:none}
+  .head-call strong{font-size:1.35rem}
+  .services,.reviews,.steps{grid-template-columns:1fr}
+  .step{padding-right:0}
+  form.quote{grid-template-columns:1fr;padding:22px}
+  .cta-row .btn{flex:1 1 100%;justify-content:center}
+  .mobilebar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;box-shadow:0 -6px 20px rgba(0,0,0,.2)}
+  .mobilebar a{min-height:58px;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none;color:#fff}
+  .mobilebar a:first-child{background:var(--night)}
+  .mobilebar a:last-child{background:var(--orange)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hole{animation:none;transform:scale(0)}
+  .fray{animation:none;opacity:0}
+  .stamp{animation:none;opacity:1;transform:rotate(-7deg)}
+  .btn,.svc{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="pitchbar">
+  <div class="wrap">
+    <span><strong>Homepage concept</strong> for Door Remesh Doctor. Not live; the form is not connected. <span class="hint">Yellow tags mark details for Adam to confirm.</span></span>
+    <label><input type="checkbox" id="notesToggle" checked> Show pitch notes</label>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Mobile service across Melbourne, within 100&nbsp;km</span>
+    <span class="hours">Mon to Fri, 8am to 4pm <span class="note">Google says Mon–Sat 7–5</span></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Door Remesh Doctor home">
+      <img src="img/logo.png" alt="Door Remesh Doctor">
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#mesh">Mesh types</a>
+      <a href="#prices">Prices</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+    </nav>
+    <a class="head-call" href="tel:0468499725"><small>Call Adam</small><strong>0468 499 725</strong></a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Flyscreen repair &amp; security door mesh replacement · Melbourne</p>
+      <h1>Torn flyscreen? <em>Fixed at your door.</em></h1>
+      <p class="sub">We replace the mesh in your existing flyscreens and security doors, on site, anywhere within 100&nbsp;km of Melbourne. Send a photo and get a price before we visit.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#quote">Get a free quote</a>
+        <a class="btn btn-ghost" href="tel:0468499725">Call 0468 499 725</a>
+      </div>
+      <div class="proof">
+        <span><span class="stars" aria-hidden="true">★★★★★</span> <b>4.8</b> from <b>63</b> Google reviews</span>
+        <span><b>Mobile</b>: we come to you</span>
+        <span><b>Licensed &amp; insured</b> <span class="note">add licence no.</span></span>
+      </div>
+    </div>
+
+    <div class="door">
+      <div class="door-frame">
+        <svg viewBox="0 0 400 520" role="img" aria-label="A screen door with a tear in the mesh that mends itself">
+          <defs>
+            <pattern id="mesh" width="7" height="7" patternUnits="userSpaceOnUse">
+              <path d="M0 .5H7M.5 0V7" stroke="#0d1d3f" stroke-width="1" opacity=".5"/>
+            </pattern>
+            <mask id="tear">
+              <rect width="400" height="520" fill="#fff"/>
+              <path class="hole" d="M150 235 L185 205 L232 190 L290 212 L318 262 L302 325 L322 372 L270 398 L215 384 L170 402 L140 345 L158 292 Z" fill="#000"/>
+            </mask>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9fcbf2"/><stop offset=".62" stop-color="#dcecf9"/>
+            </linearGradient>
+          </defs>
+          <!-- the backyard through the door -->
+          <rect width="400" height="520" fill="url(#sky)"/>
+          <circle cx="318" cy="92" r="34" fill="#ffd45a"/>
+          <rect y="318" width="400" height="34" fill="#8a6a4a"/>
+          <g stroke="#73573b" stroke-width="2"><path d="M40 318v34M90 318v34M140 318v34M190 318v34M240 318v34M290 318v34M340 318v34"/></g>
+          <rect y="352" width="400" height="168" fill="#6fae5a"/>
+          <ellipse cx="80" cy="356" rx="120" ry="20" fill="#5d9a4b"/>
+          <!-- Hills hoist -->
+          <g stroke="#59616e" stroke-width="4" stroke-linecap="round" fill="none">
+            <path d="M232 470V262"/>
+            <path d="M232 266L150 236M232 266L318 240M232 266L186 300M232 266L290 296"/>
+            <path d="M150 236L318 240L290 296L186 300Z" stroke-width="1.5"/>
+          </g>
+          <rect x="196" y="270" width="22" height="34" fill="#ef4a1b"/>
+          <rect x="250" y="268" width="26" height="30" fill="#fff"/>
+          <!-- the mesh, with a tear that closes -->
+          <rect width="400" height="520" fill="url(#mesh)" mask="url(#tear)"/>
+          <g class="fray" stroke="#0d1d3f" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".8">
+            <path d="M150 235c10 4 14 14 26 12M185 205c2 12 12 14 12 26M290 212c-8 8-4 18-16 22M318 262c-12 2-14 12-26 12M302 325c-10-4-18 4-26-4M270 398c-2-12-12-12-12-24M215 384c4-10-4-16 2-26M170 402c6-10 0-18 8-26M140 345c12 0 14-10 26-8M158 292c10 2 16-6 26-2"/>
+          </g>
+          <g class="stamp">
+            <rect x="118" y="408" width="168" height="50" rx="6" fill="#fff" stroke="#ef4a1b" stroke-width="3"/>
+            <text x="202" y="442" text-anchor="middle" font-family="Big Shoulders Display, Arial Narrow, sans-serif" font-weight="900" font-size="28" fill="#ef4a1b" letter-spacing="1">GOOD AS NEW</text>
+          </g>
+        </svg>
+      </div>
+      <span class="door-handle" aria-hidden="true"></span>
+      <button type="button" id="replay">Tear it again</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What needs fixing?</p>
+      <h2>Screens and doors we repair</h2>
+      <p class="lede">If it has mesh in it, we can probably fix it. Pick the job closest to yours.</p>
+      <p style="margin-top:12px"><span class="note" style="margin-left:0">Each card links to its own service page, so Google has a page to rank for every job</span></p>
+    </div>
+    <div class="services">
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2024/10/Melbournes-Mesh-Flyscreen-Replacement-Experts.jpg" alt="Flyscreen with new mesh fitted">
+        <div><h3>Flyscreen repair &amp; replacement</h3><p>Holes, tears and sagging mesh replaced in your existing frames.</p><span class="go">Flyscreen repairs →</span></div>
+      </a>
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2024/02/Mesh-Replacement-for-Security-Doors-2.jpg" alt="Security door with replacement mesh">
+        <div><h3>Security door mesh</h3><p>New stainless or aluminium mesh in the door you already own.</p><span class="go">Security door mesh →</span></div>
+      </a>
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/04/Gallery-2.jpg" alt="Sliding flyscreen door">
+        <div><h3>Sliding door flyscreens</h3><p>Sliding screen doors remeshed on site, the same visit.</p><span class="go">Sliding doors →</span></div>
+      </a>
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2024/02/Mesh-Replacement-for-Windows.jpg" alt="Window flyscreen with new mesh">
+        <div><h3>Window flyscreens</h3><p>One window or the whole house, measured and fitted.</p><span class="go">Window screens →</span></div>
+      </a>
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/09/Timber-Flyscreen-Door-Remesh.jpg" alt="Timber flyscreen door after remeshing">
+        <div><h3>Timber screen doors</h3><p>Older timber doors remeshed without replacing the door.</p><span class="go">Timber doors →</span></div>
+      </a>
+      <a class="svc" href="#quote">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/04/Gallery-4.jpg" alt="Security door hardware">
+        <div><h3>Locks, hinges &amp; new doors</h3><p>Sticking locks and dropped hinges fixed. New doors and screens supplied and fitted.</p><span class="go">Repairs and new doors →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section meshsec" id="mesh">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The prescription</p>
+      <h2>Which mesh do you need?</h2>
+      <p class="lede">Five meshes, each suited to a different job. Not sure which? Tell us what tore the old one.</p>
+    </div>
+    <div class="chart">
+      <div class="row headrow"><span></span><span>Mesh</span><span>What it's for</span><span>Fits</span></div>
+      <div class="row">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/02/Fibreglass-Mesh.png" alt="">
+        <strong>Standard fibreglass</strong>
+        <span class="use">Everyday insect screening. The usual choice for windows and light-use doors.</span>
+        <span class="tag">Flyscreens</span>
+      </div>
+      <div class="row">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/02/316-Stainless-Steel-Mesh-3.png" alt="">
+        <strong>316 marine grade stainless roll mesh</strong>
+        <span class="use">Tougher than fibreglass and resists corrosion, so it suits coastal homes.</span>
+        <span class="tag">Flyscreens &amp; doors</span>
+      </div>
+      <div class="row">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/02/Stainless-Steel-Mesh-5.png" alt="">
+        <strong>316 marine grade security mesh</strong>
+        <span class="use">Woven stainless for security doors, with a clear view out.</span>
+        <span class="tag">Security doors</span>
+      </div>
+      <div class="row">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/02/Limited-Vision-Mesh.png" alt="">
+        <strong>Limited vision aluminium (Visionguard)</strong>
+        <span class="use">You can see out; it is harder for passers-by to see in.</span>
+        <span class="tag">Privacy</span>
+      </div>
+      <div class="row">
+        <img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/02/Perforated-Aluminium-Mesh.png" alt="">
+        <strong>Perforated aluminium</strong>
+        <span class="use">A solid punched sheet that stands up to knocks and still lets air through.</span>
+        <span class="tag">Security doors</span>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:18px"><span class="note" style="margin-left:0">Adam to check each description, and say whether pet mesh is offered</span></p>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>From torn to fixed</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Send a photo</h3><p>Text or upload a photo of the damage with rough measurements, or just call.</p></div>
+      <div class="step"><h3>Get a price</h3><p>A free, no-obligation quote, with the mesh options that suit the job.</p></div>
+      <div class="step"><h3>We come to you</h3><p>The old mesh comes out and the new mesh goes in, at your place.</p></div>
+      <div class="step"><h3>We clean up</h3><p>Offcuts and old mesh leave with us. Your screen goes back on.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricesec" id="prices">
+  <div class="wrap pricegrid">
+    <div>
+      <p class="eyebrow">Prices</p>
+      <h2>What it usually costs</h2>
+      <p class="lede">The final price depends on size and the mesh you choose. These are starting points for common jobs, and the quote is always free.</p>
+      <p style="margin-top:20px"><span class="note" style="margin-left:0">Nobody ranking for these searches shows prices. Real "from" figures here would set the site apart.</span></p>
+      <a class="btn btn-primary" href="#quote" style="margin-top:26px">Get an exact price</a>
+    </div>
+    <ul class="pricelist">
+      <li><span>Window flyscreen, new mesh</span><span class="amt"><small>from</small>$—</span></li>
+      <li><span>Sliding door flyscreen, new mesh</span><span class="amt"><small>from</small>$—</span></li>
+      <li><span>Security door, stainless mesh</span><span class="amt"><small>from</small>$—</span></li>
+      <li><span>Lock or hinge repair</span><span class="amt"><small>from</small>$—</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="revhead">
+      <div>
+        <p class="eyebrow">Reviews</p>
+        <h2>What customers say</h2>
+      </div>
+      <div class="score">
+        <b>4.8</b>
+        <div><span class="stars" aria-hidden="true">★★★★★</span><span>from 63 reviews on Google</span></div>
+      </div>
+    </div>
+    <div class="reviews">
+      <figure class="review">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“Thanks Adam for an outstanding job. We couldn't be more impressed with the quality of our new mesh on our doors, great service too.”</blockquote>
+        <figcaption>Jasmine Lang</figcaption>
+      </figure>
+      <figure class="review">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“They provided us with wonderful service and competitive pricing for our flyscreens, the job was done in just a couple of hours.”</blockquote>
+        <figcaption>Gabriel Lardner</figcaption>
+      </figure>
+      <figure class="review">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>“I was thrilled with the work done on my new mesh doors. The team were both very professional and friendly.”</blockquote>
+        <figcaption>Will Latour</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:18px"><span class="note" style="margin-left:0">Quotes taken from the current site. Replace with the live Google reviews, with suburb and job type.</span></p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0" id="jobs">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Recent jobs</p>
+      <h2>Fresh off the tools</h2>
+    </div>
+    <div class="jobs">
+      <figure><img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/04/Gallery-3.jpg" alt="Completed mesh replacement job"><figcaption>Suburb · door type · mesh</figcaption></figure>
+      <figure><img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2023/04/Gallery-5.jpg" alt="Completed mesh replacement job"><figcaption>Suburb · door type · mesh</figcaption></figure>
+      <figure><img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2024/02/Gallery-7.jpg" alt="Completed mesh replacement job"><figcaption>Suburb · door type · mesh</figcaption></figure>
+      <figure><img loading="lazy" src="https://remeshdoctor.com.au/wp-content/uploads/2024/02/Gallery-8.jpg" alt="Completed mesh replacement job"><figcaption>Suburb · door type · mesh</figcaption></figure>
+    </div>
+    <p style="margin-top:18px"><span class="note" style="margin-left:0">Each photo gets a real caption: where, what door, which mesh</span></p>
+  </div>
+</section>
+
+<section class="section meshsec" id="areas">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Where we work</p>
+      <h2>All over Melbourne</h2>
+      <p class="lede">We're mobile, so the workshop comes to you. We cover anywhere within about 100&nbsp;km of Melbourne.</p>
+      <ul class="regions">
+        <li>Northern suburbs</li><li>Western suburbs</li><li>Eastern suburbs</li><li>South-east</li><li>Inner Melbourne</li><li>Outer fringe</li>
+      </ul>
+      <p style="margin-top:16px"><span class="note" style="margin-left:0">Adam to name the regions and suburbs he actually covers</span></p>
+    </div>
+    <div>
+      <p class="eyebrow">Common questions</p>
+      <details open>
+        <summary>Do I need a new door, or just new mesh?</summary>
+        <p>Usually just new mesh. If the frame is sound, we replace the mesh in it on site. If the door itself is past it, we can supply and fit a new one.</p>
+      </details>
+      <details>
+        <summary>How much does it cost to replace flyscreen mesh?</summary>
+        <p>It depends on the size of the screen and the mesh you choose. Send a photo and rough measurements and we'll give you a price before we visit. Quotes are free.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Most jobs are finished in a single visit. <span class="note">Adam to confirm typical times</span></p>
+      </details>
+      <details>
+        <summary>Can you fix the lock or hinges while you're here?</summary>
+        <p>Yes. We repair locks and hinges on security doors and screen doors.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section quotesec" id="quote">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Free quote</p>
+      <h2>Send a photo, get a price</h2>
+      <p class="lede">Tell us what's torn and where you are. We'll come back with a price and a time that suits.</p>
+      <a class="bigcall" href="tel:0468499725">0468 499 725</a>
+      <p style="color:#dbe6ff;margin-top:6px">Mon to Fri, 8am to 4pm</p>
+    </div>
+    <form class="quote" id="quoteForm" novalidate>
+      <label>Name<input type="text" name="name" autocomplete="name" required></label>
+      <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+      <label>Suburb<input type="text" name="suburb" autocomplete="address-level2"></label>
+      <label>What needs fixing?
+        <select name="job">
+          <option>Flyscreen (window)</option>
+          <option>Sliding door flyscreen</option>
+          <option>Security door mesh</option>
+          <option>Lock or hinge</option>
+          <option>New door or screen</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label class="photo full">Add a photo of the damage<small>Optional, but it gets you a faster price</small><input type="file" accept="image/*"></label>
+      <div class="full"><button class="btn btn-primary" type="submit">Send my quote request</button></div>
+      <p class="formmsg full" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Door Remesh Doctor</h4>
+      <p>Mobile flyscreen repair and security door mesh replacement across Melbourne.</p>
+      <p style="margin-top:10px">ABN 41 629 576 165</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>Flyscreen repair &amp; replacement</li>
+        <li>Security door mesh replacement</li>
+        <li>Sliding door flyscreens</li>
+        <li>Window flyscreens</li>
+        <li>Locks &amp; hinges</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0468499725">0468 499 725</a></li>
+        <li>Mon to Fri, 8am to 4pm</li>
+        <li>Melbourne, Victoria</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="mobilebar">
+  <a href="tel:0468499725">Call now</a>
+  <a href="#quote">Free quote</a>
+</div>
+
+<script>
+// If one of his photos can't be loaded, show a labelled stand-in instead of a broken image.
+function standIn(img) {
+  if (img.closest('.logo')) {
+    var w = document.createElement('span');
+    w.className = 'wordmark';
+    w.innerHTML = 'Door Remesh <span>Doctor</span>';
+    img.replaceWith(w);
+    return;
+  }
+  var d = document.createElement('div');
+  d.className = 'ph';
+  d.textContent = img.alt ? 'Photo: ' + img.alt.toLowerCase() : '';
+  img.replaceWith(d);
+}
+document.querySelectorAll('img').forEach(function (img) {
+  if (img.complete && !img.naturalWidth) standIn(img);
+  else img.addEventListener('error', function () { standIn(img); });
+});
+document.getElementById('notesToggle').addEventListener('change', function (e) {
+  document.body.classList.toggle('notes-off', !e.target.checked);
+});
+document.getElementById('replay').addEventListener('click', function () {
+  document.querySelectorAll('.hole,.fray,.stamp').forEach(function (el) {
+    el.style.animation = 'none';
+    el.getBoundingClientRect();
+    el.style.animation = '';
+  });
+});
+document.getElementById('quoteForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.querySelector('.formmsg').textContent = 'This is a concept page, so nothing was sent. On the live site this goes straight to Adam.';
+});
+</script>
+</body>
+</html>
