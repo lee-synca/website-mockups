@@ -205,6 +205,8 @@ section { padding: clamp(4.5rem, 10vw, 9rem) var(--pad); }
   .reveal.in { opacity: 1; transform: none; }
 }
 
+/* small logo in the menu: the band's own logo file, black artwork turned white */
+.nav .logo { aspect-ratio: 768 / 273; background: url("../img/logo.png") center / contain no-repeat; filter: invert(1); mix-blend-mode: normal; }
 /* ================= multi-page additions ================= */
 .skip { position: absolute; left: -999px; top: 0; z-index: 100; background: var(--yellow); color: var(--black); padding: 0.8em 1.2em; font-weight: 700; }
 .skip:focus { left: 0; }
@@ -233,19 +235,18 @@ section.flush { padding-top: 0; }
 
 /* music page */
 .releases { border-top: 1px solid rgba(255, 255, 255, 0.3); }
-.release { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: center; padding: clamp(2rem, 5vw, 4.5rem) 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); scroll-margin-top: 1rem; }
-.release:nth-child(even) .art { order: 2; }
+.release { display: grid; grid-template-columns: clamp(200px, 24vw, 320px) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding: clamp(1.8rem, 3.5vw, 3rem) 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); scroll-margin-top: 1rem; }
 .release .art { position: relative; display: block; aspect-ratio: 1; overflow: hidden; background: var(--coal); }
 .release .art img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .release .art::after { content: ""; position: absolute; inset: auto 0 0 0; height: 6px; background: linear-gradient(to right, var(--red) 0 33.4%, var(--yellow) 33.4% 66.7%, var(--green) 66.7%); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
 .release .art:hover img { transform: scale(1.04); }
 .release .art:hover::after, .release .art:focus-visible::after { transform: scaleX(1); }
-.release h2 { font-size: clamp(1.8rem, 4.6vw, 4rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.2em; line-height: 1.1; margin: 0.35em 0 0.5em; }
+.release h2 { font-size: clamp(1.6rem, 3.2vw, 2.8rem); font-weight: 200; text-transform: uppercase; letter-spacing: 0.2em; line-height: 1.1; margin: 0.35em 0 0.5em; }
 .release p.about { max-width: 34em; font-weight: 300; }
 .facts { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; }
 .facts li { padding: 0.45em 0.9em; border: 1px solid rgba(255, 255, 255, 0.45); font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.22em; }
 .facts li.top { border-color: var(--yellow); color: var(--yellow); }
-@media (max-width: 760px) { .release { grid-template-columns: 1fr; } .release:nth-child(even) .art { order: 0; } }
+@media (max-width: 640px) { .release { grid-template-columns: 1fr; } .release .art { max-width: 240px; } }
 .also { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 2.2rem); margin-top: clamp(2rem, 5vw, 3.5rem); }
 @media (max-width: 760px) { .also { grid-template-columns: 1fr 1fr; } }
 
