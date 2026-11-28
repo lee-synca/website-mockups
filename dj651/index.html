@@ -20,7 +20,7 @@ html,body{margin:0}
 <meta name="theme-color" content="#0a090c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&family=DM+Sans:wght@400;500;700&family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Michroma&family=Permanent+Marker&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,700..900&family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Michroma&family=Permanent+Marker&family=VT323&display=swap">
 <style>
 /* Layout: a streaming-app shell. Tab screens scroll under a floating mini player and a fading tab bar;
    mix pages and the full player take their colour from the cover. Gold is the brand's play colour. */
@@ -605,6 +605,8 @@ a.btn{text-decoration:none}
 .desk #side .rk-pull{grid-template-columns:96px minmax(0,1fr);gap:12px}
 .desk #side .rk-cv img{width:96px;height:96px}
 .desk #side .rk-b{white-space:normal}
+.desk #side .rk-vols{max-width:112px;gap:4px}
+.desk #side .rk-vols button{width:24px;height:24px;font-size:12px}
 [data-skin="hifi"] .desk #side .rk-pull h3{font-size:22px}
 .desk #side .dial{margin-top:14px}
 .desk #side .rk-spine.alt,.desk #side .rk-spine:not(.alt){transform:none}
@@ -830,6 +832,42 @@ a.btn{text-decoration:none}
 [data-skin="riso"] .nav button{font-size:21px}
 [data-skin="riso"] .nowline{border-top:2px solid var(--fg)}
 
+/* Kerisimasi: a Pacific summer Christmas. Evergreen night, pohutukawa crimson, gold, and one string of
+   fairy lights along the bottom bar. Seasonal: the DJ turns it on for December. */
+:root[data-skin="xmas"]{--bg:#0f2a22;--bg2:#0a1f19;--elev:#163a2f;--elev2:#1e4a3d;--line:#2f5e4e;--fg:#fbf3e4;--muted:#c9c0aa;--dim:#8fa597;
+  --gold:#e23b4a;--gold-ink:#fff8ee;--hib:#f4c95d;--hib-ink:#2a1a00;--sea:#f4c95d;--sheet:#163a2f;--needle:#f4c95d;
+  --font:'DM Sans','Segoe UI',sans-serif;--brand:'Fraunces',Georgia,serif;--disp:'Fraunces',Georgia,serif;--dw:800;--dt:none;--rad:12px;
+  --paper:radial-gradient(circle at 30% 30%,rgba(244,201,93,.16) 0 1px,transparent 1.5px),radial-gradient(circle at 70% 75%,rgba(251,243,228,.09) 0 1px,transparent 1.5px);
+  --paper-size:53px 53px,37px 37px;color-scheme:dark}
+[data-skin="xmas"] .h-title,[data-skin="xmas"] .sec h2,[data-skin="xmas"] .rk-name b,[data-skin="xmas"] .rk-pull h3,[data-skin="xmas"] .nd-song h1,
+[data-skin="xmas"] .nd-pull,[data-skin="xmas"] .rk-logo,[data-skin="xmas"] .yr-pass b,[data-skin="xmas"] .sheet h2,[data-skin="xmas"] .nav button,[data-skin="xmas"] .mp-t{font-style:italic;letter-spacing:-.01em}
+[data-skin="xmas"] .rk-logo{color:var(--hib)}
+/* spines wrapped in ribbon: a crimson band with a gold edge */
+[data-skin="xmas"] .rk-spine{border-left:0;padding-left:16px;background:linear-gradient(90deg,#e23b4a 0 7px,#f4c95d 7px 9px,transparent 9px),var(--elev)}
+[data-skin="xmas"] .rk-spine.alt{background:linear-gradient(90deg,#2f8f62 0 7px,#f4c95d 7px 9px,transparent 9px),var(--elev)}
+[data-skin="xmas"] .rk-vols .own{background:var(--hib);color:var(--hib-ink);border-color:var(--hib)}
+[data-skin="xmas"] .rk-vols .sel{border-color:var(--gold);box-shadow:0 0 0 1.5px var(--gold);color:var(--fg)}
+[data-skin="xmas"] .rk-pull{border:1.5px solid var(--hib);background:var(--elev)}
+[data-skin="xmas"] .rk-b.line,[data-skin="xmas"] .btn.ghost{border-color:var(--hib);color:var(--hib)}
+/* the rating button as a gift tag */
+[data-skin="xmas"] .nd-pull,[data-skin="xmas"] .desk .pb-r .pb-pull{border:2px dashed var(--hib);outline:3px solid var(--gold);outline-offset:-1px;transform:rotate(-4deg)}
+[data-skin="xmas"] .nd-strip button.cur{background:var(--hib)}
+[data-skin="xmas"] .nd-strip button.done{background:var(--fg)}
+[data-skin="xmas"] .nd-heat i{background:var(--gold);opacity:.55}
+[data-skin="xmas"] .chip.on{background:var(--gold);color:var(--gold-ink)}
+[data-skin="xmas"] .stamp{border-color:var(--hib);color:var(--hib)}
+/* fairy lights along the top of the bottom bar (phone) and the deck bar (desktop) */
+[data-skin="xmas"] .nav::after,[data-skin="xmas"] .desk #pbar::before{content:"";position:absolute;left:0;right:0;top:-7px;height:14px;pointer-events:none;
+  background:radial-gradient(circle,#ff5a66 0 3px,transparent 4px) 6px 60%/48px 14px repeat-x,
+    radial-gradient(circle,#f4c95d 0 3px,transparent 4px) 22px 60%/48px 14px repeat-x,
+    radial-gradient(circle,#7fe0b0 0 3px,transparent 4px) 38px 60%/48px 14px repeat-x,
+    linear-gradient(#3d6b5a,#3d6b5a) 0 40%/100% 1px no-repeat;
+  filter:drop-shadow(0 0 3px rgba(255,214,120,.65));animation:twinkle 1.8s ease-in-out infinite alternate}
+[data-skin="xmas"] .desk #pbar{position:relative}
+[data-skin="xmas"] .nowline{border-top-color:transparent}
+@keyframes twinkle{to{filter:drop-shadow(0 0 1px rgba(255,214,120,.2));opacity:.75}}
+@media (prefers-reduced-motion:reduce){[data-skin="xmas"] .nav::after,[data-skin="xmas"] .desk #pbar::before{animation:none}}
+
 /* Hi-Fi: a brushed-metal stereo with amber read-outs */
 :root[data-skin="hifi"]{--bg:#c9ccd0;--bg2:#b6b9be;--elev:#dcdee1;--elev2:#b4b8bd;--line:#8d9197;--fg:#1b1d20;--muted:#474b51;--dim:#6d7177;
   --gold:#ff9a1f;--gold-ink:#1b1d20;--hib:#c8321f;--hib-ink:#ffffff;--sea:#1f6b3a;--sheet:#dcdee1;--needle:#ff3b2f;
@@ -917,7 +955,7 @@ const DJ = {
   /* The Dial: each word, and the tag on the tapes it plays. */
   dial: [['cruise','Cruise'],['summer','BBQ'],['rnb','Slow jams'],['gospel','Sunday'],['party','Party'],['island','Island']],
   skin: 'jcard',                     // the look a new fan starts with
-  skins: ['jcard','classic','siapo','riso','hifi'],   // which looks from the Needle Drop library this DJ offers
+  skins: ['jcard','classic','siapo','riso','xmas','hifi'],   // which looks from the Needle Drop library this DJ offers
   /* How this DJ sells. 'both' = fans buy single tapes or take the monthly pass. 'pass' = pass only: nothing is
      bought one at a time, and pass holders can download tapes into the app to play offline (never a file). */
   sell: 'pass',
@@ -1179,6 +1217,7 @@ const SKINS = [
   {id:'classic', name:'Midnight', sub:'The original dark and gold', sw:['#121016','#ffffff','#f5c542','#ff5d6c'], bar:'#0a090c'},
   {id:'siapo', name:'Siapo', sub:'Bark-cloth and bold geometry', sw:['#22130c','#f3e4c4','#e0672d','#f0b64a'], bar:'#190d08'},
   {id:'riso', name:'Riso flyer', sub:'Two-ink club flyer', sw:['#f8f1e7','#2230c4','#ff4a93','#2230c4'], bar:'#f8f1e7'},
+  {id:'xmas', name:'Kerisimasi', sub:'Christmas: pohutukawa red, gold and fairy lights', sw:['#0f2a22','#fbf3e4','#e23b4a','#f4c95d'], bar:'#0a1f19', badge:'Christmas'},
   {id:'hifi', name:'Hi-Fi', sub:'Brushed-metal stereo', sw:['#c9ccd0','#1b1d20','#ff9a1f','#0c100e'], bar:'#b6b9be', release:true},
 ];
 let SKIN = (() => { try { return localStorage.getItem(DJ.key + '-skin'); } catch (e) { return null; } })();
@@ -1341,7 +1380,7 @@ function library(){
       : `<p class="empty">Tap ${DJ.rateWord} while a tape plays to rate the song or the blend. Your ratings show here.</p>`}
     <div class="sec"><h2>Skin</h2></div>
     <p class="yr-note">Change the look any time. New skins from ${DJ.name} show up here for everyone.</p>
-    <div class="yr-skins">${skinsOut().map(s => `<button class="yr-skin ${s.id === SKIN ? 'on' : ''}" data-act="skin" data-id="${s.id}" aria-pressed="${s.id === SKIN}"><span class="sw" style="background:${s.sw[0]};color:${s.sw[1]}">Aa<i style="background:${s.sw[2]}"></i><i style="background:${s.sw[3]}"></i></span><b>${s.name}</b><small>${s.id === SKIN ? 'On now' : s.sub}</small>${s.release && s.id !== SKIN ? '<em>New</em>' : ''}</button>`).join('')}</div>
+    <div class="yr-skins">${skinsOut().map(s => `<button class="yr-skin ${s.id === SKIN ? 'on' : ''}" data-act="skin" data-id="${s.id}" aria-pressed="${s.id === SKIN}"><span class="sw" style="background:${s.sw[0]};color:${s.sw[1]}">Aa<i style="background:${s.sw[2]}"></i><i style="background:${s.sw[3]}"></i></span><b>${s.name}</b><small>${s.id === SKIN ? 'On now' : s.sub}</small>${(s.release || s.badge) && s.id !== SKIN ? `<em>${s.badge || 'New'}</em>` : ''}</button>`).join('')}</div>
     <div class="sec"><h2>Playing on</h2></div>
     <button class="btn wide" data-act="devices">${ic(dev.icon)} ${dev.name}</button>
     <button class="btn ghost wide" data-act="tab" data-tab="plans" style="margin-top:10px">Account, plans and alerts</button>
